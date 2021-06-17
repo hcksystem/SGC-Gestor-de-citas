@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGC Gestor de citas", "SGC Gestor de citas\SGC Gestor de citas.csproj", "{A8C1DB9D-3ED5-4F5C-BF29-09881AEE3548}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos(DAL)", "AccesoDatos(DAL)\AccesoDatos(DAL).csproj", "{08D47B17-38F5-451B-873B-C04ADDACF229}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8C1DB9D-3ED5-4F5C-BF29-09881AEE3548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C1DB9D-3ED5-4F5C-BF29-09881AEE3548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C1DB9D-3ED5-4F5C-BF29-09881AEE3548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8C1DB9D-3ED5-4F5C-BF29-09881AEE3548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08D47B17-38F5-451B-873B-C04ADDACF229}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08D47B17-38F5-451B-873B-C04ADDACF229}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08D47B17-38F5-451B-873B-C04ADDACF229}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08D47B17-38F5-451B-873B-C04ADDACF229}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79867880-052B-4E84-A88F-DB25BDF38E99}
+	EndGlobalSection
+EndGlobal
