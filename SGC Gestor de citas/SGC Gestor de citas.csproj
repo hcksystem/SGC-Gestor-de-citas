@@ -88,11 +88,26 @@
     <Content Include="assets\js\plugins\bootstrap-notify.js" />
     <Content Include="assets\js\plugins\chartjs.min.js" />
     <Content Include="assets\js\plugins\perfect-scrollbar.jquery.min.js" />
+    <Content Include="frmMenuAdministrador.aspx" />
     <Content Include="gulpfile.js" />
     <Content Include="nucleo-icons.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador.Master.cs">
+      <DependentUpon>Administrador.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador.Master.designer.cs">
+      <DependentUpon>Administrador.Master</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuAdministrador.aspx.cs">
+      <DependentUpon>frmMenuAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMenuAdministrador.aspx.designer.cs">
+      <DependentUpon>frmMenuAdministrador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +154,7 @@
     <Content Include="assets\scss\now-ui-dashboard\_typography.scss" />
     <Content Include="assets\scss\now-ui-dashboard\_variables.scss" />
     <Content Include="package.json" />
+    <Content Include="Administrador.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
