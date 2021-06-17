@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{08D47B17-38F5-451B-873B-C04ADDACF229}</ProjectGuid>
+    <ProjectGuid>{A7E4CAF0-E0AE-4A4F-9694-82D925798F02}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccesoDatos_DAL_</RootNamespace>
-    <AssemblyName>AccesoDatos%28DAL%29</AssemblyName>
+    <RootNamespace>LogicaNegocio_BLL_</RootNamespace>
+    <AssemblyName>LogicaNegocio%28BLL%29</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,9 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,19 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DALBase.cs" />
-    <Compile Include="DALNegocio.cs" />
-    <Compile Include="DALProducto.cs" />
-    <Compile Include="DALRol.cs" />
-    <Compile Include="DALServicio.cs" />
-    <Compile Include="DALUsuario.cs" />
-    <Compile Include="Log.cs" />
+    <Compile Include="BLLNegocio.cs" />
+    <Compile Include="BLLProducto.cs" />
+    <Compile Include="BLLRol.cs" />
+    <Compile Include="BLLServicio.cs" />
+    <Compile Include="BLLUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{72FCD936-2F8D-4E31-AE24-5A39A46AA971}</Project>
-      <Name>Entidades</Name>
+    <ProjectReference Include="..\AccesoDatos%28DAL%29\AccesoDatos%28DAL%29.csproj">
+      <Project>{08D47B17-38F5-451B-873B-C04ADDACF229}</Project>
+      <Name>AccesoDatos%28DAL%29</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
