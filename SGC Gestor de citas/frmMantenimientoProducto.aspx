@@ -24,7 +24,7 @@
                             </div>
                             <div class="col-md-4 pl-1">
                                 <div class="form-group">
-                                    <label>Categoria</label>
+                                    <asp:Label ID="Label1" runat="server" Text="Categoria"></asp:Label>
                                     <asp:TextBox ID="txtCategoriaProducto" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
