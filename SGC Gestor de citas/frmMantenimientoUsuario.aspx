@@ -49,19 +49,20 @@
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
                        
-                        <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar Producto" />
+                        
                       </div>
                     </div>
                        
                            <div class="col-md-4 pr-1">
                       <div class="form-group">
                        
-                        <asp:Button ID="btnMostrarLista" class="btn btn-primary btn-round" runat="server" Text="Mostrar lista" />
+                        
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
-                       
+                          <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar Usuario" OnClick="btnGuardar_Click" />
+                       <asp:Button ID="btnMostrarLista" class="btn btn-primary btn-round" runat="server" Text="Mostrar lista" />
                         <asp:Button ID="btnCancelar" runat="server" class="btn btn-primary btn-round" Text="Cancelar" />
                       </div>
                     </div>
