@@ -71,13 +71,13 @@
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="#">
               <i class="now-ui-icons location_map-big"></i>
               <p>Citas</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="#">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Reportes</p>
             </a>
@@ -145,17 +145,17 @@
             <ul>
               <li>
                 <a href="#">
-                  Creative Tim
+<%--                aca se puede escribir algo--%>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  About Us
+                  <%--aca se puede escribir algo--%>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  Blog
+                 <%--aca se puede escribir algo--%> <%--y aparece hasta abajo a la izquierda del pie de pagina--%>
                 </a>
               </li>
             </ul>

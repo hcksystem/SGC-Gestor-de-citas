@@ -64,6 +64,21 @@
                       </div>
                     </div>
                   </div>
+                   <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                       
+                        <asp:Button ID="btnGuardar" runat="server" Text="Guardar Producto" />
+                      </div>
+                    </div>
+                       <br />
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                       
+                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />
+                      </div>
+                    </div>
+                  </div>
                   
 
 </asp:Content>
