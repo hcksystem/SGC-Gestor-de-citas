@@ -57,8 +57,8 @@
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
-            <a href="frmMenuAdministrador">
+          <li>
+            <a href="frmMenuAdministrador.aspx">
               <i class="now-ui-icons design_app"></i>
               <p>Inicio</p>
             </a>

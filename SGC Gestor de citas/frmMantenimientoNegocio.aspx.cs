@@ -11,6 +11,23 @@ namespace SGC_Gestor_de_citas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+
+            }
+        }
+        public void limpiarDatos()
+        {
+            txtDescripcion.Text = "";
+            txtMision.Text = "";
+            txtVision.Text = "";
+            txtNombreNegocio.Text = "";
+            FileUpload1.Dispose();
+
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
 
         }
     }

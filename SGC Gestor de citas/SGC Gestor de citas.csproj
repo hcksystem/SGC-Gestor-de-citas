@@ -191,6 +191,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogicaNegocio%28BLL%29\LogicaNegocio%28BLL%29.csproj">
+      <Project>{A7E4CAF0-E0AE-4A4F-9694-82D925798F02}</Project>
+      <Name>LogicaNegocio%28BLL%29</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
