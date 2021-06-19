@@ -88,6 +88,9 @@
     <Content Include="assets\js\plugins\bootstrap-notify.js" />
     <Content Include="assets\js\plugins\chartjs.min.js" />
     <Content Include="assets\js\plugins\perfect-scrollbar.jquery.min.js" />
+    <Content Include="frmMantenimientoNegocio.aspx" />
+    <Content Include="frmMantenimientoProducto.aspx" />
+    <Content Include="frmMantenimientoUsuario.aspx" />
     <Content Include="frmMenuAdministrador.aspx" />
     <Content Include="gulpfile.js" />
     <Content Include="nucleo-icons.html" />
@@ -100,6 +103,27 @@
     </Compile>
     <Compile Include="Administrador.Master.designer.cs">
       <DependentUpon>Administrador.Master</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenimientoNegocio.aspx.cs">
+      <DependentUpon>frmMantenimientoNegocio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantenimientoNegocio.aspx.designer.cs">
+      <DependentUpon>frmMantenimientoNegocio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenimientoProducto.aspx.cs">
+      <DependentUpon>frmMantenimientoProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantenimientoProducto.aspx.designer.cs">
+      <DependentUpon>frmMantenimientoProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenimientoUsuario.aspx.cs">
+      <DependentUpon>frmMantenimientoUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantenimientoUsuario.aspx.designer.cs">
+      <DependentUpon>frmMantenimientoUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmMenuAdministrador.aspx.cs">
       <DependentUpon>frmMenuAdministrador.aspx</DependentUpon>

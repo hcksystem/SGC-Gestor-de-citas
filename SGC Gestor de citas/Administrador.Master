@@ -64,7 +64,8 @@
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            
+                <a href="frmMantenimientoProducto.aspx">
               <i class="now-ui-icons education_atom"></i>
               <p>Mantenimientos</p>
             </a>
