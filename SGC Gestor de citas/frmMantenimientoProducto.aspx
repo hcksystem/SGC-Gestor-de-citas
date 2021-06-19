@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-md-4 pl-1">
                                 <div class="form-group">
-                                    <label>Categoria</label>
+                                    <asp:Label ID="Label1" runat="server" Text="Categoria"></asp:Label>
                                     <asp:TextBox ID="txtCategoriaProducto" runat="server" CssClass="form-control"></asp:TextBox>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteP"
                                 ControlToValidate="txtCategoriaProducto" ErrorMessage=" *Digite la categoria del producto" Display="Dynamic"
