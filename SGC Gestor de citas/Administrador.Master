@@ -58,7 +58,7 @@
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.html">
+            <a href="frmMenuAdministrador">
               <i class="now-ui-icons design_app"></i>
               <p>Inicio</p>
             </a>
@@ -83,7 +83,7 @@
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="#">
               <i class="now-ui-icons users_single-02"></i>
               <p>Facturacion</p>
             </a>

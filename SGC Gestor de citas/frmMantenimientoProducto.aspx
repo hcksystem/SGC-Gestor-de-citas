@@ -71,7 +71,7 @@
                         <asp:Button ID="btnGuardar" runat="server" Text="Guardar Producto" />
                       </div>
                     </div>
-                       <br />
+                       <br>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                        
