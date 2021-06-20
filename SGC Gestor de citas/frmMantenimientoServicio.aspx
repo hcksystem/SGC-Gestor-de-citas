@@ -4,7 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
+    <link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
     <div class="panel-header panel-header-sm">
     </div>
@@ -97,11 +98,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
 </asp:Content>

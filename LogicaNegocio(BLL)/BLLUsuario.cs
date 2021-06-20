@@ -41,10 +41,10 @@ namespace LogicaDeNegocio_BLL_
             DALUsuario dalu = new DALUsuario();
             return dalu.ObtenerUsuarioPorCorreo(correo);
         }
-        public void VerificarLogin(string user, string pass)
+        public bool VerificarLogin(string user, string pass)
         {
             DALUsuario dalu = new DALUsuario();
-            dalu.Login(user, pass);
+            return dalu.Login(user, pass);
         }
         public bool Roles()
         {

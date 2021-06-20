@@ -56,6 +56,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -71,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\estilogrid.css" />
+    <Content Include="assets\css\estiloLista.css" />
+    <Content Include="assets\css\login.css" />
     <Content Include="assets\css\now-ui-dashboard.css" />
     <Content Include="assets\css\now-ui-dashboard.min.css" />
     <Content Include="assets\demo\demo.css" />
@@ -97,6 +101,7 @@
     <Content Include="frmMantenimientoUsuario.aspx" />
     <Content Include="frmMenuAdministrador.aspx" />
     <Content Include="gulpfile.js" />
+    <Content Include="LoginSGC.aspx" />
     <Content Include="nucleo-icons.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -142,6 +147,13 @@
     </Compile>
     <Compile Include="frmMenuAdministrador.aspx.designer.cs">
       <DependentUpon>frmMenuAdministrador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginSGC.aspx.cs">
+      <DependentUpon>LoginSGC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginSGC.aspx.designer.cs">
+      <DependentUpon>LoginSGC.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -199,6 +211,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AccesoDatos%28DAL%29\AccesoDatos%28DAL%29.csproj">
+      <Project>{08D47B17-38F5-451B-873B-C04ADDACF229}</Project>
+      <Name>AccesoDatos%28DAL%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{72FCD936-2F8D-4E31-AE24-5A39A46AA971}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LogicaNegocio%28BLL%29\LogicaNegocio%28BLL%29.csproj">
       <Project>{A7E4CAF0-E0AE-4A4F-9694-82D925798F02}</Project>
       <Name>LogicaNegocio%28BLL%29</Name>
