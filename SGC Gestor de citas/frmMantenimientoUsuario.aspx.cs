@@ -13,10 +13,8 @@ namespace SGC_Gestor_de_citas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack)
-            {
-                LlenarCombos();
-            }
+            LlenarCombos();
+        
         }
 
         private void LlenarCombos()
@@ -55,6 +53,11 @@ namespace SGC_Gestor_de_citas
 
                 throw;
             }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarDatos();
         }
     }
 }

@@ -64,5 +64,10 @@ namespace SGC_Gestor_de_citas
             }
             limpiarDatos();
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            limpiarDatos();
+        }
     }
 }

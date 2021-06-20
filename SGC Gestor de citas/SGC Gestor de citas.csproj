@@ -94,6 +94,7 @@
     <Content Include="assets\js\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="frmMantenimientoNegocio.aspx" />
     <Content Include="frmMantenimientoProducto.aspx" />
+    <Content Include="frmMantenimientoServicio.aspx" />
     <Content Include="frmMantenimientoUsuario.aspx" />
     <Content Include="frmMenuAdministrador.aspx" />
     <Content Include="gulpfile.js" />
@@ -121,6 +122,13 @@
     </Compile>
     <Compile Include="frmMantenimientoProducto.aspx.designer.cs">
       <DependentUpon>frmMantenimientoProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenimientoServicio.aspx.cs">
+      <DependentUpon>frmMantenimientoServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantenimientoServicio.aspx.designer.cs">
+      <DependentUpon>frmMantenimientoServicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmMantenimientoUsuario.aspx.cs">
       <DependentUpon>frmMantenimientoUsuario.aspx</DependentUpon>

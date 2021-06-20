@@ -54,5 +54,18 @@ namespace SGC_Gestor_de_citas
             limpiarDatos();
             
         }
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            int numero = Convert.ToInt16(args.Value);
+            if (numero > 0)
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
+            }
+        }
     }
 }

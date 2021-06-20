@@ -63,7 +63,7 @@
                       <div class="form-group">
                           <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar Usuario" OnClick="btnGuardar_Click" />
                        <asp:Button ID="btnMostrarLista" class="btn btn-primary btn-round" runat="server" Text="Mostrar lista" />
-                        <asp:Button ID="btnCancelar" runat="server" class="btn btn-primary btn-round" Text="Cancelar" />
+                        <asp:Button ID="btnCancelar" runat="server" class="btn btn-primary btn-round" Text="Cancelar" OnClick="btnCancelar_Click" />
                       </div>
                     </div>
                   </div>
@@ -72,7 +72,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>Usuarios Registrados</label>
+                        
                          <%-- el grid puede ir aca o ponerse a la derecha que es mejor?--%>
  
                       </div>
