@@ -1,5 +1,7 @@
-﻿using LogicaDeNegocio_BLL_;
+﻿using Entidades;
+using LogicaDeNegocio_BLL_;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -14,9 +16,31 @@ namespace SGC_Gestor_de_citas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack) { 
             LlenarCombos();
+            CargarDatos();
+        }
         }
 
+        private void CargarDatos()
+        {
+            try
+            {
+                BLLServicio bllc = new BLLServicio();
+                DataTable dt = bllc.ObtenerTodosLosServicios();
+                gridServicios.DataSource = dt;
+                gridServicios.DataBind();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            LlenarCombos();
+
+
+
+        }
         private void LlenarCombos()
         {
             BLLProducto bllp = new BLLProducto();
@@ -65,6 +89,121 @@ namespace SGC_Gestor_de_citas
                 "alert('" + mjs + "');window.location-'frmMantenimientoServicio.aspx';", true);
             limpiarDatos();
            
+        }
+
+        protected void gridServicios_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            try
+            {
+                gridServicios.EditIndex = -1;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            CargarDatos();
+        }
+
+
+        protected void gridServicios_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                //Recorre la linea, identifica ID y elimina
+                int id = 0;
+                foreach (DictionaryEntry keyEntry in e.Keys)
+                {
+                    id = Convert.ToInt32(keyEntry.Value);
+                }
+
+                BLLServicio bllu = new BLLServicio();
+                bllu.EliminarServicio(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            CargarDatos();
+        }
+
+        protected void gridServicios_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            try
+            {
+                //Activa edicion
+                gridServicios.EditIndex = e.NewEditIndex;
+            }
+            catch (Exception)
+            {
+               throw;
+            }
+
+            CargarDatos();
+        }
+
+        protected void gridServicios_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+
+            GridViewRow fila = gridServicios.Rows[e.RowIndex];
+
+            int id = Convert.ToInt32(gridServicios.DataKeys[e.RowIndex].Values[0]);
+            string nombre = (fila.FindControl("txtNombreServicio") as TextBox).Text.ToUpper();
+            string descripcion = (fila.FindControl("txtDescripcionServicio") as TextBox).Text.ToUpper();
+            double precio = Convert.ToDouble((fila.FindControl("txtPrecioEstimado") as TextBox).Text.ToUpper());
+            DateTime tiempo = Convert.ToDateTime((fila.FindControl("txtTiempoEstimado") as TextBox).Text.ToUpper());
+            byte[] foto = (fila.FindControl("fileFoto") as FileUpload).FileBytes;
+            bool estado = Convert.ToBoolean((fila.FindControl("txtEstado") as TextBox).Text.ToUpper());
+            int producto = Convert.ToInt32((fila.FindControl("dropProducto") as DropDownList).SelectedValue);
+            int negocio = Convert.ToInt32((fila.FindControl("dropNegocio") as DropDownList).SelectedValue);
+
+
+            BLLServicio blls = new BLLServicio();
+            Servicio ser = new Servicio();
+            blls.ObtenerServicioPorID(id);
+            ser.ID = id;
+            ser.Nombre = nombre;
+            ser.Descripcion = descripcion;
+            ser.PrecioEstimado = precio;
+            ser.TiempoEstimado = tiempo;
+            ser.FotoSugerida = foto;
+            ser.Estado = estado;
+            ser.idProducto = producto;
+            ser.idNegocio = negocio;
+            blls.ModificarServicio(ser.ID, ser.Nombre, ser.Descripcion, ser.PrecioEstimado, ser.TiempoEstimado, ser.FotoSugerida, ser.Estado, ser.idProducto, ser.idNegocio);
+            //Termina proceso de la edicion
+            gridServicios.EditIndex = -1;
+
+
+
+            //Carga los datos
+            CargarDatos();
+
+        }
+
+        protected void gridServicios_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex == gridServicios.EditIndex)
+        {
+            DropDownList lista = e.Row.FindControl("dropProducto") as DropDownList;
+            BLLProducto bllp = new BLLProducto();
+            lista.DataSource = bllp.ObtenerTodosLosProductos();
+            lista.DataTextField = "nombre";
+            lista.DataValueField = "id";
+            lista.DataBind();
+
+            DropDownList lista1 = e.Row.FindControl("dropNegocio") as DropDownList;
+            BLLNegocio bllc = new BLLNegocio();
+            lista1.DataSource = bllc.ObtenerTodosLosNegocios();
+            lista1.DataTextField = "nombre";
+            lista1.DataValueField = "id";
+            lista1.DataBind();
+            }
         }
     }
 }

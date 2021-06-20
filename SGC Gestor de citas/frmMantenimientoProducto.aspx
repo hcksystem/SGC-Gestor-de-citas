@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!Doctype html>
     <html>
-    <link href="assets/css/scrolHorizontal.css" rel="stylesheet" />
+    
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
 <div class="panel-header-sm">
 </div>

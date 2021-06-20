@@ -608,6 +608,7 @@ body, .modal {
 .btn-primary {
     background-color: #0c2646;
     color: #FFFFFF;
+    margin: 0px 0px -80px 0;
 }
 
     .btn-primary:hover,
