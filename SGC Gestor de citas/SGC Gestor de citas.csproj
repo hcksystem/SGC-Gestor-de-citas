@@ -72,21 +72,32 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\calendar.css" />
     <Content Include="assets\css\estilogrid.css" />
     <Content Include="assets\css\estiloLista.css" />
+    <Content Include="assets\css\imagenesfiltradas.css" />
     <Content Include="assets\css\login.css" />
     <Content Include="assets\css\now-ui-dashboard.css" />
     <Content Include="assets\css\now-ui-dashboard.min.css" />
     <Content Include="assets\demo\demo.css" />
     <Content Include="assets\demo\demo.js" />
+    <Content Include="assets\img\01.jpg" />
+    <Content Include="assets\img\02.jpg" />
+    <Content Include="assets\img\03.jpg" />
+    <Content Include="assets\img\04.jpg" />
+    <Content Include="assets\img\05.jpg" />
+    <Content Include="assets\img\06.jpg" />
     <Content Include="assets\img\apple-icon.png" />
     <Content Include="assets\img\bg5.jpg" />
     <Content Include="assets\img\default-avatar.png" />
     <Content Include="assets\img\favicon.png" />
     <Content Include="assets\img\header.jpg" />
+    <Content Include="assets\img\left-arrow.png" />
     <Content Include="assets\img\mike.jpg" />
     <Content Include="assets\img\now-logo.png" />
     <Content Include="assets\img\now-ui-dashboard.gif" />
+    <Content Include="assets\img\right-arrow.png" />
+    <Content Include="assets\js\calendar.js" />
     <Content Include="assets\js\core\bootstrap.min.js" />
     <Content Include="assets\js\core\jquery.min.js" />
     <Content Include="assets\js\core\popper.min.js" />
@@ -95,6 +106,7 @@
     <Content Include="assets\js\plugins\bootstrap-notify.js" />
     <Content Include="assets\js\plugins\chartjs.min.js" />
     <Content Include="assets\js\plugins\perfect-scrollbar.jquery.min.js" />
+    <Content Include="frmGestorCita.aspx" />
     <Content Include="frmMantenimientoNegocio.aspx" />
     <Content Include="frmMantenimientoProducto.aspx" />
     <Content Include="frmMantenimientoServicio.aspx" />
@@ -104,6 +116,7 @@
     <Content Include="LoginSGC.aspx" />
     <Content Include="nucleo-icons.html" />
     <Content Include="Web.config" />
+    <Content Include="Calendario.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administrador.Master.cs">
@@ -112,6 +125,13 @@
     </Compile>
     <Compile Include="Administrador.Master.designer.cs">
       <DependentUpon>Administrador.Master</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestorCita.aspx.cs">
+      <DependentUpon>frmGestorCita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmGestorCita.aspx.designer.cs">
+      <DependentUpon>frmGestorCita.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmMantenimientoNegocio.aspx.cs">
       <DependentUpon>frmMantenimientoNegocio.aspx</DependentUpon>
@@ -156,6 +176,13 @@
       <DependentUpon>LoginSGC.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Calendario.aspx.cs">
+      <DependentUpon>Calendario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Calendario.aspx.designer.cs">
+      <DependentUpon>Calendario.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap.min.css.map" />
