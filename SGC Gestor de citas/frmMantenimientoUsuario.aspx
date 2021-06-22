@@ -19,21 +19,30 @@
                     <div class="col-md-5 pr-1">
                       <div class="form-group">
                         <label>Correo electronico</label>
-                         <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control"></asp:TextBox>
+                         <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                           <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="ManteU"
+                            ControlToValidate="txtCorreo" ErrorMessage="El correo es necesario" Display="Dynamic"
+                            ForeColor="Red"></asp:RequiredFieldValidator>
                       </div>
                     </div>
-                    <div class="col-md-3 px-1">
+                    <div class="col-md-5 px-1">
                       <div class="form-group">
                         <label>Telefono</label>
                        
-                          <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
+                          <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                           <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteU"
+                            ControlToValidate="txtTelefono" ErrorMessage="El telefono es necesario" Display="Dynamic"
+                            ForeColor="Red"></asp:RequiredFieldValidator>
                       </div>
                     </div>
-                    <div class="col-md-4 pl-1">
+                    <div class="col-md-5 pl-1">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Contraseña</label>
+                        <label>Contraseña</label>
                       
-                          <asp:TextBox ID="txtContrasenna" runat="server" CssClass="form-control"></asp:TextBox>
+                          <asp:TextBox ID="txtContrasenna" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                           <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteU"
+                            ControlToValidate="txtContrasenna" ErrorMessage="La contraseña es indispensable" Display="Dynamic"
+                            ForeColor="Red"></asp:RequiredFieldValidator>
                       </div>
                     </div>
                   </div>
@@ -56,13 +65,13 @@
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
-                        <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar Usuario" OnClick="btnGuardar_Click" />
+                        <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" ValidationGroup="ManteU" Text="Guardar Usuario" OnClick="btnGuardar_Click" />
                         <asp:Button ID="btnCancelar" runat="server" class="btn btn-primary btn-round" Text="Cancelar" OnClick="btnCancelar_Click" />
                       </div>
                     </div>
                     <head>
                     <meta charset="utf-8" />
-                    <title>Lista Negocio</title>
+                    <title>Lista Usuarios</title>
                     <link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
 
                    </head>

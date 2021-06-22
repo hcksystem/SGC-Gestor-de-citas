@@ -25,7 +25,7 @@
                 <div class="col-md-6 pl-1">
                     <div class="form-group">
                         <label>Nombre</label>
-                        <asp:TextBox ID="txtNombreNegocio" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtNombreNegocio" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtNombreNegocio" ErrorMessage="El nombre del negocio es necesario" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
@@ -34,7 +34,7 @@
                 <div class="col-md-6 pl-1">
                     <div class="form-group">
                         <label>Descripcion</label>
-                        <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtDescripcion" ErrorMessage="La descripcion es necesaria" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
@@ -43,7 +43,7 @@
                 <div class="col-md-6 pl-1">
                     <div class="form-group">
                         <label>Nuestra Mision</label>
-                        <asp:TextBox ID="txtMision" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtMision" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtMision" ErrorMessage="La vision es necesaria" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
@@ -52,7 +52,7 @@
                 <div class="col-md-6 pl-1">
                     <div class="form-group">
                         <label>Nuestra Vision</label>
-                        <asp:TextBox ID="txtVision" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtVision" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtVision" ErrorMessage="La vision es necesaria" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>

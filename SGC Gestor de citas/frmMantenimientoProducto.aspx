@@ -31,7 +31,7 @@
             <div class="col-md-4 pl-1">
                 <div class="form-group">
                     <asp:Label ID="Label1" runat="server" Text="Categoria"></asp:Label>
-                    <asp:TextBox ID="txtCategoriaProducto" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtCategoriaProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtCategoriaProducto" ErrorMessage=" *Digite la categoria del producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -40,7 +40,7 @@
             <div class="col-md-4 pl-1">
                 <div class="form-group">
                     <label>Descripcion</label>
-                    <asp:TextBox ID="txtDescripcionProducto" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtDescripcionProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtDescripcionProducto" ErrorMessage=" *Digite una descripción del producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -51,7 +51,7 @@
             <div class="col-md-6 pl-1">
                 <div class="form-group">
                     <label>Cantidad que se posee</label>
-                    <asp:TextBox ID="txtCantidadProducto" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtCantidadProducto" TextMode="Number" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteP" ControlToValidate="txtCantidadProducto" ErrorMessage="Digite la cantidad de productos" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                     <asp:CustomValidator ID="CustomValidator1" runat="server" ValidationGroup="ManteP" ControlToValidate="txtCantidadProducto" ErrorMessage="La cantidad de producto debe ser mayor que 0" Display="Dynamic" ForeColor="Red" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                 </div>
@@ -59,7 +59,7 @@
             <div class="col-md-6 pl-1">
                 <div class="form-group">
                     <label>Proposito del Producto</label>
-                    <asp:TextBox ID="txtPropositoProducto" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtPropositoProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtPropositoProducto" ErrorMessage="Digite un proposito para el producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -70,7 +70,7 @@
             <div class="col-md-6 pl-1">
                 <div class="form-group">
                     <label>Precio Unitario</label>
-                    <asp:TextBox ID="txtPrecioProducto" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtPrecioProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtPrecioProducto" ErrorMessage="Digite el precio del producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
