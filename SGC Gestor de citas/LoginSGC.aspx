@@ -22,7 +22,7 @@
                     <div class="sign-in-htm">
                         <div class="group">
                             <label for="user" class="label">Correo</label>
-                            <asp:TextBox ID="txtEmail" runat="server" TabIndex="1"></asp:TextBox>
+                            <asp:TextBox ID="txtEmail" runat="server" TabIndex="1" placeHolder="* Requerido *"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="ManteL"
                                 ControlToValidate="txtEmail" ErrorMessage="Digite su correo" Display="Dynamic"
                                 ForeColor="Red"></asp:RequiredFieldValidator>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Contraseña</label>
-                            <asp:TextBox ID="txtPass" runat="server" TextMode="Password" TabIndex="2"></asp:TextBox>
+                            <asp:TextBox ID="txtPass" runat="server" TextMode="Password" TabIndex="2" placeHolder="* Requerido *"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteL"
                                 ControlToValidate="txtPass" ErrorMessage="Digite su contraseña" Display="Dynamic"
                                 ForeColor="Red"></asp:RequiredFieldValidator>
@@ -45,7 +45,7 @@
                     <div class="for-pwd-htm">
                         <div class="group">
                             <label for="user" class="label">Correo Electronico</label>
-                            <asp:TextBox ID="txtCorreoRegistro" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtCorreoRegistro" runat="server" placeHolder="* Requerido *"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteR"
                                 ControlToValidate="txtCorreoRegistro" ErrorMessage="Digite su Correo" Display="Dynamic"
                                 ForeColor="Red"></asp:RequiredFieldValidator>
@@ -55,20 +55,20 @@
                         </div>
                         <div class="group">
                             <label for="user" class="label">Telefono</label>
-                            <asp:TextBox ID="txtTelefonoRegistro" TextMode="Phone" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtTelefonoRegistro" TextMode="Phone" runat="server" placeHolder="* Requerido *"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteR"
                                 ControlToValidate="txtTelefonoRegistro" ErrorMessage="Digite su telefono" Display="Dynamic"
                                 ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="group">
                             <label for="user" class="label">Contraseña</label>
-                            <asp:TextBox ID="txtContrasennaRegistro" TextMode="Password" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtContrasennaRegistro" TextMode="Password" runat="server" placeHolder="* Requerido *"></asp:TextBox>
                             <ajaxToolkit:PasswordStrength ID="PasswordStrength1" runat="server" Enabled="true" MinimumNumericCharacters="1"
                                 MinimumLowerCaseCharacters="1" PreferredPasswordLength="8" RequiresUpperAndLowerCaseCharacters="true"
                                 TargetControlID="txtContrasennaRegistro" PrefixText="Complejidad" TextStrengthDescriptions="Baja;Media;Alta"/>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8})$ "
-                                ErrorMessage="La contraseña debe tener minimo 8 caracteres, una mayuscula, una minuscula y un numero"
+                                ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$"
+                                ErrorMessage="La contraseña debe tener entre 8 y 15 caracteres, al menos un digito, una mayuscula, una minuscula y no puede tener caracteres especiales"
                                 ControlToValidate="txtContrasennaRegistro" Display="Dynamic" ForeColor="Red"
                                 ValidationGroup="ManteR"></asp:RegularExpressionValidator>
                             <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender1" runat="server"

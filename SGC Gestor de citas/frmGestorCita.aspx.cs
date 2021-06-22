@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LogicaNegocio_BLL_;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +13,26 @@ namespace SGC_Gestor_de_citas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CargarDatos();
+        }
+
+        private void CargarDatos()
+        {
+            try
+            {
+                BLLCita bllc = new BLLCita();
+                DataTable dt = bllc.ObtenerTodaLasCitas();
+                gridCita.DataSource = dt;
+                gridCita.DataBind();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+
+
 
         }
 

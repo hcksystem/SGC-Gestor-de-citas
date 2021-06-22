@@ -59,14 +59,14 @@
         <ul class="nav">
           <li>
             <a href="frmMenuAdministrador.aspx">
-              <i class="now-ui-icons design_app"></i>
+              <i class="now-ui-icons shopping_shop"></i>
               <p>Inicio</p>
             </a>
           </li>
           <li  class="nav-item dropdown">
                 
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons location_world"></i>
+                  <i class="now-ui-icons ui-2_settings-90"></i>
                     <p>Mantenimiento</p>
                   
                 </a>
@@ -80,20 +80,20 @@
               </li>
             
           <li>
-            <a href="frmGestionCita.aspx">
+            <a href="frmGestorCita.aspx">
               <i class="now-ui-icons location_map-big"></i>
               <p>Citas</p>
             </a>
           </li>
           <li>
             <a href="#">
-              <i class="now-ui-icons ui-1_bell-53"></i>
+              <i class="now-ui-icons files_single-copy-04"></i>
               <p>Reportes</p>
             </a>
           </li>
           <li>
             <a href="#">
-              <i class="now-ui-icons users_single-02"></i>
+              <i class="now-ui-icons shopping_cart-simple"></i>
               <p>Facturacion</p>
             </a>
           </li>

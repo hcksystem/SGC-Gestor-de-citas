@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <link href="assets/css/estilogrid.css" rel="stylesheet" />
     <!DOCTYPE>
     <html>
         <head>
@@ -98,6 +98,89 @@
         });
     });
 </script>
+            <div>
+                <asp:GridView ID="gridCita" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowSorting="false">
+                    <Columns>
+
+                        <asp:TemplateField HeaderText="ID">
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<% # Bind("id") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtIDCita" runat="server" Text='<% # Bind("id") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                         <asp:TemplateField HeaderText="DESCRIPCION">
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<% # Bind("descripcion") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtDescripcionCita" runat="server" Text='<% # Bind("descripcion") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Fecha">
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<% # Bind("fecha") %>'></asp:Label>
+
+ 
+
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtFechaCita" TextMode="Date" runat="server" Text='<% # Bind("fecha") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+
+                         <asp:TemplateField HeaderText="Hora">
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<% # Bind("hora") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtHoraCita" runat="server" Text='<% # Bind("hora") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Estado">
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" Text='<% # Bind("activo") %>'></asp:Label>
+
+ 
+
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtActivoCita" runat="server" Text='<% # Bind("activo") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+
+                     <asp:TemplateField HeaderText="Servicio">
+                    <ItemTemplate>
+                        <asp:Label ID="Label8" runat="server" Text='<% # Bind("idServicio") %>'></asp:Label>
+
+ 
+
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="dropServicio" runat="server"></asp:DropDownList>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+
+                 <asp:TemplateField HeaderText="Usuario">
+                    <ItemTemplate>
+                        <asp:Label ID="Label8" runat="server" Text='<% # Bind("idUsuario") %>'></asp:Label>
+
+ 
+
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="dropUsuario" runat="server"></asp:DropDownList>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+
+                    </Columns>
+                </asp:GridView>
+            </div>
+
+
+
+
                 </body>
     </html>
 </asp:Content>
