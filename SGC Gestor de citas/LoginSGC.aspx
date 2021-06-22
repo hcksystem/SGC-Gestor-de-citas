@@ -55,7 +55,7 @@
                         </div>
                         <div class="group">
                             <label for="user" class="label">Telefono</label>
-                            <asp:TextBox ID="txtTelefonoRegistro" TextMode="Phone" runat="server" placeHolder="*"></asp:TextBox>
+                            <asp:TextBox ID="txtTelefonoRegistro" TextMode="Phone" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteR"
                                 ControlToValidate="txtTelefonoRegistro" ErrorMessage="Digite su telefono" Display="Dynamic"
                                 ForeColor="Red"></asp:RequiredFieldValidator>
@@ -67,8 +67,8 @@
                                 MinimumLowerCaseCharacters="1" PreferredPasswordLength="8" RequiresUpperAndLowerCaseCharacters="true"
                                 TargetControlID="txtContrasennaRegistro" PrefixText="Complejidad" TextStrengthDescriptions="Baja;Media;Alta"/>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$"
-                                ErrorMessage="La contraseña debe tener entre 8 y 15 caracteres, un digito y no poseer caracteres especiales"
+                                ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8})$ "
+                                ErrorMessage="La contraseña debe tener minimo 8 caracteres, una mayuscula, una minuscula y un numero"
                                 ControlToValidate="txtContrasennaRegistro" Display="Dynamic" ForeColor="Red"
                                 ValidationGroup="ManteR"></asp:RegularExpressionValidator>
                             <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender1" runat="server"
