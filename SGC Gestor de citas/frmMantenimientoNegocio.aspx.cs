@@ -89,6 +89,7 @@ namespace SGC_Gestor_de_citas
 
         protected void gridNegocio_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
+          
             try
             {
                 //Cancela edicion
@@ -137,29 +138,30 @@ namespace SGC_Gestor_de_citas
 
         protected void gridNegocio_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
-
-            try
+            DialogResult boton = MessageBox.Show("Esta seguro?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (boton == DialogResult.Yes)
             {
-                //Recorre la linea y elimina el id
-                int id = 0;
-                foreach (DictionaryEntry keyEntry in e.Keys)
+                try
                 {
-                    id = Convert.ToInt32(keyEntry.Value);
+                    //Recorre la linea y elimina el id
+                    int id = 0;
+                    foreach (DictionaryEntry keyEntry in e.Keys)
+                    {
+                        id = Convert.ToInt32(keyEntry.Value);
+                    }
+
+                    BLLNegocio bllc = new BLLNegocio();
+                    bllc.EliminarNegocio(id);
+                    MessageBox.Show("Negocio eliminado con exito");
+                }
+                catch (Exception)
+                {
+
+                    throw;
                 }
 
-                BLLNegocio bllc = new BLLNegocio();
-                bllc.EliminarNegocio(id);
-                MessageBox.Show("Negocio eliminado con exito");
+                CargarDatos();
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            CargarDatos();
-
         }
 
         protected void gridNegocio_RowEditing(object sender, GridViewEditEventArgs e)

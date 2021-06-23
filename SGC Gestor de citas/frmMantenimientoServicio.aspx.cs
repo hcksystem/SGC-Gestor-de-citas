@@ -9,6 +9,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
+using TextBox = System.Web.UI.WebControls.TextBox;
 
 namespace SGC_Gestor_de_citas
 {
@@ -110,25 +112,30 @@ namespace SGC_Gestor_de_citas
 
         protected void gridServicios_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            try
+            DialogResult boton = MessageBox.Show("Esta seguro?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (boton == DialogResult.Yes)
             {
-                //Recorre la linea, identifica ID y elimina
-                int id = 0;
-                foreach (DictionaryEntry keyEntry in e.Keys)
+                try
                 {
-                    id = Convert.ToInt32(keyEntry.Value);
+                    //Recorre la linea, identifica ID y elimina
+                    int id = 0;
+                    foreach (DictionaryEntry keyEntry in e.Keys)
+                    {
+                        id = Convert.ToInt32(keyEntry.Value);
+                    }
+
+                    BLLServicio bllu = new BLLServicio();
+                    bllu.EliminarServicio(id);
+                }
+                catch (Exception)
+                {
+
+                    throw;
                 }
 
-                BLLServicio bllu = new BLLServicio();
-                bllu.EliminarServicio(id);
+                CargarDatos();
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            CargarDatos();
+  
         }
 
         protected void gridServicios_RowEditing(object sender, GridViewEditEventArgs e)

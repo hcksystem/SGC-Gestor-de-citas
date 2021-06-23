@@ -56,6 +56,7 @@
                     <asp:CustomValidator ID="CustomValidator1" runat="server" ValidationGroup="ManteP" ControlToValidate="txtCantidadProducto" ErrorMessage="La cantidad de producto debe ser mayor que 0" Display="Dynamic" ForeColor="Red" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                 </div>
             </div>
+
             <div class="col-md-6 pl-1">
                 <div class="form-group">
                     <label>Proposito del Producto</label>
@@ -67,7 +68,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 pl-1">
+            <div class="col-md-4 pl-1">
                 <div class="form-group">
                     <label>Precio Unitario</label>
                     <asp:TextBox ID="txtPrecioProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -77,7 +78,7 @@
                 </div>
             </div>
         </div>
-        
+           <div class="row">
             <div class="col-md-4 pl-1">
                 <div class="form-group">
                 </div>
@@ -86,13 +87,12 @@
                 <div class="form-group">
                 </div>
             </div>
-            <br>
             <div class="col-md-4 pl-1">
                 <div class="form-group">
+                    </div>
                     <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar Producto" ValidationGroup="ManteP" OnClick="btnGuardar_Click" />
                     <asp:Button ID="btnCancelar" class="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
                 </div>
-            </div>
     <head>
         <meta charset="utf-8" />
         <title>Lista Productos</title>
@@ -175,6 +175,7 @@
                     <asp:TemplateField ShowHeader="False">
                         <EditItemTemplate>
                             <asp:Button ID="btnUpdate" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
+
                             &nbsp;<asp:Button ID="btnCancelar" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
                         </EditItemTemplate>
                         <ItemTemplate>

@@ -11,44 +11,50 @@
             <link href="assets/css/imagenesfiltradas.css" rel="stylesheet" />
         </head>
         <body>
-            <div id="carrusel">
-    <a href="#" class="left-arrow"><img src="assets/img/left-arrow.png" /></a>
-    <a href="#" class="right-arrow"><img src="assets/img/right-arrow.png" /></a>
-    <div class="carrusel">
-        <div class="product" id="product_0">
-            <img src="assets/img/06.jpg" width="195" height="100" />
-            <h5>Lorem ipsum 1</h5>
-            <p>165.00 €</p>
-        </div>
-        <div class="product" id="product_1">
-            <img src="assets/img/01.jpg" width="195" height="100" />
-            <h5>Lorem ipsum 2</h5>
-            <p>100.00 €</p>
-        </div>
-        <div class="product" id="product_2">
-            <img src="assets/img/03.jpg" width="195" height="100" />
-            <h5>Lorem ipsum 3</h5>
-            <p>250.00 €</p>
-        </div>
-        <div class="product" id="product_3">
-            <img src="assets/img/01.jpg" width="195" height="100" />
-            <h5>Lorem ipsum 4</h5>
-            <p>75.00 €</p>
-        </div>
-        <div class="product" id="product_4">
-            <img src="assets/img/02.jpg" width="195" height="100" />
-            <h5>Lorem ipsum 5</h5>
-            <p>65.00 €</p>
-        </div>
-        <div class="product" id="product_5">
-            <img src="assets/img/03.jpg" width="195" height="100" />
-            <h5>Lorem ipsum 6</h5>
-            <p>40.00 €</p>
-        </div>
-    </div>
-</div>
-            <asp:Button ID="btnIrgestion" runat="server" Text="Presione para sacar una cita" OnClick="btnIrgestion_Click" />
+            <center>
 
+    <div id="carrusel">
+            <a href="#" class="left-arrow">
+                <img src="assets/img/left-arrow.png" /></a>
+            <a href="#" class="right-arrow">
+                <img src="assets/img/right-arrow.png" /></a>
+            <div class="carrusel">
+                <div class="product" id="product_0">
+                    <img src="assets/img/cejas.jpg" width="195" height="100" />
+                    <h5>Lorem ipsum 1</h5>
+                    <p>165.00 €</p>
+                </div>
+                <div class="product" id="product_1">
+                    <img src="assets/img/cortes-600x400.jpg" width="195" height="100" />
+                    <h5>Lorem ipsum 2</h5>
+                    <p>100.00 €</p>
+                </div>
+                <div class="product" id="product_2">
+                    <img src="assets/img/facial.png" width="195" height="100" />
+                    <h5>Lorem ipsum 3</h5>
+                    <p>250.00 €</p>
+                </div>
+                <div class="product" id="product_3">
+                    <img src="assets/img/manicurista.jpg" width="195" height="100" />
+                    <h5>Lorem ipsum 4</h5>
+                    <p>75.00 €</p>
+                </div>
+                <div class="product" id="product_4">
+                    <img src="assets/img/maquillaje.jpg" width="195" height="100" />
+                    <h5>Lorem ipsum 5</h5>
+                    <p>65.00 €</p>
+                </div>
+                <div class="product" id="product_5">
+                    <img src="assets/img/tinte.jpg" width="195" height="100" />
+                    <h5>Lorem ipsum 6</h5>
+                    <p>40.00 €</p>
+                </div>
+            </div>
+        </div>
+               
+            
+            <asp:Button ID="btnIrgestion" runat="server" CssClass="btn btn-primary btn-round" Text="Presione para sacar una cita" OnClick="btnIrgestion_Click" />
+                </center>
             <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script>
     var current = 0;
@@ -98,6 +104,11 @@
         });
     });
 </script>
+            <br />
+        <br />
+            <br />
+            <br />
+            <center>
             <div>
                 <asp:GridView ID="gridCita" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowSorting="false">
                     <Columns>
@@ -176,8 +187,9 @@
 
                     </Columns>
                 </asp:GridView>
-            </div>
 
+            </div>
+</center>
 
 
 
