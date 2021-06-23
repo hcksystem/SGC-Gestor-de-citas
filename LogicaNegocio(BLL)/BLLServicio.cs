@@ -31,6 +31,16 @@ namespace LogicaDeNegocio_BLL_
             DALServicio dals = new DALServicio();
             return dals.ObtenerTodosLosServicios();
         }
+        public void CambiarEstadoServicio(int id)
+        {
+            DALServicio dalp = new DALServicio();
+            dalp.CambiarEstadoServicio(id);
+        }
+        public DataTable ObtenerTodosLosServiciosActivos()
+        {
+            DALServicio dalp = new DALServicio();
+            return dalp.ObtenerTodosLosServiciosActivos();
+        }
         public void EliminarServicio(int Identificacion)
         {
             DALServicio dals = new DALServicio();

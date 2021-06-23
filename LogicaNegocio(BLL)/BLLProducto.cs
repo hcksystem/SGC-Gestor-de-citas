@@ -25,10 +25,20 @@ namespace LogicaDeNegocio_BLL_
             DALProducto dalp = new DALProducto();
             return dalp.ObtenerProductoPorID(Identificacion);
         }
+        public void CambiarEstadoProducto(int id)
+        {
+            DALProducto dalp = new DALProducto();
+             dalp.CambiarEstadoProducto(id);
+        }
         public DataTable ObtenerTodosLosProductos()
         {
             DALProducto dalp = new DALProducto();
             return dalp.ObtenerTodosLosProductos();
+        }
+        public DataTable ObtenerTodosLosProductosActivos()
+        {
+            DALProducto dalp = new DALProducto();
+            return dalp.ObtenerTodosLosProductosActivos();
         }
         public void EliminarProducto(int Identificacion)
         {

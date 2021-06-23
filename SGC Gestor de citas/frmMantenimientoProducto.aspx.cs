@@ -18,17 +18,17 @@ namespace SGC_Gestor_de_citas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-          
-                CargarDatos();
-            
+            if (!IsPostBack) { 
+
+                 CargarDatos();
+            }
         }
 
 
         private void CargarDatos(string sortExpression = null)
         {
             DALProducto bllc = new DALProducto();
-            DataTable dt = bllc.ObtenerTodosLosProductos();
+            DataTable dt = bllc.ObtenerTodosLosProductosActivos();
 
 
 
@@ -36,6 +36,7 @@ namespace SGC_Gestor_de_citas
             gridProductos.DataBind();
             
         }
+    
         public void limpiarDatos()
         {
             txtNombreProducto.Text = "";
@@ -77,7 +78,7 @@ namespace SGC_Gestor_de_citas
                     }
 
                     BLLProducto bllc = new BLLProducto();
-                    bllc.EliminarProducto(id);
+                    bllc.CambiarEstadoProducto(id);
                 }
                 catch (Exception)
                 {

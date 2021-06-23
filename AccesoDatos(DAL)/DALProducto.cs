@@ -100,12 +100,33 @@ namespace AccesoDatos_DAL_
             da.Fill(dt);
             return dt;
         }
+        public void CambiarEstadoProducto(int id)
+        {
+            
+            SqlCommand cmd = new SqlCommand("UPDATE Producto SET estado = 'false' where id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@id", id);
+            cmd.Parameters.Add(parametro);
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+        }
 
 
         public DataTable ObtenerTodosLosProductos()
         {
             DataTable dt = new DataTable();
             SqlCommand cmd = new SqlCommand("SELECT id, nombre, categoria, descripcion, cantidad, proposito, precio, estado FROM Producto", Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+
+        public DataTable ObtenerTodosLosProductosActivos()
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, categoria, descripcion, cantidad, proposito, precio, estado FROM Producto WHERE estado = 'true'", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;

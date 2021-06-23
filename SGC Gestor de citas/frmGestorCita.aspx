@@ -110,7 +110,7 @@
             <br />
             <center>
             <div>
-                <asp:GridView ID="gridCita" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowSorting="false">
+                <asp:GridView ID="gridCita" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowSorting="false" OnRowCancelingEdit="gridCita_RowCancelingEdit" OnRowDeleting="gridCita_RowDeleting" OnRowEditing="gridCita_RowEditing" OnRowUpdating="gridCita_RowUpdating">
                     <Columns>
 
                         <asp:TemplateField HeaderText="ID">

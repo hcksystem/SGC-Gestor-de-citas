@@ -53,6 +53,26 @@ namespace AccesoDatos_DAL_
             da.Fill(dt);
             return dt;
         }
+        public DataTable ObtenerTodasLasCitasActivos()
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT id, descripcion, fecha, hora, activo, idServicio, idUsuario FROM Cita WHERE activo = 'true'", Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+        public void CambiarEstadoCita(int id)
+        {
+
+            SqlCommand cmd = new SqlCommand("UPDATE Cita SET activo = 'false' where id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@id", id);
+            cmd.Parameters.Add(parametro);
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+        }
         public DataTable ObtenerCitaPorID(int Identificacion)
         {
             DataTable dt = new DataTable();

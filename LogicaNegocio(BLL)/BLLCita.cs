@@ -26,6 +26,16 @@ namespace LogicaNegocio_BLL_
             DALCita daln = new DALCita();
             return daln.ObtenerTodasLasCitas();
         }
+        public void CambiarEstadoCita(int id)
+        {
+            DALCita dalp = new DALCita();
+            dalp.CambiarEstadoCita(id);
+        }
+        public DataTable ObtenerTodasLasCitasActivas()
+        {
+            DALCita dalp = new DALCita();
+            return dalp.ObtenerTodasLasCitasActivos();
+        }
 
         public DataTable ObtenerCitaPorID(int Identificacion)
         {

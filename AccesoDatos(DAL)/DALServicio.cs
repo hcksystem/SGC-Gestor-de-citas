@@ -71,6 +71,26 @@ namespace AccesoDatos_DAL_
             da.Fill(dt);
             return dt;
         }
+        public void CambiarEstadoServicio(int id)
+        {
+
+            SqlCommand cmd = new SqlCommand("UPDATE Servicio SET estado = 'false' where id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@id", id);
+            cmd.Parameters.Add(parametro);
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+        }
+        public DataTable ObtenerTodosLosServiciosActivos()
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, descripcion, precioEstimado, tiempoEstimado, fotoSugerida, estado, idProducto, idNegocio FROM Servicio WHERE estado = 'true'", Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
         public void ModificarServicio(int ID, string nombre, string descripcion, double precioEstimado, DateTime tiempoEstimado, byte[] fotoSugerida, bool estado, int idProducto, int idNegocio)
         {
             SqlCommand cmd = new SqlCommand("UPDATE Servicio SET nombre = @nombre, descripcion = @descripcion, precioEstimado = @precioEstimado, tiempoEstimado = @tiempoEstimado, fotoSugerida = @fotoSugerida,estado=@estado,idProducto=@idProducto,idNegocio=@idNegocio WHERE id=@id", Conexion);

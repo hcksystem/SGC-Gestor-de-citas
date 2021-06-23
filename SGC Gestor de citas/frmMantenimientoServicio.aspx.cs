@@ -29,7 +29,7 @@ namespace SGC_Gestor_de_citas
             try
             {
                 BLLServicio bllc = new BLLServicio();
-                DataTable dt = bllc.ObtenerTodosLosServicios();
+                DataTable dt = bllc.ObtenerTodosLosServiciosActivos();
                 gridServicios.DataSource = dt;
                 gridServicios.DataBind();
             }
@@ -125,7 +125,7 @@ namespace SGC_Gestor_de_citas
                     }
 
                     BLLServicio bllu = new BLLServicio();
-                    bllu.EliminarServicio(id);
+                    bllu.CambiarEstadoServicio(id);
                 }
                 catch (Exception)
                 {
