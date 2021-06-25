@@ -4677,6 +4677,136 @@ Created using IcoMoon - icomoon.io
     .fixed-plugin .bootstrap-switch {
         margin: 0;
     }
+.badge {
+    border-radius: 8px;
+    padding: 4px 8px;
+    text-transform: uppercase;
+    font-size: .7142em;
+    line-height: 12px;
+    background-color: transparent;
+    border: 1px solid;
+    color: #fff;
+    margin-bottom: 5px;
+    border-radius: .875rem
+}
+
+
+
+.badge, .badge:focus, .badge:hover {
+    text-decoration: none
+}
+
+
+
+.badge-icon {
+    padding: .4em .55em
+}
+
+
+
+    .badge-icon i {
+        font-size: .8em
+    }
+
+
+
+.badge-default {
+    border-color: #888;
+    background-color: #888
+}
+
+
+
+.badge-primary {
+    border-color: #f96332;
+    background-color: #f96332
+}
+
+
+
+.badge-info {
+    border-color: #2ca8ff;
+    background-color: #2ca8ff
+}
+
+
+
+.badge-success {
+    border-color: #18ce0f;
+    background-color: #18ce0f
+}
+
+
+
+.badge-warning {
+    border-color: #ffb236;
+    background-color: #ffb236
+}
+
+
+
+.badge-danger {
+    border-color: #ff3636;
+    background-color: #ff3636
+}
+
+
+
+.badge-neutral {
+    border-color: #fff;
+    background-color: #fff;
+    color: inherit
+}
+
+
+
+.badge-primary[href]:focus, .badge-primary[href]:hover {
+    color: #fff;
+    background-color: #f95823;
+    border-color: #f95823
+}
+
+
+
+.badge-warning[href]:focus, .badge-warning[href]:hover {
+    color: #fff;
+    background-color: #ffac27;
+    border-color: #ffac27
+}
+
+
+
+.badge-info[href]:focus, .badge-info[href]:hover {
+    color: #fff;
+    background-color: #1da2ff;
+    border-color: #1da2ff
+}
+
+
+
+.badge-danger[href]:focus, .badge-danger[href]:hover {
+    color: #fff;
+    background-color: #ff2727;
+    border-color: #ff2727
+}
+
+
+
+.badge-success[href]:focus, .badge-success[href]:hover {
+    color: #fff;
+    background-color: #16c00e;
+    border-color: #16c00e
+}
+
+
+
+.badge-default[href]:focus, .badge-default[href]:hover {
+    color: #fff;
+    background-color: gray;
+    border-color: gray
+}
+
+
 
 .card {
     border: 0;

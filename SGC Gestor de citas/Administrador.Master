@@ -62,23 +62,54 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link aria-expanded" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Mantenimientos">
+                            <li>
+
+
+                        <a data-toggle="collapse" href="#pagesExamples">
+
                             <i class="now-ui-icons ui-2_settings-90"></i>
+
                             <p>
-                               Mantenimiento <b class="caret"></b>
+                                Mantenimiento <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="frmMantenimientoNegocio.aspx">Negocio</a>
-                            <a class="dropdown-item" href="frmMantenimientoProducto.aspx">Producto</a>
-                            <a class="dropdown-item" href="frmMantenimientoServicio.aspx">Servicio</a>
-                            <a class="dropdown-item" href="frmMantenimientoUsuario.aspx">Usuario</a>
+
+                        <div class="collapse " id="pagesExamples">
+                            <ul class="nav">
+
+                                <li>
+                                    <a href="frmMAntenimientoNegocio.aspx">
+                                        <span class="sidebar-mini-icon"><i class="now-ui-icons business_briefcase-24"></i></span>
+                                        <span class="sidebar-normal">Negocio </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="frmMantenimientoProducto.aspx">
+                                        <span class="sidebar-mini-icon"><i class="now-ui-icons shopping_bag-16"></i></span>
+                                        <span class="sidebar-normal">Producto</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="frmMantenimientoServicio.aspx">
+                                        <span class="sidebar-mini-icon"><i class="now-ui-icons design_scissors"></i></span>
+                                        <span class="sidebar-normal">Servicio </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="frmMantenimientoUsuario.aspx">
+                                        <span class="sidebar-mini-icon"><i class="now-ui-icons users_single-02"></i></span>
+                                        <span class="sidebar-normal">Usuario </span>
+                                    </a>
+                                </li>
+                               
+                            </ul>
                         </div>
+                    </li>
                     </li>
      
                     <li>
                         <a href="frmGestorCita.aspx">
-                            <i class="now-ui-icons location_map-big"></i>
+                            <i class="now-ui-icons ui-1_calendar-60"></i>
                             <p>Citas</p>
                         </a>
                     </li>
@@ -90,7 +121,7 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="now-ui-icons shopping_cart-simple"></i>
+                            <i class="now-ui-icons business_money-coins"></i>
                             <p>Facturacion</p>
                         </a>
                     </li>
@@ -189,6 +220,77 @@
 
     </div>
     </div>
+    <div class="fixed-plugin">
+        <div class="dropdown show-dropdown">
+            <a href="#" data-toggle="dropdown">
+                <i class="fa fa-cog fa-2x"></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="header-title">Sidebar Background</li>
+                <li class="adjustments-line">
+                    <a href="javascript:void(0)" class="switch-trigger background-color">
+                        <div class="badge-colors text-center">
+                            <span class="badge filter badge-yellow" data-color="yellow"></span>
+                            <span class="badge filter badge-blue" data-color="blue"></span>
+                            <span class="badge filter badge-green" data-color="green"></span>
+                            <span class="badge filter badge-orange active" data-color="orange"></span>
+                            <span class="badge filter badge-red" data-color="red"></span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </li>
+
+ 
+
+
+                <li class="header-title">Sidebar Mini
+                </li>
+                <li class="adjustments-line">
+
+ 
+
+                    <div class="togglebutton switch-sidebar-mini">
+                        <span class="label-switch">OFF</span>
+                        <input type="checkbox" name="checkbox" checked class="bootstrap-switch"
+                            data-on-label=""
+                            data-off-label="" />
+                        <span class="label-switch label-right">ON</span>
+                    </div>
+                </li>
+
+ 
+
+                <li class="button-container">
+                    <a href="https://www.creative-tim.com/product/now-ui-dashboard-pro" target="_blank" class="btn btn-primary btn-block btn-round">Buy Now</a>
+                    <a href="https://demos.creative-tim.com/now-ui-dashboard-pro/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
+                        <i class="now-ui-icons files_single-copy-04"></i>
+                        Documentation
+                    </a>
+                    <a href="https://www.creative-tim.com/product/now-ui-dashboard" target="_blank" class="btn btn-info btn-block btn-round">
+                        <i class="now-ui-icons files_single-copy-04"></i>
+                        Get Free Demo!
+                    </a>
+                </li>
+
+ 
+
+ 
+
+
+                <li class="header-title">Thank you for 95 shares!</li>
+
+ 
+
+                <li class="button-container text-center">
+                    <button id="twitter" class="btn btn-round btn-info"><i class="fab fa-twitter"></i>&middot; 45</button>
+                    <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i>&middot; 50</button>
+                    <br>
+                    <br>
+                    <a class="github-button" href="https://github.com/creativetimofficial/ct-now-ui-dashboard-pro" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+                </li>
+            </ul>
+        </div>
+    </div>
     <!--   Core JS Files   -->
     <script src="assets/js/core/jquery.min.js"></script>
     <script src="assets/js/core/popper.min.js"></script>
@@ -207,6 +309,218 @@
             demo.initDashboardPageCharts();
 
         });
+
+    </script>
+     <script>
+         $(document).ready(function () {
+             $().ready(function () {
+                 $sidebar = $('.sidebar');
+                 $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+
+
+                 $full_page = $('.full-page');
+
+
+
+                 $sidebar_responsive = $('body > .navbar-collapse');
+                 sidebar_mini_active = true;
+
+
+
+                 window_width = $(window).width();
+
+
+
+                 fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+
+
+                 // if( window_width > 767 && fixed_plugin_open == 'Dashboard' ){
+                 //     if($('.fixed-plugin .dropdown').hasClass('show-dropdown')){
+                 //         $('.fixed-plugin .dropdown').addClass('show');
+                 //     }
+                 //
+                 // }
+
+
+
+                 $('.fixed-plugin a').click(function (event) {
+                     // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                     if ($(this).hasClass('switch-trigger')) {
+                         if (event.stopPropagation) {
+                             event.stopPropagation();
+                         }
+                         else if (window.event) {
+                             window.event.cancelBubble = true;
+                         }
+                     }
+                 });
+
+
+
+                 $('.fixed-plugin .background-color span').click(function () {
+                     $(this).siblings().removeClass('active');
+                     $(this).addClass('active');
+
+
+
+                     var new_color = $(this).data('color');
+
+
+
+                     if ($sidebar.length != 0) {
+                         $sidebar.attr('data-color', new_color);
+                     }
+
+
+
+                     if ($full_page.length != 0) {
+                         $full_page.attr('filter-color', new_color);
+                     }
+
+
+
+                     if ($sidebar_responsive.length != 0) {
+                         $sidebar_responsive.attr('data-color', new_color);
+                     }
+                 });
+
+
+
+                 $('.fixed-plugin .img-holder').click(function () {
+                     $full_page_background = $('.full-page-background');
+
+
+
+                     $(this).parent('li').siblings().removeClass('active');
+                     $(this).parent('li').addClass('active');
+
+
+
+
+                     var new_image = $(this).find("img").attr('src');
+
+
+
+                     if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                         $sidebar_img_container.fadeOut('fast', function () {
+                             $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                             $sidebar_img_container.fadeIn('fast');
+                         });
+                     }
+
+
+
+                     if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+
+
+                         $full_page_background.fadeOut('fast', function () {
+                             $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                             $full_page_background.fadeIn('fast');
+                         });
+                     }
+
+
+
+                     if ($('.switch-sidebar-image input:checked').length == 0) {
+                         var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+                         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+
+
+                         $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                         $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                     }
+
+
+
+                     if ($sidebar_responsive.length != 0) {
+                         $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                     }
+                 });
+
+
+
+                 $('.switch-sidebar-image input').on("switchChange.bootstrapSwitch", function () {
+                     $full_page_background = $('.full-page-background');
+
+
+
+                     $input = $(this);
+
+
+
+                     if ($input.is(':checked')) {
+                         if ($sidebar_img_container.length != 0) {
+                             $sidebar_img_container.fadeIn('fast');
+                             $sidebar.attr('data-image', '#');
+                         }
+
+
+
+                         if ($full_page_background.length != 0) {
+                             $full_page_background.fadeIn('fast');
+                             $full_page.attr('data-image', '#');
+                         }
+
+
+
+                         background_image = true;
+                     } else {
+                         if ($sidebar_img_container.length != 0) {
+                             $sidebar.removeAttr('data-image');
+                             $sidebar_img_container.fadeOut('fast');
+                         }
+
+
+
+                         if ($full_page_background.length != 0) {
+                             $full_page.removeAttr('data-image', '#');
+                             $full_page_background.fadeOut('fast');
+                         }
+
+
+
+                         background_image = false;
+                     }
+                 });
+
+
+
+                 $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
+                     var $btn = $(this);
+
+
+
+                     if (sidebar_mini_active == true) {
+                         $('body').removeClass('sidebar-mini');
+                         sidebar_mini_active = false;
+                         nowuiDashboard.showSidebarMessage('Sidebar mini deactivated...');
+                     } else {
+                         $('body').addClass('sidebar-mini');
+                         sidebar_mini_active = true;
+                         nowuiDashboard.showSidebarMessage('Sidebar mini activated...');
+                     }
+
+
+
+                     // we simulate the window Resize so the charts will get updated in realtime.
+                     var simulateWindowResize = setInterval(function () {
+                         window.dispatchEvent(new Event('resize'));
+                     }, 180);
+
+
+
+                     // we stop the simulation of Window Resize after the animations are completed
+                     setTimeout(function () {
+                         clearInterval(simulateWindowResize);
+                     }, 1000);
+                 });
+             });
+         });
     </script>
 </body>
 </html>

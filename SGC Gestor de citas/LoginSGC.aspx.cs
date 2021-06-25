@@ -28,7 +28,7 @@ namespace SGC_Gestor_de_citas
             {
                 BLLUsuario bblu = new BLLUsuario();
                 bblu.SHA256(txtContrasennaRegistro.Text);
-                bblu.InsertarUsuario(txtCorreoRegistro.Text, txtTelefonoRegistro.Text, txtContrasennaRegistro.Text,2);
+                bblu.InsertarUsuario(txtCorreoRegistro.Text, txtTelefonoRegistro.Text, txtContrasennaRegistro.Text, 2);
             }
             catch (Exception)
             {
@@ -62,14 +62,23 @@ namespace SGC_Gestor_de_citas
 
                     if (us.idRol == 1)
                     {
+                        Session["ID"] = us.id;
+                        Session["Usuario"] = us.Correo;
+                        Session["Telefono"] = us.Telefono;
+                        Session["Rol"] = us.idRol;
                         Response.Redirect("frmMenuAdministrador.aspx", false); Context.ApplicationInstance.CompleteRequest();
 
                     }
                     else
                     {
                         if (us.idRol == 2)
-
+                        {
+                            Session["ID"] = us.id;
+                            Session["Usuario"] = us.Correo;
+                            Session["Telefono"] = us.Telefono;
+                            Session["Rol"] = us.idRol;
                             Response.Redirect("frmMenuCliente.aspx", false); Context.ApplicationInstance.CompleteRequest();
+                        }
                     }
                 }
                 else

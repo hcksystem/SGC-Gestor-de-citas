@@ -9,9 +9,14 @@
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <style>
+     <link href="css/datetimepicker.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/datetimepicker.js"></script>
+   <%-- <style>
         body {
-            color: #ffffff ;
+            color: #ffffff;
             overflow-x: hidden;
             height: 100%;
             background-color: #fff !important;
@@ -28,7 +33,7 @@
             box-shadow: 0px 4px 8px 0px #050a45
         }
 
-        .card-header{
+        .card-header {
             background: 050a45;
         }
 
@@ -161,7 +166,7 @@
             padding-left: 5px;
             cursor: pointer
         }
-    </style>
+    </style>--%>
 </head>
 <body oncontextmenu='return false' class='snippet-body'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
@@ -170,12 +175,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
-    <div class="container-fluid px-0 px-sm-4 mx-auto">
+       <style>
+        body{ background-color: beige; direction: ltr;}
+    </style>
+  <%--  <div class="container-fluid px-0 px-sm-4 mx-auto">
         <div class="row justify-content-center mx-0">
             <div class="col-lg-10">
-                <div class="card border-0">
-                    <form autocomplete="off">
-                        <div class="card-header">
+                <div class="card border-0">--%>
+                    <form action="/action_page.php">
+  <label for="citatime">Cita (fecha y hora):</label>
+  <input type="datetime-local" id="citatime" name="citatime">
+  <input type="submit">
+
+                        <%--<div class="card-header">
                             <div class="mx-0 mb-0 row justify-content-sm-center justify-content-start px-1"> <input type="text" id="dp1" class="datepicker" placeholder="Pick Date" name="date" readonly><span class="fa fa-calendar"></span> </div>
                         </div>
                         <div class="card-body p-3 p-sm-5">
@@ -253,18 +265,26 @@
                                     <div class="cell py-1">5:00PM</div>
                                 </div>
                             </div>
+                        </div>--%>
+                        <div style="width: 250px; margin: 50px auto;">
+                            <div id="picker"></div>
+                            <input type="hidden" id="result" value="" />
+                        </div>
+                        <div style="width: 250px; margin: 50px auto;">
+                            <div id="picker-no-time"></div>
+                            <input type="hidden" id="result2" value="" />
                         </div>
                     </form>
                     <form runat="server">
                         <asp:DropDownList ID="dropServicio" runat="server"></asp:DropDownList>
                         <div class="col-md-4 pl-1">
-                                <div class="form-group">
-                                    <label>Digite una breve descripcion de lo que desea realizarse</label>
+                            <div class="form-group">
+                                <label>Digite una breve descripcion de lo que desea realizarse</label>
 
-                                   <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
-                                </div>
+                                <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
                             </div>
-                        
+                        </div>
+
                         <asp:Button ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
                         <asp:Button ID="btnReservar" runat="server" Text="Reservar" OnClick="btnReservar_Click" />
                     </form>
@@ -272,7 +292,9 @@
             </div>
         </div>
     </div>
-    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+    
+  
+    <%--<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
     <script type='text/javascript'>
         $(document).ready(function () {
 
@@ -287,6 +309,7 @@
                 $(this).addClass('select');
             });
 
-        });</script>
+        });</script>--%>
+ 
 </body>
 </html>

@@ -5,6 +5,8 @@
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
     <!DOCTYPE>
     <html>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                            </asp:ScriptManager>
         <head>
 
             <title>Gestión de citas</title>
@@ -52,7 +54,6 @@
             </div>
         </div>
                
-            
             <asp:Button ID="btnIrgestion" runat="server" CssClass="btn btn-primary btn-round" Text="Presione para sacar una cita" OnClick="btnIrgestion_Click" />
                 </center>
             <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
