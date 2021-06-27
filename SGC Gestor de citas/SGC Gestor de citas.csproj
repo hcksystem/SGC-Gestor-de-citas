@@ -79,6 +79,9 @@
     <Content Include="assets\css\now-ui-dashboard.min.css" />
     <Content Include="assets\demo\demo.css" />
     <Content Include="assets\demo\demo.js" />
+    <Content Include="assets\demo\docs.min.css" />
+    <Content Include="assets\demo\docs.min.js" />
+    <Content Include="assets\demo\jquery.sharrre.js" />
     <Content Include="assets\img\apple-icon.png" />
     <Content Include="assets\img\cejas.jpg" />
     <Content Include="assets\img\cortes-600x400.jpg" />
@@ -92,7 +95,6 @@
     <Content Include="assets\img\right-arrow.png" />
     <Content Include="assets\img\tinte.jpg" />
     <Content Include="assets\js\calendar.js" />
-    <Content Include="assets\js\charre.js" />
     <Content Include="assets\js\core\bootstrap.min.js" />
     <Content Include="assets\js\core\jquery.min.js" />
     <Content Include="assets\js\core\popper.min.js" />
@@ -104,6 +106,10 @@
     <Content Include="assets\js\plugins\chartjs.min.js" />
     <Content Include="assets\js\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="assets\js\plugins\sweetalert2.min.js" />
+    <Content Include="AyudaNegocio.aspx" />
+    <Content Include="AyudaProducto.aspx" />
+    <Content Include="AyudaServicio.aspx" />
+    <Content Include="AyudaUsuario.aspx" />
     <Content Include="frmGestorCita.aspx" />
     <Content Include="frmMantenimientoNegocio.aspx" />
     <Content Include="frmMantenimientoProducto.aspx" />
@@ -113,6 +119,7 @@
     <Content Include="frmMenuCliente.aspx" />
     <Content Include="gulpfile.js" />
     <Content Include="LoginSGC.aspx" />
+    <Content Include="ManualAyuda.aspx" />
     <Content Include="nucleo-icons.html" />
     <Content Include="Web.config" />
     <Content Include="Calendario.aspx" />
@@ -124,6 +131,34 @@
     </Compile>
     <Compile Include="Administrador.Master.designer.cs">
       <DependentUpon>Administrador.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AyudaNegocio.aspx.cs">
+      <DependentUpon>AyudaNegocio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AyudaNegocio.aspx.designer.cs">
+      <DependentUpon>AyudaNegocio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AyudaProducto.aspx.cs">
+      <DependentUpon>AyudaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AyudaProducto.aspx.designer.cs">
+      <DependentUpon>AyudaProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AyudaServicio.aspx.cs">
+      <DependentUpon>AyudaServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AyudaServicio.aspx.designer.cs">
+      <DependentUpon>AyudaServicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AyudaUsuario.aspx.cs">
+      <DependentUpon>AyudaUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AyudaUsuario.aspx.designer.cs">
+      <DependentUpon>AyudaUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cliente.Master.cs">
       <DependentUpon>Cliente.Master</DependentUpon>
@@ -187,6 +222,13 @@
     </Compile>
     <Compile Include="LoginSGC.aspx.designer.cs">
       <DependentUpon>LoginSGC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManualAyuda.aspx.cs">
+      <DependentUpon>ManualAyuda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManualAyuda.aspx.designer.cs">
+      <DependentUpon>ManualAyuda.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Calendario.aspx.cs">
