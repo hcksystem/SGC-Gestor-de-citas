@@ -92,6 +92,7 @@
     <Content Include="assets\img\right-arrow.png" />
     <Content Include="assets\img\tinte.jpg" />
     <Content Include="assets\js\calendar.js" />
+    <Content Include="assets\js\charre.js" />
     <Content Include="assets\js\core\bootstrap.min.js" />
     <Content Include="assets\js\core\jquery.min.js" />
     <Content Include="assets\js\core\popper.min.js" />
@@ -102,12 +103,14 @@
     <Content Include="assets\js\plugins\bootstrap-switch.js" />
     <Content Include="assets\js\plugins\chartjs.min.js" />
     <Content Include="assets\js\plugins\perfect-scrollbar.jquery.min.js" />
+    <Content Include="assets\js\plugins\sweetalert2.min.js" />
     <Content Include="frmGestorCita.aspx" />
     <Content Include="frmMantenimientoNegocio.aspx" />
     <Content Include="frmMantenimientoProducto.aspx" />
     <Content Include="frmMantenimientoServicio.aspx" />
     <Content Include="frmMantenimientoUsuario.aspx" />
     <Content Include="frmMenuAdministrador.aspx" />
+    <Content Include="frmMenuCliente.aspx" />
     <Content Include="gulpfile.js" />
     <Content Include="LoginSGC.aspx" />
     <Content Include="nucleo-icons.html" />
@@ -121,6 +124,13 @@
     </Compile>
     <Compile Include="Administrador.Master.designer.cs">
       <DependentUpon>Administrador.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente.Master.cs">
+      <DependentUpon>Cliente.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente.Master.designer.cs">
+      <DependentUpon>Cliente.Master</DependentUpon>
     </Compile>
     <Compile Include="frmGestorCita.aspx.cs">
       <DependentUpon>frmGestorCita.aspx</DependentUpon>
@@ -163,6 +173,13 @@
     </Compile>
     <Compile Include="frmMenuAdministrador.aspx.designer.cs">
       <DependentUpon>frmMenuAdministrador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuCliente.aspx.cs">
+      <DependentUpon>frmMenuCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMenuCliente.aspx.designer.cs">
+      <DependentUpon>frmMenuCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginSGC.aspx.cs">
       <DependentUpon>LoginSGC.aspx</DependentUpon>
@@ -225,6 +242,7 @@
     <Content Include="assets\scss\now-ui-dashboard\_variables.scss" />
     <Content Include="package.json" />
     <Content Include="Administrador.Master" />
+    <Content Include="Cliente.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
