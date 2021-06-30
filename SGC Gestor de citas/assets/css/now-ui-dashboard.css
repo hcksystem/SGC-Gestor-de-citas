@@ -642,7 +642,7 @@ body, .modal {
     .show > .btn-primary.dropdown-toggle,
     .show > .btn-primary.dropdown-toggle:focus,
     .show > .btn-primary.dropdown-toggle:hover {
-        background-color: #18ce0f;
+        background-color: #626c7d;
         color: #FFFFFF;
         box-shadow: none;
         border-color: #fa7a50;
@@ -694,7 +694,7 @@ body, .modal {
         }
 
 .btn-success {
-    background-color: #18ce0f;
+    background-color: #626c7d;
     color: #FFFFFF;
 }
 
@@ -709,7 +709,7 @@ body, .modal {
     .show > .btn-success.dropdown-toggle,
     .show > .btn-success.dropdown-toggle:focus,
     .show > .btn-success.dropdown-toggle:hover {
-        background-color: #1beb11;
+        background-color: #626c7d;
         color: #FFFFFF;
         box-shadow: none;
         border-color: #1beb11;
@@ -743,19 +743,19 @@ body, .modal {
     fieldset[disabled] .btn-success.focus,
     fieldset[disabled] .btn-success:active,
     fieldset[disabled] .btn-success.active {
-        background-color: #18ce0f;
+        background-color: #626c7d;
         border-color: #18ce0f;
     }
 
     .btn-success.btn-link {
-        color: #18ce0f;
+        color: #626c7d;
     }
 
         .btn-success.btn-link:hover,
         .btn-success.btn-link:focus,
         .btn-success.btn-link:active {
             background-color: transparent;
-            color: #1beb11;
+            color: #626c7d;
             text-decoration: none;
             box-shadow: none;
         }
@@ -776,7 +776,7 @@ body, .modal {
     .show > .btn-info.dropdown-toggle,
     .show > .btn-info.dropdown-toggle:focus,
     .show > .btn-info.dropdown-toggle:hover {
-        background-color: #4bb5ff;
+        background-color: #626c7d;
         color: #FFFFFF;
         box-shadow: none;
         border-color: #4bb5ff;
@@ -4140,7 +4140,7 @@ Created using IcoMoon - icomoon.io
 
     .sidebar[data-color="blue"]:after,
     .off-canvas-sidebar[data-color="blue"]:after {
-        background: #2CA8FF;
+        background: #0c3254;
     }
 
     .sidebar[data-color="blue"] .nav li.active > a:not([data-toggle="collapse"]),
@@ -4266,7 +4266,7 @@ Created using IcoMoon - icomoon.io
 @media (min-width: 991px) {
     .sidebar {
         display: block;
-        box-shadow: 0px 2px 22px 0 rgba(0, 0, 0, 0.2), 0px 2px 30px 0 rgba(0, 0, 0, 0.35);
+        
     }
 }
 
@@ -4277,7 +4277,7 @@ Created using IcoMoon - icomoon.io
     background: #141E30;
     /* fallback for old browsers */
     background: -webkit-gradient(linear, left top, right top, from(#0c2646), color-stop(60%, #204065), to(#2a5788));
-    background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
+    background: #626c7d;
     position: relative;
     overflow: hidden;
 }
@@ -4812,12 +4812,16 @@ Created using IcoMoon - icomoon.io
     border: 0;
     border-radius: 0.1875rem;
     display: inline-block;
-    position: relative;
-    width: 100%;
+    position: fixed;
+    width: 78%;
     margin-bottom: 20px;
     box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
-    padding-top: 100px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
     margin-left: 20px;
+    margin-right: 50px;
+    height: 86%
 }
 
     .card [data-notify="container"].alert {
