@@ -155,10 +155,10 @@
             <Columns>
                 <asp:CommandField ShowSelectButton="True" SelectText="Editar" SelectImageUrl="~/assets/img/Seleccionar).png" />
                 <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" />
-                <asp:BoundField DataField="id" HeaderText="ID" />
+                <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
                 <asp:BoundField DataField="correoUsuario" HeaderText="Correo" />
                 <asp:BoundField DataField="telefono" HeaderText="Telefono" />
-                <asp:BoundField DataField="contrasenna" HeaderText="Contraseña" />
+                <asp:BoundField DataField="contrasenna" HeaderText="Contraseña" Visible="False" />
                 <asp:BoundField DataField="idRoll" HeaderText="Rol" />
             </Columns>
         </asp:GridView>

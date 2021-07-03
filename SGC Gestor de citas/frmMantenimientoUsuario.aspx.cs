@@ -59,7 +59,7 @@ namespace SGC_Gestor_de_citas
             txtTelefono.Text = dt.Rows[0]["telefono"].ToString();
             txtContrasenna.Text = dt.Rows[0]["contrasenna"].ToString();
             dropRol.SelectedValue = dt.Rows[0]["idRoll"].ToString();
-                    }
+        }
         private void LlenarCombos()
         {
             BLLRol bllc = new BLLRol();
@@ -102,6 +102,7 @@ namespace SGC_Gestor_de_citas
                     ScriptManager.RegisterStartupScript(this, this.GetType(),
                         "alert",
                         "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                    LimpiarDatos();
                 }
 
 

@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-4 pl-1">
                 <div class="form-group">
-                    <asp:Label ID="Label1" runat="server" Text="Categoria"></asp:Label>
+                    <label>Categoria</label>
                     <asp:TextBox ID="txtCategoriaProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtCategoriaProducto" ErrorMessage=" *Digite la categoria del producto" Display="Dynamic"
@@ -82,6 +82,8 @@
            <div class="row">
             <div class="col-md-4 pl-1">
                 <div class="form-group">
+                    <asp:Label ID="LblEstado"  runat="server" Text="Estado"  Visible="false" Font-Size="0.8571em" ForeColor="#9A9A9A" ></asp:Label>
+                    <asp:TextBox ID="txtEstadoProducto" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
                 </div>
             </div>
             <div class="col-md-4 pl-1">
@@ -101,7 +103,7 @@
                                       
                                         <div style="overflow: scroll">
 
-            <asp:GridView ID="gridProductos" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridProductos_RowCancelingEdit" OnRowDeleting="gridProductos_RowDeleting" OnRowEditing="gridProductos_RowEditing" OnRowUpdating="gridProductos_RowUpdating" Width="1240px">
+<%--            <asp:GridView ID="gridProductos" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridProductos_RowCancelingEdit" OnRowDeleting="gridProductos_RowDeleting" OnRowEditing="gridProductos_RowEditing" OnRowUpdating="gridProductos_RowUpdating" Width="1240px">
                 <Columns>
                     <asp:TemplateField ShowHeader="False">
                         <EditItemTemplate>
@@ -182,7 +184,22 @@
                 </asp:TemplateField>
 
                         </Columns>
-                    </asp:GridView>
+                    </asp:GridView>--%>
+
+          <asp:GridView ID="gridProductos" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" Width="1240px" OnPageIndexChanging="gridProductos_PageIndexChanging" OnSelectedIndexChanged="gridProductos_SelectedIndexChanged">
+            <Columns>
+                <asp:CommandField ShowSelectButton="True" SelectText="Editar" />
+                <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" />
+                <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
+                <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                <asp:BoundField DataField="categoria" HeaderText="Categoria" />
+                <asp:BoundField DataField="descripcion" HeaderText="Descripcion"  />
+                <asp:BoundField DataField="cantidad" HeaderText="Cantidad" />
+                <asp:BoundField DataField="proposito" HeaderText="Proposito" />
+                <asp:BoundField DataField="precio" HeaderText="Precio" />
+                <asp:BoundField DataField="estado" HeaderText="Estado" />
+            </Columns>
+        </asp:GridView>
 
                     </div>
                 </div>
