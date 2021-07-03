@@ -15,6 +15,7 @@ namespace SGC_Gestor_de_citas
 {
     public partial class frmMantenimientoUsuario : System.Web.UI.Page
     {
+        public bool editar;//variable que se utilizara para identificar si el dato se quiere actualizar o si es un registro nuevo
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,7 +25,7 @@ namespace SGC_Gestor_de_citas
                 
             }
 
-
+            CargarDatos();
         }
 
         private void CargarDatos()
@@ -47,6 +48,18 @@ namespace SGC_Gestor_de_citas
 
 
         }
+        private void EditarDatos()//este metodo carga los espacios del formulario con los datos almacenados en la BD 
+        {
+            editar = false;//aca indica que el estado es falso, con esto el boton guardar, no generara un nuevo insert sino hara un update
+            int id = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[2].Text);
+            BLLUsuario bllc = new BLLUsuario();
+            DataTable dt = bllc.ObtenerUsuarioPorID(id);
+
+            txtCorreo.Text = dt.Rows[0]["correoUsuario"].ToString();
+            txtTelefono.Text = dt.Rows[0]["telefono"].ToString();
+            txtContrasenna.Text = dt.Rows[0]["contrasenna"].ToString();
+            dropRol.SelectedValue = dt.Rows[0]["idRoll"].ToString();
+                    }
         private void LlenarCombos()
         {
             BLLRol bllc = new BLLRol();
@@ -68,15 +81,30 @@ namespace SGC_Gestor_de_citas
         {
             try
             {
-                BLLUsuario bllu = new BLLUsuario();
-                bllu.InsertarUsuario(txtCorreo.Text, txtTelefono.Text, txtContrasenna.Text, Convert.ToInt16(dropRol.SelectedItem.Value));
+                if(editar)
+                {
+                    BLLUsuario bllu = new BLLUsuario();
+                    bllu.InsertarUsuario(txtCorreo.Text, txtTelefono.Text, txtContrasenna.Text, Convert.ToInt16(dropRol.SelectedItem.Value));
 
-                string mjs = "Usuario Registrado Correctamente";
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-                    "alert",
-                    "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                    string mjs = "Usuario Registrado Correctamente";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),
+                        "alert",
+                        "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
 
-                LimpiarDatos();
+                    LimpiarDatos();
+                }
+                else 
+                {
+                    BLLUsuario bllu = new BLLUsuario();
+                    int id = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[2].Text);
+                    bllu.ModificarUsuario(id,txtCorreo.Text, txtTelefono.Text, txtContrasenna.Text, Convert.ToInt16(dropRol.SelectedItem.Value));
+                    string mjs = "Usuario Modificado Correctamente";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),
+                        "alert",
+                        "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                }
+
+
             }
             catch (Exception)
             {
@@ -203,6 +231,23 @@ namespace SGC_Gestor_de_citas
                 lista.DataValueField = "id";
                 lista.DataBind();
             }
+        }
+
+        protected void gridUsuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int usuario = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[2].Text);
+            //Server.Transfer("frmMantenimientoUsuario.aspx"+usuario);
+            if(gridUsuarios.Columns.Count>0)
+            
+            EditarDatos();
+        }
+
+
+        protected void gridUsuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            //esta linea indica o activa, la siguiente pagina del grid
+            gridUsuarios.PageIndex = e.NewPageIndex;
+            this.CargarDatos();
         }
     }
 }

@@ -8,7 +8,7 @@
     <!DOCTYPE html>
     <html>
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
-    
+    <link href="assets/css/acordeon.css" rel="stylesheet" />
 
     <div class="panel-header-sm">
     </div>
@@ -16,6 +16,7 @@
         <div class="row">
 <div class="col-md-12">
     <div class="card">
+        
         <div class="card-header">
             <h5 class="title">Negocio</h5>
         </div>
@@ -83,27 +84,36 @@
 
                 <div class="col-md-4 pl-1">
                     <div class="form-group">
-                        <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar Negocio" ValidationGroup="ManteN" OnClick="btnGuardar_Click" />
+                        <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar" ValidationGroup="ManteN" OnClick="btnGuardar_Click" />
                         <asp:Button ID="btnCancelar" class="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
                     </div>
                 </div>
-                <head>
-                    <meta charset="utf-8" />
-                    <title>Lista Negocio</title>
-                    <link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
+                <br />
+                <br />
+                <br />
+              
 
-                </head>
-                <body>
-                    <input type="checkbox" id="btn-modal" />
-                    <label for="btn-modal" class="lbl-modal">Mostrar Lista</label>
-                    <div class="modal">
-                        <div class="contenedorlista" style="overflow: scroll">
-                            <header>Lista de negocios</header>
-                            <label for="btn-modal">X</label>
-
-
-                <asp:GridView CssClass="mGrid GridView" ID="gridNegocio" PagerStyle-CssClass="pgr" runat="server" AutoGenerateColumns="false" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridNegocio_RowCancelingEdit" OnRowDeleting="gridNegocio_RowDeleting" OnRowEditing="gridNegocio_RowEditing" OnRowUpdating="gridNegocio_RowUpdating">
+                <div class="tab">
+                                    <input id="tab-1" type="checkbox">
+                                    <label for="tab-1">Mostrar Lista</label>
+                                    <div class="tab-content">
+                                      
+                                        <div style="overflow: scroll">
+                                  
+                <asp:GridView CssClass="mGrid GridView" ID="gridNegocio" PagerStyle-CssClass="pgr" runat="server" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridNegocio_RowCancelingEdit" OnRowDeleting="gridNegocio_RowDeleting" OnRowEditing="gridNegocio_RowEditing" OnRowUpdating="gridNegocio_RowUpdating" Width="1240px">
                 <Columns>
+                    
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False" CommandName="Select" ImageUrl="~/assets/img/Seleccionar).png" Text="Seleccionar" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" CommandName="Delete" ImageUrl="~/assets/img/basurero.jpg" Text="Eliminar" EnableViewState="true" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
                     <asp:TemplateField HeaderText="ID">
                         <ItemTemplate>
                             <asp:Label ID="Label1" runat="server" Text='<% # Bind("id") %>'></asp:Label>
@@ -152,22 +162,14 @@
                             <asp:TextBox ID="txtVision" runat="server" Text='<% # Bind("vision") %>'></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ShowHeader="False">
-                        <EditItemTemplate>
-                            <asp:Button ID="btnUpdate" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
-                            &nbsp;<asp:Button ID="btnCancelar" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Button ID="btnUpdate" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:CommandField />
-                    <asp:CommandField ButtonType="Button" ShowDeleteButton="True" />
                 </Columns>
+
+<PagerStyle CssClass="pgr"></PagerStyle>
                 </asp:GridView>
+                                           
             </div>
             </div>
-            </body>
+                    </div>
               
 </html>
 

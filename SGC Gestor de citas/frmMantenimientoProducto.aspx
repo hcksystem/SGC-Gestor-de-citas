@@ -7,6 +7,7 @@
     <html>
     
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
+    <link href="assets/css/acordeon.css" rel="stylesheet" />
 <div class="panel-header-sm">
 </div>
 <div class="content">
@@ -93,21 +94,28 @@
                     <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar Producto" ValidationGroup="ManteP" OnClick="btnGuardar_Click" />
                     <asp:Button ID="btnCancelar" class="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
                 </div>
-    <head>
-        <meta charset="utf-8" />
-        <title>Lista Productos</title>
-        <link href="assets/css/now-ui-dashboard.css" rel="stylesheet" />
-    </head>
-    <body>
-        <input type="checkbox" id="btn-modal" />
-        <label for="btn-modal" class="lbl-modal">Mostrar Lista</label>
-        <div class="modal">
-            <div class="contenedorlista" style="overflow: scroll">
-                <header>Lista Productos</header>
-                <label for="btn-modal">X</label>
+   <div class="tab">
+                                    <input id="tab-1" type="checkbox">
+                                    <label for="tab-1">Mostrar Lista</label>
+                                    <div class="tab-content">
+                                      
+                                        <div style="overflow: scroll">
 
-            <asp:GridView ID="gridProductos" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridProductos_RowCancelingEdit" OnRowDeleting="gridProductos_RowDeleting" OnRowEditing="gridProductos_RowEditing" OnRowUpdating="gridProductos_RowUpdating">
+            <asp:GridView ID="gridProductos" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridProductos_RowCancelingEdit" OnRowDeleting="gridProductos_RowDeleting" OnRowEditing="gridProductos_RowEditing" OnRowUpdating="gridProductos_RowUpdating" Width="1240px">
                 <Columns>
+                    <asp:TemplateField ShowHeader="False">
+                        <EditItemTemplate>
+                            <asp:Button ID="btnUpdate" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
+
+                            &nbsp;<asp:Button ID="btnCancelar" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Button ID="btnUpdate" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField />
+                    <asp:CommandField ButtonType="Button" ShowDeleteButton="True" />
+
                 <asp:TemplateField HeaderText="ID">
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<% # Bind("id") %>'></asp:Label>
@@ -172,25 +180,13 @@
                         <asp:TextBox ID="txtEstado" runat="server" Text='<% # Bind("estado") %>'></asp:TextBox>
                     </EditItemTemplate>
                 </asp:TemplateField>
-                    <asp:TemplateField ShowHeader="False">
-                        <EditItemTemplate>
-                            <asp:Button ID="btnUpdate" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
-
-                            &nbsp;<asp:Button ID="btnCancelar" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Button ID="btnUpdate" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:CommandField />
-                    <asp:CommandField ButtonType="Button" ShowDeleteButton="True" />
 
                         </Columns>
                     </asp:GridView>
 
                     </div>
                 </div>
-            </body>
+            
 </html>
 
 

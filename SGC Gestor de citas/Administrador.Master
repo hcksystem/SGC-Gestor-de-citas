@@ -187,38 +187,7 @@
                 </div>
             </form>
         </div>
-        <footer class="footer">
-            <div class=" container-fluid ">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <%--                aca se puede escribir algo--%>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <%--aca se puede escribir algo--%>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <%--aca se puede escribir algo--%> <%--y aparece hasta abajo a la izquierda del pie de pagina--%>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright" id="copyright">
-                    &copy;
-                    <script>
-                        document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-                    </script>
-                    - Soluciones SGC.
-                </div>
-            </div>
-        </footer>
 
-    </div>
     </div>
     <div class="fixed-plugin">
         <div class="dropdown show-dropdown">
