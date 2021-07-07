@@ -10,17 +10,18 @@ namespace LogicaDeNegocio_BLL_
 {
     public class BLLServicio
     {
-        public void InsertarServicio(string Nombre, string Descripcion, double PrecioEstimado, DateTime TiempoEstimado, byte[] FotoSugerida, bool Estado, int idProducto, int idNegocio)
+        public void InsertarServicio(string Nombre, string Descripcion, double PrecioEstimado, DateTime TiempoEstimado, byte[] FotoSugerida, int Estado, int idProducto, int idNegocio)
         {
             DALServicio dals = new DALServicio();
-
             dals.InsertarServicio(Nombre, Descripcion, PrecioEstimado, TiempoEstimado, FotoSugerida, Estado, idProducto, idNegocio);
         }
-        public void ModificarServicio(int ID, string Nombre, string Descripcion, double PrecioEstimado, DateTime TiempoEstimado, byte[] FotoSugerida, bool Estado, int idProducto, int idNegocio)
+        
+        public void ModificarServicio(int ID, string Nombre, string Descripcion, double PrecioEstimado, DateTime TiempoEstimado, byte[] FotoSugerida, int Estado, int idProducto, int idNegocio)
         {
             DALServicio dals = new DALServicio();
             dals.ModificarServicio(ID, Nombre, Descripcion, PrecioEstimado, TiempoEstimado, FotoSugerida, Estado, idProducto, idNegocio);
         }
+        
         public DataTable ObtenerServicioPorID(int Identificacion)
         {
             DALServicio dals = new DALServicio();
@@ -48,3 +49,5 @@ namespace LogicaDeNegocio_BLL_
         }
     }
 }
+
+

@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLLCategoria.cs" />
     <Compile Include="BLLCita.cs" />
+    <Compile Include="BLLHorario.cs" />
+    <Compile Include="BLLInventario.cs" />
     <Compile Include="BLLNegocio.cs" />
+    <Compile Include="BLLPersona.cs" />
     <Compile Include="BLLProducto.cs" />
     <Compile Include="BLLRol.cs" />
     <Compile Include="BLLServicio.cs" />
@@ -50,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccesoDatos%28DAL%29\AccesoDatos%28DAL%29.csproj">
+    <ProjectReference Include="..\AccesoDatos%28DAL%29\AccesoDatosDAL.csproj">
       <Project>{08D47B17-38F5-451B-873B-C04ADDACF229}</Project>
-      <Name>AccesoDatos%28DAL%29</Name>
+      <Name>AccesoDatosDAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

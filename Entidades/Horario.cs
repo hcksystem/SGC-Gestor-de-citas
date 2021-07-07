@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Usuario
+    public class Horario
     {
         public int id { get; set; }
-        public string NombreUsuario { get; set; }
-        public string Contrasenna { get; set; }
-        public int idRol { get; set; }
+        public DateTime fechaAtencion { get; set; }
+        public DateTime inicioAtencion { get; set; }
+        public DateTime finAtencion { get; set; }
         public int estado { get; set; }
-        public int idPersona { get; set; }
     }
 }

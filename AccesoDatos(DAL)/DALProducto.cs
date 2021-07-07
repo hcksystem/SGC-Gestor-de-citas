@@ -10,25 +10,25 @@ namespace AccesoDatos_DAL_
 {
     public class DALProducto : DALBase
     {
-        public void InsertarProducto(string Nombre, string Categoria, string Descripcion, int Cantidad, string Proposito, double Precio, bool Estado)
+        public void InsertarProducto(string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Producto (Nombre, Categoria, Descripcion, Cantidad, Proposito, Precio, Estado ) VALUES (@nombre, @categoria, @descripcion, @cantidad, @proposito, @precio, @estado)", Conexion);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Producto (Nombre, idCategoria, Descripcion, Proposito, Precio, Estado ) VALUES (@nombre, @categoria, @descripcion, @proposito, @precio, @estado)", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@nombre", Nombre);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
-            parametro = new SqlParameter("@categoria", Categoria);
+            parametro = new SqlParameter("@idcategoria", idCategoria);
+            parametro.DbType = DbType.Int32;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@descripcion", Descripcion);
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@cantidad", Cantidad);
-            parametro.DbType = System.Data.DbType.Int16;
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@proposito", Proposito);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@precio", Precio);
@@ -36,40 +36,41 @@ namespace AccesoDatos_DAL_
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@estado", Estado);
-            parametro.DbType = System.Data.DbType.Boolean;
+            parametro.DbType = System.Data.DbType.Int32;
             cmd.Parameters.Add(parametro);
 
             Conexion.Open();
             cmd.ExecuteNonQuery();
             Conexion.Close();
 
+
         }
 
-        public void Modificar(int id, string Nombre, string Categoria, string Descripcion, int Cantidad, string Proposito, double Precio, bool Estado)
+
+
+        public void Modificar(int id, string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE Producto SET nombre=@nombre, categoria=@categoria, descripcion=@descripcion, cantidad=@cantidad, proposito=@proposito, precio=@precio, estado=@estado WHERE id=@id", Conexion);
+            SqlCommand cmd = new SqlCommand("UPDATE Producto SET nombre=@nombre, idcategoria=@idcategoria, descripcion=@descripcion, proposito=@proposito, precio=@precio, estado=@estado WHERE id=@id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", id);
+            parametro.DbType = DbType.Int32;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@nombre", Nombre);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
-            parametro = new SqlParameter("@categoria", Categoria);
-            // parametro.DbType = DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@descripcion", Descripcion);
-            //parametro.DbType = DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@cantidad", Cantidad);
+            parametro = new SqlParameter("@idcategoria", idCategoria);
             parametro.DbType = DbType.Int16;
             cmd.Parameters.Add(parametro);
 
+            parametro = new SqlParameter("@descripcion", Descripcion);
+            parametro.DbType = DbType.String;
+            cmd.Parameters.Add(parametro);
+
             parametro = new SqlParameter("@proposito", Proposito);
-            // parametro.DbType = DbType.Int16;
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@precio", Precio);
@@ -77,7 +78,7 @@ namespace AccesoDatos_DAL_
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@estado", Estado);
-            parametro.DbType = DbType.Boolean;
+            parametro.DbType = DbType.Int32;
             cmd.Parameters.Add(parametro);
 
             Conexion.Open();
@@ -90,7 +91,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerProductoPorID(int Identificacion)
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, nombre, categoria, descripcion, cantidad, proposito, precio, estado FROM Producto WHERE id = @id", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, idcategoria, descripcion, proposito, precio, estado FROM Producto WHERE id = @id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", Identificacion);
@@ -102,8 +103,8 @@ namespace AccesoDatos_DAL_
         }
         public void CambiarEstadoProducto(int id)
         {
-            
-            SqlCommand cmd = new SqlCommand("UPDATE Producto SET estado = 'false' where id=@id", Conexion);
+            //aca se cambiaria el estado en casi de trabajar con enum
+            SqlCommand cmd = new SqlCommand("UPDATE Producto SET estado = '1' where id=@id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", id);
@@ -117,7 +118,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosProductos()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, nombre, categoria, descripcion, cantidad, proposito, precio, estado FROM Producto", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, idcategoria, descripcion, proposito, precio, estado FROM Producto", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
@@ -126,7 +127,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosProductosActivos()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, nombre, categoria, descripcion, cantidad, proposito, precio, estado FROM Producto WHERE estado = 'true'", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, idcategoria, descripcion, proposito, precio, estado FROM Producto WHERE estado = 'true'", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;

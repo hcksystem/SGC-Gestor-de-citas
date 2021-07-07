@@ -11,22 +11,26 @@ using System.Windows.Forms;
 
 namespace AccesoDatos_DAL_
 {
+
+
     public class DALUsuario : DALBase
     {
         Usuario us = new Usuario();
 
-        public void InsertarUsuario(string Correo, string Telefono, string Contrasenna, int idRoll)
+        public void InsertarUsuario(string NombreUsuario, string Contrasenna, int idRoll, int estado, int idPersona)
         {
-            SqlCommand cmd = new SqlCommand("insert into Usuario (CorreoUsuario, Telefono, Contrasenna, IdRoll) values (@correoUsuario, @telefono, @contrasenna, @idRoll)", Conexion);
+            SqlCommand cmd = new SqlCommand("insert into Usuario (nombreUsuario, Contrasenna, IdRoll, estado, idPersona) values (@nombreUsuario, @contrasenna, @idRoll, @estado, @idPersona)", Conexion);
             SqlParameter parametro;
 
-            parametro = new SqlParameter("@correoUsuario", Correo);
-            cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@telefono", Telefono);
+            parametro = new SqlParameter("@nombreUsuario", NombreUsuario);
             cmd.Parameters.Add(parametro);
             parametro = new SqlParameter("@contrasenna", Contrasenna);
             cmd.Parameters.Add(parametro);
             parametro = new SqlParameter("@idRoll", idRoll);
+            cmd.Parameters.Add(parametro);
+            parametro = new SqlParameter("@estado", estado);
+            cmd.Parameters.Add(parametro);
+            parametro = new SqlParameter("@idPersona", idPersona);
             cmd.Parameters.Add(parametro);
 
             Conexion.Open();
@@ -34,10 +38,10 @@ namespace AccesoDatos_DAL_
             Conexion.Close();
         }
 
-        public DataTable ObtenerTodosUsuarios()
+        public DataTable ObtenerTodosUsuarios()//aca va un posible inner join para cambiar el id de roll y persona por los nombres
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, correoUsuario, telefono, contrasenna, idRoll FROM Usuario", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Usuario.id, dbo.Usuario.nombreUsuario, dbo.Usuario.contrasenna, dbo.Roll.descripcion AS idRoll, dbo.Usuario.estado, dbo.Persona.identificacion as idPersona FROM dbo.Usuario INNER JOIN dbo.Roll ON dbo.Usuario.idRoll = dbo.Roll.id INNER JOIN dbo.Persona ON dbo.Usuario.idPersona = dbo.Persona.id", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
@@ -63,14 +67,12 @@ namespace AccesoDatos_DAL_
 
                 throw;
             }
-
-
         }
 
         public DataTable ObtenerUsuarioPorId(int Identificacion)
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, correoUsuario, telefono, contrasenna, idRoll FROM Usuario WHERE id = @id", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT id, nombreUsuario, contrasenna, idRoll, estado, idPersona FROM Usuario WHERE id = @id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", Identificacion);
@@ -81,13 +83,13 @@ namespace AccesoDatos_DAL_
             return dt;
         }
 
-        public DataTable ObtenerUsuarioPorCorreo(string correo)
+        public DataTable ObtenerUsuarioPorNombreUsuario(string nombreUsuario)
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, correoUsuario, telefono, contrasenna, idRoll FROM Usuario WHERE correoUsuario = @correoUsuario", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT id, nombreUsuario, contrasenna, idRoll, estado, idPersona FROM Usuario WHERE nombreUsuario = @nombreUsuario", Conexion);
             SqlParameter parametro;
 
-            parametro = new SqlParameter("@correoUsuario", correo);
+            parametro = new SqlParameter("@nombreUsuario", nombreUsuario);
             cmd.Parameters.Add(parametro);
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -95,37 +97,42 @@ namespace AccesoDatos_DAL_
             return dt;
         }
 
-        public void Modificar(int id, string correoUsuario, string telefono, string contrasenna, int idRoll)
+        public void Modificar(int id, string nombreUsuario, string contrasenna, int idRoll, int estado, int idPersona)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE Usuario SET correoUsuario=@correoUsuario, telefono=@telefono, contrasenna=@contrasenna, idRoll=@idRoll WHERE id=@id", Conexion);
+            SqlCommand cmd = new SqlCommand("UPDATE Usuario SET nombreUsuario=@nombreUsuario, contrasenna=@contrasenna, idRoll=@idRoll, estado=@estado, idPersona=@idPersona WHERE id=@id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", id);
+            parametro.DbType = DbType.Int32;
             cmd.Parameters.Add(parametro);
 
-            parametro = new SqlParameter("@correoUsuario", correoUsuario);
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@telefono", telefono);
+            parametro = new SqlParameter("@nombreUsuario", nombreUsuario);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@contrasenna", contrasenna);
-            // parametro.DbType = DbType.Int16;
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@idRoll", idRoll);
             parametro.DbType = DbType.Int16;
             cmd.Parameters.Add(parametro);
 
+            parametro = new SqlParameter("@estado", estado);
+            parametro.DbType = DbType.Int16;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@idPersona", idPersona);
+            parametro.DbType = DbType.Int16;
+            cmd.Parameters.Add(parametro);
+
             Conexion.Open();
             cmd.ExecuteNonQuery();
             Conexion.Close();
-
         }
 
         public bool Login(string user, string pass)
         {
-
             try
             {
                 //Conexion.Open();
@@ -134,26 +141,23 @@ namespace AccesoDatos_DAL_
                     command.Connection = Conexion;
                     Conexion.Open();
 
-                    command.CommandText = "select * from Usuario where correoUsuario =@correoUsuario and contrasenna =@contrasenna";
-                    command.Parameters.AddWithValue("@correoUsuario", user);
+                    command.CommandText = "select * from Usuario where nombreUsuario =@nombreUsuario and contrasenna =@contrasenna";
+                    command.Parameters.AddWithValue("@nombreUsuario", user);
                     command.Parameters.AddWithValue("@contrasenna", pass);
                     command.CommandType = CommandType.Text;
 
                     SqlDataReader reader = command.ExecuteReader();
 
-
-
-
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-
                             us.id = reader.GetInt32(0);
-                            us.Correo = reader.GetString(1);
-                            us.Telefono = reader.GetString(2);
-                            us.Contrasenna = reader.GetString(3);
-                            us.idRol = reader.GetInt32(4);
+                            us.NombreUsuario = reader.GetString(1);
+                            us.Contrasenna = reader.GetString(2);
+                            us.idRol = reader.GetInt32(3);
+                            us.estado = reader.GetInt32(4);
+                            us.idPersona = reader.GetInt32(5);
                         }
                         return true;
                     }
@@ -162,16 +166,14 @@ namespace AccesoDatos_DAL_
                         return false;
                     }
                 }
-
-
             }
             catch (Exception)
             {
                 MessageBox.Show("Digite los datos requeridos");
                 throw;
             }
-
         }
+
         public string GetSHA256(string str)
         {
             SHA256 sha256 = SHA256Managed.Create();
@@ -194,3 +196,37 @@ namespace AccesoDatos_DAL_
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

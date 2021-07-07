@@ -14,7 +14,7 @@ namespace Entidades
         public double PrecioEstimado { get; set; }
         public DateTime TiempoEstimado { get; set; }
         public byte[] FotoSugerida { get; set; }
-        public bool Estado { get; set; }
+        public int Estado { get; set; }
         public int idProducto { get; set; }
         public int idNegocio { get; set; }
     }

@@ -4811,17 +4811,15 @@ Created using IcoMoon - icomoon.io
 .card {
     border: 0;
     border-radius: 0.1875rem;
-    display: inline-block;
-    position: fixed;
-    width: 81%;
+    position: relative !important;
     margin-bottom: 20px;
-    box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
-    padding-top: 5px;
-    padding-bottom: 10px;
+    box-shadow: 0 1px 15px 1px rgb(39 39 39 / 10%);
+    padding-top: 0px;
+    padding-bottom: 34px;
     padding-left: 10px;
     margin-left: 20px;
     margin-right: 50px;
-    height: 86%
+    height: auto;
 }
 
     .card [data-notify="container"].alert {

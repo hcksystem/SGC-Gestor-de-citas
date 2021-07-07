@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos_DAL_
 {
-    public class DALNegocio: DALBase
+    public class DALNegocio : DALBase
     {
         public void InsertarNegocio(string Nombre, byte[] Logo, string Descripcion, string Mision, string Vision)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Negocio (Nombre, Logo, Descripcion, Mision, Vision) VALUES (@nombre, @logo, @descripcion, @mision, @vision)", Conexion);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Negocio (nombre, logo, descripcion, mision, vision) VALUES (@nombre, @logo, @descripcion, @mision, @vision)", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@nombre", Nombre);
@@ -39,6 +39,7 @@ namespace AccesoDatos_DAL_
             Conexion.Close();
 
         }
+
 
         public DataTable ObtenerNegocioPorID(int Identificacion)
         {
@@ -83,9 +84,11 @@ namespace AccesoDatos_DAL_
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", ID);
+            parametro.DbType = DbType.Int32;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@nombre", Nombre);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@logo", Logo);
@@ -93,18 +96,20 @@ namespace AccesoDatos_DAL_
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@descripcion", Descripcion);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@mision", Mision);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@vision", Vision);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             Conexion.Open();
             cmd.ExecuteNonQuery();
             Conexion.Close();
-
         }
     }
 }

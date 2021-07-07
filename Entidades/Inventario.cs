@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Cita
+    public class Inventario
     {
         public int id { get; set; }
+        public int idProducto { get; set; }
+        public int cantidad { get; set; }
         public string descripcion { get; set; }
-        public int estado { get; set; }
-        public int idServicio { get; set; }
-        public int idUsuario { get; set; }
-        public int idCliente { get; set; }
-        public int idHorario { get; set; }
-
     }
 }

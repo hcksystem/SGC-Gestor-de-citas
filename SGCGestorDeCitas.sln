@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGC Gestor de citas", "SGC Gestor de citas\SGC Gestor de citas.csproj", "{A8C1DB9D-3ED5-4F5C-BF29-09881AEE3548}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGCGestorCitas", "SGC Gestor de citas\SGCGestorCitas.csproj", "{A8C1DB9D-3ED5-4F5C-BF29-09881AEE3548}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos(DAL)", "AccesoDatos(DAL)\AccesoDatos(DAL).csproj", "{08D47B17-38F5-451B-873B-C04ADDACF229}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatosDAL", "AccesoDatos(DAL)\AccesoDatosDAL.csproj", "{08D47B17-38F5-451B-873B-C04ADDACF229}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocio(BLL)", "LogicaNegocio(BLL)\LogicaNegocio(BLL).csproj", "{A7E4CAF0-E0AE-4A4F-9694-82D925798F02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocioBLL", "LogicaNegocio(BLL)\LogicaNegocioBLL.csproj", "{A7E4CAF0-E0AE-4A4F-9694-82D925798F02}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{72FCD936-2F8D-4E31-AE24-5A39A46AA971}"
 EndProject

@@ -8,17 +8,21 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos_DAL_
 {
+
+
     public class DALServicio : DALBase
     {
-        public void InsertarServicio(string nombre, string descripcion, double precioEstimado, DateTime tiempoEstimado, byte[] fotoSugerida, bool estado, int idProducto, int idNegocio)
+        public void InsertarServicio(string nombre, string descripcion, double precioEstimado, DateTime tiempoEstimado, byte[] fotoSugerida, int estado, int idProducto, int idNegocio)
         {
             SqlCommand cmd = new SqlCommand("INSERT INTO Servicio (nombre, descripcion, precioEstimado, tiempoEstimado, fotoSugerida, estado, idProducto, idNegocio ) VALUES (@nombre, @descripcion, @precioestimado, @tiempoEstimado, @fotoSugerida, @estado, @idProducto, @idNegocio)", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@nombre", nombre);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@descripcion", descripcion);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@precioEstimado", precioEstimado);
@@ -26,7 +30,7 @@ namespace AccesoDatos_DAL_
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@tiempoEstimado", tiempoEstimado);
-            parametro.DbType = System.Data.DbType.DateTime;
+            parametro.DbType = System.Data.DbType.Time;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@fotoSugerida", fotoSugerida);
@@ -34,7 +38,7 @@ namespace AccesoDatos_DAL_
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@estado", estado);
-            parametro.DbType = System.Data.DbType.Boolean;
+            parametro.DbType = System.Data.DbType.Int16;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@idProducto", idProducto);
@@ -73,8 +77,8 @@ namespace AccesoDatos_DAL_
         }
         public void CambiarEstadoServicio(int id)
         {
-
-            SqlCommand cmd = new SqlCommand("UPDATE Servicio SET estado = 'false' where id=@id", Conexion);
+            //verificar que en el enum el numero dos si corresponda apagado o eliminar
+            SqlCommand cmd = new SqlCommand("UPDATE Servicio SET estado = '2' where id=@id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", id);
@@ -86,12 +90,12 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosServiciosActivos()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, nombre, descripcion, precioEstimado, tiempoEstimado, fotoSugerida, estado, idProducto, idNegocio FROM Servicio WHERE estado = 'true'", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, descripcion, precioEstimado, tiempoEstimado, fotoSugerida, estado, idProducto, idNegocio FROM Servicio WHERE estado = '1'", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
         }
-        public void ModificarServicio(int ID, string nombre, string descripcion, double precioEstimado, DateTime tiempoEstimado, byte[] fotoSugerida, bool estado, int idProducto, int idNegocio)
+        public void ModificarServicio(int ID, string nombre, string descripcion, double precioEstimado, DateTime tiempoEstimado, byte[] fotoSugerida, int estado, int idProducto, int idNegocio)
         {
             SqlCommand cmd = new SqlCommand("UPDATE Servicio SET nombre = @nombre, descripcion = @descripcion, precioEstimado = @precioEstimado, tiempoEstimado = @tiempoEstimado, fotoSugerida = @fotoSugerida,estado=@estado,idProducto=@idProducto,idNegocio=@idNegocio WHERE id=@id", Conexion);
             SqlParameter parametro;
@@ -101,9 +105,11 @@ namespace AccesoDatos_DAL_
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@nombre", nombre);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@descripcion", descripcion);
+            parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@precioEstimado", precioEstimado);
@@ -111,7 +117,7 @@ namespace AccesoDatos_DAL_
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@tiempoEstimado", tiempoEstimado);
-            parametro.DbType = DbType.DateTime;
+            parametro.DbType = DbType.Time;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@fotoSugerida", fotoSugerida);
@@ -119,7 +125,7 @@ namespace AccesoDatos_DAL_
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@estado", estado);
-            parametro.DbType = DbType.Boolean;
+            parametro.DbType = DbType.Int16;
             cmd.Parameters.Add(parametro);
 
             parametro = new SqlParameter("@idProducto", idProducto);
@@ -152,3 +158,32 @@ namespace AccesoDatos_DAL_
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

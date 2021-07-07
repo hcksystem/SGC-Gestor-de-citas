@@ -5,7 +5,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,10 +19,13 @@ namespace SGC_Gestor_de_citas
 {
     public partial class frmMantenimientoNegocio : System.Web.UI.Page
     {
+        public bool editar = true;//variable que se utilizara para identificar si el dato se quiere actualizar o si es un registro nuevo
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+
                 CargarDatos();
             }
         }
@@ -44,32 +49,89 @@ namespace SGC_Gestor_de_citas
             FileUpload1.Dispose();
 
         }
+        protected void gridNegocio_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                System.Web.UI.HtmlControls.HtmlImage imageControl = (System.Web.UI.HtmlControls.HtmlImage)e.Row.FindControl("imageControl");
+                if (((DataRowView)e.Row.DataItem)["logo"] != DBNull.Value)
+                {
+                    imageControl.Src = "data:image/png;base64," + Convert.ToBase64String((byte[])(((DataRowView)e.Row.DataItem))["logo"]);
+                }
+            }
+        }
+
+        private void EditarDatos()//este metodo carga los espacios del formulario con los datos almacenados en la BD 
+        {
+            editar = false;//aca indica que el estado es falso, con esto el boton guardar, no generara un nuevo insert sino hara un update
+            int id = Convert.ToInt32(gridNegocio.SelectedRow.Cells[2].Text);
+            BLLNegocio bllc = new BLLNegocio();
+            DataTable dt = bllc.ObtenerNegocioPorID(id);
+
+            txtNombreNegocio.Text = dt.Rows[0]["nombre"].ToString();
+            Image1.Visible = true;
+
+            txtDescripcion.Text = dt.Rows[0]["descripcion"].ToString();
+            txtMision.Text = dt.Rows[0]["mision"].ToString();
+            txtVision.Text = dt.Rows[0]["vision"].ToString();
+       
+        FileUpload fileUpLoad = gridNegocio.Rows[gridNegocio.EditIndex].FindControl("FileUpload1") as FileUpload;
+        string fileName = fileUpLoad.FileName;
+        string fullPath = Path.GetFullPath(fileName);
+        fileUpLoad.SaveAs(fullPath);
+
+        }
 
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
+                if (editar)
+                {
+                    //obtener datos de imagen//
+                    int tamanio = FileUpload1.PostedFile.ContentLength;
+                    byte[] imagenOriginal = new byte[tamanio];
+                    FileUpload1.PostedFile.InputStream.Read(imagenOriginal, 0, tamanio);
+                    Bitmap imagenOriginaBinaria = new Bitmap(FileUpload1.PostedFile.InputStream);
+                    
+                    //insertar en bd//
+                    string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(imagenOriginal);
 
 
-                //obtener datos de imagen//
-                int tamanio = FileUpload1.PostedFile.ContentLength;
-                byte[] imagenOriginal = new byte[tamanio];
-                FileUpload1.PostedFile.InputStream.Read(imagenOriginal, 0, tamanio);
-                Bitmap imagenOriginaBinaria = new Bitmap(FileUpload1.PostedFile.InputStream);
+                    BLLNegocio blln = new BLLNegocio();
+                    blln.InsertarNegocio(txtNombreNegocio.Text, imagenOriginal, txtDescripcion.Text, txtMision.Text, txtVision.Text);
 
-                //insertar en bd//
-                string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(imagenOriginal);
+                    //ese scripManager genera la alerta
+                    string mjs = "Negocio registrado correctamente";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),
+                        "alert",
+                        "alert('" + mjs + "');window.location-'frmMantenimientoNegocio.aspx';", true);
+                }
+                else
+                {
+                    //obtener datos de imagen//
+                    int tamanio = FileUpload1.PostedFile.ContentLength;
+                    byte[] imagenOriginal = new byte[tamanio];
+                    FileUpload1.PostedFile.InputStream.Read(imagenOriginal, 0, tamanio);
+                    Bitmap imagenOriginaBinaria = new Bitmap(FileUpload1.PostedFile.InputStream);
+
+                    //insertar en bd//
+                    string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(imagenOriginal);
 
 
-                BLLNegocio blln = new BLLNegocio();
-                blln.InsertarNegocio(txtNombreNegocio.Text, imagenOriginal, txtDescripcion.Text, txtMision.Text, txtVision.Text);
+                    BLLNegocio blln = new BLLNegocio();
+                    int id = Convert.ToInt32(gridNegocio.SelectedRow.Cells[2].Text);
+                    blln.ModificarNegocio(id,txtNombreNegocio.Text, imagenOriginal, txtDescripcion.Text, txtMision.Text, txtVision.Text);
+                    
+                    //ese scripManager genera la alerta
+                    string mjs = "Negocio modificado correctamente";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),
+                        "alert",
+                        "alert('" + mjs + "');window.location-'frmMantenimientoNegocio.aspx';", true);
+                }
 
-                //ese scripManager genera la alerta
-                string mjs = "Negocio Registrado Correctamente";
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-                    "alert",
-                    "alert('" + mjs + "');window.location-'frmMantenimientoNegocio.aspx';", true);
+                
 
             }
 
@@ -84,6 +146,7 @@ namespace SGC_Gestor_de_citas
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             limpiarDatos();
+            Image1.Visible = false;
         }
 
 
@@ -178,6 +241,21 @@ namespace SGC_Gestor_de_citas
             }
 
             CargarDatos();
+        }
+
+        protected void gridNegocio_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridNegocio.PageIndex = e.NewPageIndex;
+            this.CargarDatos();
+        }
+
+        protected void gridNegocio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int negocio = Convert.ToInt32(gridNegocio.SelectedRow.Cells[2].Text);
+            //Server.Transfer("frmMantenimientoUsuario.aspx"+usuario);
+            if (gridNegocio.Columns.Count > 0)
+
+                EditarDatos();
         }
     }
 }

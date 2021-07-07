@@ -17,6 +17,7 @@
             <div class="card-header">
                 <h5 class="title">Formulario de Productos</h5>
             </div>
+            <hr />
             <div class="card-body">
 
            <div class="row">
@@ -29,13 +30,10 @@
                         ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
             </div>
-            <div class="col-md-4 pl-1">
+             <div class="col-md-4 pl-1">
                 <div class="form-group">
-                    <label>Categoria</label>
-                    <asp:TextBox ID="txtCategoriaProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteP"
-                        ControlToValidate="txtCategoriaProducto" ErrorMessage=" *Digite la categoria del producto" Display="Dynamic"
-                        ForeColor="Red"></asp:RequiredFieldValidator>
+                    <label>Categoría</label>
+                    <asp:DropDownList ID="dropCategoria" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
             </div>
             <div class="col-md-4 pl-1">
@@ -45,19 +43,8 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtDescripcionProducto" ErrorMessage=" *Digite una descripción del producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 pl-1">
-                <div class="form-group">
-                    <label>Cantidad que se posee</label>
-                    <asp:TextBox ID="txtCantidadProducto" TextMode="Number" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteP" ControlToValidate="txtCantidadProducto" ErrorMessage="Digite la cantidad de productos" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                    <asp:CustomValidator ID="CustomValidator1" runat="server" ValidationGroup="ManteP" ControlToValidate="txtCantidadProducto" ErrorMessage="La cantidad de producto debe ser mayor que 0" Display="Dynamic" ForeColor="Red" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
-                </div>
-            </div>
-
+              </div>
+             </div>
             <div class="col-md-6 pl-1">
                 <div class="form-group">
                     <label>Proposito del Producto</label>
@@ -66,9 +53,7 @@
                         ControlToValidate="txtPropositoProducto" ErrorMessage="Digite un proposito para el producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
-            </div>
-        </div>
-        <div class="row">
+            </div>       
             <div class="col-md-4 pl-1">
                 <div class="form-group">
                     <label>Precio Unitario</label>
@@ -77,13 +62,11 @@
                         ControlToValidate="txtPrecioProducto" ErrorMessage="Digite el precio del producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
-            </div>
-        </div>
-           <div class="row">
+            </div>        
             <div class="col-md-4 pl-1">
                 <div class="form-group">
-                    <asp:Label ID="LblEstado"  runat="server" Text="Estado"  Visible="false" Font-Size="0.8571em" ForeColor="#9A9A9A" ></asp:Label>
-                    <asp:TextBox ID="txtEstadoProducto" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
+                    <label>Estado</label>
+                    <asp:DropDownList ID="dropEstado" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
             </div>
             <div class="col-md-4 pl-1">
@@ -92,31 +75,23 @@
             </div>
             <div class="col-md-4 pl-1">
                 <div class="form-group">
-                    </div>
-                    <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar Producto" ValidationGroup="ManteP" OnClick="btnGuardar_Click" />
+                    <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar" ValidationGroup="ManteP" OnClick="btnGuardar_Click" />
                     <asp:Button ID="btnCancelar" class="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
                 </div>
-   <div class="tab">
-                                    <input id="tab-1" type="checkbox">
-                                    <label for="tab-1">Mostrar Lista</label>
-                                    <div class="tab-content">
-                                      
-                                        <div style="overflow: scroll">
+                </div>
+               </div>
 
-<%--            <asp:GridView ID="gridProductos" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridProductos_RowCancelingEdit" OnRowDeleting="gridProductos_RowDeleting" OnRowEditing="gridProductos_RowEditing" OnRowUpdating="gridProductos_RowUpdating" Width="1240px">
+                 <div class="col-12 tab">
+                    <input id="tab-1" type="checkbox" style="display:none">
+                     <hr />
+                    <label for="tab-1">Mostrar Lista</label>
+                    <div class="tab-content">
+                   <div style="overflow: scroll">
+
+           <%-- <asp:GridView ID="gridProductos" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridProductos_RowCancelingEdit" OnRowDeleting="gridProductos_RowDeleting" OnRowEditing="gridProductos_RowEditing" OnRowUpdating="gridProductos_RowUpdating" OnPageIndexChanging="gridProductos_PageIndexChanging" OnSelectedIndexChanged="gridProductos_SelectedIndexChanged">                               
                 <Columns>
-                    <asp:TemplateField ShowHeader="False">
-                        <EditItemTemplate>
-                            <asp:Button ID="btnUpdate" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
-
-                            &nbsp;<asp:Button ID="btnCancelar" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Button ID="btnUpdate" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:CommandField />
-                    <asp:CommandField ButtonType="Button" ShowDeleteButton="True" />
+                    <asp:CommandField ShowSelectButton="True" SelectText="Editar" ButtonType="Image" SelectImageUrl="~/assets/img/Seleccionar).png" />
+                    <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />
 
                 <asp:TemplateField HeaderText="ID">
                     <ItemTemplate>
@@ -186,24 +161,27 @@
                         </Columns>
                     </asp:GridView>--%>
 
-          <asp:GridView ID="gridProductos" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" Width="1240px" OnPageIndexChanging="gridProductos_PageIndexChanging" OnSelectedIndexChanged="gridProductos_SelectedIndexChanged">
+          <asp:GridView ID="gridProductos" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" Width="1240px" OnRowDeleting="gridProductos_RowDeleting" OnPageIndexChanging="gridProductos_PageIndexChanging" OnSelectedIndexChanged="gridProductos_SelectedIndexChanged">
             <Columns>
-                <asp:CommandField ShowSelectButton="True" SelectText="Editar" />
-                <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" />
+                <asp:CommandField ShowSelectButton="True" SelectText="Editar" ButtonType="Image" SelectImageUrl="~/assets/img/Seleccionar).png" />
+                <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />
                 <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
                 <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                <asp:BoundField DataField="categoria" HeaderText="Categoria" />
+                <asp:BoundField DataField="idcategoria" HeaderText="Categoria" />
                 <asp:BoundField DataField="descripcion" HeaderText="Descripcion"  />
-                <asp:BoundField DataField="cantidad" HeaderText="Cantidad" />
                 <asp:BoundField DataField="proposito" HeaderText="Proposito" />
                 <asp:BoundField DataField="precio" HeaderText="Precio" />
                 <asp:BoundField DataField="estado" HeaderText="Estado" />
             </Columns>
         </asp:GridView>
 
-                    </div>
                 </div>
-            
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </html>
 
 

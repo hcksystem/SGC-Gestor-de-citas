@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using LogicaDeNegocio_BLL_;
+using LogicaNegocio_BLL_;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,8 +28,10 @@ namespace SGC_Gestor_de_citas
             try
             {
                 BLLUsuario bblu = new BLLUsuario();
-                bblu.SHA256(txtContrasennaRegistro.Text);
-                bblu.InsertarUsuario(txtCorreoRegistro.Text, txtTelefonoRegistro.Text, txtContrasennaRegistro.Text, 2);
+                BLLPersona bblp = new BLLPersona();
+
+                //bblp.InsertarPersona(txt);
+                //bblu.InsertarUsuario(txtCorreoRegistro.Text, txtTelefonoRegistro.Text, txtContrasennaRegistro.Text, 2);
             }
             catch (Exception)
             {
@@ -47,24 +50,25 @@ namespace SGC_Gestor_de_citas
             {
                 if (bllu.VerificarLogin(txtEmail.Text, txtPass.Text) == true)
                 {
-                    DataTable dt = bllu.ObtenerUsuarioPorCorreo(txtEmail.Text);
+                    DataTable dt = bllu.ObtenerUsuarioPorNombreUsuario(txtEmail.Text);
 
 
 
                     us.id = Convert.ToInt32(dt.Rows[(0)]["id"]);
-                    us.Correo = Convert.ToString(dt.Rows[(0)]["correoUsuario"]);
-                    us.Telefono = Convert.ToString(dt.Rows[0]["telefono"]);
+                    us.NombreUsuario = Convert.ToString(dt.Rows[(0)]["nombreUsuario"]);
                     us.Contrasenna = Convert.ToString(dt.Rows[0]["contrasenna"]);
                     us.idRol = Convert.ToInt32(dt.Rows[0]["idRoll"]);
-
-                    MessageBox.Show(us.Correo, "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    us.estado = Convert.ToInt32(dt.Rows[0]["estado"]);
+                    us.idPersona = Convert.ToInt32(dt.Rows[0]["idPersona"]);
+                    
+                    
+                    MessageBox.Show(us.NombreUsuario, "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
 
                     if (us.idRol == 1)
                     {
                         Session["ID"] = us.id;
-                        Session["Usuario"] = us.Correo;
-                        Session["Telefono"] = us.Telefono;
+                        Session["Usuario"] = us.NombreUsuario;                        
                         Session["Rol"] = us.idRol;
                         Response.Redirect("frmMenuAdministrador.aspx", false); Context.ApplicationInstance.CompleteRequest();
 
@@ -74,8 +78,7 @@ namespace SGC_Gestor_de_citas
                         if (us.idRol == 2)
                         {
                             Session["ID"] = us.id;
-                            Session["Usuario"] = us.Correo;
-                            Session["Telefono"] = us.Telefono;
+                            Session["Usuario"] = us.NombreUsuario;
                             Session["Rol"] = us.idRol;
                             Response.Redirect("frmMenuCliente.aspx", false); Context.ApplicationInstance.CompleteRequest();
                         }

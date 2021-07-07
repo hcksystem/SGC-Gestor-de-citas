@@ -577,6 +577,7 @@ pre {
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
+    margin-top: -32px;
     
     
 }
@@ -596,7 +597,7 @@ pre {
     width: 80%;
     padding-right: 15px;
     padding-left: 15px;
-    top: 19px;
+    top: 38px;
     left: 0px;
 }
 

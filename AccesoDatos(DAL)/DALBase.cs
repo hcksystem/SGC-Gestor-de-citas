@@ -11,7 +11,6 @@ namespace AccesoDatos_DAL_
     public class DALBase
     {
         public SqlConnection Conexion { get; }
-
         public DALBase()
         {
             string cs = ConfigurationManager.ConnectionStrings["SQL1"].ConnectionString;

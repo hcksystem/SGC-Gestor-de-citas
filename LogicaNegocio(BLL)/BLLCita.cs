@@ -10,15 +10,16 @@ namespace LogicaNegocio_BLL_
 {
     public class BLLCita
     {
-        public void InsertarCita(string Descripcion, DateTime Fecha, DateTime Hora, bool Activo, int idServicio, int idUsuario)
+        public void InsertarCita(string Descripcion, int Estado, int idServicio, int idUsuario, int idCliente, int idHorario)
         {
             DALCita daln = new DALCita();
-            daln.InsertarCita(Descripcion, Fecha, Hora, Activo, idServicio, idUsuario);
+            daln.InsertarCita(Descripcion, Estado, idServicio, idUsuario, idCliente, idHorario);
         }
-        public void ModificarCita(int id,string Descripcion, DateTime Fecha, DateTime Hora, bool Activo, int idServicio, int idUsuario)
+
+        public void ModificarCita(int id, string Descripcion, int Estado, int idServicio, int idUsuario, int idCliente, int idHorario)
         {
             DALCita daln = new DALCita();
-            daln.ModificarCita(id,Descripcion,Fecha,Hora,Activo,idServicio,idUsuario);
+            daln.ModificarCita(id, Descripcion, Estado, idServicio, idUsuario, idCliente, idHorario);
         }
 
         public DataTable ObtenerTodaLasCitas()
@@ -26,11 +27,13 @@ namespace LogicaNegocio_BLL_
             DALCita daln = new DALCita();
             return daln.ObtenerTodasLasCitas();
         }
+
         public void CambiarEstadoCita(int id)
         {
             DALCita dalp = new DALCita();
             dalp.CambiarEstadoCita(id);
         }
+
         public DataTable ObtenerTodasLasCitasActivas()
         {
             DALCita dalp = new DALCita();
@@ -54,7 +57,11 @@ namespace LogicaNegocio_BLL_
             DALCita dalc = new DALCita();
             dalc.CancelarCita(ID);
         }
-
-
     }
 }
+
+
+
+
+
+

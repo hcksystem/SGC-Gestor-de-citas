@@ -135,6 +135,7 @@
     <Content Include="AyudaProducto.aspx" />
     <Content Include="AyudaServicio.aspx" />
     <Content Include="AyudaUsuario.aspx" />
+    <Content Include="frmFacturación.aspx" />
     <Content Include="frmGestorCita.aspx" />
     <Content Include="frmMantenimientoNegocio.aspx" />
     <Content Include="frmMantenimientoProducto.aspx" />
@@ -204,6 +205,15 @@
     </Compile>
     <Compile Include="Cliente.Master.designer.cs">
       <DependentUpon>Cliente.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Enum\citaEnum.cs" />
+    <Compile Include="Enum\estado.cs" />
+    <Compile Include="frmFacturación.aspx.cs">
+      <DependentUpon>frmFacturación.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmFacturación.aspx.designer.cs">
+      <DependentUpon>frmFacturación.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmGestorCita.aspx.cs">
       <DependentUpon>frmGestorCita.aspx</DependentUpon>
@@ -333,19 +343,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccesoDatos%28DAL%29\AccesoDatos%28DAL%29.csproj">
+    <ProjectReference Include="..\AccesoDatos%28DAL%29\AccesoDatosDAL.csproj">
       <Project>{08D47B17-38F5-451B-873B-C04ADDACF229}</Project>
-      <Name>AccesoDatos%28DAL%29</Name>
+      <Name>AccesoDatosDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{72FCD936-2F8D-4E31-AE24-5A39A46AA971}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LogicaNegocio%28BLL%29\LogicaNegocio%28BLL%29.csproj">
+    <ProjectReference Include="..\LogicaNegocio%28BLL%29\LogicaNegocioBLL.csproj">
       <Project>{A7E4CAF0-E0AE-4A4F-9694-82D925798F02}</Project>
-      <Name>LogicaNegocio%28BLL%29</Name>
+      <Name>LogicaNegocioBLL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

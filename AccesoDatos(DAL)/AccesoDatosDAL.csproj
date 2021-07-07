@@ -44,8 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALBase.cs" />
+    <Compile Include="DALCategoria.cs" />
     <Compile Include="DALCita.cs" />
+    <Compile Include="DALHorario.cs" />
+    <Compile Include="DALInventario.cs" />
     <Compile Include="DALNegocio.cs" />
+    <Compile Include="DALPersona.cs" />
     <Compile Include="DALProducto.cs" />
     <Compile Include="DALRol.cs" />
     <Compile Include="DALServicio.cs" />

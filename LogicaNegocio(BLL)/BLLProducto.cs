@@ -6,19 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LogicaDeNegocio_BLL_
+namespace LogicaNegocio_BLL_
 {
+
     public class BLLProducto
     {
-        public void InsertarProducto(string Nombre, string Categoria, string Descripcion, int Cantidad, string Proposito, double Precio, bool Estado)
+        public void InsertarProducto(string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)
         {
             DALProducto dalp = new DALProducto();
-            dalp.InsertarProducto(Nombre, Categoria, Descripcion, Cantidad, Proposito, Precio, Estado);
+            dalp.InsertarProducto(Nombre, idCategoria, Descripcion, Proposito, Precio, Estado);
         }
-        public void ModificarProducto(int ID, string Nombre, string Categoria, string Descripcion, int Cantidad, string Proposito, double Precio, bool Estado)
+        public void ModificarProducto(int ID, string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)
         {
             DALProducto dalp = new DALProducto();
-            dalp.Modificar(ID, Nombre, Categoria, Descripcion, Cantidad, Proposito, Precio, Estado);
+            dalp.Modificar(ID, Nombre, idCategoria, Descripcion, Proposito, Precio, Estado);
         }
         public DataTable ObtenerPorID(int Identificacion)
         {
@@ -28,7 +29,7 @@ namespace LogicaDeNegocio_BLL_
         public void CambiarEstadoProducto(int id)
         {
             DALProducto dalp = new DALProducto();
-             dalp.CambiarEstadoProducto(id);
+            dalp.CambiarEstadoProducto(id);
         }
         public DataTable ObtenerTodosLosProductos()
         {

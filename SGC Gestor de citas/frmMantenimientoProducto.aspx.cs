@@ -1,6 +1,7 @@
 ﻿using AccesoDatos_DAL_;
 using Entidades;
 using LogicaDeNegocio_BLL_;
+using LogicaNegocio_BLL_;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,9 +22,10 @@ namespace SGC_Gestor_de_citas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) { 
+            if (!IsPostBack)
+            {
 
-                 CargarDatos();
+                CargarDatos();
             }
         }
         private void EditarDatos()//este metodo carga los espacios del formulario con los datos almacenados en la BD 
@@ -32,39 +34,33 @@ namespace SGC_Gestor_de_citas
             int id = Convert.ToInt32(gridProductos.SelectedRow.Cells[2].Text);
             BLLProducto bllc = new BLLProducto();
             DataTable dt = bllc.ObtenerPorID(id);
-
             txtNombreProducto.Text = dt.Rows[0]["nombre"].ToString();
-            txtCategoriaProducto.Text = dt.Rows[0]["categoria"].ToString();
-            txtDescripcionProducto.Text = dt.Rows[0]["descripcion"].ToString();
-            txtCantidadProducto.Text = dt.Rows[0]["cantidad"].ToString();
+            dropCategoria.SelectedValue = dt.Rows[0]["idcategoria"].ToString();
+            txtDescripcionProducto.Text = dt.Rows[0]["descripcion"].ToString();          
             txtPropositoProducto.Text = dt.Rows[0]["proposito"].ToString();
             txtPrecioProducto.Text = dt.Rows[0]["precio"].ToString();
-            txtEstadoProducto.Text = dt.Rows[0]["estado"].ToString();
-            this.LblEstado.Visible = true;
-            this.txtEstadoProducto.Visible = true;
-          
+            dropEstado.SelectedValue = dt.Rows[0]["estado"].ToString();        
         }
 
         private void CargarDatos(string sortExpression = null)
         {
+            dropEstado.DataSource = Enum.GetNames(typeof(estado));
+            dropEstado.DataBind();
             DALProducto bllc = new DALProducto();
             DataTable dt = bllc.ObtenerTodosLosProductosActivos();
 
-
-
             gridProductos.DataSource = dt;
             gridProductos.DataBind();
-            
+
         }
-    
+
         public void limpiarDatos()
         {
             txtNombreProducto.Text = "";
             txtDescripcionProducto.Text = "";
-            txtCategoriaProducto.Text = "";
-            txtCantidadProducto.Text = "";
             txtPrecioProducto.Text = "";
             txtPropositoProducto.Text = "";
+            
         }
 
         protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
@@ -104,7 +100,7 @@ namespace SGC_Gestor_de_citas
                 }
                 CargarDatos();
             }
-                    }
+        }
 
         protected void gridProductos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
@@ -118,79 +114,7 @@ namespace SGC_Gestor_de_citas
                 throw;
             }
             CargarDatos();
-        }
-
-        protected void gridProductos_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            try
-            {
-                //Activa edicion
-                gridProductos.EditIndex = e.NewEditIndex;
-            }
-            catch (Exception)
-            {
-
-
-
-                throw;
-            }
-
-
-
-            CargarDatos();
-        }
-
-        protected void gridProductos_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-
-           
-            //Toma la columna que se va a editar
-            GridViewRow fila = gridProductos.Rows[e.RowIndex];
-
-
-
-            //CargarDatos los datos
-            int id = Convert.ToInt32(gridProductos.DataKeys[e.RowIndex].Values[0]);
-
-
-
-            string nombre = (fila.FindControl("txtNombre") as TextBox).Text.ToUpper();
-            string categoria = (fila.FindControl("txtCategoria") as TextBox).Text.ToUpper();
-            string descripcion = (fila.FindControl("txtDescripcion") as TextBox).Text.ToUpper();
-            int cantidad = Convert.ToInt32((fila.FindControl("txtCantidad") as TextBox).Text);
-            string proposito = (fila.FindControl("txtProposito") as TextBox).Text.ToUpper();
-            double precio = Convert.ToDouble((fila.FindControl("txtPrecio") as TextBox).Text);
-            bool estado = Convert.ToBoolean((fila.FindControl("txtEstado") as TextBox).Text);
-
-
-
-            //Modifica el producto
-
-
-
-            BLLProducto bblp = new BLLProducto();
-            Producto p = new Producto();
-            bblp.ObtenerPorID(id);
-            p.Nombre = nombre;
-            p.Categoria = categoria;
-            p.Descripcion = descripcion;
-            p.Cantidad = cantidad;
-            p.Proposito = proposito;
-            p.Precio = precio;
-            p.Estado = estado;
-            bblp.ModificarProducto(id, p.Nombre, p.Categoria, p.Descripcion, p.Cantidad, p.Proposito, p.Precio, p.Estado);
-
-
-
-            //Termina proceso de la edicion
-            gridProductos.EditIndex = -1;
-
-
-
-            //Carga los datos
-            CargarDatos();
-
-        }
+        } 
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -199,29 +123,34 @@ namespace SGC_Gestor_de_citas
                 if (editar)
                 {
                     BLLProducto bllp = new BLLProducto();
-                    bllp.InsertarProducto(txtNombreProducto.Text, txtCategoriaProducto.Text, txtDescripcionProducto.Text, Convert.ToInt32(txtCantidadProducto.Text), txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), true);
+                    bllp.InsertarProducto(txtNombreProducto.Text, Convert.ToInt32(dropCategoria.SelectedValue), txtDescripcionProducto.Text, txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), Convert.ToInt32(dropEstado.SelectedValue));
 
-                    string mjs = "Producto Registrado Correctamente";
+                    string mjs = "Producto registrado correctamente";
                     ScriptManager.RegisterStartupScript(this, this.GetType(),
                         "alert",
                         "alert('" + mjs + "');window.location-'fmrMantenimientoProducto.aspx';", true);
 
                     limpiarDatos();
+                    CargarDatos();
                 }
                 else
                 {
-                    BLLProducto bllu = new BLLProducto();
-                    int id = Convert.ToInt32(gridProductos.SelectedRow.Cells[2].Text);
-                    bllu.ModificarProducto(id, txtNombreProducto.Text, txtCategoriaProducto.Text, txtDescripcionProducto.Text, Convert.ToInt32(txtCantidadProducto.Text), txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), true);
-                    string mjs = "Producto Modificado Correctamente";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),
-                        "alert",
-                        "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
-                    limpiarDatos();
-                    this.LblEstado.Visible = false;
-                    this.txtEstadoProducto.Visible = false;
+                    if(editar == false)
+                    {
+                        BLLProducto bllu = new BLLProducto();
+                        int id = Convert.ToInt32(gridProductos.SelectedRow.Cells[2].Text);
+                        bllu.ModificarProducto(id, txtNombreProducto.Text, Convert.ToInt32(dropCategoria.SelectedValue), txtDescripcionProducto.Text, txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), Convert.ToInt32(dropEstado.SelectedValue));
+                        string mjs = "Producto modificado correctamente";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(),
+                            "alert",
+                            "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                        limpiarDatos();
+                       CargarDatos();
+                        
+                    }                   
+
                 }
-              
+
             }
             catch (Exception)
             {
@@ -234,8 +163,7 @@ namespace SGC_Gestor_de_citas
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             limpiarDatos();
-            this.LblEstado.Visible = false;
-            this.txtEstadoProducto.Visible = false;
+           
         }
 
         protected void gridProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -251,10 +179,10 @@ namespace SGC_Gestor_de_citas
             if (gridProductos.Columns.Count > 0)
 
                 EditarDatos();
+                this.editar = false;
         }
+
     }
-
-
 
 }
 

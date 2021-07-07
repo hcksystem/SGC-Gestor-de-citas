@@ -10,11 +10,12 @@ namespace LogicaDeNegocio_BLL_
 {
     public class BLLUsuario
     {
-        public void InsertarUsuario(string correoUsuario, string Telefono, string Contrasenna, int idRoll)
+        public void InsertarUsuario(string nombreUsuario, string Contrasenna, int idRoll, int Estado, int idPersona)
         {
             DALUsuario dalu = new DALUsuario();
-            dalu.InsertarUsuario(correoUsuario, Telefono, Contrasenna, idRoll);
+            dalu.InsertarUsuario(nombreUsuario, Contrasenna, idRoll, Estado, idPersona);
         }
+
         public DataTable ObtenerTodosLosUsuarios()
         {
             DALUsuario dalu = new DALUsuario();
@@ -26,26 +27,31 @@ namespace LogicaDeNegocio_BLL_
             DALUsuario dalu = new DALUsuario();
             dalu.Eliminar(Identificacion);
         }
+
         public DataTable ObtenerUsuarioPorID(int Identificacion)
         {
             DALUsuario dalu = new DALUsuario();
             return dalu.ObtenerUsuarioPorId(Identificacion);
         }
-        public void ModificarUsuario(int ID, string Correo, string Telefono, string Contrasenna, int idRoll)
+
+        public void ModificarUsuario(int ID, string nombreUsuario, string Contrasenna, int idRoll, int estado, int idPersona)
         {
             DALUsuario daln = new DALUsuario();
-            daln.Modificar(ID, Correo, Telefono, Contrasenna, idRoll);
+            daln.Modificar(ID, nombreUsuario, Contrasenna, idRoll, estado, idPersona);
         }
-        public DataTable ObtenerUsuarioPorCorreo(string correo)
+
+        public DataTable ObtenerUsuarioPorNombreUsuario(string nombreUsuario)
         {
             DALUsuario dalu = new DALUsuario();
-            return dalu.ObtenerUsuarioPorCorreo(correo);
+            return dalu.ObtenerUsuarioPorNombreUsuario(nombreUsuario);
         }
+
         public bool VerificarLogin(string user, string pass)
         {
             DALUsuario dalu = new DALUsuario();
             return dalu.Login(user, pass);
         }
+
         public bool Roles()
         {
             DALUsuario dalu = new DALUsuario();
@@ -57,6 +63,8 @@ namespace LogicaDeNegocio_BLL_
             DALUsuario dalU = new DALUsuario();
             return dalU.GetSHA256(texto);
         }
+
+
 
     }
 }
