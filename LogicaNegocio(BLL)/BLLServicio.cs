@@ -21,7 +21,12 @@ namespace LogicaDeNegocio_BLL_
             DALServicio dals = new DALServicio();
             dals.ModificarServicio(ID, Nombre, Descripcion, PrecioEstimado, TiempoEstimado, FotoSugerida, Estado, idProducto, idNegocio);
         }
-        
+        public void ModificarServicioSinFoto(int ID, string Nombre, string Descripcion, double PrecioEstimado, DateTime TiempoEstimado, int Estado, int idProducto, int idNegocio)
+        {
+            DALServicio dals = new DALServicio();
+            dals.ModificarServicioSinFoto(ID, Nombre, Descripcion, PrecioEstimado, TiempoEstimado, Estado, idProducto, idNegocio);
+        }
+
         public DataTable ObtenerServicioPorID(int Identificacion)
         {
             DALServicio dals = new DALServicio();

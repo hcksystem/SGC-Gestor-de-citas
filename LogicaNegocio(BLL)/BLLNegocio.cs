@@ -20,6 +20,11 @@ namespace LogicaDeNegocio_BLL_
             DALNegocio daln = new DALNegocio();
             daln.ModificarNegocio(ID, Nombre, Logo, Descripcion, Mision, Vision);
         }
+        public void ModificarNegocioSinImagen(int ID, string Nombre, string Descripcion, string Mision, string Vision)
+        {
+            DALNegocio daln = new DALNegocio();
+            daln.ModificarNegocioSinImagen(ID, Nombre, Descripcion, Mision, Vision);
+        }
         public DataTable ObtenerNegocioPorID(int Identificacion)
         {
             DALNegocio daln = new DALNegocio();

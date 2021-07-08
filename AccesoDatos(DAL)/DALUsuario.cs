@@ -17,24 +17,57 @@ namespace AccesoDatos_DAL_
     {
         Usuario us = new Usuario();
 
-        public void InsertarUsuario(string NombreUsuario, string Contrasenna, int idRoll, int estado, int idPersona)
+        public void InsertarUsuario(string NombreUsuario, string Contrasenna, int idRoll, int estado)
         {
-            SqlCommand cmd = new SqlCommand("insert into Usuario (nombreUsuario, Contrasenna, IdRoll, estado, idPersona) values (@nombreUsuario, @contrasenna, @idRoll, @estado, @idPersona)", Conexion);
-            SqlParameter parametro;
+            //SqlCommand cmd = new SqlCommand("insert into Usuario (nombreUsuario, Contrasenna, IdRoll, estado, idPersona) values (@nombreUsuario, @contrasenna, @idRoll, @estado, @idPersona)", Conexion);
+            //SqlParameter parametro;
 
+            //parametro = new SqlParameter("@nombreUsuario", NombreUsuario);
+            //cmd.Parameters.Add(parametro);
+            //parametro = new SqlParameter("@contrasenna", Contrasenna);
+            //cmd.Parameters.Add(parametro);
+            //parametro = new SqlParameter("@idRoll", idRoll);
+            //cmd.Parameters.Add(parametro);
+            //parametro = new SqlParameter("@estado", estado);
+            //cmd.Parameters.Add(parametro);
+            //parametro = new SqlParameter("@idPersona", idPersona);
+            //cmd.Parameters.Add(parametro);
+
+            //Conexion.Open();
+            //cmd.ExecuteNonQuery();
+            //Conexion.Close();
+        
+        SqlCommand cmdPersona = new SqlCommand("insert into Persona (nombre, apellido, correo, telefono, identificacion) values (@nombre, @apellido, @correo, @telefono, @identificacion)", Conexion);
+        //SqlParameter parametro;
+        SqlParameter parametroPersona;
+        parametroPersona = new SqlParameter("@nombreUsuario",NombreUsuario );
+
+        Conexion.Open();
+            cmdPersona.ExecuteNonQuery();
+            Conexion.Close();
+
+            DataTable dt = new DataTable();
+        SqlCommand cmdConsultaMax = new SqlCommand(cmdText: "SELECT max(id) as id FROM Persona", Conexion);
+        SqlDataAdapter da = new SqlDataAdapter(cmdConsultaMax);
+        da.Fill(dt);
+            int idPersona = int.Parse(dt.Rows[0]["id"].ToString());
+        SqlCommand cmd = new SqlCommand(cmdText: "INSERT INTO Usuario(nombreUsuario,contrasenna, idRoll, estado, idPersona)VALUES(@nombreUsuario, @contrasenna, @idRoll, @estado, @idPersona)", Conexion);
+        SqlParameter parametro;
+        parametro =
             parametro = new SqlParameter("@nombreUsuario", NombreUsuario);
-            cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@contrasenna", Contrasenna);
-            cmd.Parameters.Add(parametro);
+        cmd.Parameters.Add(parametro);
+            parametro = new SqlParameter("@contrasenna",Contrasenna );
+        cmd.Parameters.Add(parametro);
             parametro = new SqlParameter("@idRoll", idRoll);
-            cmd.Parameters.Add(parametro);
+        cmd.Parameters.Add(parametro);
             parametro = new SqlParameter("@estado", estado);
-            cmd.Parameters.Add(parametro);
+        cmd.Parameters.Add(parametro);
             parametro = new SqlParameter("@idPersona", idPersona);
-            cmd.Parameters.Add(parametro);
+        cmd.Parameters.Add(parametro);
 
             Conexion.Open();
-            cmd.ExecuteNonQuery();
+            cmdPersona.ExecuteNonQuery();
+            //cmd.ExecuteScalar();
             Conexion.Close();
         }
 

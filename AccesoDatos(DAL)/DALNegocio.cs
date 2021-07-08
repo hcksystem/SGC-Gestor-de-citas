@@ -111,5 +111,36 @@ namespace AccesoDatos_DAL_
             cmd.ExecuteNonQuery();
             Conexion.Close();
         }
+
+        public void ModificarNegocioSinImagen(int ID, string Nombre, string Descripcion, string Mision, string Vision)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE Negocio SET nombre = @nombre, descripcion = @descripcion, mision = @mision, vision = @vision WHERE id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@id", ID);
+            parametro.DbType = DbType.Int32;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@nombre", Nombre);
+            parametro.DbType = DbType.String;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@descripcion", Descripcion);
+            parametro.DbType = DbType.String;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@mision", Mision);
+            parametro.DbType = DbType.String;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@vision", Vision);
+            parametro.DbType = DbType.String;
+            cmd.Parameters.Add(parametro);
+
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+        }
+
     }
 }

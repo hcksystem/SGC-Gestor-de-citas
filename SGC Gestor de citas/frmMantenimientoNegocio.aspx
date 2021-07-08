@@ -60,20 +60,21 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 pl-1">
+            
+                <div class="col-md-12 pl-1">
                     <div>
                         <label>Logo</label>
                         <br />
-                        <br />
+                        
                         <asp:FileUpload ID="FileUpload1" accept=".jpg" runat="server" ForeColor="#626c7d" Font-Size="Small"/>
-                        <asp:Image ID="Image1" runat="server" Visible="false" />
+                        <%--<asp:Image ID="Image1" runat="server" Visible="false" />--%>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="FileUpload1" ErrorMessage="El logo es necesario" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-            </div>
+           <br />
+            <br />
             <div class="row">
                 <div class="col-md-4 pl-1">
                     <div class="form-group">
@@ -88,6 +89,7 @@
                     <div class="form-group">
                         <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar" ValidationGroup="ManteN" OnClick="btnGuardar_Click" />
                         <asp:Button ID="btnCancelar" class="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+                        <asp:Button ID="btnModificar" CssClass="btn btn-primary btn-round" runat="server" Text="Modificar" Visible="false" OnClick="btnModificar_Click" />
                     </div>
                 </div>
                </div>
@@ -108,46 +110,48 @@
                         <ItemTemplate>
                             <asp:imageButton ID="ImageButton1" runat="server"  CommandName="Delete" ImageUrl="~/assets/img/basurero.jpg" Text="Eliminar" />
                         </ItemTemplate>
-                    </asp:TemplateField>                    
-                    <asp:BoundField DataField="id" HeaderText="ID" />
-                    <asp:TemplateField HeaderText="NOMBRE">
+                    </asp:TemplateField> 
+                    
+                    <asp:BoundField DataField="id" HeaderText="ID"  />
+
+                    <asp:TemplateField HeaderText="Nombre">
                         <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<% # Bind("nombre") %>'></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text='<% # Bind("nombre") %>' Width="170"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtNombre" runat="server" Text='<% # Bind("nombre") %>'></asp:TextBox>
+                            <asp:TextBox ID="txtNombre" runat="server" Text='<% # Bind("nombre") %>' Width="170"></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="LOGO">
+                    <asp:TemplateField HeaderText="Logo">
                         <ItemTemplate>
-                          <img src='<%# Eval("logo") %>' id="imageControl" runat="server" width="70" height="100"/>
+                          <img src='<%# Eval("logo") %>' id="imageControl" runat="server" width="90" height="100"/>
                         </ItemTemplate>
                         <EditItemTemplate>
                        <asp:FileUpload ID="FileUpload1" runat="server" />
                     </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="DESCRIPCION">
+                    <asp:TemplateField HeaderText="Descripcion">
                         <ItemTemplate>
-                            <asp:Label ID="Label4" runat="server" Text='<% # Bind("descripcion") %>' Width="150"></asp:Label>
+                            <asp:Label ID="Label4" runat="server" Text='<% # Bind("descripcion") %>' Width="170"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtDescripcion" runat="server" Text='<% # Bind("descripcion") %>' Width="150"></asp:TextBox>
+                            <asp:TextBox ID="txtDescripcion" runat="server" Text='<% # Bind("descripcion") %>' Width="170"></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="MISION">
+                    <asp:TemplateField HeaderText="Mision">
                         <ItemTemplate>
-                            <asp:Label ID="Label5" runat="server" Text='<% # Bind("mision") %>' Width="150"></asp:Label>
+                            <asp:Label ID="Label5" runat="server" Text='<% # Bind("mision") %>' Width="170"></asp:Label>
                       </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtMision" runat="server" Text='<% # Bind("mision") %>' Width="150"></asp:TextBox>
+                            <asp:TextBox ID="txtMision" runat="server" Text='<% # Bind("mision") %>' Width="170"></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="VISION">
+                    <asp:TemplateField HeaderText="Vision">
                         <ItemTemplate>
-                            <asp:Label ID="Label6" runat="server" Text='<% # Bind("vision") %>' Width="150"></asp:Label>
+                            <asp:Label ID="Label6" runat="server" Text='<% # Bind("vision") %>' Width="170"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtVision" runat="server" Text='<% # Bind("vision") %>' Width="150"></asp:TextBox>
+                            <asp:TextBox ID="txtVision" runat="server" Text='<% # Bind("vision") %>' Width="170"></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
                 </Columns>

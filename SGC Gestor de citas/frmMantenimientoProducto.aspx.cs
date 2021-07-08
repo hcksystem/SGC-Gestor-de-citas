@@ -18,7 +18,7 @@ namespace SGC_Gestor_de_citas
 
     public partial class frmMantenimientoProducto : System.Web.UI.Page
     {
-        public bool editar;//variable que se utilizara para identificar si el dato se quiere actualizar o si es un registro nuevo
+        public bool editar = true;//variable que se utilizara para identificar si el dato se quiere actualizar o si es un registro nuevo
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,21 +36,35 @@ namespace SGC_Gestor_de_citas
             DataTable dt = bllc.ObtenerPorID(id);
             txtNombreProducto.Text = dt.Rows[0]["nombre"].ToString();
             dropCategoria.SelectedValue = dt.Rows[0]["idcategoria"].ToString();
-            txtDescripcionProducto.Text = dt.Rows[0]["descripcion"].ToString();          
+            txtDescripcionProducto.Text = dt.Rows[0]["descripcion"].ToString();
             txtPropositoProducto.Text = dt.Rows[0]["proposito"].ToString();
             txtPrecioProducto.Text = dt.Rows[0]["precio"].ToString();
-            dropEstado.SelectedValue = dt.Rows[0]["estado"].ToString();        
+            dropEstado.SelectedValue = dt.Rows[0]["estado"].ToString();
         }
 
         private void CargarDatos(string sortExpression = null)
         {
-            dropEstado.DataSource = Enum.GetNames(typeof(estado));
-            dropEstado.DataBind();
-            DALProducto bllc = new DALProducto();
-            DataTable dt = bllc.ObtenerTodosLosProductosActivos();
+            //dropEstado.DataSource = Enum.GetNames(typeof(estado));
+            //dropEstado.DataBind();
+            Array enumList = Enum.GetValues(typeof(estado));
+            foreach (estado getestado in enumList)
+            {
+                dropEstado.Items.Add(new ListItem(getestado.ToString(), ((int)getestado).ToString()));
+            }
+
+            DALProducto bllp = new DALProducto();
+            DataTable dt = bllp.ObtenerTodosLosProductosActivos();
 
             gridProductos.DataSource = dt;
             gridProductos.DataBind();
+
+            BLLCategoria bllc = new BLLCategoria();
+            DataTable dt1 = bllc.ObtenerTodasCategorias();
+            dropCategoria.DataSource = dt1;
+            dropCategoria.DataTextField = "descripcion";
+            dropCategoria.DataValueField = "id";
+            dropCategoria.DataBind();
+            dropCategoria.SelectedIndex = -1;
 
         }
 
@@ -60,7 +74,7 @@ namespace SGC_Gestor_de_citas
             txtDescripcionProducto.Text = "";
             txtPrecioProducto.Text = "";
             txtPropositoProducto.Text = "";
-            
+
         }
 
         protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
@@ -114,42 +128,19 @@ namespace SGC_Gestor_de_citas
                 throw;
             }
             CargarDatos();
-        } 
+        }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (editar)
-                {
-                    BLLProducto bllp = new BLLProducto();
-                    bllp.InsertarProducto(txtNombreProducto.Text, Convert.ToInt32(dropCategoria.SelectedValue), txtDescripcionProducto.Text, txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), Convert.ToInt32(dropEstado.SelectedValue));
+                BLLProducto bllp = new BLLProducto();
+                bllp.InsertarProducto(txtNombreProducto.Text, Convert.ToInt32(dropCategoria.SelectedValue), txtDescripcionProducto.Text, txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), Convert.ToInt32(dropEstado.SelectedValue));
 
-                    string mjs = "Producto registrado correctamente";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),
-                        "alert",
-                        "alert('" + mjs + "');window.location-'fmrMantenimientoProducto.aspx';", true);
-
-                    limpiarDatos();
-                    CargarDatos();
-                }
-                else
-                {
-                    if(editar == false)
-                    {
-                        BLLProducto bllu = new BLLProducto();
-                        int id = Convert.ToInt32(gridProductos.SelectedRow.Cells[2].Text);
-                        bllu.ModificarProducto(id, txtNombreProducto.Text, Convert.ToInt32(dropCategoria.SelectedValue), txtDescripcionProducto.Text, txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), Convert.ToInt32(dropEstado.SelectedValue));
-                        string mjs = "Producto modificado correctamente";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(),
-                            "alert",
-                            "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
-                        limpiarDatos();
-                       CargarDatos();
-                        
-                    }                   
-
-                }
+                string mjs = "Producto registrado correctamente";
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+                    "alert",
+                    "alert('" + mjs + "');window.location-'fmrMantenimientoProducto.aspx';", true);
 
             }
             catch (Exception)
@@ -157,13 +148,16 @@ namespace SGC_Gestor_de_citas
 
                 throw;
             }
-
+            limpiarDatos();
+            CargarDatos();
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             limpiarDatos();
-           
+            btnGuardar.Visible = true;
+            btnModificar.Visible = false;
+
         }
 
         protected void gridProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -179,9 +173,31 @@ namespace SGC_Gestor_de_citas
             if (gridProductos.Columns.Count > 0)
 
                 EditarDatos();
-                this.editar = false;
+
+            btnGuardar.Visible = false;
+            btnModificar.Visible = true;
         }
 
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BLLProducto bllu = new BLLProducto();
+                int id = Convert.ToInt32(gridProductos.SelectedRow.Cells[2].Text);
+                bllu.ModificarProducto(id, txtNombreProducto.Text, Convert.ToInt32(dropCategoria.SelectedValue), txtDescripcionProducto.Text, txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), Convert.ToInt32(dropEstado.SelectedValue));
+                string mjs = "Producto modificado correctamente";
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+                    "alert",
+                    "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                limpiarDatos();
+                CargarDatos();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 
 }

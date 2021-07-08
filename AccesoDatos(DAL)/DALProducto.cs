@@ -12,7 +12,7 @@ namespace AccesoDatos_DAL_
     {
         public void InsertarProducto(string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Producto (Nombre, idCategoria, Descripcion, Proposito, Precio, Estado ) VALUES (@nombre, @categoria, @descripcion, @proposito, @precio, @estado)", Conexion);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Producto (Nombre, idCategoria, Descripcion, Proposito, Precio, Estado ) VALUES (@nombre, @idcategoria, @descripcion, @proposito, @precio, @estado)", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@nombre", Nombre);
@@ -104,7 +104,7 @@ namespace AccesoDatos_DAL_
         public void CambiarEstadoProducto(int id)
         {
             //aca se cambiaria el estado en casi de trabajar con enum
-            SqlCommand cmd = new SqlCommand("UPDATE Producto SET estado = '1' where id=@id", Conexion);
+            SqlCommand cmd = new SqlCommand("UPDATE Producto SET estado = '2' where id=@id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", id);
@@ -127,7 +127,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosProductosActivos()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, nombre, idcategoria, descripcion, proposito, precio, estado FROM Producto WHERE estado = 'true'", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Producto.id, dbo.Producto.nombre, dbo.Categoria.descripcion AS idcategoria, dbo.Producto.descripcion, dbo.Producto.proposito, dbo.Producto.precio, dbo.Producto.estado FROM dbo.Producto INNER JOIN dbo.Categoria ON dbo.Producto.idcategoria = dbo.Categoria.id WHERE(dbo.Producto.estado = 1)", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;

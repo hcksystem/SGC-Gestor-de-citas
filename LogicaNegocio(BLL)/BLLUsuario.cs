@@ -10,10 +10,10 @@ namespace LogicaDeNegocio_BLL_
 {
     public class BLLUsuario
     {
-        public void InsertarUsuario(string nombreUsuario, string Contrasenna, int idRoll, int Estado, int idPersona)
+        public void InsertarUsuario(string nombreUsuario, string Contrasenna, int idRoll, int Estado)
         {
             DALUsuario dalu = new DALUsuario();
-            dalu.InsertarUsuario(nombreUsuario, Contrasenna, idRoll, Estado, idPersona);
+            dalu.InsertarUsuario(nombreUsuario, Contrasenna, idRoll, Estado);
         }
 
         public DataTable ObtenerTodosLosUsuarios()

@@ -13,7 +13,7 @@ namespace LogicaNegocio_BLL_
     {
         public void InsertarProducto(string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)
         {
-            DALProducto dalp = new DALProducto();
+             DALProducto dalp = new DALProducto();
             dalp.InsertarProducto(Nombre, idCategoria, Descripcion, Proposito, Precio, Estado);
         }
         public void ModificarProducto(int ID, string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)

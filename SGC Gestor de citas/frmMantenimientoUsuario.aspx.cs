@@ -16,7 +16,7 @@ namespace SGC_Gestor_de_citas
 {
     public partial class frmMantenimientoUsuario : System.Web.UI.Page
     {
-        public bool editar;//variable que se utilizara para identificar si el dato se quiere actualizar o si es un registro nuevo
+        public bool editar = true;//variable que se utilizara para identificar si el dato se quiere actualizar o si es un registro nuevo
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -72,8 +72,15 @@ namespace SGC_Gestor_de_citas
         }
         private void LlenarCombos()
         {
-            dropEstado.DataSource = Enum.GetNames(typeof(estado));
-            dropEstado.DataBind();
+            //dropEstado.DataSource = Enum.GetNames(typeof(estado));
+            //dropEstado.DataBind();
+
+            Array enumList = Enum.GetValues(typeof(estado));
+            // Array enumNombres = Enum.GetNames(typeof(estado));
+            foreach (estado getestado in enumList)
+            {
+                dropEstado.Items.Add(new ListItem(getestado.ToString(), ((int)getestado).ToString()));
+            }
             BLLRol bllc = new BLLRol();
             DataTable dt = bllc.ObtenerTodosRoles();
             dropRol.DataSource = dt;
@@ -92,44 +99,45 @@ namespace SGC_Gestor_de_citas
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if(editar)
-            //    {
-            //        BLLPersona bllp = new BLLPersona();
-            //        BLLUsuario bllu = new BLLUsuario();
-            //        bllp.InsertarPersona(txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
-            //        bllu.InsertarUsuario(txtNombreUsuario.Text, txtContrasenna.Text, Convert.ToInt16(dropRolUsuario.SelectedValue),Convert.ToInt16(dropEstado.SelectedValue),Convert.ToInt32(Persona.Text));
+            try
+            {
+                if (editar)
+                {
+                    BLLPersona bllp = new BLLPersona();
+                    BLLUsuario bllu = new BLLUsuario();
+                    //bllp.InsertarPersona(txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
 
-            //        string mjs = "Usuario Registrado Correctamente";
-            //        ScriptManager.RegisterStartupScript(this, this.GetType(),
-            //            "alert",
-            //            "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                    bllu.InsertarUsuario(txtNombreUsuario.Text, txtContrasenna.Text, Convert.ToInt16(dropRol.SelectedValue), Convert.ToInt16(dropEstado.SelectedValue));
 
-            //        LimpiarDatos();
-            //    }
-            //    else 
-            //    {
-            //        BLLPersona bllp = new BLLPersona();
-            //        BLLUsuario bllu = new BLLUsuario();
-            //        int id = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[2].Text);
+                    string mjs = "Usuario Registrado Correctamente";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),
+                        "alert",
+                        "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
 
-            //        bllp.ModificarPersona(id, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
-            //        bllu.ModificarUsuario(id,txtNombreUsuario.Text, txtContrasenna.Text, Convert.ToInt16(dropRolUsuario.SelectedValue), Convert.ToInt16(dropEstado.SelectedValue), Convert.ToInt32(Persona.Text));
-            //        string mjs = "Usuario modificado correctamente";
-            //        ScriptManager.RegisterStartupScript(this, this.GetType(),
-            //            "alert",
-            //            "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
-            //        LimpiarDatos();
-            //    }
+                    LimpiarDatos();
+                }
+                else
+                {
+                    BLLPersona bllp = new BLLPersona();
+                    BLLUsuario bllu = new BLLUsuario();
+                    int id = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[2].Text);
+
+                    bllp.ModificarPersona(id, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
+                    bllu.ModificarUsuario(id, txtNombreUsuario.Text, txtContrasenna.Text, Convert.ToInt16(dropRol.SelectedValue), Convert.ToInt16(dropEstado.SelectedValue), Convert.ToInt32(txtPersona.Text));
+                    string mjs = "Usuario modificado correctamente";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),
+                        "alert",
+                        "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                    LimpiarDatos();
+                }
 
 
-            //}
-            //catch (Exception)
-            //{
+            }
+            catch (Exception)
+            {
 
-            //    throw;
-            //}
+                throw;
+            }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

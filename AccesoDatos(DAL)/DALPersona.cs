@@ -28,8 +28,10 @@ namespace AccesoDatos_DAL_
 
             Conexion.Open();
             cmd.ExecuteNonQuery();
+            //cmd.ExecuteScalar();
             Conexion.Close();
         }
+
         public DataTable ObtenerTodasPersonas()
         {
             DataTable dt = new DataTable();

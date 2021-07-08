@@ -92,6 +92,7 @@
                                 <div class="form-group">
                                     <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" ValidationGroup="ManteS" Text="Guardar" OnClick="btnGuardar_Click" />
                                     <asp:Button ID="btnCancelar" runat="server" class="btn btn-primary btn-round" Text="Limpiar" />
+                                    <asp:Button ID="btnModificar" class="btn btn-primary btn-round" runat="server" Text="Modificar" Visible="false" OnClick="btnModificar_Click" />
                                 </div>
                             </div>                                                  
                         </div>
@@ -103,7 +104,7 @@
 
                                 <div style="overflow: scroll">
 
-                                    <asp:GridView ID="gridServicios" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowSorting="false" ShowFooter="True" OnRowDeleting="gridServicios_RowDeleting"  OnRowDataBound="gridServicios_RowDataBound" OnPageIndexChanging="gridServicios_PageIndexChanging" OnSelectedIndexChanged="gridServicios_SelectedIndexChanged">
+                                    <asp:GridView ID="gridServicios" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowSorting="false" ShowFooter="True" AllowPaging="True" PageSize="2" OnRowDeleting="gridServicios_RowDeleting"  OnRowDataBound="gridServicios_RowDataBound" OnPageIndexChanging="gridServicios_PageIndexChanging" OnSelectedIndexChanged="gridServicios_SelectedIndexChanged">
                                         <Columns>
                                             <asp:TemplateField ShowHeader="true" HeaderText="Seleccionar">
                                                 <ItemTemplate>
@@ -115,15 +116,8 @@
                                                     <asp:ImageButton ID="ImageButton1" runat="server" CommandName="Delete" ImageUrl="~/assets/img/basurero.jpg" Text="Eliminar" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="ID">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<% # Bind("id") %>'></asp:Label>
-                                                </ItemTemplate>
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="txtIDServicio" runat="server" Text='<% # Bind("id") %>'></asp:TextBox>
-                                                </EditItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="NOMBRE">
+                                            <asp:BoundField DataField="id" HeaderText="ID"  />
+                                            <asp:TemplateField HeaderText="Nombre">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label2" runat="server" Text='<% # Bind("nombre") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -131,7 +125,7 @@
                                                     <asp:TextBox ID="txtNombreServicio" runat="server" Text='<% # Bind("nombre") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="DESCRIPCION">
+                                            <asp:TemplateField HeaderText="Descripción">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label3" runat="server" Text='<% # Bind("descripcion") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -139,7 +133,7 @@
                                                     <asp:TextBox ID="txtDescripcionServicio" runat="server" Text='<% # Bind("descripcion") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="PRECIO ESTiMADO">
+                                            <asp:TemplateField HeaderText="Precio Estimado">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label4" runat="server" Text='<% # Bind("precioEstimado") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -147,13 +141,13 @@
                                                     <asp:TextBox ID="txtPrecioEstimado" TextMode="Number" runat="server" Text='<% # Bind("precioEstimado") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="TIEMPO ESTIMADO">
+                                            <asp:TemplateField HeaderText="Tiempo Estimado">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5" runat="server" Text='<% # Bind("tiempoEstimado") %>'></asp:Label>
                                                     <%--configurar algo para el datetime--%>
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
-                                                    <asp:TextBox ID="txtTiempoEstimado" TextMode="DateTime" runat="server" Text='<% # Bind("tiempoEstimado") %>'></asp:TextBox>
+                                                    <asp:TextBox ID="txtTiempoEstimado" TextMode="Time" runat="server" Text='<% # Bind("tiempoEstimado") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Foto">
@@ -164,7 +158,7 @@
                                                     <asp:FileUpload ID="FileUpload1" runat="server" />
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="ESTADO">
+                                            <asp:TemplateField HeaderText="Estado">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label7" runat="server" Text='<% # Bind("estado") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -172,7 +166,7 @@
                                                     <asp:TextBox ID="txtEstado" runat="server" Text='<% # Bind("estado") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="PRODUCTO">
+                                            <asp:TemplateField HeaderText="Producto">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label8" runat="server" Text='<% # Bind("idProducto") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -180,7 +174,7 @@
                                                     <asp:DropDownList ID="dropProducto" runat="server"></asp:DropDownList>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="NEGOCIO">
+                                            <asp:TemplateField HeaderText="Negocio">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label9" runat="server" Text='<% # Bind("idNegocio") %>'></asp:Label>
                                                 </ItemTemplate>

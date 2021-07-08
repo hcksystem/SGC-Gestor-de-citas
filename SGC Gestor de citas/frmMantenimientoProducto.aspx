@@ -77,6 +77,7 @@
                 <div class="form-group">
                     <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar" ValidationGroup="ManteP" OnClick="btnGuardar_Click" />
                     <asp:Button ID="btnCancelar" class="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+                    <asp:Button ID="btnModificar" class="btn btn-primary btn-round" runat="server" Text="Modificar" Visible="false" OnClick="btnModificar_Click"/>
                 </div>
                 </div>
                </div>
@@ -163,8 +164,8 @@
 
           <asp:GridView ID="gridProductos" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" Width="1240px" OnRowDeleting="gridProductos_RowDeleting" OnPageIndexChanging="gridProductos_PageIndexChanging" OnSelectedIndexChanged="gridProductos_SelectedIndexChanged">
             <Columns>
-                <asp:CommandField ShowSelectButton="True" SelectText="Editar" ButtonType="Image" SelectImageUrl="~/assets/img/Seleccionar).png" />
-                <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />
+                <asp:CommandField ShowSelectButton="True" SelectText="Editar" ShowHeader="true" HeaderText="Seleccionar" ButtonType="Image" SelectImageUrl="~/assets/img/Seleccionar).png" />
+                <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" ShowHeader="true" HeaderText="Eliminar" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />
                 <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
                 <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="idcategoria" HeaderText="Categoria" />

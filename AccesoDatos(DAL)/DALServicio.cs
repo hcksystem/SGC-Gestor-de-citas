@@ -90,7 +90,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosServiciosActivos()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, nombre, descripcion, precioEstimado, tiempoEstimado, fotoSugerida, estado, idProducto, idNegocio FROM Servicio WHERE estado = '1'", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT Servicio.id, Servicio.nombre, Servicio.descripcion, Servicio.precioEstimado, Servicio.tiempoEstimado, Servicio.fotoSugerida, Servicio.estado, Producto.nombre AS idProducto, Negocio.nombre AS idNegocio FROM   Servicio INNER JOIN Negocio ON Servicio.idNegocio = Negocio.id INNER JOIN Producto ON Servicio.id = Producto.id where Servicio.estado = '1'", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
@@ -141,6 +141,50 @@ namespace AccesoDatos_DAL_
             Conexion.Close();
 
         }
+
+        public void ModificarServicioSinFoto(int ID, string nombre, string descripcion, double precioEstimado, DateTime tiempoEstimado, int estado, int idProducto, int idNegocio)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE Servicio SET nombre = @nombre, descripcion = @descripcion, precioEstimado = @precioEstimado, tiempoEstimado = @tiempoEstimado,estado=@estado,idProducto=@idProducto,idNegocio=@idNegocio WHERE id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@id", ID);
+            parametro.DbType = DbType.Int16;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@nombre", nombre);
+            parametro.DbType = DbType.String;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@descripcion", descripcion);
+            parametro.DbType = DbType.String;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@precioEstimado", precioEstimado);
+            parametro.DbType = DbType.Double;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@tiempoEstimado", tiempoEstimado);
+            parametro.DbType = DbType.Time;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@estado", estado);
+            parametro.DbType = DbType.Int16;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@idProducto", idProducto);
+            parametro.DbType = DbType.Int16;
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@idNegocio", idNegocio);
+            parametro.DbType = DbType.Int16;
+            cmd.Parameters.Add(parametro);
+
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+
+        }
+
 
         public void EliminarServicio(int Identificacion)
         {
