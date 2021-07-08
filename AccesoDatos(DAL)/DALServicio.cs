@@ -90,7 +90,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosServiciosActivos()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT Servicio.id, Servicio.nombre, Servicio.descripcion, Servicio.precioEstimado, Servicio.tiempoEstimado, Servicio.fotoSugerida, Servicio.estado, Producto.nombre AS idProducto, Negocio.nombre AS idNegocio FROM   Servicio INNER JOIN Negocio ON Servicio.idNegocio = Negocio.id INNER JOIN Producto ON Servicio.id = Producto.id where Servicio.estado = '1'", Conexion);
+            SqlCommand cmd = new SqlCommand("select Servicio.id, Servicio.nombre, Servicio.descripcion, Servicio.precioEstimado, Servicio.tiempoEstimado, Servicio.fotoSugerida, Servicio.estado, Producto.nombre as idProducto, Negocio.nombre as idNegocio from Servicio inner join Producto on Servicio.idProducto=Producto.id inner join Negocio on Servicio.idNegocio=Negocio.id where Servicio.estado =1", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;

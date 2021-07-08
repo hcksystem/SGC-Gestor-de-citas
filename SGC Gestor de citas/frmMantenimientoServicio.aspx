@@ -104,7 +104,7 @@
 
                                 <div style="overflow: scroll">
 
-                                    <asp:GridView ID="gridServicios" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowSorting="false" ShowFooter="True" AllowPaging="True" PageSize="2" OnRowDeleting="gridServicios_RowDeleting"  OnRowDataBound="gridServicios_RowDataBound" OnPageIndexChanging="gridServicios_PageIndexChanging" OnSelectedIndexChanged="gridServicios_SelectedIndexChanged">
+                                    <asp:GridView ID="gridServicios" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowSorting="false" ShowFooter="True" AllowPaging="True" PageSize="2" OnRowDeleting="gridServicios_RowDeleting"  OnRowDataBound="gridServicios_RowDataBound" OnPageIndexChanging="gridServicios_PageIndexChanging" OnSelectedIndexChanged="gridServicios_SelectedIndexChanged" Width="1183">
                                         <Columns>
                                             <asp:TemplateField ShowHeader="true" HeaderText="Seleccionar">
                                                 <ItemTemplate>
@@ -143,7 +143,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Tiempo Estimado">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label5" runat="server" Text='<% # Bind("tiempoEstimado") %>'></asp:Label>
+                                                    <asp:Label ID="Label5"  runat="server" Text='<%# Bind("tiempoEstimado") %>'></asp:Label> 
                                                     <%--configurar algo para el datetime--%>
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
@@ -152,7 +152,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Foto">
                                                 <ItemTemplate>
-                                                    <img src='<%# Eval("fotoSugerida") %>' id="imageControl" runat="server" width="70" height="100" />
+                                                    <img src='<%# Eval("fotoSugerida") %>' id="imageControl" runat="server" width="100" height="100" />
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
                                                     <asp:FileUpload ID="FileUpload1" runat="server" />
@@ -168,7 +168,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Producto">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label8" runat="server" Text='<% # Bind("idProducto") %>'></asp:Label>
+                                                    <asp:Label ID="Label8" runat="server" Text='<% # Bind("idProducto") %>'  Width="125"></asp:Label>
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
                                                     <asp:DropDownList ID="dropProducto" runat="server"></asp:DropDownList>
@@ -176,7 +176,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Negocio">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label9" runat="server" Text='<% # Bind("idNegocio") %>'></asp:Label>
+                                                    <asp:Label ID="Label9" runat="server" Text='<% # Bind("idNegocio") %>'  Width="125"></asp:Label>
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
                                                     <asp:DropDownList ID="dropNegocio" runat="server"></asp:DropDownList>

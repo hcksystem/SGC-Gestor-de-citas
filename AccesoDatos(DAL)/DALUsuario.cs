@@ -19,24 +19,6 @@ namespace AccesoDatos_DAL_
 
         public void InsertarUsuario(string NombreUsuario, string Contrasenna, int idRoll, int estado)
         {
-            //SqlCommand cmd = new SqlCommand("insert into Usuario (nombreUsuario, Contrasenna, IdRoll, estado, idPersona) values (@nombreUsuario, @contrasenna, @idRoll, @estado, @idPersona)", Conexion);
-            //SqlParameter parametro;
-
-            //parametro = new SqlParameter("@nombreUsuario", NombreUsuario);
-            //cmd.Parameters.Add(parametro);
-            //parametro = new SqlParameter("@contrasenna", Contrasenna);
-            //cmd.Parameters.Add(parametro);
-            //parametro = new SqlParameter("@idRoll", idRoll);
-            //cmd.Parameters.Add(parametro);
-            //parametro = new SqlParameter("@estado", estado);
-            //cmd.Parameters.Add(parametro);
-            //parametro = new SqlParameter("@idPersona", idPersona);
-            //cmd.Parameters.Add(parametro);
-
-            //Conexion.Open();
-            //cmd.ExecuteNonQuery();
-            //Conexion.Close();
-        
         SqlCommand cmdPersona = new SqlCommand("insert into Persona (nombre, apellido, correo, telefono, identificacion) values (@nombre, @apellido, @correo, @telefono, @identificacion)", Conexion);
         //SqlParameter parametro;
         SqlParameter parametroPersona;
