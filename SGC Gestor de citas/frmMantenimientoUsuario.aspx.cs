@@ -21,12 +21,10 @@ namespace SGC_Gestor_de_citas
         {
             if (!IsPostBack)
             {
-                
                 CargarDatos();
-                
             }
 
-            CargarDatos();
+            
         }
 
         private void CargarDatos()
@@ -34,66 +32,60 @@ namespace SGC_Gestor_de_citas
             try
             {
                 BLLUsuario bllc = new BLLUsuario();
-                DataTable dt = bllc.ObtenerTodosLosUsuarios();
+
+                DataTable dt = bllc.ObtenerTodosLosUsuariosActivos();
 
                 gridUsuarios.DataSource = dt;
                 gridUsuarios.DataBind();
             }
             catch (Exception)
             {
-
                 throw;
             }
-
             LlenarCombos();
-
-
         }
 
         private void EditarDatos()//este metodo carga los espacios del formulario con los datos almacenados en la BD 
         {
-            //editar = false;//aca indica que el estado es falso, con esto el boton guardar, no generara un nuevo insert sino hara un update
-            //int id = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[2].Text);
-            //BLLUsuario bllc = new BLLUsuario();
-            //DataTable dt = bllc.ObtenerUsuarioPorID(id);
+            int id = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[2].Text);
+            BLLUsuario bllc = new BLLUsuario();
+            DataTable dt = bllc.ObtenerUsuarioPorID(id);
 
-            //txtNombreUsuario.Text = dt.Rows[0]["nombreUsuario"].ToString();           
-            //txtContrasenna.Text = dt.Rows[0]["contrasenna"].ToString();
-            //dropRolUsuario.SelectedValue = dt.Rows[0]["idRoll"].ToString();
-            //dropEstado.SelectedValue = dt.Rows[0]["estado"].ToString();
-            //Persona.Text = dt.Rows[0]["id"].ToString();
-            //txtNombre.Text = dt.Rows[0]["nombre"].ToString();
-            //txtApellido.Text = dt.Rows[0]["apellido"].ToString();
-            //txtCorreo.Text = dt.Rows[0]["correo"].ToString();
-            //txtTelefono.Text = dt.Rows[0]["telefono"].ToString();
-            //txtIdentificacion.Text = dt.Rows[0]["identificacion"].ToString();
-
-
+            txtNombreUsuario.Text = dt.Rows[0]["nombreUsuario"].ToString();
+            txtContrasenna.Text = dt.Rows[0]["contrasenna"].ToString();
+            dropRol.SelectedValue = dt.Rows[0]["idRoll"].ToString();
+            dropEstado.SelectedValue = dt.Rows[0]["estado"].ToString();
+            txtNombre.Text = dt.Rows[0]["nombre"].ToString();
+            txtApellido.Text = dt.Rows[0]["apellido"].ToString();
+            txtCorreo.Text = dt.Rows[0]["correo"].ToString();
+            txtTelefono.Text = dt.Rows[0]["telefono"].ToString();
+            txtIdentificacion.Text = dt.Rows[0]["identificacion"].ToString();
         }
         private void LlenarCombos()
         {
-            //dropEstado.DataSource = Enum.GetNames(typeof(estado));
-            //dropEstado.DataBind();
-
             Array enumList = Enum.GetValues(typeof(estado));
             // Array enumNombres = Enum.GetNames(typeof(estado));
             foreach (estado getestado in enumList)
             {
                 dropEstado.Items.Add(new ListItem(getestado.ToString(), ((int)getestado).ToString()));
             }
+
             BLLRol bllc = new BLLRol();
             DataTable dt = bllc.ObtenerTodosRoles();
             dropRol.DataSource = dt;
             dropRol.DataTextField = "descripcion";
             dropRol.DataValueField = "id";
             dropRol.DataBind();
-            dropRol.SelectedIndex = -1;
+
         }
         public void LimpiarDatos()
         {
             txtContrasenna.Text = "";
             txtCorreo.Text = "";
             txtTelefono.Text = "";
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtNombreUsuario.Text = "";
 
         }
 
@@ -101,48 +93,45 @@ namespace SGC_Gestor_de_citas
         {
             try
             {
-                if (editar)
-                {
-                    BLLPersona bllp = new BLLPersona();
-                    BLLUsuario bllu = new BLLUsuario();
-                    //bllp.InsertarPersona(txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
+                BLLPersona bllp = new BLLPersona();
+                BLLUsuario bllu = new BLLUsuario();
+                //bllp.InsertarPersona(txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
+                Persona p = new Persona();
+                Usuario u = new Usuario();
 
-                    bllu.InsertarUsuario(txtNombreUsuario.Text, txtContrasenna.Text, Convert.ToInt16(dropRol.SelectedValue), Convert.ToInt16(dropEstado.SelectedValue));
+                p.nombre = txtNombre.Text;
+                p.apellido = txtApellido.Text;
+                p.correo = txtCorreo.Text;
+                p.telefono = txtTelefono.Text;
+                p.identificacion = txtIdentificacion.Text;
 
-                    string mjs = "Usuario Registrado Correctamente";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),
-                        "alert",
-                        "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                u.NombreUsuario = txtNombreUsuario.Text;
+                u.Contrasenna = txtContrasenna.Text;
+                u.idRol = Convert.ToInt32(dropRol.SelectedValue);
+                u.estado = Convert.ToInt32(dropEstado.SelectedValue);
+                // u.idPersona = p.id;
+                bllu.InsertarUsuario(p, u);
 
-                    LimpiarDatos();
-                }
-                else
-                {
-                    BLLPersona bllp = new BLLPersona();
-                    BLLUsuario bllu = new BLLUsuario();
-                    int id = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[2].Text);
-
-                    bllp.ModificarPersona(id, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
-                    bllu.ModificarUsuario(id, txtNombreUsuario.Text, txtContrasenna.Text, Convert.ToInt16(dropRol.SelectedValue), Convert.ToInt16(dropEstado.SelectedValue), Convert.ToInt32(txtPersona.Text));
-                    string mjs = "Usuario modificado correctamente";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),
-                        "alert",
-                        "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
-                    LimpiarDatos();
-                }
-
-
+                string mjs = "Usuario registrado correctamente";
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+                    "alert",
+                    "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
             }
             catch (Exception)
             {
 
                 throw;
             }
+
+            LimpiarDatos();
+            CargarDatos();
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarDatos();
+            btnModificar.Visible = false;
+            btnGuardar.Visible = true;
         }
 
         protected void gridUsuarios_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -186,7 +175,7 @@ namespace SGC_Gestor_de_citas
 
                 CargarDatos();
             }
-         
+
         }
 
         protected void gridUsuarios_RowEditing(object sender, GridViewEditEventArgs e)
@@ -205,7 +194,7 @@ namespace SGC_Gestor_de_citas
             CargarDatos();
         }
 
-      
+
 
         protected void gridUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -226,9 +215,11 @@ namespace SGC_Gestor_de_citas
         {
             int usuario = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[2].Text);
             //Server.Transfer("frmMantenimientoUsuario.aspx"+usuario);
-            if(gridUsuarios.Columns.Count>0)
-            
-            EditarDatos();
+            if (gridUsuarios.Columns.Count > 0)
+
+                EditarDatos();
+            btnModificar.Visible = true;
+            btnGuardar.Visible = false;
         }
 
 
@@ -237,6 +228,60 @@ namespace SGC_Gestor_de_citas
             //esta linea indica o activa, la siguiente pagina del grid
             gridUsuarios.PageIndex = e.NewPageIndex;
             this.CargarDatos();
+          
+        }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BLLPersona bllp = new BLLPersona();
+                BLLUsuario bllu = new BLLUsuario();
+                int id = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[2].Text);
+                int idP = Convert.ToInt32(gridUsuarios.SelectedRow.Cells[7].Text);
+
+                bllp.ModificarPersona(idP, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
+                bllu.ModificarUsuario(id, txtNombreUsuario.Text, txtContrasenna.Text, Convert.ToInt16(dropRol.SelectedValue), Convert.ToInt16(dropEstado.SelectedValue), idP);
+                string mjs = "Usuario modificado correctamente";
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+                    "alert",
+                    "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            LimpiarDatos();
+            CargarDatos();
+            btnGuardar.Visible = true;
+            btnModificar.Visible = false;
+        }
+
+        protected void gridUsuarios_RowDeleting1(object sender, GridViewDeleteEventArgs e)
+        {
+            DialogResult boton = MessageBox.Show("Esta seguro?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //Recorre la linea y elimina el id
+
+            if (boton == DialogResult.Yes)
+            {
+                try
+                {
+                    int id = 0;
+                    foreach (DictionaryEntry keyEntry in e.Keys)
+                    {
+                        id = Convert.ToInt32(keyEntry.Value);
+                    }
+                    BLLUsuario bllc = new BLLUsuario();
+                    bllc.CambiarEstadoUsuario(id);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                CargarDatos();
+            }
         }
     }
 }

@@ -17,46 +17,77 @@ namespace AccesoDatos_DAL_
     {
         Usuario us = new Usuario();
 
-        public void InsertarUsuario(string NombreUsuario, string Contrasenna, int idRoll, int estado)
+        public void InsertarUsuario(Persona persona, Usuario usuario)
         {
-        SqlCommand cmdPersona = new SqlCommand("insert into Persona (nombre, apellido, correo, telefono, identificacion) values (@nombre, @apellido, @correo, @telefono, @identificacion)", Conexion);
+        SqlCommand cmdPersona = new SqlCommand("insert into Persona (nombre, apellido, correo, telefono, identificacion) values (@nombre, @apellido, @correo, @telefono, @identificacion); SELECT CAST (scope_identity() as int)", Conexion);
         //SqlParameter parametro;
         SqlParameter parametroPersona;
-        parametroPersona = new SqlParameter("@nombreUsuario",NombreUsuario );
+            parametroPersona = new SqlParameter("@nombre",persona.nombre );
+            cmdPersona.Parameters.Add(parametroPersona);
+
+            parametroPersona = new SqlParameter("@apellido", persona.apellido);
+            cmdPersona.Parameters.Add(parametroPersona);
+
+            parametroPersona = new SqlParameter("@correo", persona.correo);
+            cmdPersona.Parameters.Add(parametroPersona);
+
+            parametroPersona = new SqlParameter("@telefono", persona.telefono);
+            cmdPersona.Parameters.Add(parametroPersona);
+
+            parametroPersona = new SqlParameter("@identificacion", persona.identificacion);
+            cmdPersona.Parameters.Add(parametroPersona);
+
+            int personaInsertada;
 
         Conexion.Open();
-            cmdPersona.ExecuteNonQuery();
+            personaInsertada = (int)cmdPersona.ExecuteScalar();
             Conexion.Close();
 
-            DataTable dt = new DataTable();
-        SqlCommand cmdConsultaMax = new SqlCommand(cmdText: "SELECT max(id) as id FROM Persona", Conexion);
-        SqlDataAdapter da = new SqlDataAdapter(cmdConsultaMax);
-        da.Fill(dt);
-            int idPersona = int.Parse(dt.Rows[0]["id"].ToString());
-        SqlCommand cmd = new SqlCommand(cmdText: "INSERT INTO Usuario(nombreUsuario,contrasenna, idRoll, estado, idPersona)VALUES(@nombreUsuario, @contrasenna, @idRoll, @estado, @idPersona)", Conexion);
+     
+        SqlCommand cmd = new SqlCommand("INSERT INTO Usuario(nombreUsuario, contrasenna, idRoll, estado, idPersona)VALUES(@nombreUsuario, @contrasenna, @idRoll, @estado, @idPersona)", Conexion);
         SqlParameter parametro;
-        parametro =
-            parametro = new SqlParameter("@nombreUsuario", NombreUsuario);
+
+            parametro = new SqlParameter("@nombreUsuario", usuario.NombreUsuario);
         cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@contrasenna",Contrasenna );
+            parametro = new SqlParameter("@contrasenna",usuario.Contrasenna );
         cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@idRoll", idRoll);
+            parametro = new SqlParameter("@idRoll", usuario.idRol);
         cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@estado", estado);
+            parametro = new SqlParameter("@estado", usuario.estado);
         cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@idPersona", idPersona);
+            parametro = new SqlParameter("@idPersona", personaInsertada);
         cmd.Parameters.Add(parametro);
 
             Conexion.Open();
-            cmdPersona.ExecuteNonQuery();
-            //cmd.ExecuteScalar();
-            Conexion.Close();
+            cmd.ExecuteNonQuery();
+             Conexion.Close();
         }
 
         public DataTable ObtenerTodosUsuarios()//aca va un posible inner join para cambiar el id de roll y persona por los nombres
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT dbo.Usuario.id, dbo.Usuario.nombreUsuario, dbo.Usuario.contrasenna, dbo.Roll.descripcion AS idRoll, dbo.Usuario.estado, dbo.Persona.identificacion as idPersona FROM dbo.Usuario INNER JOIN dbo.Roll ON dbo.Usuario.idRoll = dbo.Roll.id INNER JOIN dbo.Persona ON dbo.Usuario.idPersona = dbo.Persona.id", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT u.id, u.nombreUsuario, u.contrasenna, r.descripcion AS idRoll, u.estado AS IdEstado, CASE WHEN u.estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS estado, p.id AS idPersona, p.nombre, p.apellido, p.correo, p.telefono, p.identificacion " +
+                "FROM Usuario AS u INNER JOIN Roll AS r ON u.idRoll = r.id INNER JOIN Persona AS p ON u.idPersona = p.id", Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+        public void CambiarEstadoUsuario(int id)
+        {
+            //aca se cambiaria el estado en casi de trabajar con enum
+            SqlCommand cmd = new SqlCommand("UPDATE Usuario SET estado = '2' where id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@id", id);
+            cmd.Parameters.Add(parametro);
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+        }
+        public DataTable ObtenerTodosLosUsuariosActivos()
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Usuario.id, dbo.Usuario.nombreUsuario, dbo.Usuario.contrasenna, dbo.Roll.descripcion AS idRoll, CASE WHEN Usuario.estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS estado, dbo.Usuario.idPersona, dbo.Persona.nombre, dbo.Persona.apellido, dbo.Persona.correo, dbo.Persona.telefono, dbo.Persona.identificacion FROM dbo.Usuario INNER JOIN dbo.Roll ON dbo.Usuario.idRoll = dbo.Roll.id INNER JOIN dbo.Persona ON dbo.Usuario.idPersona = dbo.Persona.id WHERE(dbo.Usuario.estado = 1)", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
@@ -87,7 +118,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerUsuarioPorId(int Identificacion)
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, nombreUsuario, contrasenna, idRoll, estado, idPersona FROM Usuario WHERE id = @id", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Usuario.id, dbo.Usuario.nombreUsuario, dbo.Usuario.contrasenna, dbo.Usuario.idRoll, dbo.Usuario.estado, dbo.Usuario.idPersona, dbo.Persona.nombre, dbo.Persona.apellido, dbo.Persona.correo, dbo.Persona.telefono, dbo.Persona.identificacion FROM dbo.Usuario INNER JOIN dbo.Roll ON dbo.Usuario.idRoll = dbo.Roll.id INNER JOIN dbo.Persona ON dbo.Usuario.idPersona = dbo.Persona.id WHERE dbo.Usuario.id = @id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", Identificacion);

@@ -90,7 +90,7 @@ namespace AccesoDatos_DAL_
         }
         public void Modificar(int id, string Nombre, string Apellido, string Correo, string Telefono, string Identificacion)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE Persona SET nombre=@nombre, apellido=@apellido, correo=@correo, telelfono=@telefono, identificacion=@identificacion WHERE id=@id", Conexion);
+            SqlCommand cmd = new SqlCommand("UPDATE Persona SET nombre=@nombre, apellido=@apellido, correo=@correo, telefono=@telefono, identificacion=@identificacion WHERE id=@id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", id);

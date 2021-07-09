@@ -35,12 +35,13 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteS"
                                         ControlToValidate="txtPrecio" ErrorMessage="El precio del servicio es necesario" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="el precio no puede ser negativo, no debe contener puntos o comas, solo se acepta un digito entrero" ControlToValidate="txtPrecio" ValidationGroup="ManteS" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-md-4 pl-1">
                                 <div class="form-group">
                                     <label>Tiempo estimado </label>
-                                    <asp:TextBox ID="txtTiempoEstimado" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                                    <asp:TextBox ID="txtTiempoEstimado" DataFormatString="{0:HH:mm}" TextMode="Time" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteS"
                                         ControlToValidate="txtTiempoEstimado" ErrorMessage="El tiempo es necesario" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>

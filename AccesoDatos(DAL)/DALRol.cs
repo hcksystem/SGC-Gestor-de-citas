@@ -13,7 +13,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosRoles()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, descripcion  FROM Roll", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT id, descripcion FROM Roll", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;

@@ -42,28 +42,32 @@
                 <div class="col-md-4 pl-1">
                     <div class="form-group">
                         <label>Correo electrónico</label>
-                        <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                        <asp:TextBox ID="txtCorreo" TextMode="Email" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtCorreo" ErrorMessage="El correo es necesario" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                            ErrorMessage="El correo no esta digitado correctamente" ControlToValidate="txtCorreo" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ValidationGroup="ManteN"></asp:RegularExpressionValidator>
                     </div>
                 </div>
                 <div class="col-md-3 pl-1">
                     <div class="form-group">
                         <label>Teléfono</label>
-                        <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                        <asp:TextBox ID="txtTelefono" TextMode="Phone" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtTelefono" ErrorMessage="El teléfono es necesario" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Digite un numero de telefono con el formato adecuado (ej:8888-8888)" ValidationGroup="ManteN" ValidationExpression="^[5-9]\d{3}-?\d{4}$" ControlToValidate="txtTelefono"></asp:RegularExpressionValidator>
                     </div>
                 </div>
                  <div class="col-md-3 pl-1">
                     <div class="form-group">
                         <label>Identificación</label>
-                        <asp:TextBox ID="txtIdentificacion" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                        <asp:TextBox ID="txtIdentificacion"  runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtIdentificacion" ErrorMessage="La identificacion es necesaria" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator runat="server" ErrorMessage="formato de identificacion incorrecto, ej: 202220222) " ValidationGroup="ManteN" ValidationExpression="^[1-9]-?\d{4}-?\d{4}$" ControlToValidate="txtIdentificacion"></asp:RegularExpressionValidator>
                     </div>
                 </div>   
                 <hr />
@@ -79,7 +83,7 @@
                 <div class="col-md-3 pl-1">
                     <div class="form-group">
                         <label>Contraseña</label>
-                        <asp:TextBox ID="txtContrasenna" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                        <asp:TextBox ID="txtContrasenna" TextMode="Password" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtContrasenna" ErrorMessage="La contraseña es necesari" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
@@ -88,7 +92,7 @@
                 <div class="col-md-6">
                       <div class="form-group">
                         <label>Rol del Usuario</label>
-                        <asp:DropDownList ID="dropRol" runat="server" CssClass="form-control"></asp:DropDownList>
+                        <asp:DropDownList ID="dropRol" runat="server" se CssClass="form-control"></asp:DropDownList>
                       </div>
                     </div>
                 <div class="col-md-6 ">
@@ -116,6 +120,7 @@
                     <div class="form-group">
                         <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar" ValidationGroup="ManteN" OnClick="btnGuardar_Click" />
                         <asp:Button ID="btnCancelar" class="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+                        <asp:Button ID="btnModificar" class="btn btn-primary btn-round" runat="server" Text="Modificar" Visible="false" OnClick="btnModificar_Click" />
                     </div>
                 </div>
               </div>
@@ -187,16 +192,21 @@
                 
             </asp:GridView>--%>
           
-              <asp:GridView ID="gridUsuarios" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" Width="1240px" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged" OnPageIndexChanging="gridUsuarios_PageIndexChanging">
+              <asp:GridView ID="gridUsuarios" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" Width="1240px" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged" OnPageIndexChanging="gridUsuarios_PageIndexChanging" OnRowDeleting="gridUsuarios_RowDeleting1">
               <Columns>
-                <asp:CommandField ShowSelectButton="True" SelectText="Editar" SelectImageUrl="~/assets/img/Seleccionar).png" />
-                <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" />
+                <asp:CommandField ShowSelectButton="True" HeaderText="Modificar" ShowHeader="true" SelectText="Editar" SelectImageUrl="~/assets/img/Seleccionar).png" ButtonType="Image" />
+                <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" HeaderText="Eliminar" ShowHeader="true" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />
                 <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
                 <asp:BoundField DataField="nombreUsuario" HeaderText="Nombre de usuario" />
                 <asp:BoundField DataField="contrasenna" HeaderText="Contraseña" Visible="False" />
                 <asp:BoundField DataField="idRoll" HeaderText="Rol" />
                 <asp:BoundField DataField="estado" HeaderText="Estado" />
-                <asp:BoundField DataField="idPersona" HeaderText="Persona" />
+                <asp:BoundField DataField="idPersona" HeaderText="ID Persona" />
+                  <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                  <asp:BoundField DataField="apellido" HeaderText="Apellido" />
+                  <asp:BoundField DataField="correo" HeaderText="Correo" />
+                  <asp:BoundField DataField="telefono" HeaderText="Telefono" />
+                  <asp:BoundField DataField="identificacion" HeaderText="identificacion" />
               </Columns>
               </asp:GridView>
                 

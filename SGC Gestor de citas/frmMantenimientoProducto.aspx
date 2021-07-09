@@ -57,7 +57,7 @@
             <div class="col-md-4 pl-1">
                 <div class="form-group">
                     <label>Precio Unitario</label>
-                    <asp:TextBox ID="txtPrecioProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                    <asp:TextBox ID="txtPrecioProducto" TextMode="Number" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtPrecioProducto" ErrorMessage="Digite el precio del producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>

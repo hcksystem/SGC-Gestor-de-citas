@@ -97,6 +97,7 @@ namespace SGC_Gestor_de_citas
 
                 //ese scripManager genera la alerta
                 string mjs = "Servicio registrado correctamente";
+                
                 ScriptManager.RegisterStartupScript(this, this.GetType(),
                     "alert",
                     "alert('" + mjs + "');window.location-'frmMantenimientoServicio.aspx';", true);

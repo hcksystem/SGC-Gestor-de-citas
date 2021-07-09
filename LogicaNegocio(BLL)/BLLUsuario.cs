@@ -1,4 +1,5 @@
 ﻿using AccesoDatos_DAL_;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,16 +11,26 @@ namespace LogicaDeNegocio_BLL_
 {
     public class BLLUsuario
     {
-        public void InsertarUsuario(string nombreUsuario, string Contrasenna, int idRoll, int Estado)
+        public void InsertarUsuario(Persona persona, Usuario usuario)
         {
             DALUsuario dalu = new DALUsuario();
-            dalu.InsertarUsuario(nombreUsuario, Contrasenna, idRoll, Estado);
+            dalu.InsertarUsuario(persona, usuario);
         }
 
         public DataTable ObtenerTodosLosUsuarios()
         {
             DALUsuario dalu = new DALUsuario();
             return dalu.ObtenerTodosUsuarios();
+        }
+        public DataTable ObtenerTodosLosUsuariosActivos()
+        {
+            DALUsuario dalu = new DALUsuario();
+            return dalu.ObtenerTodosLosUsuariosActivos();
+        }
+        public void CambiarEstadoUsuario(int id)
+        {
+            DALUsuario dalp = new DALUsuario();
+            dalp.CambiarEstadoUsuario(id);
         }
 
         public void EliminarUsuario(int Identificacion)
