@@ -85,27 +85,37 @@ namespace SGC_Gestor_de_citas
         {
             try
             {
-                
-                    //obtener datos de imagen//
-                    int tamanio = FileUpload1.PostedFile.ContentLength;
-                    byte[] imagenOriginal = new byte[tamanio];
-                    FileUpload1.PostedFile.InputStream.Read(imagenOriginal, 0, tamanio);
-                    Bitmap imagenOriginaBinaria = new Bitmap(FileUpload1.PostedFile.InputStream);
 
-                    //insertar en bd//
-                    string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(imagenOriginal);
+                //obtener datos de imagen//
+                int tamanio = FileUpload1.PostedFile.ContentLength;
+                byte[] imagenOriginal = new byte[tamanio];
+                FileUpload1.PostedFile.InputStream.Read(imagenOriginal, 0, tamanio);
+                Bitmap imagenOriginaBinaria = new Bitmap(FileUpload1.PostedFile.InputStream);
+
+                //insertar en bd//
+                string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(imagenOriginal);
 
 
-                    BLLNegocio blln = new BLLNegocio();
-                    blln.InsertarNegocio(txtNombreNegocio.Text, imagenOriginal, txtDescripcion.Text, txtMision.Text, txtVision.Text);
+                BLLNegocio blln = new BLLNegocio();
+                blln.InsertarNegocio(txtNombreNegocio.Text, imagenOriginal, txtDescripcion.Text, txtMision.Text, txtVision.Text);
 
-                    //ese scripManager genera la alerta
-                    string mjs = "Negocio registrado correctamente";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),
-                        "alert",
-                        "alert('" + mjs + "');window.location-'frmMantenimientoNegocio.aspx';", true);
-                    CargarDatos();
-                            }
+                //ese scripManager genera la alerta
+                //string mjs = "Negocio registrado correctamente";
+                //ScriptManager.RegisterStartupScript(this, this.GetType(),
+                //    "alert",
+                //    "alert('" + mjs + "');window.location-'frmMantenimientoNegocio.aspx';", true);
+                //CargarDatos();
+                //        }
+
+
+                ClientScript.RegisterStartupScript(
+                               this.GetType(),
+                               "Registro",
+                                "mensajeRedirect('Negocio',' Guardado con éxito','success','frmMantenimientoNegocio.aspx')",
+                               true
+                               );
+            }
+
 
             catch (Exception)
             {
@@ -172,32 +182,41 @@ namespace SGC_Gestor_de_citas
             CargarDatos();
         }
 
+
         protected void gridNegocio_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            DialogResult boton = MessageBox.Show("Esta seguro?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (boton == DialogResult.Yes)
+            try
             {
-                try
+                //Recorre la linea y elimina el id
+                int id = 0;
+                foreach (DictionaryEntry keyEntry in e.Keys)
                 {
-                    //Recorre la linea y elimina el id
-                    int id = 0;
-                    foreach (DictionaryEntry keyEntry in e.Keys)
-                    {
-                        id = Convert.ToInt32(keyEntry.Value);
-                    }
-
-                    BLLNegocio bllc = new BLLNegocio();
-                    bllc.EliminarNegocio(id);
-                    MessageBox.Show("Negocio eliminado con exito");
-                }
-                catch (Exception)
-                {
-
-                    throw;
+                    id = Convert.ToInt32(keyEntry.Value);
                 }
 
+                BLLNegocio bllc = new BLLNegocio();
+                bllc.EliminarNegocio(id);
+
+                ClientScript.RegisterStartupScript(
+                           this.GetType(),
+                           "alert",
+                            "mensajeRedirect('Negocio',' Guardado con éxito','success','frmMantenimientoNegocio.aspx')",
+                           true
+                           );
+
+                limpiarDatos();
                 CargarDatos();
+
+
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            CargarDatos();
+
         }
 
         protected void gridNegocio_RowEditing(object sender, GridViewEditEventArgs e)
@@ -263,12 +282,14 @@ namespace SGC_Gestor_de_citas
 
 
                 //ese scripManager genera la alerta
-                string mjs = "Negocio modificado correctamente";
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-                    "alert",
-                    "alert('" + mjs + "');window.location-'frmMantenimientoNegocio.aspx';", true);
+                ClientScript.RegisterStartupScript(
+                              this.GetType(),
+                              "Actualizacion",
+                               "mensajeRedirect('Negocio',' Actualizado con éxito','success','frmMantenimientoNegocio.aspx')",
+                              true
+                              );
                 CargarDatos();
-            
+
             }
             catch (Exception)
             {

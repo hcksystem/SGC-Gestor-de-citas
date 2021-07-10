@@ -5,6 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
     <link href="assets/css/acordeon.css" rel="stylesheet" />
+
+        <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/mensaje.js"></script>
+    <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
+
     <!DOCTYPE html>
     <html>
     <div class="panel-header-sm">
@@ -35,7 +40,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteS"
                                         ControlToValidate="txtPrecio" ErrorMessage="El precio del servicio es necesario" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="el precio no puede ser negativo, no debe contener puntos o comas, solo se acepta un digito entrero" ControlToValidate="txtPrecio" ValidationGroup="ManteS" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="El precio no puede ser negativo, no debe contener puntos o comas, solo se acepta un dígito entero" ControlToValidate="txtPrecio" ValidationGroup="ManteS" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-md-4 pl-1">
@@ -52,7 +57,7 @@
                                     <label>Descripcion</label>
                                     <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteS"
-                                        ControlToValidate="txtDescripcion" ErrorMessage="La descripcion es necesaria" Display="Dynamic"
+                                        ControlToValidate="txtDescripcion" ErrorMessage="La descripción es necesaria" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
@@ -100,7 +105,7 @@
                         <div class="col-12 tab">
                             <input id="tab-1" type="checkbox" style="display: none">
                             <hr />
-                            <label for="tab-1">Mostrar Lista</label>
+                            <label for="tab-1">Mostrar lista</label>
                             <div class="tab-content">
 
                                 <div style="overflow: scroll">
@@ -134,7 +139,7 @@
                                                     <asp:TextBox ID="txtDescripcionServicio" runat="server" Text='<% # Bind("descripcion") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Precio Estimado">
+                                            <asp:TemplateField HeaderText="Precio estimado">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label4" runat="server" Text='<% # Bind("precioEstimado") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -142,7 +147,7 @@
                                                     <asp:TextBox ID="txtPrecioEstimado" TextMode="Number" runat="server" Text='<% # Bind("precioEstimado") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Tiempo Estimado">
+                                            <asp:TemplateField HeaderText="Tiempo estimado">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5"  runat="server" Text='<%# Bind("tiempoEstimado") %>'></asp:Label> 
                                                     <%--configurar algo para el datetime--%>

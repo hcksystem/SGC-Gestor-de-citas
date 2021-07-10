@@ -96,11 +96,14 @@ namespace SGC_Gestor_de_citas
                 blls.InsertarServicio(txtNombre.Text, txtDescripcion.Text, Convert.ToDouble(txtPrecio.Text), Convert.ToDateTime(txtTiempoEstimado.Text), imagenOriginal, Convert.ToInt16(dropEstado.SelectedValue), Convert.ToInt16(dropProducto.SelectedValue), Convert.ToInt16(dropNegocio.SelectedValue));
 
                 //ese scripManager genera la alerta
-                string mjs = "Servicio registrado correctamente";
-                
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-                    "alert",
-                    "alert('" + mjs + "');window.location-'frmMantenimientoServicio.aspx';", true);
+                //string mjs = "Servicio registrado correctamente";
+
+                ClientScript.RegisterStartupScript(
+                             this.GetType(),
+                             "Registro",
+                              "mensajeRedirect('Servicio',' Guardado con éxito','success','frmMantenimientoServicio.aspx')",
+                             true
+                             );
 
                 limpiarDatos();
                 CargarDatos();
@@ -246,11 +249,12 @@ namespace SGC_Gestor_de_citas
                     int id = Convert.ToInt32(gridServicios.SelectedRow.Cells[2].Text);
                     blls.ModificarServicio(id, txtNombre.Text, txtDescripcion.Text, Convert.ToDouble(txtPrecio.Text), Convert.ToDateTime(txtTiempoEstimado.Text), imagenOriginal, Convert.ToInt16(dropEstado.SelectedValue), Convert.ToInt16(dropProducto.SelectedValue), Convert.ToInt16(dropNegocio.SelectedValue));
 
-                    //ese scripManager genera la alerta
-                    string mjs = "Servicio modificamente correctamente";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),
-                        "alert",
-                        "alert('" + mjs + "');window.location-'frmMantenimientoServicio.aspx';", true);
+                    ClientScript.RegisterStartupScript(
+                              this.GetType(),
+                              "Actualizacion",
+                               "mensajeRedirect('Servicio',' Modificado con éxito','success','frmMantenimientoServicio.aspx')",
+                              true
+                              );
 
                 }
                 else
@@ -259,11 +263,12 @@ namespace SGC_Gestor_de_citas
                     int id = Convert.ToInt32(gridServicios.SelectedRow.Cells[2].Text);
                     blls.ModificarServicioSinFoto(id, txtNombre.Text, txtDescripcion.Text, Convert.ToDouble(txtPrecio.Text), Convert.ToDateTime(txtTiempoEstimado.Text), Convert.ToInt16(dropEstado.SelectedValue), Convert.ToInt16(dropProducto.SelectedValue), Convert.ToInt16(dropNegocio.SelectedValue));
 
-                    //ese scripManager genera la alerta
-                    string mjs = "Servicio modificamente correctamente";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),
-                        "alert",
-                        "alert('" + mjs + "');window.location-'frmMantenimientoServicio.aspx';", true);
+                    ClientScript.RegisterStartupScript(
+                             this.GetType(),
+                             "Actualizacion",
+                              "mensajeRedirect('Servicio',' Modificado con éxito','success','frmMantenimientoServicio.aspx')",
+                             true
+                             );
 
                 }
             }

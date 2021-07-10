@@ -68,7 +68,7 @@
                                 TargetControlID="txtContrasennaRegistro" PrefixText="Complejidad" TextStrengthDescriptions="Baja;Media;Alta"/>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
                                 ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$"
-                                ErrorMessage="La contraseña debe tener entre 8 y 15 caracteres, al menos un digito, una mayuscula, una minuscula y no puede tener caracteres especiales"
+                                ErrorMessage="La contraseña debe tener entre 8 y 15 caracteres, al menos un número, una mayúscula, una minúscula y no puede tener caracteres especiales"
                                 ControlToValidate="txtContrasennaRegistro" Display="Dynamic" ForeColor="Red"
                                 ValidationGroup="ManteR"></asp:RegularExpressionValidator>
                             <ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender1" runat="server"

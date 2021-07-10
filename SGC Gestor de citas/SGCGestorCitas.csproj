@@ -45,6 +45,9 @@
     <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -99,6 +102,7 @@
     <Content Include="assets\css\login.css" />
     <Content Include="assets\css\now-ui-dashboard.css" />
     <Content Include="assets\css\now-ui-dashboard.min.css" />
+    <Content Include="assets\css\sweetalert2.min.css" />
     <Content Include="assets\demo\demo.css" />
     <Content Include="assets\demo\demo.js" />
     <Content Include="assets\demo\docs.min.css" />
@@ -124,6 +128,7 @@
     <Content Include="assets\js\core\jquery.min.js" />
     <Content Include="assets\js\core\popper.min.js" />
     <Content Include="assets\js\datetimepicker.js" />
+    <Content Include="assets\js\mensaje.js" />
     <Content Include="assets\js\now-ui-dashboard.js" />
     <Content Include="assets\js\now-ui-dashboard.min.js" />
     <Content Include="assets\js\plugins\bootstrap-notify.js" />
@@ -131,6 +136,9 @@
     <Content Include="assets\js\plugins\chartjs.min.js" />
     <Content Include="assets\js\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="assets\js\plugins\sweetalert2.min.js" />
+    <Content Include="assets\js\sweetalert2.all.min.js" />
+    <Content Include="assets\js\sweetalert2.js" />
+    <Content Include="assets\js\sweetalert2.min.js" />
     <Content Include="AyudaNegocio.aspx" />
     <Content Include="AyudaProducto.aspx" />
     <Content Include="AyudaServicio.aspx" />

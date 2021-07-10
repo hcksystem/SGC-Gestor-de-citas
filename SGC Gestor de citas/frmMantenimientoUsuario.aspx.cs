@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using EnvDTE;
 using LogicaDeNegocio_BLL_;
 using LogicaNegocio_BLL_;
 using System;
@@ -112,10 +113,12 @@ namespace SGC_Gestor_de_citas
                 // u.idPersona = p.id;
                 bllu.InsertarUsuario(p, u);
 
-                string mjs = "Usuario registrado correctamente";
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-                    "alert",
-                    "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                ClientScript.RegisterStartupScript(
+                             this.GetType(),
+                             "Registro",
+                              "mensajeRedirect('Usuario',' Guardado con éxito','success','frmMantenimientoUsuario.aspx')",
+                             true
+                             );
             }
             catch (Exception)
             {
@@ -242,10 +245,12 @@ namespace SGC_Gestor_de_citas
 
                 bllp.ModificarPersona(idP, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
                 bllu.ModificarUsuario(id, txtNombreUsuario.Text, txtContrasenna.Text, Convert.ToInt16(dropRol.SelectedValue), Convert.ToInt16(dropEstado.SelectedValue), idP);
-                string mjs = "Usuario modificado correctamente";
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-                    "alert",
-                    "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                ClientScript.RegisterStartupScript(
+                             this.GetType(),
+                             "Actualizacion",
+                              "mensajeRedirect('Usuario',' Modificado con éxito','success','frmMantenimientoUsuario.aspx')",
+                             true
+                             );
 
             }
             catch (Exception)
@@ -283,5 +288,7 @@ namespace SGC_Gestor_de_citas
                 CargarDatos();
             }
         }
+
+       
     }
 }

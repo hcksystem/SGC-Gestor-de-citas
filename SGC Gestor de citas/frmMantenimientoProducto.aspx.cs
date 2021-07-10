@@ -137,10 +137,12 @@ namespace SGC_Gestor_de_citas
                 BLLProducto bllp = new BLLProducto();
                 bllp.InsertarProducto(txtNombreProducto.Text, Convert.ToInt32(dropCategoria.SelectedValue), txtDescripcionProducto.Text, txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), Convert.ToInt32(dropEstado.SelectedValue));
 
-                string mjs = "Producto registrado correctamente";
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-                    "alert",
-                    "alert('" + mjs + "');window.location-'fmrMantenimientoProducto.aspx';", true);
+                ClientScript.RegisterStartupScript(
+                             this.GetType(),
+                             "Registro",
+                              "mensajeRedirect('Producto',' Guardado con éxito','success','frmMantenimientoProducto.aspx')",
+                             true
+                             );
 
             }
             catch (Exception)
@@ -185,10 +187,12 @@ namespace SGC_Gestor_de_citas
                 BLLProducto bllu = new BLLProducto();
                 int id = Convert.ToInt32(gridProductos.SelectedRow.Cells[2].Text);
                 bllu.ModificarProducto(id, txtNombreProducto.Text, Convert.ToInt32(dropCategoria.SelectedValue), txtDescripcionProducto.Text, txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), Convert.ToInt32(dropEstado.SelectedValue));
-                string mjs = "Producto modificado correctamente";
-                ScriptManager.RegisterStartupScript(this, this.GetType(),
-                    "alert",
-                    "alert('" + mjs + "');window.location-'fmrMantenimientoUsuario.aspx';", true);
+                ClientScript.RegisterStartupScript(
+                            this.GetType(),
+                            "Actualizacion",
+                             "mensajeRedirect('Producto',' Actualizado con éxito','success','frmMantenimientoProducto.aspx')",
+                            true
+                            );
                 limpiarDatos();
                 CargarDatos();
             }

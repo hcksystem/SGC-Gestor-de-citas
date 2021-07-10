@@ -6,6 +6,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
     <link href="assets/css/acordeon.css" rel="stylesheet" />
+
+    <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/mensaje.js"></script>
+    <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
+
+
+
     <!DOCTYPE html>
     <html>
     
@@ -34,28 +41,28 @@
                 </div>
                 <div class="col-md-6 pl-1">
                     <div class="form-group">
-                        <label>Descripcion</label>
+                        <label>Descripción</label>
                         <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteN"
-                            ControlToValidate="txtDescripcion" ErrorMessage="La descripcion es necesaria" Display="Dynamic"
+                            ControlToValidate="txtDescripcion" ErrorMessage="La descripción es necesaria" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="col-md-6 pl-1">
                     <div class="form-group">
-                        <label>Nuestra Mision</label>
+                        <label>Nuestra Misión</label>
                         <asp:TextBox ID="txtMision" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteN"
-                            ControlToValidate="txtMision" ErrorMessage="La vision es necesaria" Display="Dynamic"
+                            ControlToValidate="txtMision" ErrorMessage="La misión es necesaria" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="col-md-6 pl-1">
                     <div class="form-group">
-                        <label>Nuestra Vision</label>
+                        <label>Nuestra Visión</label>
                         <asp:TextBox ID="txtVision" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="ManteN"
-                            ControlToValidate="txtVision" ErrorMessage="La vision es necesaria" Display="Dynamic"
+                            ControlToValidate="txtVision" ErrorMessage="La visión es necesaria" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
@@ -96,10 +103,10 @@
                 <div class="col-12 tab">
                 <input id="tab-1" type="checkbox" style="display:none">
                 <hr />
-                <label for="tab-1">Mostrar Lista</label>
+                <label for="tab-1">Mostrar lista</label>
                 <div class="tab-content">
                 <div style="overflow: scroll">
-                <asp:GridView CssClass="mGrid GridView" ID="gridNegocio" OnRowDataBound ="gridNegocio_RowDataBound" PagerStyle-CssClass="pgr" PageSize="2" runat="server"  AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridNegocio_RowCancelingEdit" OnRowDeleting="gridNegocio_RowDeleting" OnRowEditing="gridNegocio_RowEditing" OnRowUpdating="gridNegocio_RowUpdating" OnPageIndexChanging="gridNegocio_PageIndexChanging" OnSelectedIndexChanged="gridNegocio_SelectedIndexChanged">
+                <asp:GridView CssClass="mGrid GridView" ID="gridNegocio" Width="1220" OnRowDataBound ="gridNegocio_RowDataBound" PagerStyle-CssClass="pgr" PageSize="2" runat="server"  AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridNegocio_RowCancelingEdit" OnRowDeleting="gridNegocio_RowDeleting" OnRowEditing="gridNegocio_RowEditing" OnRowUpdating="gridNegocio_RowUpdating" OnPageIndexChanging="gridNegocio_PageIndexChanging" OnSelectedIndexChanged="gridNegocio_SelectedIndexChanged">
                 <Columns>
                     <asp:TemplateField ShowHeader="true" HeaderText="Seleccionar">
                         <ItemTemplate>
@@ -108,7 +115,8 @@
                     </asp:TemplateField>
                     <asp:TemplateField ShowHeader="true" HeaderText="Eliminar">
                         <ItemTemplate>
-                            <asp:imageButton ID="ImageButton1" runat="server"  CommandName="Delete" ImageUrl="~/assets/img/basurero.jpg" Text="Eliminar" />
+                            <%--<asp:HiddenField ID="hdID" Value='<%# Eval("id") %>' runat="server" />--%>
+                            <asp:imageButton ID="btnSweetAlert" runat="server"  CommandName="Delete" ImageUrl="~/assets/img/basurero.jpg" Text="Eliminar"/>
                         </ItemTemplate>
                     </asp:TemplateField> 
                     
@@ -130,7 +138,7 @@
                        <asp:FileUpload ID="FileUpload1" runat="server" />
                     </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Descripcion">
+                    <asp:TemplateField HeaderText="Descripción">
                         <ItemTemplate>
                             <asp:Label ID="Label4" runat="server" Text='<% # Bind("descripcion") %>' Width="170"></asp:Label>
                         </ItemTemplate>
@@ -138,7 +146,7 @@
                             <asp:TextBox ID="txtDescripcion" runat="server" Text='<% # Bind("descripcion") %>' Width="170"></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Mision">
+                    <asp:TemplateField HeaderText="Misión">
                         <ItemTemplate>
                             <asp:Label ID="Label5" runat="server" Text='<% # Bind("mision") %>' Width="170"></asp:Label>
                       </ItemTemplate>
@@ -146,7 +154,7 @@
                             <asp:TextBox ID="txtMision" runat="server" Text='<% # Bind("mision") %>' Width="170"></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Vision">
+                    <asp:TemplateField HeaderText="Visión">
                         <ItemTemplate>
                             <asp:Label ID="Label6" runat="server" Text='<% # Bind("vision") %>' Width="170"></asp:Label>
                         </ItemTemplate>

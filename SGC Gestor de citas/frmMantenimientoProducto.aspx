@@ -8,6 +8,11 @@
     
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
     <link href="assets/css/acordeon.css" rel="stylesheet" />
+
+     <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/mensaje.js"></script>
+    <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
+
 <div class="panel-header-sm">
 </div>
 <div class="content">
@@ -24,7 +29,7 @@
             <div class="col-md-4 pl-1">
                 <div class="form-group">
                     <label>Nombre del Producto</label>
-                    <asp:TextBox ID="txtNombreProducto" runat="server" CssClass="form-control" placeHolder="* Dato requerido *"></asp:TextBox>
+                    <asp:TextBox ID="txtNombreProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtNombreProducto" ErrorMessage=" *Es necesario indicar un nombre" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -38,7 +43,7 @@
             </div>
             <div class="col-md-4 pl-1">
                 <div class="form-group">
-                    <label>Descripcion</label>
+                    <label>Descripción</label>
                     <asp:TextBox ID="txtDescripcionProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtDescripcionProducto" ErrorMessage=" *Digite una descripción del producto" Display="Dynamic"
@@ -47,20 +52,22 @@
              </div>
             <div class="col-md-6 pl-1">
                 <div class="form-group">
-                    <label>Proposito del Producto</label>
+                    <label>Propósito del producto</label>
                     <asp:TextBox ID="txtPropositoProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="ManteP"
-                        ControlToValidate="txtPropositoProducto" ErrorMessage="Digite un proposito para el producto" Display="Dynamic"
+                        ControlToValidate="txtPropositoProducto" ErrorMessage="Digite un propósito para el producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
             </div>       
             <div class="col-md-4 pl-1">
                 <div class="form-group">
-                    <label>Precio Unitario</label>
-                    <asp:TextBox ID="txtPrecioProducto" TextMode="Number" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                    <label>Precio unitario</label>
+                    <asp:TextBox ID="txtPrecioProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtPrecioProducto" ErrorMessage="Digite el precio del producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
+                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="El precio no puede ser negativo, no debe contener puntos o comas, solo se acepta un dígito entero" ControlToValidate="txtPrecioProducto" ValidationGroup="ManteP" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
+
                 </div>
             </div>        
             <div class="col-md-4 pl-1">
@@ -85,7 +92,7 @@
                  <div class="col-12 tab">
                     <input id="tab-1" type="checkbox" style="display:none">
                      <hr />
-                    <label for="tab-1">Mostrar Lista</label>
+                    <label for="tab-1">Mostrar lista</label>
                     <div class="tab-content">
                    <div style="overflow: scroll">
 
@@ -168,9 +175,9 @@
                 <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" ShowHeader="true" HeaderText="Eliminar" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />
                 <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
                 <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                <asp:BoundField DataField="idcategoria" HeaderText="Categoria" />
-                <asp:BoundField DataField="descripcion" HeaderText="Descripcion"  />
-                <asp:BoundField DataField="proposito" HeaderText="Proposito" />
+                <asp:BoundField DataField="idcategoria" HeaderText="Categoría" />
+                <asp:BoundField DataField="descripcion" HeaderText="Descripción"  />
+                <asp:BoundField DataField="proposito" HeaderText="Propósito" />
                 <asp:BoundField DataField="precio" HeaderText="Precio" />
                 <asp:BoundField DataField="estado" HeaderText="Estado" />
             </Columns>

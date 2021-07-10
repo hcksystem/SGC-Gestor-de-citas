@@ -62,6 +62,18 @@ namespace AccesoDatos_DAL_
             da.Fill(dt);
             return dt;
         }
+        public void CambiarEstadonegocio(int id)
+        {
+            //verificar que en el enum el numero dos si corresponda apagado o eliminar
+            SqlCommand cmd = new SqlCommand("UPDATE Negocio SET estado = '2' where id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@id", id);
+            cmd.Parameters.Add(parametro);
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+        }
 
         public void EliminarNegocio(int Identificacion)
         {

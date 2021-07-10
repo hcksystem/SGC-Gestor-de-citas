@@ -5,6 +5,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
     <link href="assets/css/acordeon.css" rel="stylesheet" />
+
+
+        <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/mensaje.js"></script>
+    <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
+
+
+
     <!DOCTYPE html>
     <html>    
     <div class="panel-header-sm">
@@ -44,10 +52,10 @@
                         <label>Correo electrónico</label>
                         <asp:TextBox ID="txtCorreo" TextMode="Email" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteN"
-                            ControlToValidate="txtCorreo" ErrorMessage="El correo es necesario" Display="Dynamic"
+                            ControlToValidate="txtCorreo" ErrorMessage="El correo electrónico es necesario" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
-                            ErrorMessage="El correo no esta digitado correctamente" ControlToValidate="txtCorreo" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ValidationGroup="ManteN"></asp:RegularExpressionValidator>
+                            ErrorMessage="El correo electrónico no esta digitado correctamente" ControlToValidate="txtCorreo" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ValidationGroup="ManteN"></asp:RegularExpressionValidator>
                     </div>
                 </div>
                 <div class="col-md-3 pl-1">
@@ -57,7 +65,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtTelefono" ErrorMessage="El teléfono es necesario" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Digite un numero de telefono con el formato adecuado (ej:8888-8888)" ValidationGroup="ManteN" ValidationExpression="^[5-9]\d{3}-?\d{4}$" ControlToValidate="txtTelefono"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Digite un número de teléfono con el formato adecuado (ej:8888-8888)" ValidationGroup="ManteN" ValidationExpression="^[5-9]\d{3}-?\d{4}$" ControlToValidate="txtTelefono"></asp:RegularExpressionValidator>
                     </div>
                 </div>
                  <div class="col-md-3 pl-1">
@@ -65,9 +73,9 @@
                         <label>Identificación</label>
                         <asp:TextBox ID="txtIdentificacion"  runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="ManteN"
-                            ControlToValidate="txtIdentificacion" ErrorMessage="La identificacion es necesaria" Display="Dynamic"
+                            ControlToValidate="txtIdentificacion" ErrorMessage="La identificación es necesaria" Display="Dynamic"
                             ForeColor="Red"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator runat="server" ErrorMessage="formato de identificacion incorrecto, ej: 202220222) " ValidationGroup="ManteN" ValidationExpression="^[1-9]-?\d{4}-?\d{4}$" ControlToValidate="txtIdentificacion"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator runat="server" ErrorMessage="Formato de identificación incorrecto, ej: 202220222) " ValidationGroup="ManteN" ValidationExpression="^[1-9]-?\d{4}-?\d{4}$" ControlToValidate="txtIdentificacion"></asp:RegularExpressionValidator>
                     </div>
                 </div>   
                 <hr />
@@ -85,14 +93,20 @@
                         <label>Contraseña</label>
                         <asp:TextBox ID="txtContrasenna" TextMode="Password" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="ManteN"
-                            ControlToValidate="txtContrasenna" ErrorMessage="La contraseña es necesari" Display="Dynamic"
-                            ForeColor="Red"></asp:RequiredFieldValidator>
+                            ControlToValidate="txtContrasenna" ErrorMessage="La contraseña es necesaria" Display="Dynamic"
+                            SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                         <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
+                                ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$"
+                                ErrorMessage="La contraseña debe tener entre 8 y 15 caracteres, al menos un número, una mayúscula, una minúscula y no puede tener caracteres especiales"
+                                ControlToValidate="txtContrasenna" Display="Dynamic" ForeColor="Red"
+                                ValidationGroup="ManteN"></asp:RegularExpressionValidator>
+                      
                     </div>
                 </div>
                 <div class="col-md-6">
                       <div class="form-group">
-                        <label>Rol del Usuario</label>
-                        <asp:DropDownList ID="dropRol" runat="server" se CssClass="form-control"></asp:DropDownList>
+                        <label>Rol del usuario</label>
+                        <asp:DropDownList ID="dropRol" runat="server" CssClass="form-control"></asp:DropDownList>
                       </div>
                     </div>
                 <div class="col-md-6 ">
@@ -111,8 +125,10 @@
                     <div class="form-group">
                     </div>
                 </div>--%>
+              
                 <div class="col-md-4 pl-1">
                     <div class="form-group">
+                       
                     </div>
                 </div>
 
@@ -127,71 +143,10 @@
                 <div class="col-12 tab">
                 <input id="tab-1" type="checkbox" style="display:none">
                 <hr />
-                <label for="tab-1">Mostrar Lista</label>
+                <label for="tab-1">Mostrar lista</label>
                 <div class="tab-content">
                 <div style="overflow: scroll">
-               <%-- <asp:GridView CssClass="mGrid GridView" PagerStyle-CssClass="pgr" ID="gridUsuarios" runat="server" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridUsuarios_RowCancelingEdit" OnRowDeleting="gridUsuarios_RowDeleting" OnRowEditing="gridUsuarios_RowEditing" OnRowUpdating="gridUsuarios_RowUpdating" OnRowDataBound="gridUsuarios_RowDataBound" Width="1240px">
-                <Columns>
-                    <asp:TemplateField ShowHeader="False">
-                        <EditItemTemplate>
-                            <asp:Button ID="btnUpdate" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" />
-                            &nbsp;<asp:Button ID="btnCancelar" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Button ID="btnUpdate" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField ShowHeader="False">
-                        <ItemTemplate>
-                            <asp:Button ID="btnDelete" runat="server" CausesValidation="False" CommandName="Delete" Text="Eliminar" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ID">
-                        <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text='<% # Bind("id") %>'></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtID" runat="server" Text='<% # Bind("id") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="CORREO">
-                        <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<% # Bind("correoUsuario") %>'></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtCorreo" runat="server" Text='<% # Bind("correoUsuario") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="TELEFONO">
-                        <ItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<% # Bind("telefono") %>'></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtTelefono" runat="server" Text='<% # Bind("telefono") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="CONTRASEÑA">
-                        <ItemTemplate>
-                            <asp:Label ID="Label4" runat="server" Text='<% # Bind("contrasenna") %>'></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtContrasenna" runat="server" Text='<% # Bind("contrasenna") %>'></asp:TextBox>
-                        </EditItemTemplate>
-                                </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ROL">
-                        <ItemTemplate>
-                            <asp:Label ID="Label5" runat="server" Text='<% # Bind("idRoll") %>'></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:DropDownList ID="dropRol" runat="server"></asp:DropDownList>
-                        </EditItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-                
-<PagerStyle CssClass="pgr"></PagerStyle>
-                
-            </asp:GridView>--%>
-          
+              
               <asp:GridView ID="gridUsuarios" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" Width="1240px" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged" OnPageIndexChanging="gridUsuarios_PageIndexChanging" OnRowDeleting="gridUsuarios_RowDeleting1">
               <Columns>
                 <asp:CommandField ShowSelectButton="True" HeaderText="Modificar" ShowHeader="true" SelectText="Editar" SelectImageUrl="~/assets/img/Seleccionar).png" ButtonType="Image" />
@@ -205,8 +160,8 @@
                   <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                   <asp:BoundField DataField="apellido" HeaderText="Apellido" />
                   <asp:BoundField DataField="correo" HeaderText="Correo" />
-                  <asp:BoundField DataField="telefono" HeaderText="Telefono" />
-                  <asp:BoundField DataField="identificacion" HeaderText="identificacion" />
+                  <asp:BoundField DataField="telefono" HeaderText="Teléfono" />
+                  <asp:BoundField DataField="identificacion" HeaderText="Identificación" />
               </Columns>
               </asp:GridView>
                 
@@ -217,5 +172,7 @@
             </div>
           </div>
        </div>
+
+
   </html>
 </asp:Content>
