@@ -544,7 +544,6 @@ body, .modal {
     border-top: 4px solid\9;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
-
 }
 
 .animation-transition-general, .card-collapse .card .card-header a[data-toggle=collapse] i, .nav-pills .nav-link, .nav-tabs .nav-link, .navbar, .navbar-collapse .navbar-nav .nav-link, .off-canvas-sidebar .logo a.logo-mini, .off-canvas-sidebar .logo a.logo-normal, .off-canvas-sidebar .navbar-minimize, .off-canvas-sidebar .nav p, .off-canvas-sidebar .sidebar-wrapper .user .info [data-toggle=collapse] ~ div > ul > li > a span, .off-canvas-sidebar .sidebar-wrapper > .nav [data-toggle=collapse] ~ div > ul > li > a span, .off-canvas-sidebar .user .info > a > span, .off-canvas-sidebar .user .photo, .off-canvas-sidebar .user a, .sidebar .logo a.logo-mini, .sidebar .logo a.logo-normal, .sidebar .nav a, .sidebar .nav a i, .sidebar .navbar-minimize, .sidebar .nav p, .sidebar .sidebar-wrapper .user .info [data-toggle=collapse] ~ div > ul > li > a span, .sidebar .sidebar-wrapper > .nav [data-toggle=collapse] ~ div > ul > li > a span, .sidebar .user .info > a > span, .sidebar .user .photo, .sidebar .user a, .tag, .tag [data-role=remove] {
@@ -4266,7 +4265,6 @@ Created using IcoMoon - icomoon.io
 @media (min-width: 991px) {
     .sidebar {
         display: block;
-        
     }
 }
 
@@ -4677,6 +4675,7 @@ Created using IcoMoon - icomoon.io
     .fixed-plugin .bootstrap-switch {
         margin: 0;
     }
+
 .badge {
     border-radius: 8px;
     padding: 4px 8px;
@@ -4692,9 +4691,9 @@ Created using IcoMoon - icomoon.io
 
 
 
-.badge, .badge:focus, .badge:hover {
-    text-decoration: none
-}
+    .badge, .badge:focus, .badge:hover {
+        text-decoration: none
+    }
 
 
 

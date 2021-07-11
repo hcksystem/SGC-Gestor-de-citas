@@ -94,8 +94,6 @@
   <ItemGroup>
     <Content Include="assets\css\acordeon.css" />
     <Content Include="assets\css\bootstrap.min.css" />
-    <Content Include="assets\css\calendar.css" />
-    <Content Include="assets\css\datetimepicker.css" />
     <Content Include="assets\css\estilogrid.css" />
     <Content Include="assets\css\estiloLista.css" />
     <Content Include="assets\css\imagenesfiltradas.css" />

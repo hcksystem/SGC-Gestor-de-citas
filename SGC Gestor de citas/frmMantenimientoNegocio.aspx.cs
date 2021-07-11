@@ -58,6 +58,21 @@ namespace SGC_Gestor_de_citas
                     imageControl.Src = "data:image/png;base64," + Convert.ToBase64String((byte[])(((DataRowView)e.Row.DataItem))["logo"]);
                 }
             }
+
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string item = e.Row.Cells[2].Text;
+                foreach (ImageButton button in e.Row.Cells[1].Controls.OfType<ImageButton>())
+                {
+                    if (button.CommandName == "Delete")
+                    {
+                        button.Attributes["onclick"] = "if(!confirm('Está seguro que desea eliminar este registro? " + item + "?')){ return false; };";
+                    }
+                }
+            }
+
+
         }
 
         private void EditarDatos()//este metodo carga los espacios del formulario con los datos almacenados en la BD 
@@ -129,7 +144,7 @@ namespace SGC_Gestor_de_citas
         {
             limpiarDatos();
             btnGuardar.Visible = true;
-            btnModificar.Visible = false;
+            //btnModificar.Visible = false;
         }
 
 
@@ -188,35 +203,26 @@ namespace SGC_Gestor_de_citas
             try
             {
                 //Recorre la linea y elimina el id
-                int id = 0;
-                foreach (DictionaryEntry keyEntry in e.Keys)
-                {
-                    id = Convert.ToInt32(keyEntry.Value);
-                }
-
-                BLLNegocio bllc = new BLLNegocio();
-                bllc.EliminarNegocio(id);
+                int index = Convert.ToInt32(gridNegocio.Rows[e.RowIndex].Cells[2].Text);
+                BLLNegocio bllu = new BLLNegocio();
+                bllu.EliminarNegocio(index);
+                CargarDatos();
 
                 ClientScript.RegisterStartupScript(
-                           this.GetType(),
-                           "alert",
-                            "mensajeRedirect('Negocio',' Guardado con éxito','success','frmMantenimientoNegocio.aspx')",
-                           true
-                           );
-
-                limpiarDatos();
-                CargarDatos();
+                    this.GetType(),
+                     "Registro",
+                     "mensajeRedirect('Negocio',' Eliminado con éxito','success','frmMantenimientoUsuario.aspx')",
+                     true
+                     );
 
 
             }
             catch (Exception)
             {
-
                 throw;
             }
-
+            limpiarDatos();
             CargarDatos();
-
         }
 
         protected void gridNegocio_RowEditing(object sender, GridViewEditEventArgs e)
@@ -285,7 +291,7 @@ namespace SGC_Gestor_de_citas
                 ClientScript.RegisterStartupScript(
                               this.GetType(),
                               "Actualizacion",
-                               "mensajeRedirect('Negocio',' Actualizado con éxito','success','frmMantenimientoNegocio.aspx')",
+                               "mensajeRedirect('Negocio',' Modificado con éxito','success','frmMantenimientoNegocio.aspx')",
                               true
                               );
                 CargarDatos();

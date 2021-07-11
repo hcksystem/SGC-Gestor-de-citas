@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using Button = System.Web.UI.WebControls.Button;
 using TextBox = System.Web.UI.WebControls.TextBox;
 
 namespace SGC_Gestor_de_citas
@@ -24,8 +25,6 @@ namespace SGC_Gestor_de_citas
             {
                 CargarDatos();
             }
-
-            
         }
 
         private void CargarDatos()
@@ -33,9 +32,7 @@ namespace SGC_Gestor_de_citas
             try
             {
                 BLLUsuario bllc = new BLLUsuario();
-
                 DataTable dt = bllc.ObtenerTodosLosUsuariosActivos();
-
                 gridUsuarios.DataSource = dt;
                 gridUsuarios.DataBind();
             }
@@ -70,14 +67,12 @@ namespace SGC_Gestor_de_citas
             {
                 dropEstado.Items.Add(new ListItem(getestado.ToString(), ((int)getestado).ToString()));
             }
-
             BLLRol bllc = new BLLRol();
             DataTable dt = bllc.ObtenerTodosRoles();
             dropRol.DataSource = dt;
             dropRol.DataTextField = "descripcion";
             dropRol.DataValueField = "id";
             dropRol.DataBind();
-
         }
         public void LimpiarDatos()
         {
@@ -87,7 +82,6 @@ namespace SGC_Gestor_de_citas
             txtNombre.Text = "";
             txtApellido.Text = "";
             txtNombreUsuario.Text = "";
-
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -125,7 +119,6 @@ namespace SGC_Gestor_de_citas
 
                 throw;
             }
-
             LimpiarDatos();
             CargarDatos();
         }
@@ -142,43 +135,28 @@ namespace SGC_Gestor_de_citas
             try
             {
                 gridUsuarios.EditIndex = -1;
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-
             CargarDatos();
         }
 
-
         protected void gridUsuarios_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            DialogResult boton = MessageBox.Show("Esta seguro?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (boton == DialogResult.Yes)
-            {
-                try
-                {
-                    //Recorre la linea, identifica ID y elimina
-                    int id = 0;
-                    foreach (DictionaryEntry keyEntry in e.Keys)
-                    {
-                        id = Convert.ToInt32(keyEntry.Value);
-                    }
-                    BLLUsuario bllu = new BLLUsuario();
-                    bllu.EliminarUsuario(id);
-                }
-                catch (Exception)
-                {
 
-                    throw;
-                }
+            int index = Convert.ToInt32(gridUsuarios.Rows[e.RowIndex].Cells[2].Text);
+            BLLUsuario bllu = new BLLUsuario();
+            bllu.CambiarEstadoUsuario(index);
+            CargarDatos();
 
-                CargarDatos();
-            }
-
+            ClientScript.RegisterStartupScript(
+                this.GetType(),
+                 "Registro",
+                 "mensajeRedirect('Usuario',' Eliminado con éxito','success','frmMantenimientoUsuario.aspx')",
+                 true
+                 );
         }
 
         protected void gridUsuarios_RowEditing(object sender, GridViewEditEventArgs e)
@@ -190,28 +168,25 @@ namespace SGC_Gestor_de_citas
             }
             catch (Exception)
             {
-
                 throw;
             }
-
             CargarDatos();
         }
 
-
-
         protected void gridUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
-            //Se pregunta cual boton esta seleccionando eliminar o editar
-            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex == gridUsuarios.EditIndex)
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                DropDownList lista = e.Row.FindControl("dropRol") as DropDownList;
-                BLLRol bllc = new BLLRol();
-                lista.DataSource = bllc.ObtenerTodosRoles();
-                lista.DataTextField = "descripcion";
-                lista.DataValueField = "id";
-                lista.DataBind();
+                string item = e.Row.Cells[2].Text;
+                foreach (ImageButton button in e.Row.Cells[1].Controls.OfType<ImageButton>())
+                {
+                    if (button.CommandName == "Delete")
+                    {
+                        button.Attributes["onclick"] = "if(!confirm('Está seguro que desea eliminar este registro? " + item + "?')){ return false; };";
+                    }
+                }
             }
+
         }
 
         protected void gridUsuarios_SelectedIndexChanged(object sender, EventArgs e)
@@ -231,7 +206,6 @@ namespace SGC_Gestor_de_citas
             //esta linea indica o activa, la siguiente pagina del grid
             gridUsuarios.PageIndex = e.NewPageIndex;
             this.CargarDatos();
-          
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
@@ -251,7 +225,6 @@ namespace SGC_Gestor_de_citas
                               "mensajeRedirect('Usuario',' Modificado con éxito','success','frmMantenimientoUsuario.aspx')",
                              true
                              );
-
             }
             catch (Exception)
             {
@@ -264,31 +237,5 @@ namespace SGC_Gestor_de_citas
             btnModificar.Visible = false;
         }
 
-        protected void gridUsuarios_RowDeleting1(object sender, GridViewDeleteEventArgs e)
-        {
-            DialogResult boton = MessageBox.Show("Esta seguro?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //Recorre la linea y elimina el id
-
-            if (boton == DialogResult.Yes)
-            {
-                try
-                {
-                    int id = 0;
-                    foreach (DictionaryEntry keyEntry in e.Keys)
-                    {
-                        id = Convert.ToInt32(keyEntry.Value);
-                    }
-                    BLLUsuario bllc = new BLLUsuario();
-                    bllc.CambiarEstadoUsuario(id);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                CargarDatos();
-            }
-        }
-
-       
     }
 }

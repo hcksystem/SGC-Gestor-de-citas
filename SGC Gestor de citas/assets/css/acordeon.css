@@ -1,9 +1,10 @@
 ﻿/* (A) TABS CONTAINER */
 @import url('acordeon.css');
+
 .tab {
     position: relative;
     margin-top: 80px;
-    width:auto;
+    width: auto;
     margin-left: -7px;
 }
 
@@ -51,4 +52,3 @@
     .tab input:checked ~ label::after {
         transform: rotate(90deg);
     }
-   

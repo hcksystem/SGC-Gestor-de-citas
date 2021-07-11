@@ -578,8 +578,6 @@ pre {
     margin-right: -15px;
     margin-left: -15px;
     margin-top: -32px;
-    
-    
 }
 
 .no-gutters {
@@ -597,8 +595,8 @@ pre {
     width: 80%;
     padding-right: 15px;
     padding-left: 15px;
-    top: 76px;
-    left: 6px;
+    top: 38px;
+    left: 0px;
 }
 
 .col {
@@ -4716,7 +4714,6 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
-   
 }
 
     .card > hr {

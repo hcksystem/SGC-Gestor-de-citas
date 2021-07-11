@@ -139,29 +139,27 @@ namespace SGC_Gestor_de_citas
         }
         protected void gridServicios_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            DialogResult boton = MessageBox.Show("Esta seguro?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (boton == DialogResult.Yes)
+            try
             {
-                try
-                {
-                    //Recorre la linea, identifica ID y elimina
-                    int id = 0;
-                    foreach (DictionaryEntry keyEntry in e.Keys)
-                    {
-                        id = Convert.ToInt32(keyEntry.Value);
-                    }
-
-                    BLLServicio bllu = new BLLServicio();
-                    bllu.CambiarEstadoServicio(id);
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-
+                //Recorre la linea y elimina el id
+                int index = Convert.ToInt32(gridServicios.Rows[e.RowIndex].Cells[2].Text);
+                BLLServicio bllu = new BLLServicio();
+                bllu.CambiarEstadoServicio(index);
                 CargarDatos();
+
+                ClientScript.RegisterStartupScript(
+                    this.GetType(),
+                     "Registro",
+                     "mensajeRedirect('Servicio',' Eliminado con éxito','success','frmMantenimientoUsuario.aspx')",
+                     true
+                     );
             }
+            catch (Exception)
+            {
+                throw;
+            }
+            limpiarDatos();
+            CargarDatos();
 
         }
 
@@ -191,23 +189,19 @@ namespace SGC_Gestor_de_citas
                     imageControl.Src = "data:image/png;base64," + Convert.ToBase64String((byte[])(((DataRowView)e.Row.DataItem))["fotoSugerida"]);
                 }
             }
-            //if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowIndex == gridServicios.EditIndex)
-            //{
 
-            //DropDownList lista = e.Row.FindControl("dropProducto") as DropDownList;
-            //BLLProducto bllp = new BLLProducto();
-            //lista.DataSource = bllp.ObtenerTodosLosProductos();
-            //lista.DataTextField = "nombre";
-            //lista.DataValueField = "id";
-            //lista.DataBind();
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string item = e.Row.Cells[2].Text;
+                foreach (ImageButton button in e.Row.Cells[1].Controls.OfType<ImageButton>())
+                {
+                    if (button.CommandName == "Delete")
+                    {
+                        button.Attributes["onclick"] = "if(!confirm('Está seguro que desea eliminar este registro? " + item + "?')){ return false; };";
+                    }
+                }
+            }
 
-            //DropDownList lista1 = e.Row.FindControl("dropNegocio") as DropDownList;
-            //BLLNegocio bllc = new BLLNegocio();
-            //lista1.DataSource = bllc.ObtenerTodosLosNegocios();
-            //lista1.DataTextField = "nombre";
-            //lista1.DataValueField = "id";
-            //lista1.DataBind();
-            //}
         }
 
         protected void gridServicios_PageIndexChanging(object sender, GridViewPageEventArgs e)

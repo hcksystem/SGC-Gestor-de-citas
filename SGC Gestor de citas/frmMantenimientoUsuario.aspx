@@ -78,7 +78,7 @@
                         <asp:RegularExpressionValidator runat="server" ErrorMessage="Formato de identificación incorrecto, ej: 202220222) " ValidationGroup="ManteN" ValidationExpression="^[1-9]-?\d{4}-?\d{4}$" ControlToValidate="txtIdentificacion"></asp:RegularExpressionValidator>
                     </div>
                 </div>   
-                <hr />
+                
                  <div class="col-md-3 pl-1">
                     <div class="form-group">
                         <label>Nombre de usuario</label>
@@ -147,7 +147,7 @@
                 <div class="tab-content">
                 <div style="overflow: scroll">
               
-              <asp:GridView ID="gridUsuarios" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" Width="1240px" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged" OnPageIndexChanging="gridUsuarios_PageIndexChanging" OnRowDeleting="gridUsuarios_RowDeleting1">
+              <asp:GridView ID="gridUsuarios" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="2" AllowPaging="True" AllowSorting="True" Width="1240px" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged" OnPageIndexChanging="gridUsuarios_PageIndexChanging" OnRowDeleting="gridUsuarios_RowDeleting" OnRowDataBound="gridUsuarios_RowDataBound">
               <Columns>
                 <asp:CommandField ShowSelectButton="True" HeaderText="Modificar" ShowHeader="true" SelectText="Editar" SelectImageUrl="~/assets/img/Seleccionar).png" ButtonType="Image" />
                 <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" HeaderText="Eliminar" ShowHeader="true" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />
@@ -172,7 +172,7 @@
             </div>
           </div>
        </div>
-
+       
 
   </html>
 </asp:Content>

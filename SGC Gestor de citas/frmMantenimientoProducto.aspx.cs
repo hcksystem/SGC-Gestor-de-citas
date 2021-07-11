@@ -92,28 +92,27 @@ namespace SGC_Gestor_de_citas
 
         protected void gridProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
-            DialogResult boton = MessageBox.Show("Esta seguro?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //Recorre la linea y elimina el id
-
-            if (boton == DialogResult.Yes)
+            try
             {
-                try
-                {
-                    int id = 0;
-                    foreach (DictionaryEntry keyEntry in e.Keys)
-                    {
-                        id = Convert.ToInt32(keyEntry.Value);
-                    }
-                    BLLProducto bllc = new BLLProducto();
-                    bllc.CambiarEstadoProducto(id);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                //Recorre la linea y elimina el id
+                int index = Convert.ToInt32(gridProductos.Rows[e.RowIndex].Cells[2].Text);
+                BLLProducto bllu = new BLLProducto();
+                bllu.CambiarEstadoProducto(index);
                 CargarDatos();
+
+                ClientScript.RegisterStartupScript(
+                    this.GetType(),
+                     "Registro",
+                     "mensajeRedirect('Producto',' Eliminado con éxito','success','frmMantenimientoUsuario.aspx')",
+                     true
+                     );
             }
+            catch (Exception)
+            {
+                throw;
+            }
+            limpiarDatos();
+            CargarDatos();
         }
 
         protected void gridProductos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -200,6 +199,21 @@ namespace SGC_Gestor_de_citas
             {
 
                 throw;
+            }
+        }
+
+        protected void gridProductos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string item = e.Row.Cells[2].Text;
+                foreach (ImageButton button in e.Row.Cells[1].Controls.OfType<ImageButton>())
+                {
+                    if (button.CommandName == "Delete")
+                    {
+                        button.Attributes["onclick"] = "if(!confirm('Está seguro que desea eliminar este registro? " + item + "?')){ return false; };";
+                    }
+                }
             }
         }
     }

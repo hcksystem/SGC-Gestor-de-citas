@@ -64,7 +64,11 @@
                             <div class="col-md-4 pl-1">
                                 <div>
                                     <label>Foto </label>
+                                    <br />
                                     <asp:FileUpload ID="FileUpload1" runat="server" ForeColor="#626c7d" Font-Size="Small" />
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="ManteS"
+                                    ControlToValidate="FileUpload1" ErrorMessage="La foto es necesaria" Display="Dynamic"
+                                    ForeColor="Red"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-md-4 pl-1">
