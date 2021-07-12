@@ -106,7 +106,12 @@
                         </div>
                     </li>
                     </li>
-     
+                     <li>
+                        <a href="frmInventario.aspx">
+                            <i class="now-ui-icons tech_laptop"></i>
+                            <p>Inventario</p>
+                        </a>
+                    </li>
                     <li>
                         <a href="frmGestorCita.aspx">
                             <i class="now-ui-icons ui-1_calendar-60"></i>

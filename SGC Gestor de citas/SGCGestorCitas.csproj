@@ -143,6 +143,7 @@
     <Content Include="AyudaUsuario.aspx" />
     <Content Include="frmFacturación.aspx" />
     <Content Include="frmGestorCita.aspx" />
+    <Content Include="frmInventario.aspx" />
     <Content Include="frmMantenimientoNegocio.aspx" />
     <Content Include="frmMantenimientoProducto.aspx" />
     <Content Include="frmMantenimientoServicio.aspx" />
@@ -201,6 +202,7 @@
       <DependentUpon>Cliente.Master</DependentUpon>
     </Compile>
     <Compile Include="Enum\citaEnum.cs" />
+    <Compile Include="Enum\entradasSalidasInventario.cs" />
     <Compile Include="Enum\estado.cs" />
     <Compile Include="frmFacturación.aspx.cs">
       <DependentUpon>frmFacturación.aspx</DependentUpon>
@@ -215,6 +217,13 @@
     </Compile>
     <Compile Include="frmGestorCita.aspx.designer.cs">
       <DependentUpon>frmGestorCita.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmInventario.aspx.cs">
+      <DependentUpon>frmInventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmInventario.aspx.designer.cs">
+      <DependentUpon>frmInventario.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmMantenimientoNegocio.aspx.cs">
       <DependentUpon>frmMantenimientoNegocio.aspx</DependentUpon>

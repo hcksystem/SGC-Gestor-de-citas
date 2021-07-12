@@ -101,6 +101,19 @@ namespace AccesoDatos_DAL_
             da.Fill(dt);
             return dt;
         }
+        public DataTable ObtenerProductoPorIDCategoria(int Identificacion)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, idcategoria, descripcion, proposito, precio, estado FROM Producto WHERE idcategoria = @idcategoria", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@idcategoria", Identificacion);
+            cmd.Parameters.Add(parametro);
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
         public void CambiarEstadoProducto(int id)
         {
             //aca se cambiaria el estado en casi de trabajar con enum
@@ -119,6 +132,18 @@ namespace AccesoDatos_DAL_
         {
             DataTable dt = new DataTable();
             SqlCommand cmd = new SqlCommand("SELECT id, nombre, idcategoria, descripcion, proposito, precio, estado FROM Producto", Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+
+        public DataTable ObtenerTodosLosProductosActivosPorCategoria(int id)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT Producto.id, Producto.nombre, Producto.descripcion, Producto.precio FROM Producto INNER JOIN Categoria ON Producto.idcategoria = Categoria.id WHERE(Producto.estado = 1 and idcategoria = @idcategoria)", Conexion);
+            SqlParameter parametro;
+            parametro = new SqlParameter("@idcategoria", id);
+            cmd.Parameters.Add(parametro);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;

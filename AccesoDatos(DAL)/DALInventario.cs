@@ -48,7 +48,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosInventarios()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, idProducto, cantidad, descripcion FROM Inventario", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Inventario.id, dbo.Producto.nombre AS idProducto, dbo.Inventario.cantidad, dbo.Inventario.descripcion FROM dbo.Inventario INNER JOIN dbo.Producto ON dbo.Inventario.idProducto = dbo.Producto.id", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;

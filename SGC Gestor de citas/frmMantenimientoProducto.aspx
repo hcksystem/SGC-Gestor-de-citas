@@ -96,78 +96,7 @@
                     <div class="tab-content">
                    <div style="overflow: scroll">
 
-           <%-- <asp:GridView ID="gridProductos" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridProductos_RowCancelingEdit" OnRowDeleting="gridProductos_RowDeleting" OnRowEditing="gridProductos_RowEditing" OnRowUpdating="gridProductos_RowUpdating" OnPageIndexChanging="gridProductos_PageIndexChanging" OnSelectedIndexChanged="gridProductos_SelectedIndexChanged">                               
-                <Columns>
-                    <asp:CommandField ShowSelectButton="True" SelectText="Editar" ButtonType="Image" SelectImageUrl="~/assets/img/Seleccionar).png" />
-                    <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />
-
-                <asp:TemplateField HeaderText="ID">
-                    <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<% # Bind("id") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtID" runat="server" Text='<% # Bind("id") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="NOMBRE">
-                    <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<% # Bind("nombre") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtNombre" runat="server" Text='<% # Bind("nombre") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="CATEGORIA">
-                    <ItemTemplate>
-                        <asp:Label ID="Label3" runat="server" Text='<% # Bind("categoria") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtCategoria" runat="server" Text='<% # Bind("categoria") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="DESCRIPCION">
-                    <ItemTemplate>
-                        <asp:Label ID="Label9" runat="server" Text='<% # Bind("descripcion") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtDescripcion" runat="server" Text='<% # Bind("descripcion") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="CANTIDAD">
-                    <ItemTemplate>
-                        <asp:Label ID="Label4" runat="server" Text='<% # Bind("cantidad") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtCantidad" TextMode="Number" runat="server" Text='<% # Bind("cantidad") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="PROPOSITO">
-                    <ItemTemplate>
-                        <asp:Label ID="Label5" runat="server" Text='<% # Bind("proposito") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtProposito" runat="server" Text='<% # Bind("proposito") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="PRECIO">
-                    <ItemTemplate>
-                        <asp:Label ID="Label6" runat="server" Text='<% # Bind("precio") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtPrecio" runat="server" Text='<% # Bind("precio") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="ESTADO">
-                    <ItemTemplate>
-                        <asp:Label ID="Label7" runat="server" Text='<% # Bind("estado") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtEstado" runat="server" Text='<% # Bind("estado") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                </asp:TemplateField>
-
-                        </Columns>
-                    </asp:GridView>--%>
+                   
 
           <asp:GridView ID="gridProductos" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" Width="1240px" OnRowDeleting="gridProductos_RowDeleting" OnPageIndexChanging="gridProductos_PageIndexChanging" OnSelectedIndexChanged="gridProductos_SelectedIndexChanged" OnRowDataBound="gridProductos_RowDataBound">
             <Columns>
