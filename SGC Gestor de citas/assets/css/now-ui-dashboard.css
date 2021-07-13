@@ -1389,7 +1389,7 @@ body, .modal {
 
 .form-control {
     background-color: transparent;
-    border: 1px solid #E3E3E3;
+    border: 1px thin #636c7d;
     border-radius: 30px;
     color: #2c2c2c;
     line-height: normal;

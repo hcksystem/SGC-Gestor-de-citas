@@ -32,11 +32,21 @@ namespace AccesoDatos_DAL_
             Conexion.Close();
         }
 
+        public DataTable inventarioBuscar(string palabra)
+        {
+            DataTable dt = new DataTable();
 
+            SqlCommand cm = new SqlCommand("SELECT Inventario.id, Producto.id AS idProducto, Producto.nombre, Inventario.cantidad, Inventario.descripcion FROM Inventario INNER JOIN Producto ON Inventario.idProducto = Producto.id where Producto.nombre like @nombre + '%'", Conexion);
+
+            cm.Parameters.AddWithValue("@idProducto", palabra);
+            SqlDataAdapter da = new SqlDataAdapter(cm);
+            da.Fill(dt);
+            return dt;
+        }
         public DataTable ObtenerInventarioPorID(int Identificacion)
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, idProducto, cantidad, descripcion FROM Inventario WHERE id = @id", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Producto.id AS idProducto, dbo.Producto.nombre, dbo.Inventario.cantidad, dbo.Inventario.descripcion FROM dbo.Inventario INNER JOIN dbo.Producto ON dbo.Inventario.idProducto = dbo.Producto.id WHERE dbo.Producto.id = @id", Conexion);
             SqlParameter parametro;
             parametro = new SqlParameter("@id", Identificacion);
             cmd.Parameters.Add(parametro);
@@ -48,7 +58,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosInventarios()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT dbo.Inventario.id, dbo.Producto.nombre AS idProducto, dbo.Inventario.cantidad, dbo.Inventario.descripcion FROM dbo.Inventario INNER JOIN dbo.Producto ON dbo.Inventario.idProducto = dbo.Producto.id", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Inventario.id, dbo.Producto.id AS idProducto, dbo.Producto.nombre, dbo.Inventario.cantidad, dbo.Inventario.descripcion FROM dbo.Inventario INNER JOIN  dbo.Producto ON dbo.Inventario.idProducto = dbo.Producto.id", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
@@ -66,6 +76,22 @@ namespace AccesoDatos_DAL_
             cmd.ExecuteNonQuery();
             Conexion.Close();
 
+        }
+        public void ActualizarInventarioSumRes(int id, int num)
+        {
+
+            SqlCommand cmd = new SqlCommand("UPDATE Inventario SET cantidad = @cantidad where id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@cantidad", num);
+            cmd.Parameters.Add(parametro);
+
+            parametro = new SqlParameter("@id", id);
+            cmd.Parameters.Add(parametro);
+
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
         }
         public void ModificarInventario(int ID, int idProducto, int Cantidad, string Descripcion)
         {

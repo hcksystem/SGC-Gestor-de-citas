@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,41 +11,62 @@ namespace AccesoDatos_DAL_
 {
     public class DALProducto : DALBase
     {
-        public void InsertarProducto(string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)
+        public void InsertarProducto(Producto p, Inventario i)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Producto (Nombre, idCategoria, Descripcion, Proposito, Precio, Estado ) VALUES (@nombre, @idcategoria, @descripcion, @proposito, @precio, @estado)", Conexion);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Producto (Nombre, idCategoria, Descripcion, Proposito, Precio, Estado ) VALUES (@nombre, @idcategoria, @descripcion, @proposito, @precio, @estado); SELECT CAST (scope_identity() as int)", Conexion);
             SqlParameter parametro;
 
-            parametro = new SqlParameter("@nombre", Nombre);
+            parametro = new SqlParameter("@nombre", p.Nombre);
             parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
-            parametro = new SqlParameter("@idcategoria", idCategoria);
+            parametro = new SqlParameter("@idcategoria", p.idCategoria);
             parametro.DbType = DbType.Int32;
             cmd.Parameters.Add(parametro);
 
-            parametro = new SqlParameter("@descripcion", Descripcion);
+            parametro = new SqlParameter("@descripcion", p.Descripcion);
             parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
-            parametro = new SqlParameter("@proposito", Proposito);
+            parametro = new SqlParameter("@proposito", p.Proposito);
             parametro.DbType = DbType.String;
             cmd.Parameters.Add(parametro);
 
-            parametro = new SqlParameter("@precio", Precio);
+            parametro = new SqlParameter("@precio", p.Precio);
             parametro.DbType = System.Data.DbType.Double;
             cmd.Parameters.Add(parametro);
 
-            parametro = new SqlParameter("@estado", Estado);
+            parametro = new SqlParameter("@estado", p.Estado);
             parametro.DbType = System.Data.DbType.Int32;
             cmd.Parameters.Add(parametro);
-
+            int productoInsertado;
             Conexion.Open();
-            cmd.ExecuteNonQuery();
+            productoInsertado = (int)cmd.ExecuteScalar();
             Conexion.Close();
 
 
+
+            SqlCommand cmdInventario = new SqlCommand("INSERT INTO Inventario (idProducto, cantidad, descripcion) VALUES (@idProducto, @cantidad, @descripcion)", Conexion);
+            SqlParameter parametroInventario;
+
+            parametroInventario = new SqlParameter("@idProducto", productoInsertado);
+            parametro.DbType = DbType.Int32;
+            cmdInventario.Parameters.Add(parametroInventario);
+
+            parametroInventario = new SqlParameter("@cantidad", i.cantidad);
+            parametro.DbType = DbType.Int32;
+            cmdInventario.Parameters.Add(parametroInventario);
+
+            parametroInventario = new SqlParameter("@descripcion", i.descripcion);
+            parametro.DbType = System.Data.DbType.String;
+            cmdInventario.Parameters.Add(parametroInventario);
+
+            Conexion.Open();
+            cmdInventario.ExecuteNonQuery();
+            Conexion.Close();
         }
+      
+
 
 
 

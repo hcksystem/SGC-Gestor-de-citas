@@ -1,8 +1,10 @@
 ﻿using AccesoDatos_DAL_;
+using Entidades;
 using LogicaNegocio_BLL_;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,47 +14,52 @@ namespace SGC_Gestor_de_citas
 {
     public partial class frmInventario : System.Web.UI.Page
     {
+        public SqlConnection cn = new SqlConnection("Data Source =.; Initial Catalog = SolucionesSGC; User ID = sa; Password=123456"); 
+        Inventario inv = new Inventario();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
 
-                BLLCategoria bllp = new BLLCategoria();
-                dropCategorias.DataSource = bllp.ObtenerTodasCategorias();
-                dropCategorias.DataTextField = "descripcion";
-                dropCategorias.DataValueField = "id";
-                dropCategorias.DataBind();
-                ListItem lst = new ListItem("Seleccione una categoría", "0");
-                dropCategorias.Items.Insert(0, lst);
-                dropCategorias.SelectedIndex = 0;
-                dropCategorias_SelectedIndexChanged(dropCategorias, null);
-
-                BLLInventario blli = new BLLInventario();
-                DataTable dt = blli.ObtenerTodosLosInventarios();
-                gridInventario.DataSource = dt;
-                gridInventario.DataBind();
-
-                //cargar combo con enum
+                 //cargar combo con enum
                 Array enumList = Enum.GetValues(typeof(entradasSalidasInventario));
                 foreach (entradasSalidasInventario getSumRes in enumList)
                 {
                     dropSumRes.Items.Add(new ListItem(getSumRes.ToString(), ((int)getSumRes).ToString()));
                 }
 
+                cargarDatos();
+
             }
         }
-    
+        public void limpiarDatos()
+        {
+            txtCantidadNueva.Text = "";
+            txtStock.Text = "";
+            Session["ID"] = null;
+        }
 
+        public void cargarDatos()
+        {
+            BLLInventario blli = new BLLInventario();
+            DataTable dt = blli.ObtenerTodosLosInventarios();
+            gridInventario.DataSource = dt;
+            gridInventario.DataBind();
+
+          
+        }
         protected void dropCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BLLProducto bllp = new BLLProducto();
-            gridLista.DataSource = bllp.ObtenerTodosLosProductosActivos();
-            if (dropCategorias.SelectedValue != "0" || dropCategorias.SelectedIndex < 0)
-            {
-                int idProducto = Convert.ToInt32(dropCategorias.SelectedValue);
-                gridLista.DataSource = bllp.ObtenerTodosLosProductosActivosPorCategoria(idProducto);
-            }
-            gridLista.DataBind();
+            //BLLProducto bllp = new BLLProducto();
+            //gridLista.DataSource = bllp.ObtenerTodosLosProductosActivos();
+            //if (dropCategorias.SelectedValue != "0" || dropCategorias.SelectedIndex < 0)
+            //{
+            //    int idProducto = Convert.ToInt32(dropCategorias.SelectedValue);
+            //    gridLista.DataSource = bllp.ObtenerTodosLosProductosActivosPorCategoria(idProducto);
+            //}
+            //gridLista.DataBind();
+
         }
 
         protected void gridInventario_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -60,37 +67,175 @@ namespace SGC_Gestor_de_citas
 
         }
 
-        protected void gridLista_RowDataBound(object sender, GridViewRowEventArgs e)
+ 
+        public void EditarDatos()
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                e.Row.Attributes["onmouseover"] = "this.style.cursor='hand';this.style.textDecoration='underline';";
-                e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';";
+            int id = Convert.ToInt32(gridInventario.SelectedRow.Cells[2].Text);
+            BLLInventario bllc = new BLLInventario();
+            DataTable dt = bllc.ObtenerInventarioPorID(id);
 
-                e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(this.gridLista, "Select$" + e.Row.RowIndex);
-            }
+            txtStock.Text = dt.Rows[0]["cantidad"].ToString(); //quede aca con que no encuentra posicion 0
         }
 
-        protected void gridLista_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected int sumaInventario(int num)
         {
-            gridLista.PageIndex = e.NewPageIndex;
             
+            int resultado;
+            num = Convert.ToInt32(txtStock.Text);
+            resultado = num + Convert.ToInt32(txtCantidadNueva.Text);
+
+            return resultado;
+           
         }
-
-        protected void gridLista_SelectedIndexChanged(object sender, EventArgs e)
+        protected int restaInventario(int num)
         {
-            int servicio = Convert.ToInt32(gridLista.SelectedRow.Cells[1].Text);
 
-            if (gridLista.Columns.Count > 0)
+            int resultado;
+
+            num = Convert.ToInt32(txtStock.Text);
+
+            if(num< Convert.ToInt32(txtCantidadNueva.Text))
             {
+               
+                resultado = num;
+                return resultado;
+            }
+            else
+            {
+                resultado = num - Convert.ToInt32(txtCantidadNueva.Text);
 
             }
-                //EditarDatos();
+            return resultado;
+
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            BLLInventario blli = new BLLInventario();
+            int accion =Convert.ToInt32( dropSumRes.SelectedValue);
+
+            if (accion == 1)
+            {
+                try
+                {
+                    if (Session["ID"] != null)
+                    {
+                        int id = Convert.ToInt32(Session["ID"].ToString());
+
+                        BLLInventario blli = new BLLInventario();
+                        id = Convert.ToInt32(gridInventario.SelectedRow.Cells[1].Text);
+                        int num;
+                        num = sumaInventario(Convert.ToInt32(txtCantidadNueva.Text));
+                        blli.InventarioSumRes(id, num);
+
+
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+               
+              
+            }
+            else
+            {
+                try
+                {
+                    if (Session["ID"] != null)
+                    {
+                        int id = Convert.ToInt32(Session["ID"].ToString());
+
+                        BLLInventario blli = new BLLInventario();
+                        id = Convert.ToInt32(gridInventario.SelectedRow.Cells[1].Text);
+                        int num;
+                        num = restaInventario(Convert.ToInt32(txtCantidadNueva.Text));
+                        blli.InventarioSumRes(id, num);
+
+
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+
+            }
+            ClientScript.RegisterStartupScript(
+                   this.GetType(),
+                    "Registro",
+                    "mensajeRedirect('Inventario',' Actualizado con éxito','success','frmInventario.aspx')",
+                    true);
+            
+            limpiarDatos();
+            cargarDatos();
+            lblAcciones.Visible = false;
+            lblCantidadModificar.Visible = false;
+            txtCantidadNueva.Visible = false;
+            dropSumRes.Visible = false;
+            btnGuardar.Visible = false;
+            txtBuscar.Text = "";
+        }
+
+        protected void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT Inventario.id, Producto.id AS idProducto, Producto.nombre, Inventario.cantidad, Inventario.descripcion FROM Inventario INNER JOIN Producto ON Inventario.idProducto = Producto.id where Producto.nombre like '" + txtBuscar.Text + "%'", cn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                this.gridInventario.DataSource = dt;
+                gridInventario.DataBind();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        protected void gridInventario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["ID"] = Convert.ToInt32(gridInventario.SelectedRow.Cells[1].Text);
+            if (gridInventario.Columns.Count > 0)
+                EditarDatos();
+
+            lblAcciones.Visible = true;
+            lblCantidadModificar.Visible = true;
+            txtCantidadNueva.Visible = true;
+            dropSumRes.Visible = true;
+            btnGuardar.Visible = true;
+
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            lblAcciones.Visible = false;
+            lblCantidadModificar.Visible = false;
+            txtCantidadNueva.Visible = false;
+            dropSumRes.Visible = false;
+            btnGuardar.Visible = false;
+            txtStock.Text = "";
+            Session["ID"] = null;
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT Inventario.id, Producto.id AS idProducto, Producto.nombre, Inventario.cantidad, Inventario.descripcion FROM Inventario INNER JOIN Producto ON Inventario.idProducto = Producto.id where Producto.nombre like '" + txtBuscar.Text + "%'", cn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                this.gridInventario.DataSource = dt;
+                gridInventario.DataBind();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

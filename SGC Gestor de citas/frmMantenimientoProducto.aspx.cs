@@ -74,6 +74,10 @@ namespace SGC_Gestor_de_citas
             txtDescripcionProducto.Text = "";
             txtPrecioProducto.Text = "";
             txtPropositoProducto.Text = "";
+            txtNota.Text = "";
+            txtCantidad.Text = "0";
+            dropEstado.Dispose();
+            dropCategoria.Dispose();
 
         }
 
@@ -134,7 +138,22 @@ namespace SGC_Gestor_de_citas
             try
             {
                 BLLProducto bllp = new BLLProducto();
-                bllp.InsertarProducto(txtNombreProducto.Text, Convert.ToInt32(dropCategoria.SelectedValue), txtDescripcionProducto.Text, txtPropositoProducto.Text, Convert.ToDouble(txtPrecioProducto.Text), Convert.ToInt32(dropEstado.SelectedValue));
+
+                Producto p = new Producto();
+                Inventario i = new Inventario();
+
+                p.Nombre = txtNombreProducto.Text;
+                p.idCategoria = Convert.ToInt32(dropCategoria.SelectedValue);
+                p.Descripcion = txtDescripcionProducto.Text;
+                p.Proposito = txtPropositoProducto.Text;
+                p.Precio = Convert.ToDouble(txtPrecioProducto.Text);
+                p.Estado = Convert.ToInt32(dropEstado.SelectedValue);
+
+                i.cantidad = Convert.ToInt32(txtCantidad.Text);
+                i.descripcion = txtNota.Text;
+                
+
+                bllp.InsertarProducto(p,i);
 
                 ClientScript.RegisterStartupScript(
                              this.GetType(),

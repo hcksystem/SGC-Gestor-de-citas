@@ -1,4 +1,5 @@
 ﻿using AccesoDatos_DAL_;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,10 +12,10 @@ namespace LogicaNegocio_BLL_
 
     public class BLLProducto
     {
-        public void InsertarProducto(string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)
+        public void InsertarProducto(Producto p, Inventario i)
         {
              DALProducto dalp = new DALProducto();
-            dalp.InsertarProducto(Nombre, idCategoria, Descripcion, Proposito, Precio, Estado);
+            dalp.InsertarProducto(p,i);
         }
         public void ModificarProducto(int ID, string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)
         {

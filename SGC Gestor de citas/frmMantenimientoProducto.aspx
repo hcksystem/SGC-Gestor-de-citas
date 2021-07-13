@@ -50,7 +50,7 @@
                         ForeColor="Red"></asp:RequiredFieldValidator>
               </div>
              </div>
-            <div class="col-md-6 pl-1">
+            <div class="col-md-4 pl-1">
                 <div class="form-group">
                     <label>Propósito del producto</label>
                     <asp:TextBox ID="txtPropositoProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -69,18 +69,35 @@
                      <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="El precio no puede ser negativo, no debe contener puntos o comas, solo se acepta un dígito entero" ControlToValidate="txtPrecioProducto" ValidationGroup="ManteP" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
 
                 </div>
-            </div>        
-            <div class="col-md-4 pl-1">
+            </div>   
+               
+                <div class="col-md-4 pl-1">
+                <div class="form-group">
+                    <label>Cantidad actual</label>
+                    <asp:TextBox ID="txtCantidad" TextMode="Number" min="1" step="1" Text="0" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteP"
+                        ControlToValidate="txtCantidad" ErrorMessage="Digite la cantidad del producto" Display="Dynamic"
+                        ForeColor="Red"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="col-md-3 pl-1">
                 <div class="form-group">
                     <label>Estado</label>
                     <asp:DropDownList ID="dropEstado" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
             </div>
-            <div class="col-md-4 pl-1">
+
+                   <div class="col-md-6 pl-1">
                 <div class="form-group">
+                    <label>Nota para inventario</label>
+                    <asp:TextBox ID="txtNota" min="1" step="1"  runat="server" CssClass="form-control" placeHolder="* Opcional *"></asp:TextBox>
+                    
                 </div>
             </div>
-            <div class="col-md-4 pl-1">
+
+           
+             
+            <div class="col-md-3 pl-1">
                 <div class="form-group">
                     <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar" ValidationGroup="ManteP" OnClick="btnGuardar_Click" />
                     <asp:Button ID="btnCancelar" class="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />

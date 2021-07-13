@@ -16,6 +16,11 @@ namespace LogicaNegocio_BLL_
             DALInventario daln = new DALInventario();
             daln.InsertarInventario(idProducto, Cantidad, Descripcion);
         }
+        public DataTable InventarioBuscar(string palabra)
+        {
+            DALInventario daln = new DALInventario();
+            return daln.inventarioBuscar(palabra);
+        }
         public void ModificarInventario(int ID, int idProducto, int Cantidad, string Descripcion)
         {
             DALInventario daln = new DALInventario();
@@ -36,6 +41,11 @@ namespace LogicaNegocio_BLL_
         {
             DALInventario daln = new DALInventario();
             daln.EliminarInventario(Identificacion);
+        }
+        public void InventarioSumRes(int id,int num)
+        {
+            DALInventario daln = new DALInventario();
+            daln.ActualizarInventarioSumRes(id,num);
         }
 
     }
