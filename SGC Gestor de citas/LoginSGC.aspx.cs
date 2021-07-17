@@ -48,20 +48,9 @@ namespace SGC_Gestor_de_citas
 
             try
             {
-                if (bllu.VerificarLogin(txtEmail.Text, txtPass.Text) == true)
+                if (bllu.VerificarLogin(txtNombreUsuario.Text, txtPass.Text) == true)
                 {
-                    DataTable dt = bllu.ObtenerUsuarioPorNombreUsuario(txtEmail.Text);
-
-
-
-                    us.id = Convert.ToInt32(dt.Rows[(0)]["id"]);
-                    us.NombreUsuario = Convert.ToString(dt.Rows[(0)]["nombreUsuario"]);
-                    us.Contrasenna = Convert.ToString(dt.Rows[0]["contrasenna"]);
-                    us.idRol = Convert.ToInt32(dt.Rows[0]["idRoll"]);
-                    us.estado = Convert.ToInt32(dt.Rows[0]["estado"]);
-                    us.idPersona = Convert.ToInt32(dt.Rows[0]["idPersona"]);
-                    
-                    
+                    us= bllu.ObtenerUsuario();
                     MessageBox.Show(us.NombreUsuario, "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
 
@@ -84,19 +73,27 @@ namespace SGC_Gestor_de_citas
                         }
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Las credenciales son incorrectas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+               
+                   
+                           
+
 
             }
             catch (Exception a)
             {
-                //Si los datos no estan completos se le envía el mensaje
-                MessageBox.Show("Datos incorrectos" + a);
+                
+                               //ClientScript.RegisterStartupScript(
+                               //this.GetType(),
+                               //"Registro",
+                               // "mensajeRedirect('Datos',' incorrectos','error','LoginSGC.aspx')",
+                               //true
+                               //);
+
             }
             txtPass.Text = "";
-            txtEmail.Text = "";
+            txtNombreUsuario.Text = "";
         }
+
+     
     }
 }

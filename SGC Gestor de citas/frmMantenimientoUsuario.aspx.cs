@@ -233,6 +233,8 @@ namespace SGC_Gestor_de_citas
             }
             LimpiarDatos();
             CargarDatos();
+            lblcontrasenna.Visible = false;
+            txtContrasenna.Visible = false;
             btnGuardar.Visible = true;
             btnModificar.Visible = false;
         }

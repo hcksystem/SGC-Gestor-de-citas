@@ -1,18 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador.Master" AutoEventWireup="true" CodeBehind="frmMantenimientoProducto.aspx.cs" Inherits="SGC_Gestor_de_citas.frmMantenimientoProducto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <!Doctype html>
-    <html>
     
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
     <link href="assets/css/acordeon.css" rel="stylesheet" />
 
-     <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/sweetalert2.all.min.js"></script>
     <script src="assets/js/mensaje.js"></script>
     <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
-
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
 <div class="panel-header-sm">
 </div>
 <div class="content">
@@ -26,7 +24,7 @@
             <div class="card-body">
 
            <div class="row">
-            <div class="col-md-4 pl-1">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Nombre del Producto</label>
                     <asp:TextBox ID="txtNombreProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -35,13 +33,13 @@
                         ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
             </div>
-             <div class="col-md-4 pl-1">
+             <div class="col-md-4">
                 <div class="form-group">
                     <label>Categoría</label>
                     <asp:DropDownList ID="dropCategoria" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
             </div>
-            <div class="col-md-4 pl-1">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Descripción</label>
                     <asp:TextBox ID="txtDescripcionProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -50,7 +48,7 @@
                         ForeColor="Red"></asp:RequiredFieldValidator>
               </div>
              </div>
-            <div class="col-md-4 pl-1">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Propósito del producto</label>
                     <asp:TextBox ID="txtPropositoProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -59,7 +57,7 @@
                         ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
             </div>       
-            <div class="col-md-4 pl-1">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Precio unitario</label>
                     <asp:TextBox ID="txtPrecioProducto" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -71,7 +69,7 @@
                 </div>
             </div>   
                
-                <div class="col-md-4 pl-1">
+                <div class="col-md-4">
                 <div class="form-group">
                     <label>Cantidad actual</label>
                     <asp:TextBox ID="txtCantidad" TextMode="Number" min="1" step="1" Text="0" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -80,31 +78,35 @@
                         ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
             </div>
-            <div class="col-md-3 pl-1">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label>Estado</label>
                     <asp:DropDownList ID="dropEstado" runat="server" CssClass="form-control"></asp:DropDownList>
                 </div>
             </div>
 
-                   <div class="col-md-6 pl-1">
+                   <div class="col-md-6">
                 <div class="form-group">
                     <label>Nota para inventario</label>
                     <asp:TextBox ID="txtNota" min="1" step="1"  runat="server" CssClass="form-control" placeHolder="* Opcional *"></asp:TextBox>
                     
                 </div>
             </div>
-
+                 <div class="col-md-6">
+                <div class="form-group">
+               
+                </div>
+            </div>
            
              
-            <div class="col-md-3 pl-1">
+            <div class="col-md-3">
                 <div class="form-group">
                     <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar" ValidationGroup="ManteP" OnClick="btnGuardar_Click" />
                     <asp:Button ID="btnCancelar" class="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
                     <asp:Button ID="btnModificar" class="btn btn-primary btn-round" runat="server" Text="Modificar" Visible="false" OnClick="btnModificar_Click"/>
                 </div>
                 </div>
-               </div>
+               
 
                  <div class="col-12 tab">
                     <input id="tab-1" type="checkbox" style="display:none">
@@ -136,9 +138,9 @@
             </div>
         </div>
     </div>
-</html>
 
+    </div>
 
-
+    </div>
 
 </asp:Content>

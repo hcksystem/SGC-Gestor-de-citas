@@ -18,18 +18,19 @@
             <div class="login-html">
                 <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Iniciar Sesion</label>
                 <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Registrarse</label>
+             
+                
+                
                 <div class="login-form">
                     <div class="sign-in-htm">
                         <div class="group">
-                            <label for="user" class="label">Correo</label>
-                            <asp:TextBox ID="txtEmail" runat="server" TabIndex="1" placeHolder="* Requerido *"></asp:TextBox>
+                            <label for="user" class="label">Nombre de usuario</label>
+                            <asp:TextBox ID="txtNombreUsuario" runat="server" TabIndex="1" placeHolder="* Requerido *"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="ManteL"
-                                ControlToValidate="txtEmail" ErrorMessage="Digite su correo" Display="Dynamic"
+                                ControlToValidate="txtNombreUsuario" ErrorMessage="Digite su nombre de usuario" Display="Dynamic"
                                 ForeColor="Red"></asp:RequiredFieldValidator>
-
-
-
                         </div>
+
                         <div class="group">
                             <label for="pass" class="label">Contraseña</label>
                             <asp:TextBox ID="txtPass" runat="server" TextMode="Password" TabIndex="2" placeHolder="* Requerido *"></asp:TextBox>
@@ -40,29 +41,62 @@
                         <div class="group">
                             <asp:Button ID="btnLoguear" runat="server" Text="Iniciar Sesion" ValidationGroup="ManteL" OnClick="btnLoguear_Click" />
                         </div>
+
+
+
                         <div class="hr"></div>
                     </div>
-                    <div class="for-pwd-htm">
+
+
+
+
+
+
+
+
+
+
+                    
+                     
+                        <div class="group">
+                            <label for="nombre" class="label">Nombre</label>
+                            <asp:TextBox ID="txtNombre" runat="server" placeHolder="* Requerido *"></asp:TextBox>
+
+                            <label for="apellido" class="label">Apellido</label>
+                            <asp:TextBox ID="txtApellido" runat="server" placeHolder="* Requerido *"></asp:TextBox>
+
+                            <div class="for-pwd-htm">
                         <div class="group">
                             <label for="user" class="label">Correo Electronico</label>
                             <asp:TextBox ID="txtCorreoRegistro" runat="server" placeHolder="* Requerido *"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteR"
-                                ControlToValidate="txtCorreoRegistro" ErrorMessage="Digite su Correo" Display="Dynamic"
+                                ControlToValidate="txtCorreoRegistro" ErrorMessage="Digite su correo electrónico" Display="Dynamic"
                                 ForeColor="Red"></asp:RequiredFieldValidator>
-
-
-
                         </div>
+
                         <div class="group">
                             <label for="user" class="label">Telefono</label>
                             <asp:TextBox ID="txtTelefonoRegistro" TextMode="Phone" runat="server" placeHolder="* Requerido *"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteR"
-                                ControlToValidate="txtTelefonoRegistro" ErrorMessage="Digite su telefono" Display="Dynamic"
+                                ControlToValidate="txtTelefonoRegistro" ErrorMessage="Digite su teléfono" Display="Dynamic"
                                 ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
+
                         <div class="group">
-                            <label for="user" class="label">Contraseña</label>
-                            <asp:TextBox ID="txtContrasennaRegistro" TextMode="Password" runat="server" placeHolder="* Requerido *"></asp:TextBox>
+                            <label for="user" class="label"># identificacion</label>
+                            <asp:TextBox ID="txtIdentificacion" runat="server" placeHolder="* Requerido *"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="ManteR"
+                                ControlToValidate="txtIdentificacion" ErrorMessage="Digite su cédula" Display="Dynamic"
+                                ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+
+                                  <div class="group">
+                            <label for="pass" class="label">Contraseña</label>
+                            <asp:TextBox ID="txtContrasennaRegistro" runat="server" TextMode="Password" TabIndex="2" placeHolder="* Requerido *"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="ManteR"
+                                ControlToValidate="txtPass" ErrorMessage="Digite su contraseña" Display="Dynamic"
+                                ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
                             <ajaxToolkit:PasswordStrength ID="PasswordStrength1" runat="server" Enabled="true" MinimumNumericCharacters="1"
                                 MinimumLowerCaseCharacters="1" PreferredPasswordLength="8" RequiresUpperAndLowerCaseCharacters="true"
                                 TargetControlID="txtContrasennaRegistro" PrefixText="Complejidad" TextStrengthDescriptions="Baja;Media;Alta"/>

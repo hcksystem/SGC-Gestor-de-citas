@@ -70,6 +70,9 @@
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1449.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.v12.12.0.0.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
@@ -92,12 +95,38 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\calendario\jquery-3.6.0.min.js" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\AUTHORS.txt" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-icons_222222_256x240.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-icons_454545_256x240.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-icons_888888_256x240.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\index.html" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\jquery-ui.css" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\jquery-ui.js" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\jquery-ui.min.css" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\jquery-ui.min.js" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\jquery-ui.structure.css" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\jquery-ui.structure.min.css" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\jquery-ui.theme.css" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\jquery-ui.theme.min.css" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\LICENSE.txt" />
     <Content Include="assets\css\acordeon.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\estilogrid.css" />
     <Content Include="assets\css\estiloLista.css" />
     <Content Include="assets\css\imagenesfiltradas.css" />
+    <Content Include="assets\css\Iniciosesion.css" />
     <Content Include="assets\css\login.css" />
+    <Content Include="assets\css\loginRegistro.css" />
     <Content Include="assets\css\now-ui-dashboard.css" />
     <Content Include="assets\css\now-ui-dashboard.min.css" />
     <Content Include="assets\css\sweetalert2.min.css" />
@@ -105,7 +134,6 @@
     <Content Include="assets\demo\demo.js" />
     <Content Include="assets\demo\docs.min.css" />
     <Content Include="assets\demo\docs.min.js" />
-    <Content Include="assets\demo\jquery.sharrre.js" />
     <Content Include="assets\img\apple-icon.png" />
     <Content Include="assets\img\basurero.jpg" />
     <Content Include="assets\img\cejas.jpg" />
@@ -121,11 +149,9 @@
     <Content Include="assets\img\right-arrow.png" />
     <Content Include="assets\img\Seleccionar%29.png" />
     <Content Include="assets\img\tinte.jpg" />
-    <Content Include="assets\js\calendar.js" />
     <Content Include="assets\js\core\bootstrap.min.js" />
     <Content Include="assets\js\core\jquery.min.js" />
     <Content Include="assets\js\core\popper.min.js" />
-    <Content Include="assets\js\datetimepicker.js" />
     <Content Include="assets\js\mensaje.js" />
     <Content Include="assets\js\now-ui-dashboard.js" />
     <Content Include="assets\js\now-ui-dashboard.min.js" />
@@ -141,22 +167,34 @@
     <Content Include="AyudaProducto.aspx" />
     <Content Include="AyudaServicio.aspx" />
     <Content Include="AyudaUsuario.aspx" />
-    <Content Include="frmFacturación.aspx" />
+    <Content Include="frmCita.aspx" />
+    <Content Include="frmCitaCliente.aspx" />
+    <Content Include="frmCitaEmpleado.aspx" />
+    <Content Include="frmCitaHorario.aspx" />
+    <Content Include="frmCitaHorarioCliente.aspx" />
+    <Content Include="frmCitaHorarioEmpleado.aspx" />
+    <Content Include="frmFacturacion.aspx" />
     <Content Include="frmGestorCita.aspx" />
     <Content Include="frmInventario.aspx" />
+    <Content Include="frmLogin.aspx" />
+    <Content Include="frmMantenimientoCategoria.aspx" />
     <Content Include="frmMantenimientoNegocio.aspx" />
     <Content Include="frmMantenimientoProducto.aspx" />
     <Content Include="frmMantenimientoServicio.aspx" />
     <Content Include="frmMantenimientoUsuario.aspx" />
     <Content Include="frmMenuAdministrador.aspx" />
     <Content Include="frmMenuCliente.aspx" />
+    <Content Include="frmMenuEmpleado.aspx" />
+    <Content Include="frmRegistro.aspx" />
+    <Content Include="frmReporteCitas.aspx" />
+    <Content Include="frmReporteInventario.aspx" />
+    <Content Include="frmReporteProducto.aspx" />
     <Content Include="gulpfile.js" />
     <Content Include="LoginSGC.aspx" />
     <Content Include="ManualAyuda.aspx" />
     <Content Include="nucleo-icons.html" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="Web.config" />
-    <Content Include="Calendario.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administrador.Master.cs">
@@ -201,15 +239,66 @@
     <Compile Include="Cliente.Master.designer.cs">
       <DependentUpon>Cliente.Master</DependentUpon>
     </Compile>
-    <Compile Include="Enum\citaEnum.cs" />
-    <Compile Include="Enum\entradasSalidasInventario.cs" />
-    <Compile Include="Enum\estado.cs" />
-    <Compile Include="frmFacturación.aspx.cs">
-      <DependentUpon>frmFacturación.aspx</DependentUpon>
+    <Compile Include="Empleado.Master.cs">
+      <DependentUpon>Empleado.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmFacturación.aspx.designer.cs">
-      <DependentUpon>frmFacturación.aspx</DependentUpon>
+    <Compile Include="Empleado.Master.designer.cs">
+      <DependentUpon>Empleado.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Enum\citaEnum.cs" />
+    <Compile Include="Enum\entradasSalidasInventario.cs" />
+    <Compile Include="Enum\enumMetodoPago.cs" />
+    <Compile Include="Enum\estado.cs" />
+    <Compile Include="Enum\horarioEnum.cs" />
+    <Compile Include="frmCita.aspx.cs">
+      <DependentUpon>frmCita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCita.aspx.designer.cs">
+      <DependentUpon>frmCita.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmCitaCliente.aspx.cs">
+      <DependentUpon>frmCitaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCitaCliente.aspx.designer.cs">
+      <DependentUpon>frmCitaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmCitaEmpleado.aspx.cs">
+      <DependentUpon>frmCitaEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCitaEmpleado.aspx.designer.cs">
+      <DependentUpon>frmCitaEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmCitaHorario.aspx.cs">
+      <DependentUpon>frmCitaHorario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCitaHorario.aspx.designer.cs">
+      <DependentUpon>frmCitaHorario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmCitaHorarioCliente.aspx.cs">
+      <DependentUpon>frmCitaHorarioCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCitaHorarioCliente.aspx.designer.cs">
+      <DependentUpon>frmCitaHorarioCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmCitaHorarioEmpleado.aspx.cs">
+      <DependentUpon>frmCitaHorarioEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCitaHorarioEmpleado.aspx.designer.cs">
+      <DependentUpon>frmCitaHorarioEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacturacion.aspx.cs">
+      <DependentUpon>frmFacturacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmFacturacion.aspx.designer.cs">
+      <DependentUpon>frmFacturacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmGestorCita.aspx.cs">
       <DependentUpon>frmGestorCita.aspx</DependentUpon>
@@ -224,6 +313,20 @@
     </Compile>
     <Compile Include="frmInventario.aspx.designer.cs">
       <DependentUpon>frmInventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.aspx.cs">
+      <DependentUpon>frmLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmLogin.aspx.designer.cs">
+      <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMantenimientoCategoria.aspx.cs">
+      <DependentUpon>frmMantenimientoCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMantenimientoCategoria.aspx.designer.cs">
+      <DependentUpon>frmMantenimientoCategoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmMantenimientoNegocio.aspx.cs">
       <DependentUpon>frmMantenimientoNegocio.aspx</DependentUpon>
@@ -267,6 +370,41 @@
     <Compile Include="frmMenuCliente.aspx.designer.cs">
       <DependentUpon>frmMenuCliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmMenuEmpleado.aspx.cs">
+      <DependentUpon>frmMenuEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMenuEmpleado.aspx.designer.cs">
+      <DependentUpon>frmMenuEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistro.aspx.cs">
+      <DependentUpon>frmRegistro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmRegistro.aspx.designer.cs">
+      <DependentUpon>frmRegistro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteCitas.aspx.cs">
+      <DependentUpon>frmReporteCitas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmReporteCitas.aspx.designer.cs">
+      <DependentUpon>frmReporteCitas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteInventario.aspx.cs">
+      <DependentUpon>frmReporteInventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmReporteInventario.aspx.designer.cs">
+      <DependentUpon>frmReporteInventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteProducto.aspx.cs">
+      <DependentUpon>frmReporteProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmReporteProducto.aspx.designer.cs">
+      <DependentUpon>frmReporteProducto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LoginSGC.aspx.cs">
       <DependentUpon>LoginSGC.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -282,12 +420,10 @@
       <DependentUpon>ManualAyuda.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Calendario.aspx.cs">
-      <DependentUpon>Calendario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Calendario.aspx.designer.cs">
-      <DependentUpon>Calendario.aspx</DependentUpon>
+    <Compile Include="SolucionesSGCv1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SolucionesSGCv1DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
@@ -337,7 +473,20 @@
     <Content Include="package.json" />
     <Content Include="Administrador.Master" />
     <Content Include="Cliente.Master" />
+    <Content Include="assets\calendario\jquery-ui-1.12.1.custom\package.json" />
+    <Content Include="Empleado.Master" />
     <None Include="packages.config" />
+    <Content Include="SolucionesSGCv1DataSet.xsc">
+      <DependentUpon>SolucionesSGCv1DataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="SolucionesSGCv1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SolucionesSGCv1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="SolucionesSGCv1DataSet.xss">
+      <DependentUpon>SolucionesSGCv1DataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -360,8 +509,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="imagenes\Negocio\Servicios\" />
     <Folder Include="SqlServerTypes\x64\" />
     <Folder Include="SqlServerTypes\x86\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReporteCitas.rdlc" />
+    <EmbeddedResource Include="ReporteProducto.rdlc" />
+    <EmbeddedResource Include="ReporteProductoVendido.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

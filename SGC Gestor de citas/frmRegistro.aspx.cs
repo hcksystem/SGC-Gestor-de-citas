@@ -7,9 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace SGC_Gestor_de_citas
 {
-    public partial class Facturación : System.Web.UI.Page
+    public partial class frmRegistro : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnRegistarme_Click(object sender, EventArgs e)
         {
 
         }

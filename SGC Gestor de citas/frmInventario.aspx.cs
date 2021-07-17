@@ -35,17 +35,29 @@ namespace SGC_Gestor_de_citas
         }
         public void limpiarDatos()
         {
-            txtCantidadNueva.Text = "";
-            txtStock.Text = "";
-            Session["ID"] = null;
+            if (txtBuscar.Text.Length == 0)
+            {
+                txtCantidadNueva.Text = "";
+                txtStock.Text = "";
+                Session["ID"] = null;
+                txtBuscar.Text = "";
+            }
         }
 
         public void cargarDatos()
         {
-            BLLInventario blli = new BLLInventario();
-            DataTable dt = blli.ObtenerTodosLosInventarios();
-            gridInventario.DataSource = dt;
-            gridInventario.DataBind();
+                BLLInventario blli = new BLLInventario();
+            if (txtBuscar.Text.Length == 0)
+            {
+                gridInventario.DataSource = blli.ObtenerTodosLosInventarios();
+            }
+            else {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT Inventario.id, Producto.id AS idProducto, Producto.nombre, Inventario.cantidad, Inventario.descripcion FROM Inventario INNER JOIN Producto ON Inventario.idProducto = Producto.id where Producto.nombre like '" + txtBuscar.Text + "%'", cn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                this.gridInventario.DataSource = dt;
+            }
+                gridInventario.DataBind();
 
           
         }
@@ -176,7 +188,7 @@ namespace SGC_Gestor_de_citas
             txtCantidadNueva.Visible = false;
             dropSumRes.Visible = false;
             btnGuardar.Visible = false;
-            txtBuscar.Text = "";
+            //txtBuscar.Text = "";
         }
 
         protected void txtBuscar_TextChanged(object sender, EventArgs e)

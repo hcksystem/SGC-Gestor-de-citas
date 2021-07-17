@@ -24,6 +24,7 @@ namespace SGC_Gestor_de_citas
             {
                 LlenarCombos();
                 CargarDatos();
+                txtNombre.ToolTip = "-1";
             }
         }
 
@@ -75,40 +76,76 @@ namespace SGC_Gestor_de_citas
             txtPrecio.Text = "";
             txtTiempoEstimado.Text = "";
             FileUpload1.Dispose();
+            txtNombre.ToolTip = "-1";
 
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            int situ = 0;
+            bool flag = false;
+                BLLServicio blls = new BLLServicio();
             try
             {
-                //obtener datos de imagen//
-                int tamanio = FileUpload1.PostedFile.ContentLength;
-                byte[] imagenOriginal = new byte[tamanio];
-                FileUpload1.PostedFile.InputStream.Read(imagenOriginal, 0, tamanio);
-                Bitmap imagenOriginaBinaria = new Bitmap(FileUpload1.PostedFile.InputStream);
+                string imagen = "";
+                string root = String.Format("~/imagenes/{1}/{0}", txtNombre.Text, dropNegocio.SelectedItem.Text);
+                if (txtNombre.ToolTip.Equals("-1"))//Insertando
+                {
+                    if (!FileUpload1.HasFile)
+                    {
+                        flag = true;
+                    }
+                    else {
+                        imagen = root+"/"+FileUpload1.FileName;
+                    }
+                }
+                else//Actualizando
+                {
+                    if (!FileUpload1.HasFile)
+                    {
+                        if (!blls.TieneImagen(Convert.ToInt32(txtNombre.ToolTip)))
+                        {
+                            flag = true;
+                        }
+                        else
+                        {
+                            imagen = blls.Imagen(Convert.ToInt32(txtNombre.ToolTip));
+                            situ = 1;
+                        }
+                    }
+                    else
+                    {
+                        imagen = root + "/" + FileUpload1.FileName;
+                    }
+                }
+                    if (!flag)
+                    {
+                        bool exists = System.IO.Directory.Exists(Server.MapPath(root));
 
-                //insertar en bd//
-                string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(imagenOriginal);
+                        if (!exists)
+                        {
+                            System.IO.Directory.CreateDirectory(Server.MapPath(root));
+                        }
+                        String mensaje = blls.GuardarServicio(Convert.ToInt32(txtNombre.ToolTip), txtNombre.Text, txtDescripcion.Text, Convert.ToInt32(dropProducto.SelectedValue), Convert.ToDouble(txtPrecio.Text), Convert.ToInt32(txtTiempoEstimado.Text), imagen, Convert.ToInt16(dropEstado.SelectedValue), Convert.ToInt16(dropNegocio.SelectedValue));
+                    if (situ == 0)
+                    {
+                        FileUpload1.SaveAs(Server.MapPath(imagen));
+                    }
+                        limpiarDatos();
+                        CargarDatos();
+                        ClientScript.RegisterStartupScript(
+                                       this.GetType(),
+                                       "Registro",
+                                        "mensajeRedirect('Servicio','" + mensaje + "','success','frmMantenimientoServicio.aspx')",
+                                       true
+                                       );
+                        //ese scripManager genera la alerta
+                        //string mjs = "Servicio registrado correctamente";
 
-
-                BLLServicio blls = new BLLServicio();
-                blls.InsertarServicio(txtNombre.Text, txtDescripcion.Text, Convert.ToDouble(txtPrecio.Text), Convert.ToDateTime(txtTiempoEstimado.Text), imagenOriginal, Convert.ToInt16(dropEstado.SelectedValue), Convert.ToInt16(dropProducto.SelectedValue), Convert.ToInt16(dropNegocio.SelectedValue));
-
-                //ese scripManager genera la alerta
-                //string mjs = "Servicio registrado correctamente";
-
-                ClientScript.RegisterStartupScript(
-                             this.GetType(),
-                             "Registro",
-                              "mensajeRedirect('Servicio',' Guardado con éxito','success','frmMantenimientoServicio.aspx')",
-                             true
-                             );
-
-                limpiarDatos();
-                CargarDatos();
+                        // If directory does not exist, create it. 
+                    }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
@@ -126,11 +163,18 @@ namespace SGC_Gestor_de_citas
             txtNombre.Text = dt.Rows[0]["nombre"].ToString();
             txtDescripcion.Text = dt.Rows[0]["descripcion"].ToString();
             txtPrecio.Text = dt.Rows[0]["precioEstimado"].ToString();
-            txtTiempoEstimado.Text = dt.Rows[0]["tiempoEstimado"].ToString();
+            txtTiempoEstimado.Text = dt.Rows[0]["Duracion"].ToString();
             dropEstado.SelectedValue = dt.Rows[0]["estado"].ToString();
             dropNegocio.SelectedValue = dt.Rows[0]["idNegocio"].ToString();
-            dropProducto.SelectedValue = dt.Rows[0]["idProducto"].ToString();
+            FotoSugerida.ImageUrl= dt.Rows[0]["fotoSugerida"].ToString();
+            if (FotoSugerida.ImageUrl.Length > 0)
+            {
+                FotoSugerida.Visible = true;
+            }
+            else {
 
+                FotoSugerida.Visible = false;
+            }
             //// fileUpLoad = gridServicios.Rows[gridServicios.EditIndex].FindControl("FileUpload1") as FileUpload;
             //string fileName = fileUpLoad.FileName;
             //string fullPath = Path.GetFullPath(fileName);
@@ -181,14 +225,6 @@ namespace SGC_Gestor_de_citas
 
         protected void gridServicios_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                System.Web.UI.HtmlControls.HtmlImage imageControl = (System.Web.UI.HtmlControls.HtmlImage)e.Row.FindControl("imageControl");
-                if (((DataRowView)e.Row.DataItem)["fotoSugerida"] != DBNull.Value)
-                {
-                    imageControl.Src = "data:image/png;base64," + Convert.ToBase64String((byte[])(((DataRowView)e.Row.DataItem))["fotoSugerida"]);
-                }
-            }
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
@@ -213,14 +249,14 @@ namespace SGC_Gestor_de_citas
         protected void gridServicios_SelectedIndexChanged(object sender, EventArgs e)
         {
             int servicio = Convert.ToInt32(gridServicios.SelectedRow.Cells[2].Text);
-           // int negocio = Convert.ToInt32(gridServicios.SelectedRow.Cells[2].Text);
+            // int negocio = Convert.ToInt32(gridServicios.SelectedRow.Cells[2].Text);
 
             //Server.Transfer("frmMantenimientoUsuario.aspx"+usuario);
+            txtNombre.ToolTip =""+servicio;
             if (gridServicios.Columns.Count > 0)
 
                 EditarDatos();
-            btnGuardar.Visible = false;
-            btnModificar.Visible = true;
+            btnGuardar.Visible = true;
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
@@ -276,6 +312,10 @@ namespace SGC_Gestor_de_citas
             CargarDatos();
             btnGuardar.Visible = true;
             btnModificar.Visible = false;
+        }
+
+        protected void FotoSugerida_Click(object sender, ImageClickEventArgs e)
+        {
         }
     }
 }

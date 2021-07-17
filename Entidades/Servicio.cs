@@ -12,10 +12,10 @@ namespace Entidades
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public double PrecioEstimado { get; set; }
-        public DateTime TiempoEstimado { get; set; }
-        public byte[] FotoSugerida { get; set; }
+        public int Duracion { get; set; }
+        public String FotoSugerida { get; set; }
         public int Estado { get; set; }
-        public int idProducto { get; set; }
         public int idNegocio { get; set; }
+        public int idProducto { get; set; }
     }
 }

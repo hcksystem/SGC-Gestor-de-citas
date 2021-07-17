@@ -13,8 +13,8 @@ namespace Entidades
         public int estado { get; set; }
         public int idServicio { get; set; }
         public int idUsuario { get; set; }
-        public int idCliente { get; set; }
-        public int idHorario { get; set; }
+        public string Fecha { get; set; }
+        public string Hora { get; set; }
 
     }
 }

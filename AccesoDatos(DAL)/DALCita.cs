@@ -11,38 +11,22 @@ namespace AccesoDatos_DAL_
 {
     public class DALCita : DALBase
     {
-        public void InsertarCita(string Descripcion, int estado, int idServicio, int idUsuario, int idCliente, int idHorario)
+        public string InsertarCita(string Descripcion, int estado, int idServicio, int idUsuario,string Fecha , string Hora)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Cita (descripcion, estado, idServicio, idUsuario, idCliente, idHorario) VALUES (@descripcion, @estado, @idServicio, @idUsuario, @idCliente, @Horario)", Conexion);
-            SqlParameter parametro;
-
-            parametro = new SqlParameter("@descripcion", Descripcion);
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@estado", estado);
-            parametro.DbType = System.Data.DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@idServicio", idServicio);
-            parametro.DbType = System.Data.DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@idUsuario", idUsuario);
-            parametro.DbType = System.Data.DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@idCliente", idCliente);
-            parametro.DbType = System.Data.DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@idHorario", idHorario);
-            parametro.DbType = System.Data.DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
+            SqlCommand cmd = new SqlCommand(string.Format("SP_RegistrarCita '{0}','{1}','{2}','{3}','{4}'",Descripcion,idServicio,idUsuario,Fecha,Hora), Conexion);
             Conexion.Open();
-            cmd.ExecuteNonQuery();
+            string result=(string)cmd.ExecuteScalar();
             Conexion.Close();
+            return result;
+        }
 
+        public DataTable ObtenerHorarioDisponible(String Fecha)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand(String.Format("set dateformat dmy;Select * from FNCalcularDisponibilidad('{0}')",Fecha), Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
         }
 
         public DataTable ObtenerTodasLasCitas()

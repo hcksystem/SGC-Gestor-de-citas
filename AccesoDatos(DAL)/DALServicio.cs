@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,56 +13,20 @@ namespace AccesoDatos_DAL_
 
     public class DALServicio : DALBase
     {
-        public void InsertarServicio(string nombre, string descripcion, double precioEstimado, DateTime tiempoEstimado, byte[] fotoSugerida, int estado, int idProducto, int idNegocio)
+        public SqlConnection cn = new SqlConnection("Data Source =.; Initial Catalog = SolucionesSGC; User ID = sa; Password=123456");
+
+        public String GuardarServicio(int IDServicio,string nombre, string descripcion,int idProducto, double precioEstimado, int Duracion, String fotoSugerida, int estado, int idNegocio)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Servicio (nombre, descripcion, precioEstimado, tiempoEstimado, fotoSugerida, estado, idProducto, idNegocio ) VALUES (@nombre, @descripcion, @precioestimado, @tiempoEstimado, @fotoSugerida, @estado, @idProducto, @idNegocio)", Conexion);
-            SqlParameter parametro;
-
-            parametro = new SqlParameter("@nombre", nombre);
-            parametro.DbType = DbType.String;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@descripcion", descripcion);
-            parametro.DbType = DbType.String;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@precioEstimado", precioEstimado);
-            parametro.DbType = System.Data.DbType.Double;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@tiempoEstimado", tiempoEstimado);
-            parametro.DbType = System.Data.DbType.Time;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@fotoSugerida", fotoSugerida);
-            parametro.DbType = System.Data.DbType.Binary;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@estado", estado);
-            parametro.DbType = System.Data.DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@idProducto", idProducto);
-            parametro.DbType = System.Data.DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@idNegocio", idNegocio);
-            parametro.DbType = System.Data.DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
+            SqlCommand cmd = new SqlCommand(String.Format("exec SP_GuardarServicio {0},'{1}','{2}',{3},'{4}','{5}',{6},{7},{7}",IDServicio,nombre,descripcion,idProducto,precioEstimado,fotoSugerida,estado,idNegocio,Duracion), Conexion);
             Conexion.Open();
-            cmd.ExecuteNonQuery();
+           String mensaje=(String) cmd.ExecuteScalar();
             Conexion.Close();
-
+            return mensaje;
         }
         public DataTable ObtenerServicioPorID(int Identificacion)
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, nombre, descripcion, precioEstimado, tiempoEstimado, fotoSugerida, estado, idProducto, idNegocio FROM Servicio WHERE id = @id", Conexion);
-            SqlParameter parametro;
-
-            parametro = new SqlParameter("@id", Identificacion);
-            cmd.Parameters.Add(parametro);
+            SqlCommand cmd = new SqlCommand(String.Format("SELECT id, nombre, descripcion, precioEstimado, duracion, fotoSugerida, estado, idNegocio FROM Servicio WHERE id = {0}", Identificacion), Conexion);
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
@@ -90,11 +55,50 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosServiciosActivos()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("select Servicio.id, Servicio.nombre, Servicio.descripcion, Servicio.precioEstimado, Servicio.tiempoEstimado, Servicio.fotoSugerida, CASE WHEN Servicio.estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS estado, Producto.nombre as idProducto, Negocio.nombre as idNegocio from Servicio inner join Producto on Servicio.idProducto=Producto.id inner join Negocio on Servicio.idNegocio=Negocio.id where Servicio.estado =1", Conexion);
+            SqlCommand cmd = new SqlCommand("Select * from VW_Servicios", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
         }
+
+        public static DataSet SeleccionarTodosServiciosLista()
+        {
+         SqlConnection cn = new SqlConnection("Data Source =.; Initial Catalog = SolucionesSGC; User ID = sa; Password=123456");
+
+        DataSet dt = new DataSet();
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, descripcion, precioEstimado, fotoSugerida, estado, idNegocio,Duracion FROM dbo.Servicio where estado=1", cn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+
+        public bool TieneImagen(int ID)
+        {
+            SqlConnection cn = new SqlConnection("Data Source =.; Initial Catalog = SolucionesSGC; User ID = sa; Password=123456");
+            cn.Open();
+            SqlCommand cmd = new SqlCommand(String.Format("select count(1) from Servicio where len(fotoSugerida) > 1 and id = {0}",ID),cn);
+            int Result=Convert.ToInt32(cmd.ExecuteScalar());
+            if (Result > 0)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+            cn.Close();
+
+        }
+
+        public string Imagen(int v)
+        {
+            SqlConnection cn = new SqlConnection("Data Source =.; Initial Catalog = SolucionesSGC; User ID = sa; Password=123456");
+            cn.Open();
+            SqlCommand cmd = new SqlCommand(String.Format("select fotoSugerida from Servicio where  id = {0}", v),cn);
+            string result=(string)cmd.ExecuteScalar();
+            cn.Close();
+            return result;
+        }
+
         public void ModificarServicio(int ID, string nombre, string descripcion, double precioEstimado, DateTime tiempoEstimado, byte[] fotoSugerida, int estado, int idProducto, int idNegocio)
         {
             SqlCommand cmd = new SqlCommand("UPDATE Servicio SET nombre = @nombre, descripcion = @descripcion, precioEstimado = @precioEstimado, tiempoEstimado = @tiempoEstimado, fotoSugerida = @fotoSugerida,estado=@estado,idProducto=@idProducto,idNegocio=@idNegocio WHERE id=@id", Conexion);

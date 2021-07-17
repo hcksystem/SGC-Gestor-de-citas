@@ -1936,8 +1936,7 @@ pre {
 }
 
     .table-info tbody + tbody, .table-info td, .table-info th, .table-info thead th {
-        border-color: #86cfda;
-        
+        border-color: #111213;
     }
 
 .table-hover .table-info:hover {
@@ -2208,7 +2207,8 @@ select.form-control:focus::-ms-value {
     padding-bottom: calc(.375rem + 1px);
     margin-bottom: 0;
     font-size: inherit;
-    line-height: 1.5
+    line-height: 1.5;
+    padding-left: 0px
 }
 
 .col-form-label-lg {

@@ -1,12 +1,10 @@
 ﻿using Entidades;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AccesoDatos_DAL_
@@ -19,10 +17,10 @@ namespace AccesoDatos_DAL_
 
         public void InsertarUsuario(Persona persona, Usuario usuario)
         {
-        SqlCommand cmdPersona = new SqlCommand("insert into Persona (nombre, apellido, correo, telefono, identificacion) values (@nombre, @apellido, @correo, @telefono, @identificacion); SELECT CAST (scope_identity() as int)", Conexion);
-        //SqlParameter parametro;
-        SqlParameter parametroPersona;
-            parametroPersona = new SqlParameter("@nombre",persona.nombre );
+            SqlCommand cmdPersona = new SqlCommand("insert into Persona (nombre, apellido, correo, telefono, identificacion) values (@nombre, @apellido, @correo, @telefono, @identificacion); SELECT CAST (scope_identity() as int)", Conexion);
+            //SqlParameter parametro;
+            SqlParameter parametroPersona;
+            parametroPersona = new SqlParameter("@nombre", persona.nombre);
             cmdPersona.Parameters.Add(parametroPersona);
 
             parametroPersona = new SqlParameter("@apellido", persona.apellido);
@@ -39,28 +37,33 @@ namespace AccesoDatos_DAL_
 
             int personaInsertada;
 
-        Conexion.Open();
+            Conexion.Open();
             personaInsertada = (int)cmdPersona.ExecuteScalar();
             Conexion.Close();
 
-     
-        SqlCommand cmd = new SqlCommand("INSERT INTO Usuario(nombreUsuario, contrasenna, idRoll, estado, idPersona)VALUES(@nombreUsuario, @contrasenna, @idRoll, @estado, @idPersona)", Conexion);
-        SqlParameter parametro;
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO Usuario(nombreUsuario, contrasenna, idRoll, estado, idPersona)VALUES(@nombreUsuario, @contrasenna, @idRoll, @estado, @idPersona)", Conexion);
+            SqlParameter parametro;
 
             parametro = new SqlParameter("@nombreUsuario", usuario.NombreUsuario);
-        cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@contrasenna",usuario.Contrasenna );
-        cmd.Parameters.Add(parametro);
+            cmd.Parameters.Add(parametro);
+            parametro = new SqlParameter("@contrasenna", usuario.Contrasenna);
+            cmd.Parameters.Add(parametro);
             parametro = new SqlParameter("@idRoll", usuario.idRol);
-        cmd.Parameters.Add(parametro);
+            cmd.Parameters.Add(parametro);
             parametro = new SqlParameter("@estado", usuario.estado);
-        cmd.Parameters.Add(parametro);
+            cmd.Parameters.Add(parametro);
             parametro = new SqlParameter("@idPersona", personaInsertada);
-        cmd.Parameters.Add(parametro);
+            cmd.Parameters.Add(parametro);
 
             Conexion.Open();
             cmd.ExecuteNonQuery();
-             Conexion.Close();
+            Conexion.Close();
+        }
+
+        public Usuario ObtenerUsuario()
+        {
+            return us;
         }
 
         public DataTable ObtenerTodosUsuarios()//aca va un posible inner join para cambiar el id de roll y persona por los nombres
@@ -187,24 +190,26 @@ namespace AccesoDatos_DAL_
                     command.Connection = Conexion;
                     Conexion.Open();
 
-                    command.CommandText = "select * from Usuario where nombreUsuario =@nombreUsuario and contrasenna =@contrasenna";
-                    command.Parameters.AddWithValue("@nombreUsuario", user);
-                    command.Parameters.AddWithValue("@contrasenna", pass);
+                    command.CommandText = string.Format("Select id,nombreUsuario,contrasenna,idRoll,estado,idPersona  from Usuario where nombreUsuario='{0}' and contrasenna=HASHBYTES('MD5','{1}')", user, pass);
                     command.CommandType = CommandType.Text;
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
+                    DataTable dataTable = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter(command);
+                    // this will query your database and return the result to your datatable
+                    da.Fill(dataTable);
+                    Conexion.Close();
+                    da.Dispose();
+                    if (dataTable.Rows.Count > 0)
                     {
-                        while (reader.Read())
-                        {
-                            us.id = reader.GetInt32(0);
-                            us.NombreUsuario = reader.GetString(1);
-                            us.Contrasenna = reader.GetString(2);
-                            us.idRol = reader.GetInt32(3);
-                            us.estado = reader.GetInt32(4);
-                            us.idPersona = reader.GetInt32(5);
-                        }
+                        us = (from rw in dataTable.AsEnumerable()
+                              select new Usuario()
+                              {
+                                  id = Convert.ToInt32(rw["id"]),
+                                  NombreUsuario = Convert.ToString(rw["nombreUsuario"]),
+                                  Contrasenna = Convert.ToString(rw["contrasenna"]),
+                                  idRol = Convert.ToInt32(rw["idRoll"]),
+                                  estado = Convert.ToInt32(rw["estado"]),
+                                  idPersona = Convert.ToInt32(rw["idPersona"])
+                              }).ToList().First<Usuario>();
                         return true;
                     }
                     else
@@ -213,9 +218,9 @@ namespace AccesoDatos_DAL_
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Digite los datos requeridos");
+                MessageBox.Show(ex.Message);
                 throw;
             }
         }

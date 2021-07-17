@@ -1,17 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador.Master" AutoEventWireup="true" CodeBehind="frmMantenimientoServicio.aspx.cs" Inherits="SGC_Gestor_de_citas.frmMantenimientoServicio" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
     <link href="assets/css/acordeon.css" rel="stylesheet" />
-
-        <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/sweetalert2.all.min.js"></script>
     <script src="assets/js/mensaje.js"></script>
     <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
-
-    <!DOCTYPE html>
-    <html>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+      
     <div class="panel-header-sm">
     </div>
     <div class="content">
@@ -45,8 +42,8 @@
                             </div>
                             <div class="col-md-4 pl-1">
                                 <div class="form-group">
-                                    <label>Tiempo estimado </label>
-                                    <asp:TextBox ID="txtTiempoEstimado" DataFormatString="{0:HH:mm}" TextMode="Time" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                                    <label>Duración </label>
+                                    <asp:TextBox ID="txtTiempoEstimado"  TextMode="Number" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteS"
                                         ControlToValidate="txtTiempoEstimado" ErrorMessage="El tiempo es necesario" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -66,9 +63,7 @@
                                     <label>Foto </label>
                                     <br />
                                     <asp:FileUpload ID="FileUpload1" runat="server" ForeColor="#626c7d" Font-Size="Small" />
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="ManteS"
-                                    ControlToValidate="FileUpload1" ErrorMessage="La foto es necesaria" Display="Dynamic"
-                                    ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:ImageButton Width="35px" Height="35px" ID="FotoSugerida" runat="server" Visible="false" OnClick="FotoSugerida_Click"  />
                                 </div>
                             </div>
                             <div class="col-md-4 pl-1">
@@ -105,7 +100,7 @@
                                     <asp:Button ID="btnModificar" class="btn btn-primary btn-round" runat="server" Text="Modificar" Visible="false" OnClick="btnModificar_Click" />
                                 </div>
                             </div>                                                  
-                        </div>
+                    
                         <div class="col-12 tab">
                             <input id="tab-1" type="checkbox" style="display: none">
                             <hr />
@@ -151,13 +146,13 @@
                                                     <asp:TextBox ID="txtPrecioEstimado" TextMode="Number" runat="server" Text='<% # Bind("precioEstimado") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Tiempo estimado">
+                                            <asp:TemplateField HeaderText="Duración">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label5"  runat="server" Text='<%# Bind("tiempoEstimado") %>'></asp:Label> 
+                                                    <asp:Label ID="Label5"  runat="server" Text='<%# Bind("Duracion") %>'></asp:Label> 
                                                     <%--configurar algo para el datetime--%>
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
-                                                    <asp:TextBox ID="txtTiempoEstimado" TextMode="Time" runat="server" Text='<% # Bind("tiempoEstimado") %>'></asp:TextBox>
+                                                    <asp:TextBox ID="txtTiempoEstimado" TextMode="Number" runat="server" Text='<% # Bind("duracion") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Foto">
@@ -199,10 +194,9 @@
                             </div>
                         </div>
                     </div>
-
+                    </div>
                 </div>
             </div>
         </div>
-    </html>
-
+  </div>
 </asp:Content>

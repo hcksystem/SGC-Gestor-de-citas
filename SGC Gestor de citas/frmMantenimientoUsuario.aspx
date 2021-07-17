@@ -1,20 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador.Master" AutoEventWireup="true" CodeBehind="frmMantenimientoUsuario.aspx.cs" Inherits="SGC_Gestor_de_citas.frmMantenimientoUsuario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="assets/css/estilogrid.css" rel="stylesheet" />
     <link href="assets/css/acordeon.css" rel="stylesheet" />
 
-
-        <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/sweetalert2.all.min.js"></script>
     <script src="assets/js/mensaje.js"></script>
     <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
+  
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+      <style>
+    .btn{background-color:#626c7d; margin-top: 20px;}
+    .btn:hover{background-color:#0c3254;}
+    .input-group, .form-group{
+        margin-bottom:-14px;
 
-
-
-    <!DOCTYPE html>
-    <html>    
+    }
+    .tab label::after{
+        top:3px;
+    }
+    </style>
+    
     <div class="panel-header-sm">
     </div>
     <div class="content">
@@ -29,7 +37,7 @@
         <div class="card-body">
 
             <div class="row">
-                <div class="col-md-4 pl-1">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Nombre</label>
                         <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -38,7 +46,7 @@
                             ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="col-md-4 pl-1">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Apellido</label>
                         <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -47,7 +55,7 @@
                             ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="col-md-4 pl-1">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Correo electrónico</label>
                         <asp:TextBox ID="txtCorreo" TextMode="Email" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -58,7 +66,7 @@
                             ErrorMessage="El correo electrónico no esta digitado correctamente" ControlToValidate="txtCorreo" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ValidationGroup="ManteN"></asp:RegularExpressionValidator>
                     </div>
                 </div>
-                <div class="col-md-3 pl-1">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label>Teléfono</label>
                         <asp:TextBox ID="txtTelefono" TextMode="Phone" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -68,7 +76,7 @@
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Digite un número de teléfono con el formato adecuado (ej:8888-8888)" ValidationGroup="ManteN" ValidationExpression="^[5-9]\d{3}-?\d{4}$" ControlToValidate="txtTelefono"></asp:RegularExpressionValidator>
                     </div>
                 </div>
-                 <div class="col-md-3 pl-1">
+                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Identificación</label>
                         <asp:TextBox ID="txtIdentificacion"  runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -79,7 +87,7 @@
                     </div>
                 </div>   
                 
-                 <div class="col-md-3 pl-1">
+                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Nombre de usuario</label>
                         <asp:TextBox ID="txtNombreUsuario" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
@@ -88,10 +96,10 @@
                             ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="col-md-3 pl-1">
+                <div class="col-md-3">
                     <div class="form-group">
-                        <label>Contraseña</label>
-                        <asp:TextBox ID="txtContrasenna" TextMode="Password" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                        <asp:Label ID="lblcontrasenna" runat="server" Text="Contraseña:" ForeColor="#626c7d" Font-Size="Small" Visible="false"></asp:Label>
+                        <asp:TextBox ID="txtContrasenna" TextMode="Password" runat="server" CssClass="form-control" placeHolder="* Requerido *" Visible="false"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtContrasenna" ErrorMessage="La contraseña es necesaria" Display="Dynamic"
                             SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -109,40 +117,32 @@
                         <asp:DropDownList ID="dropRol" runat="server" CssClass="form-control"></asp:DropDownList>
                       </div>
                     </div>
-                <div class="col-md-6 ">
+                <div class="col-md-3 ">
                       <div class="form-group">
                         <label>Estado</label>
                         <asp:DropDownList ID="dropEstado" runat="server" CssClass="form-control"></asp:DropDownList>
                       </div>
                     </div>
-                 <div class="col-md-4 pl-1">
+                 <div class="col-md-3">
                     <div class="form-group">
-                     <%--   <label>Persona</label>--%>
                         <asp:TextBox ID="txtPersona" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>                        
                     </div>
                 </div>
-               <%-- <div class="col-md-4 pl-1">
-                    <div class="form-group">
-                    </div>
-                </div>--%>
-              
-                <div class="col-md-4 pl-1">
+                <div class="col-md-6">
                     <div class="form-group">
                        
                     </div>
                 </div>
-
-                <div class="col-md-4 pl-1">
+                <div class="col-md-6">
                     <div class="form-group">
-                        <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" Text="Guardar" ValidationGroup="ManteN" OnClick="btnGuardar_Click" />
-                        <asp:Button ID="btnCancelar" class="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
-                        <asp:Button ID="btnModificar" class="btn btn-primary btn-round" runat="server" Text="Modificar" Visible="false" OnClick="btnModificar_Click" />
+                        <asp:Button ID="btnGuardar" class="btn  btn-round" runat="server" Text="Guardar" ValidationGroup="ManteN" OnClick="btnGuardar_Click" />
+                        <asp:Button ID="btnCancelar" class="btn  btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+                        <asp:Button ID="btnModificar" class="btn  btn-round" runat="server" Text="Modificar" Visible="false" OnClick="btnModificar_Click" />
                     </div>
                 </div>
-              </div>
                 <div class="col-12 tab">
                 <input id="tab-1" type="checkbox" style="display:none">
-                <hr />
+                <hr style="margin-top:-24px;"/>
                 <label for="tab-1">Mostrar lista</label>
                 <div class="tab-content">
                 <div style="overflow: scroll">
@@ -167,12 +167,11 @@
                 
                   </div>
                 </div>
+                </div>
                </div>
               </div>
             </div>
           </div>
        </div>
-       
-
-  </html>
+      </div>
 </asp:Content>
