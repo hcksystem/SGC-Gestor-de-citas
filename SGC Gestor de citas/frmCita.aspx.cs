@@ -1,6 +1,7 @@
 ﻿using LogicaDeNegocio_BLL_;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -28,9 +29,15 @@ namespace SGC_Gestor_de_citas
 
         protected void btnReservar_Command(object sender, CommandEventArgs e)
         {
+            
             cn.Open();
+            BLLServicio blls = new BLLServicio();
+            
             int id = int.Parse(e.CommandArgument.ToString());
+           DataTable dt = blls.ObtenerServicioPorID(id);
+            string nombre = dt.Rows[0]["nombre"].ToString();
             Session["IdServicio"] = id;
+            Session["NombreServicio"] = nombre;
             Response.Redirect("frmCitaHorario.aspx?id=" + id);
             cn.Close();
         }

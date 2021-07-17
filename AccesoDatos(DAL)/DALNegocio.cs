@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -54,6 +55,17 @@ namespace AccesoDatos_DAL_
             return dt;
         }
 
+        public static DataSet SeleccionarTodosNegociosLista()
+        {
+            SqlConnection cn = new SqlConnection("Data Source =.; Initial Catalog = SolucionesSGC; User ID = sa; Password=123456");
+
+            DataSet dt = new DataSet();
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, descripcion, logo, mision, vision FROM dbo.Negocio", cn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+
         public DataTable ObtenerTodosLosNegocio()
         {
             DataTable dt = new DataTable();
@@ -62,6 +74,8 @@ namespace AccesoDatos_DAL_
             da.Fill(dt);
             return dt;
         }
+
+       
         public void CambiarEstadonegocio(int id)
         {
             //verificar que en el enum el numero dos si corresponda apagado o eliminar

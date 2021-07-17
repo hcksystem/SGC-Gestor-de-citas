@@ -17,7 +17,7 @@ namespace AccesoDatos_DAL_
 
         public String GuardarServicio(int IDServicio,string nombre, string descripcion,int idProducto, double precioEstimado, int Duracion, String fotoSugerida, int estado, int idNegocio)
         {
-            SqlCommand cmd = new SqlCommand(String.Format("exec SP_GuardarServicio {0},'{1}','{2}',{3},'{4}','{5}',{6},{7},{7}",IDServicio,nombre,descripcion,idProducto,precioEstimado,fotoSugerida,estado,idNegocio,Duracion), Conexion);
+            SqlCommand cmd = new SqlCommand(String.Format("exec SP_GuardarServicio {0},'{1}','{2}',{3},'{4}','{5}',{6},{7},{8}",IDServicio,nombre,descripcion,idProducto,precioEstimado,fotoSugerida,estado,idNegocio,Duracion), Conexion);
             Conexion.Open();
            String mensaje=(String) cmd.ExecuteScalar();
             Conexion.Close();

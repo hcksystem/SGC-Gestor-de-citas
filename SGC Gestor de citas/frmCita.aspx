@@ -70,6 +70,31 @@
                 </div>
             </div>
         </div>
-  </div>
+         <div class="fixed-plugin">
+        <div class="dropdown show-dropdown">
+            <a href="#" data-toggle="dropdown">
+                <i class="fa fa-cog fa-2x"></i>
+            </a>
+            
+            <ul class="dropdown-menu"> 
+               
+                <li class="button-container">
+                    
+                    <a href="frmCita.aspx" target="_blank" style="width: 50px;">
+                        <div  style="overflow: scroll">
+                           <p style="color:dimgrey">Ayuda<br />En este formulario se muestran todos los servicios que se ofrecen. <br />Botón reservar: Al elegir el servicio se redirige automáticamente al formulario de reservación de su cita.</p>
+                        </div>
+                         
+
+                       
+                       
+                    </a>
+
+                </li>
+            </ul>
+            </div>
+        
+    </div>
+ 
         
 </asp:Content>

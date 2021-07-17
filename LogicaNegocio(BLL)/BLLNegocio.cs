@@ -1,4 +1,5 @@
 ﻿using AccesoDatos_DAL_;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -36,7 +37,26 @@ namespace LogicaDeNegocio_BLL_
             return daln.ObtenerTodosLosNegocio();
         }
 
+        public List<Negocio> ObtenerTodosNegociosLista()
+        {
 
+            List<Negocio> lista = new List<Negocio>();
+            DataSet ds = DALNegocio.SeleccionarTodosNegociosLista();
+
+            foreach (DataRow fila in ds.Tables[0].Rows)
+            {
+                Negocio registro = new Negocio();
+
+                registro.ID = Convert.ToInt16(fila["id"]);
+                registro.Nombre = fila["nombre"].ToString();
+                registro.Logo = (byte[])fila["logo"];
+                registro.Descripcion = fila["descripcion"].ToString();
+                registro.Nombre = fila["mision"].ToString();
+                registro.Nombre = fila["vision"].ToString();
+                lista.Add(registro);
+            }
+            return lista;
+        }
         public void EliminarNegocio(int Identificacion)
         {
             DALNegocio daln = new DALNegocio();
