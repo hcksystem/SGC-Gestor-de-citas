@@ -35,7 +35,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerTodosLosServicios()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, nombre, descripcion, precioEstimado, tiempoEstimado, fotoSugerida, estado, idProducto, idNegocio FROM Servicio", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, descripcion, precioEstimado, fotoSugerida, estado, idNegocio FROM Servicio", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;

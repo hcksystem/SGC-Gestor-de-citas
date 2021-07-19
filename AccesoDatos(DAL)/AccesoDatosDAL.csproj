@@ -46,6 +46,7 @@
     <Compile Include="DALBase.cs" />
     <Compile Include="DALCategoria.cs" />
     <Compile Include="DALCita.cs" />
+    <Compile Include="DALFactura.cs" />
     <Compile Include="DALHorario.cs" />
     <Compile Include="DALInventario.cs" />
     <Compile Include="DALNegocio.cs" />

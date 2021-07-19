@@ -7,6 +7,11 @@
     <script src="assets/js/sweetalert2.all.min.js"></script>
     <script src="assets/js/mensaje.js"></script>
     <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -99,7 +104,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <asp:Label ID="lblcontrasenna" runat="server" Text="Contraseña:" ForeColor="#626c7d" Font-Size="Small" Visible="false"></asp:Label>
-                        <asp:TextBox ID="txtContrasenna" TextMode="Password" runat="server" CssClass="form-control" placeHolder="* Requerido *" Visible="false"></asp:TextBox>
+                        <asp:TextBox ID="txtContrasenna" TextMode="Password" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="ManteN"
                             ControlToValidate="txtContrasenna" ErrorMessage="La contraseña es necesaria" Display="Dynamic"
                             SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>

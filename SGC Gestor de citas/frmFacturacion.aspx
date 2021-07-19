@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador.Master" AutoEventWireup="true" CodeBehind="frmFacturacion.aspx.cs" Inherits="SGC_Gestor_de_citas.Facturación" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
         .btn {
             background-color: #626c7d
@@ -11,7 +9,92 @@
             .btn:hover {
                 background-color: #0c3254;
             }
+        .example1 {
+            border-radius: 15px;
+            width: 150px;
+        }
+        .mySelect {
+    border-radius: 0
+    -webkit-appearance: none;
+}
     </style>
+    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+     <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/mensaje.js"></script>
+    <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script type="text/javascript">
+        $(document).ready(
+            function () {
+                $("#<%=txtBuscar.ClientID %>").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: '<%=ResolveUrl("~/WS.asmx/GetAutoCompleteData") %>',
+                            data: "{ 'Texto': '" + request.term + "'}",
+                            dataType: "json",
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                response($.map(data.d, function (item) {
+                                    return {
+                                        label: item
+                                    }
+                                }))
+                            },
+                            error: function (response) {
+                                alert(response.responseText);
+                            },
+                            failure: function (response) {
+                                alert(response.responseText);
+                            }
+                        });
+                    },
+                    select: function (e, i) {
+                        $("#<%=txtBuscar.ClientID %>").tooltip(i.item.val);
+                    },
+                    minLength: 1
+                });
+            });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(
+            function () {
+                $("#<%=txtBuscarCliente.ClientID %>").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: '<%=ResolveUrl("~/WS.asmx/GetClientes") %>',
+                            data: "{ 'Texto': '" + request.term + "'}",
+                            dataType: "json",
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                response($.map(data.d, function (item) {
+                                    return {
+                                        label: item
+                                    }
+                                }))
+                            },
+                            error: function (response) {
+                                alert(response.responseText);
+                            },
+                            failure: function (response) {
+                                alert(response.responseText);
+                            }
+                        });
+                    },
+                    select: function (e, i) {
+                        $("#<%=txtBuscarCliente.ClientID %>").tooltip(i.item.val);
+                    },
+                    minLength: 1
+                });
+            });
+    </script>
     <div class="panel-header-sm">
     </div>
     <div class="content">
@@ -29,25 +112,29 @@
                                 <div class="form-group">
                                     <label>Nº Factura:</label>
                                     <asp:Label ID="lblFactura" runat="server"></asp:Label>
+                                    <asp:Label ID="lblNumero" runat="server" Text=""></asp:Label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Encargado:</label>
-                                    <asp:Label ID="lblEncargado" runat="server"></asp:Label>
+                                    <asp:Label ID="lblEncargado" runat="server"><%=Session["Usuario"].ToString() %></asp:Label>
+                                   
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Fecha:</label>
-                                    <asp:Label ID="lblFecha" runat="server"></asp:Label>
+                                    <asp:Label ID="lblFecha" runat="server"><%=DateTime.Now.ToShortDateString() %></asp:Label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Cliente:</label>
                                     <asp:Label ID="lblCliente" runat="server"></asp:Label>
+                                    <asp:TextBox ID="txtBuscarCliente" runat="server" CssClass="form-control autosuggest"></asp:TextBox>
+
                                 </div>
                             </div>
 
@@ -62,7 +149,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Servicios</label>
-                                    <asp:DropDownList ID="dropServicio" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control autosuggest"></asp:TextBox>
                                 </div>
                             </div>
 
@@ -76,39 +163,22 @@
                             <div class="form-group col-sm-12 col-xs-12">
                                 <hr style="display: block; margin-top: 0.5em; margin-bottom: 0.5em; margin-left: auto; margin-right: auto; border-style: inset; border-width: 1px;">
                             </div>
-                           
-                            <div class="col-md-4">
-                                        <div class="form-group">
-                                            <asp:Label ID="lblCodigo" runat="server" Text="Código:"></asp:Label>
-                                            <br />
-                                            <asp:DropDownList ID="dropBuscar" runat="server" CssClass="form-control"></asp:DropDownList>
-
-<%--                                            <asp:TextBox ID="txtBuscar" runat="server" AutoPostBack="true" placeHolder="Buscar por nombre de producto" CssClass="form-control p-3" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>--%>
-
-                                        </div>
-                                    </div>
-                              <div class="col-md-2 ">
-                                        <div class="form-group">
-                                            <br />
-                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn " OnClick="btnBuscar_Click" />
-  
-                                        </div>
-                                    </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Cantidad</label>
-                                    
-                                    <asp:TextBox ID="txtCantidad" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox>
+                                <div class="form-inline">
+                                    <div class=" form-group">
+                                    <label class="control-label">Cantidad</label>
+                                    <asp:TextBox ID="txtCantidad" TextMode="Number" runat="server" CssClass="form-control-sm"></asp:TextBox></div>
+                                    <div class="form-group">
+                                        <asp:Button CssClass="btn btn-outline-primary" runat="server" ID="btnAgregar" Text="Agregar Linea" OnClick="btnAgregar_Click1"/>
+                                        </div>
+                                    <div class="form-group">
+                                        <asp:Label runat="server" ID="TotalFact" Text=""></asp:Label>
+                                    </div>
                                 </div>
                             </div>
                              <div class="col-md-8">
                                         <div class="form-group">
                                             <asp:GridView ID="gridVentas" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="8" AllowPaging="True">
-                                                <Columns>
-                                                
-
-                                                </Columns>
-
                                                 <HeaderStyle CssClass="table-info" />
                                             </asp:GridView>
                                         </div>
@@ -127,12 +197,31 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <asp:GridView ID="gridFactura" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="8" AllowPaging="True">
+                                    <asp:GridView ID="gridFactura" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="8" AllowPaging="True" OnRowDeleting="gridFactura_RowDeleting">
                                         <Columns>
-                                            <asp:CommandField ButtonType="Image" SelectImageUrl="~/assets/img/Seleccionar).png" ShowSelectButton="True" HeaderText="Seleccionar" />
+                                <asp:BoundField DataField="ID" HeaderText="ID"
+            SortExpression="ID" />
+                        <asp:BoundField DataField="Tipo" HeaderText="Tipo"
+            SortExpression="Tipo" />
+                        <asp:BoundField DataField="Descripcion" HeaderText="Descripcion"
+            SortExpression="Descripcion" />
+                    <asp:BoundField DataField="Precio" HeaderText="Precio"
+            SortExpression="Precio" />
+                    <asp:BoundField DataField="Cantidad" HeaderText="Cantidad"
+            SortExpression="Cantidad" />
+                                            <asp:TemplateField> 
 
+    <ItemTemplate>
 
-                                        </Columns>
+        <asp:LinkButton runat="server" id="btnDelete"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Desea eliminar esta linea?');" />
+
+        <img src="assets/img/basurero.jpg" width="25px" alt="">
+ 
+
+    </ItemTemplate> 
+
+</asp:TemplateField> 
+    </Columns>
 
                                         <HeaderStyle CssClass="table-info" />
                                     </asp:GridView>

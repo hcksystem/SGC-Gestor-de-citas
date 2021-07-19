@@ -88,31 +88,34 @@ namespace SGC_Gestor_de_citas
         {
             try
             {
-                BLLPersona bllp = new BLLPersona();
-                BLLUsuario bllu = new BLLUsuario();
-                //bllp.InsertarPersona(txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
-                Persona p = new Persona();
-                Usuario u = new Usuario();
+                if (txtContrasenna.Text.Length > 0)
+                {
+                    BLLPersona bllp = new BLLPersona();
+                    BLLUsuario bllu = new BLLUsuario();
+                    //bllp.InsertarPersona(txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
+                    Persona p = new Persona();
+                    Usuario u = new Usuario();
 
-                p.nombre = txtNombre.Text;
-                p.apellido = txtApellido.Text;
-                p.correo = txtCorreo.Text;
-                p.telefono = txtTelefono.Text;
-                p.identificacion = txtIdentificacion.Text;
+                    p.nombre = txtNombre.Text;
+                    p.apellido = txtApellido.Text;
+                    p.correo = txtCorreo.Text;
+                    p.telefono = txtTelefono.Text;
+                    p.identificacion = txtIdentificacion.Text;
 
-                u.NombreUsuario = txtNombreUsuario.Text;
-                u.Contrasenna = txtContrasenna.Text;
-                u.idRol = Convert.ToInt32(dropRol.SelectedValue);
-                u.estado = Convert.ToInt32(dropEstado.SelectedValue);
-                // u.idPersona = p.id;
-                bllu.InsertarUsuario(p, u);
+                    u.NombreUsuario = txtNombreUsuario.Text;
+                    u.Contrasenna = txtContrasenna.Text;
+                    u.idRol = Convert.ToInt32(dropRol.SelectedValue);
+                    u.estado = Convert.ToInt32(dropEstado.SelectedValue);
+                    // u.idPersona = p.id;
+                    bllu.InsertarUsuario(p, u);
 
-                ClientScript.RegisterStartupScript(
-                             this.GetType(),
-                             "Registro",
-                              "mensajeRedirect('Usuario',' Guardado con éxito','success','frmMantenimientoUsuario.aspx')",
-                             true
-                             );
+                    ClientScript.RegisterStartupScript(
+                                 this.GetType(),
+                                 "Registro",
+                                  "mensajeRedirect('Usuario',' Guardado con éxito','success','frmMantenimientoUsuario.aspx')",
+                                 true
+                                 );
+                }
             }
             catch (Exception)
             {
