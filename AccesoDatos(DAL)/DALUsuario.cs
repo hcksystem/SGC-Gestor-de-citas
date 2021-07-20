@@ -61,6 +61,7 @@ namespace AccesoDatos_DAL_
             Conexion.Close();
         }
 
+
         public Usuario ObtenerUsuario()
         {
             return us;
@@ -94,6 +95,15 @@ namespace AccesoDatos_DAL_
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
+        }
+
+        public string ObtenerCorreo(int v)
+        {
+            SqlCommand cmd = new SqlCommand(string.Format("Select correo from Usuario b inner join Persona c on b.idPersona=c.id where b.id='{0}'",v), Conexion);
+            Conexion.Open();
+            String correo= (string)cmd.ExecuteScalar();
+            Conexion.Close();
+            return correo;
         }
 
         public void Eliminar(int Identificacion)

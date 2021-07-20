@@ -22,57 +22,46 @@ namespace SGC_Gestor_de_citas
         {
             BLLUsuario bllu = new BLLUsuario();
 
-           
-                if (bllu.VerificarLogin(txtNombreUsuario.Text, txtContrasennaInicio.Text) == true)
+
+            if (bllu.VerificarLogin(txtNombreUsuario.Text, txtContrasennaInicio.Text) == true)
+            {
+                us = bllu.ObtenerUsuario();
+
+                ClientScript.RegisterStartupScript(
+                           this.GetType(),
+                           us.NombreUsuario,
+                            "mensajeRedirect('Bienvenido','Credenciales correctas','success')",
+                           true
+                           );
+                switch (us.idRol)
                 {
-                    us = bllu.ObtenerUsuario();
-
-                    ClientScript.RegisterStartupScript(
-                               this.GetType(),
-                               us.NombreUsuario,
-                                "mensajeRedirect('Bienvenido','Credenciales correctas','success')",
-                               true
-                               );
-
-                    if (us.idRol == 1)
-                    {
+                    case 1:
                         Session["ID"] = us.id;
                         Session["Usuario"] = us.NombreUsuario;
                         Session["Rol"] = us.idRol;
 
-                        
+
                         Response.Redirect("frmMenuAdministrador.aspx", false); Context.ApplicationInstance.CompleteRequest();
-
-                    }
-                    else
-                    {
-                        if (us.idRol == 2)
-                        {
-                            Session["ID"] = us.id;
-                            Session["Usuario"] = us.NombreUsuario;
-                            Session["Rol"] = us.idRol;
-                            
-                        }
-                    }
-                }
-                else
-                {
-                    if (us.idRol == 3)
-                    {
+                        break;
+                    case 2:
                         Session["ID"] = us.id;
                         Session["Usuario"] = us.NombreUsuario;
                         Session["Rol"] = us.idRol;
-                        
-
-                    }
+                        break;
+                    case 3:
+                        Session["ID"] = us.id;
+                        Session["Usuario"] = us.NombreUsuario;
+                        Session["Rol"] = us.idRol;
+                        Response.Redirect("frmMenuCliente.aspx", false); Context.ApplicationInstance.CompleteRequest();
+                        break;
                 }
 
-            
-                
-             
 
-            txtContrasennaInicio.Text = "";
-            txtNombreUsuario.Text = "";
+
+
+                txtContrasennaInicio.Text = "";
+                txtNombreUsuario.Text = "";
+            }
         }
     }
 }

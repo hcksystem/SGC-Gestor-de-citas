@@ -107,7 +107,7 @@ namespace SGC_Gestor_de_citas
                 ClientScript.RegisterStartupScript(
                     this.GetType(),
                      "Registro",
-                     "mensajeRedirect('Producto',' Eliminado con éxito','success','frmMantenimientoUsuario.aspx')",
+                     "mensajeRedirect('Producto',' Eliminado con éxito','success','frmMantenimientoProducto.aspx')",
                      true
                      );
             }

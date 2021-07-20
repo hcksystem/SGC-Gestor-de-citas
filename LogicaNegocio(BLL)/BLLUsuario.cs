@@ -65,7 +65,5 @@ namespace LogicaDeNegocio_BLL_
             return dalu.GetSHA256(texto);
         }
 
-
-
     }
 }

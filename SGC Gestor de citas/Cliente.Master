@@ -67,6 +67,12 @@
                             <p>Citas</p>
                         </a>
                     </li>
+                    <li>
+                        <a href="frmPerfilCliente.aspx">
+                            <i class="now-ui-icons users_circle-08"></i>
+                            <p>Perfil</p>
+                        </a>
+                    </li>
                   
                    
                 </ul>
@@ -108,7 +114,7 @@
                 <canvas id="bigDashboardChart"></canvas>
             </div>
             <form id="form1" runat="server">
-                <div>
+                <div class="container">
                     <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>

@@ -13,6 +13,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    
+    <style  type="text/css">
+        
+        #global {
+            height: 300px;
+            width: 200px;
+            border: 1px solid #ddd;
+            background: #f1f1f1;
+            overflow-y: scroll;
+        }
+
+        #mensajes {
+            height: auto;
+        }
+
+        .texto {
+            padding: 4px;
+            background: #fff;
+        }
+    </style>
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -171,5 +193,6 @@
                 </div>
             </div>
         </div>
+       
     </div>
 </asp:Content>

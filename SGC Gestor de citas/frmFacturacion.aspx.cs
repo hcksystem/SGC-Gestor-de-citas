@@ -79,7 +79,10 @@ namespace SGC_Gestor_de_citas
                 detalle.precio = Convert.ToDouble(dr["Precio"].ToString());
                 detalle.id = i+1;
                 i++;
-                Total += Convert.ToDouble(dr["Precio"].ToString()) * Convert.ToDouble(dr["Cantidad"].ToString());
+                int Cantidad = Convert.ToInt32(dr["Cantidad"].ToString());
+                Double Precio = Convert.ToDouble(dr["Precio"].ToString());
+                Total +=  Precio*Cantidad;
+                detalle.cantidad = Cantidad;
                 listDetalle.Add(detalle);
             }
 

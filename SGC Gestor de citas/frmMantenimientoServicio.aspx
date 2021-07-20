@@ -197,7 +197,20 @@
                                     </asp:GridView>
                                 </div>
                             </div>
-                        </div>
+                        </div> <div class="fixed-plugin">
+                                <div class="dropdown show-dropdown">
+                                    <a href="#" data-toggle="dropdown">
+                                        <i class="fa fa-cog fa-2x"></i>
+                                    </a>
+ 
+                                    <div class="dropdown-menu" id="global">
+                                        
+                                        <p>aca comienza el texto</p>
+ 
+
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                     </div>
                 </div>

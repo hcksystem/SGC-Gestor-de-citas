@@ -52,6 +52,12 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1449.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -76,6 +82,14 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -95,6 +109,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AcercaDeAdministrador.aspx" />
     <Content Include="assets\calendario\jquery-3.6.0.min.js" />
     <Content Include="assets\calendario\jquery-ui-1.12.1.custom\AUTHORS.txt" />
     <Content Include="assets\calendario\jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
@@ -142,6 +157,7 @@
     <Content Include="assets\img\default-avatar.png" />
     <Content Include="assets\img\facial.png" />
     <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\impresion.png" />
     <Content Include="assets\img\left-arrow.png" />
     <Content Include="assets\img\manicurista.jpg" />
     <Content Include="assets\img\maquillaje.jpg" />
@@ -185,6 +201,7 @@
     <Content Include="frmMenuAdministrador.aspx" />
     <Content Include="frmMenuCliente.aspx" />
     <Content Include="frmMenuEmpleado.aspx" />
+    <Content Include="frmPerfilCliente.aspx" />
     <Content Include="frmRegistro.aspx" />
     <Content Include="frmReporteCitas.aspx" />
     <Content Include="frmReporteInventario.aspx" />
@@ -195,10 +212,18 @@
     <Content Include="nucleo-icons.html" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="Test.aspx" />
+    <Content Include="TestReport.aspx" />
     <Content Include="Web.config" />
     <Content Include="WS.asmx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcercaDeAdministrador.aspx.cs">
+      <DependentUpon>AcercaDeAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AcercaDeAdministrador.aspx.designer.cs">
+      <DependentUpon>AcercaDeAdministrador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrador.Master.cs">
       <DependentUpon>Administrador.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -233,6 +258,11 @@
     </Compile>
     <Compile Include="AyudaUsuario.aspx.designer.cs">
       <DependentUpon>AyudaUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CitasDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CitasDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Cliente.Master.cs">
       <DependentUpon>Cliente.Master</DependentUpon>
@@ -379,6 +409,13 @@
     <Compile Include="frmMenuEmpleado.aspx.designer.cs">
       <DependentUpon>frmMenuEmpleado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmPerfilCliente.aspx.cs">
+      <DependentUpon>frmPerfilCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmPerfilCliente.aspx.designer.cs">
+      <DependentUpon>frmPerfilCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmRegistro.aspx.cs">
       <DependentUpon>frmRegistro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -422,10 +459,13 @@
       <DependentUpon>ManualAyuda.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SolucionesSGCv1DataSet.Designer.cs">
+    <Compile Include="SolucionesSGCDataSet.cs">
+      <DependentUpon>SolucionesSGCDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SolucionesSGCDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SolucionesSGCv1DataSet.xsd</DependentUpon>
+      <DependentUpon>SolucionesSGCDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Test.aspx.cs">
@@ -434,6 +474,13 @@
     </Compile>
     <Compile Include="Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReport.aspx.cs">
+      <DependentUpon>TestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReport.aspx.designer.cs">
+      <DependentUpon>TestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="WS.asmx.cs">
       <DependentUpon>WS.asmx</DependentUpon>
@@ -488,17 +535,28 @@
     <Content Include="Cliente.Master" />
     <Content Include="assets\calendario\jquery-ui-1.12.1.custom\package.json" />
     <Content Include="Empleado.Master" />
-    <None Include="packages.config" />
-    <Content Include="SolucionesSGCv1DataSet.xsc">
-      <DependentUpon>SolucionesSGCv1DataSet.xsd</DependentUpon>
+    <Content Include="CitasDataSet.xsc">
+      <DependentUpon>CitasDataSet.xsd</DependentUpon>
     </Content>
-    <None Include="SolucionesSGCv1DataSet.xsd">
+    <None Include="CitasDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SolucionesSGCv1DataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>CitasDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <Content Include="SolucionesSGCv1DataSet.xss">
-      <DependentUpon>SolucionesSGCv1DataSet.xsd</DependentUpon>
+    <Content Include="CitasDataSet.xss">
+      <DependentUpon>CitasDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <Content Include="SolucionesSGCDataSet.xsc">
+      <DependentUpon>SolucionesSGCDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="SolucionesSGCDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SolucionesSGCDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="SolucionesSGCDataSet.xss">
+      <DependentUpon>SolucionesSGCDataSet.xsd</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -527,7 +585,8 @@
     <Folder Include="SqlServerTypes\x86\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ReporteCitas.rdlc" />
+    <EmbeddedResource Include="Citas.rdlc" />
+    <EmbeddedResource Include="ReportCita.rdlc" />
     <EmbeddedResource Include="ReporteProducto.rdlc" />
     <EmbeddedResource Include="ReporteProductoVendido.rdlc" />
   </ItemGroup>

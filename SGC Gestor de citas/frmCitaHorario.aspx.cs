@@ -18,34 +18,39 @@ namespace SGC_Gestor_de_citas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                txtFechaAtencion.Text = DateTime.Today.ToString("yyyy-MM-dd");
-                ////cargar combo con enum
-                //Array enumList = Enum.GetValues(typeof(horarioEnum));
-                //foreach (horarioEnum getHorario in enumList)
-                //{
-                //    dropEstadoHorario.Items.Add(new ListItem(getHorario.ToString(), ((int)getHorario).ToString()));
-                //}
-
-                BLLServicio blls = new BLLServicio();
-                dropServicio.DataSource = blls.ObtenerTodosServiciosLista();
-                dropServicio.DataTextField = "nombre";
-                dropServicio.DataValueField = "id";
-                dropServicio.DataBind();
-                int idServicio;
-
-                if (!String.IsNullOrEmpty(Request.QueryString["id"]))
-                {
-                    if (Int32.TryParse(Request.QueryString["id"], out idServicio))
-                    {
-                        dropServicio.SelectedValue = idServicio.ToString();
-                    }
-                }
-                idServicio = Convert.ToInt16(dropServicio.SelectedValue);
-                infoServicio(idServicio);
+            if (Session["ID"] == null) {
+                Response.Redirect("frmLogin.aspx");
             }
+            else
+            {
+                if (!IsPostBack)
+                {
+                    txtFechaAtencion.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                    ////cargar combo con enum
+                    //Array enumList = Enum.GetValues(typeof(horarioEnum));
+                    //foreach (horarioEnum getHorario in enumList)
+                    //{
+                    //    dropEstadoHorario.Items.Add(new ListItem(getHorario.ToString(), ((int)getHorario).ToString()));
+                    //}
 
+                    BLLServicio blls = new BLLServicio();
+                    dropServicio.DataSource = blls.ObtenerTodosServiciosLista();
+                    dropServicio.DataTextField = "nombre";
+                    dropServicio.DataValueField = "id";
+                    dropServicio.DataBind();
+                    int idServicio;
+
+                    if (!String.IsNullOrEmpty(Request.QueryString["id"]))
+                    {
+                        if (Int32.TryParse(Request.QueryString["id"], out idServicio))
+                        {
+                            dropServicio.SelectedValue = idServicio.ToString();
+                        }
+                    }
+                    idServicio = Convert.ToInt16(dropServicio.SelectedValue);
+                    infoServicio(idServicio);
+                }
+            }
         }
         
 
@@ -89,8 +94,16 @@ namespace SGC_Gestor_de_citas
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             BLLCita cita = new BLLCita();
-            MessageBox.Show(cita.InsertarCita(txtDescripcion.Text,1,Convert.ToInt32(Session["IDServicio"].ToString()), Convert.ToInt32(Session["ID"].ToString()),txtFechaAtencion.Text, HorarioDisponible.SelectedItem.Text));
-
+            String Mensaje = cita.InsertarCita(txtDescripcion.Text, 1, Convert.ToInt32(Session["IDServicio"].ToString()), Convert.ToInt32(Session["ID"].ToString()), txtFechaAtencion.Text, HorarioDisponible.SelectedItem.Text);
+            ClientScript.RegisterStartupScript(
+                              this.GetType(),
+                              "Registro",
+                               "mensajeRedirect('Cita','"+ Mensaje + "','success','frmCita.aspx')",
+                              true
+                              );
+            DALUsuario daluser = new DALUsuario();
+            string Correo = daluser.ObtenerCorreo(Convert.ToInt32(Session["ID"].ToString()));
+            
             string body =
                 "<Body>" +
                 "<h1>SGC Citas</h1>" +
@@ -117,12 +130,12 @@ namespace SGC_Gestor_de_citas
 
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("solucionessgc3@gmail.com", "Soluciones SGC Citas");
-            mail.To.Add(new MailAddress("maikolvpg95@gmail.com"));
+            mail.To.Add(new MailAddress(Correo));
             mail.Subject = "Mensaje de confirmacion";
             mail.IsBodyHtml = true;
             mail.Body = body;
             smtp.Send(mail);
-
+            
             limpiarDatos();
             Response.Redirect("frmCita.aspx");
         }
@@ -132,6 +145,10 @@ namespace SGC_Gestor_de_citas
             txtFechaAtencion.Text = "";
             HorarioDisponible.Dispose();
             txtDescripcion.Text = "";
+        }
+
+        protected void HorarioDisponible_SelectedIndexChanged(object sender, EventArgs e)
+        { 
         }
     }
     }

@@ -17,6 +17,7 @@
     border-radius: 0
     -webkit-appearance: none;
 }
+       
     </style>
     
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
@@ -156,7 +157,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Método de pago:</label>
-                                    <asp:DropDownList ID="dropMetodopago" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <asp:DropDownList ID="dropMetodopago" runat="server" CssClass="form-control"  ></asp:DropDownList>
                                     <asp:TextBox ID="txtNumTarjeta" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
                                 </div>
                             </div>
@@ -172,6 +173,7 @@
                                         <asp:Button CssClass="btn btn-outline-primary" runat="server" ID="btnAgregar" Text="Agregar Linea" OnClick="btnAgregar_Click1"/>
                                         </div>
                                     <div class="form-group">
+                                        <asp:Label ID="Label1" runat="server" Text="Total:" Font-Bold="true"></asp:Label>
                                         <asp:Label runat="server" ID="TotalFact" Text=""></asp:Label>
                                     </div>
                                 </div>
@@ -221,6 +223,18 @@
     </ItemTemplate> 
 
 </asp:TemplateField> 
+                                  <asp:TemplateField> 
+                                      
+    <ItemTemplate>
+
+        <asp:LinkButton runat="server" id="btnImprimir"  CommandName="Imprimir" Text="Imprimir factura" OnClientClick="return confirm('Desea eliminar esta linea?');" />
+
+        <img src="assets/img/impresion.png" width="25px" alt="">
+ 
+
+    </ItemTemplate> 
+
+</asp:TemplateField> 
     </Columns>
 
                                         <HeaderStyle CssClass="table-info" />
@@ -229,8 +243,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <asp:Button ID="btnGuardar" CssClass="btn btn-round" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
-                                    <asp:Button ID="btnCancelar" CssClass="btn btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+                                    <asp:Button ID="btnGuardar" CssClass="btn btn-outline-primary" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
+                                    <asp:Button ID="btnCancelar" CssClass="btn btn-outline-primary" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador.Master" AutoEventWireup="true" CodeBehind="frmCitaHorario.aspx.cs" Inherits="SGC_Gestor_de_citas.frmCitaHorario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">  
-    
+    <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/mensaje.js"></script>
+    <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
@@ -59,7 +61,7 @@
                             <div class="col-md-4 pl-1">
                                 <div class="form-group">
                                     <label>Horario disponible:</label>
-                                    <asp:DropDownList  CssClass="form-control" ID="HorarioDisponible" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList  CssClass="form-control" ID="HorarioDisponible" runat="server" OnSelectedIndexChanged="HorarioDisponible_SelectedIndexChanged"></asp:DropDownList>
                                    
                                 </div>
                             </div>

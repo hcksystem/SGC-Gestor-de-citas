@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -30,6 +31,54 @@ namespace AccesoDatos_DAL_
             cmd.ExecuteNonQuery();
             //cmd.ExecuteScalar();
             Conexion.Close();
+        }
+
+        public Persona ObtenerPersonaPorIDUsuario(string v)
+        {
+            Conexion.Open();
+            String osql = string.Format("Select nombre,apellido,correo,telefono,identificacion from Persona a inner join Usuario b on a.id=b.idPersona where b.id='{0}'", v);
+            SqlCommand cmd = new SqlCommand(osql, Conexion);
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            Conexion.Close();
+            Persona temp = new Persona
+            {
+                nombre = dt.Rows[0]["nombre"].ToString(),
+                apellido = dt.Rows[0]["apellido"].ToString(),
+                correo = dt.Rows[0]["correo"].ToString(),
+                identificacion = dt.Rows[0]["identificacion"].ToString(),
+                telefono=dt.Rows[0]["telefono"].ToString(),
+            };
+            return temp;
+
+        }
+
+        public bool CompararClave(string text1)
+        {
+            String osql = string.Format("Select count(1) from Usuario where contrasenna=HASHBYTES('MD5','{0}') and id=1",text1);
+            SqlCommand cmd = new SqlCommand(osql, Conexion);
+            Conexion.Open();
+            int result = (int)cmd.ExecuteScalar();
+            Conexion.Close();
+            if (result == 1)
+            {
+                return true;
+            }
+            else { return false; }
+        }
+
+        public int Actualizar(Persona persona, string nuevaClave)
+        {
+            SqlCommand cmd = new SqlCommand(String.Format("Update a set Identificacion='{0}',Nombre='{2}',correo='{3}',apellido='{4}' from Persona a inner join Usuario b on a.id=b.idPersona where b.id={1}",persona.identificacion,persona.id,persona.nombre,persona.correo,persona.apellido), Conexion);
+            Conexion.Open();
+            int result = cmd.ExecuteNonQuery();
+            if (nuevaClave.Length > 0) {
+              cmd = new SqlCommand(String.Format("Update b set contrasenna=HashBytes('MD5','"+nuevaClave+"') from Usuario  b where b.id={1}", persona.identificacion, persona.id, persona.nombre, persona.correo, persona.apellido), Conexion);
+                result+= cmd.ExecuteNonQuery();
+            }
+            Conexion.Close();
+            return result;
         }
 
         public DataTable ObtenerTodasPersonas()
