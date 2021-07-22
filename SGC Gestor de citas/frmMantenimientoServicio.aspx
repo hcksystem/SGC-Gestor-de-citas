@@ -114,7 +114,7 @@
 
                                 <div style="overflow: scroll">
 
-                                    <asp:GridView ID="gridServicios" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowSorting="false" ShowFooter="True" AllowPaging="True" PageSize="2" OnRowDeleting="gridServicios_RowDeleting"  OnRowDataBound="gridServicios_RowDataBound" OnPageIndexChanging="gridServicios_PageIndexChanging" OnSelectedIndexChanged="gridServicios_SelectedIndexChanged" Width="1183">
+                                    <asp:GridView ID="gridServicios" runat="server" CssClass="mGrid GridView" AutoGenerateColumns="False" DataKeyNames="id" AllowSorting="false" ShowFooter="True" AllowPaging="True" PageSize="2" OnRowDeleting="gridServicios_RowDeleting"  OnRowDataBound="gridServicios_RowDataBound" OnPageIndexChanging="gridServicios_PageIndexChanging" OnSelectedIndexChanged="gridServicios_SelectedIndexChanged" Width="100%">
                                         <Columns>
                                             <asp:TemplateField ShowHeader="true" HeaderText="Seleccionar">
                                                 <ItemTemplate>
@@ -154,7 +154,7 @@
                                             <asp:TemplateField HeaderText="Duración">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5"  runat="server" Text='<%# Bind("Duracion") %>'></asp:Label> 
-                                                    <%--configurar algo para el datetime--%>
+
                                                 </ItemTemplate>
                                                 <EditItemTemplate>
                                                     <asp:TextBox ID="txtTiempoEstimado" TextMode="Number" runat="server" Text='<% # Bind("duracion") %>'></asp:TextBox>

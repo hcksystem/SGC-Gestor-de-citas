@@ -17,7 +17,10 @@ namespace SGC_Gestor_de_citas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["ID"] == null)
+            {
+                Response.Redirect("frmLogin.aspx");
+            }
         }
         public List<Entidades.Servicio> listaServicios_GetData()
         {

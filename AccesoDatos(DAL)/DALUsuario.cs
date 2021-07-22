@@ -15,50 +15,67 @@ namespace AccesoDatos_DAL_
     {
         Usuario us = new Usuario();
 
-        public void InsertarUsuario(Persona persona, Usuario usuario)
+        public string InsertarUsuario(Persona persona, Usuario usuario)
         {
-            SqlCommand cmdPersona = new SqlCommand("insert into Persona (nombre, apellido, correo, telefono, identificacion) values (@nombre, @apellido, @correo, @telefono, @identificacion); SELECT CAST (scope_identity() as int)", Conexion);
-            //SqlParameter parametro;
-            SqlParameter parametroPersona;
-            parametroPersona = new SqlParameter("@nombre", persona.nombre);
-            cmdPersona.Parameters.Add(parametroPersona);
-
-            parametroPersona = new SqlParameter("@apellido", persona.apellido);
-            cmdPersona.Parameters.Add(parametroPersona);
-
-            parametroPersona = new SqlParameter("@correo", persona.correo);
-            cmdPersona.Parameters.Add(parametroPersona);
-
-            parametroPersona = new SqlParameter("@telefono", persona.telefono);
-            cmdPersona.Parameters.Add(parametroPersona);
-
-            parametroPersona = new SqlParameter("@identificacion", persona.identificacion);
-            cmdPersona.Parameters.Add(parametroPersona);
-
-            int personaInsertada;
-
+            string Resultado = "";
+            SqlCommand cmd = new SqlCommand(string.Format("Select count(1)[Total] from Persona where identificacion='{0}'",persona.identificacion),Conexion);
             Conexion.Open();
-            personaInsertada = (int)cmdPersona.ExecuteScalar();
+            int Identificacion = (int)cmd.ExecuteScalar();
+            cmd = new SqlCommand(string.Format("Select count(1)[Total] from Usuario where nombreUsuario='{0}'", usuario.NombreUsuario),Conexion);
+            int NombreUsuario = (int)cmd.ExecuteScalar();
+            if (Identificacion > 0)
+            {
+                Resultado += String.Format(" (x)Esta Identificacion ya se encuentra registrada {0}", Environment.NewLine);
+
+            }
+            if (NombreUsuario > 0)
+            {
+                Resultado += String.Format(" (x)Este nombre de usuario ya se encuentra registrado {0}", Environment.NewLine);
+            }
             Conexion.Close();
+            if ((Identificacion + NombreUsuario) == 0)
+            {
+                cmd = new SqlCommand("if not exists(Select identificacion from Persona where Identificacion=@Identificacion)begin insert into Persona (nombre, apellido, correo, telefono, identificacion) values (@nombre, @apellido, @correo, @telefono, @identificacion); end", Conexion);
+                //SqlParameter parametro;
+                SqlParameter parametroPersona;
+                parametroPersona = new SqlParameter("@nombre", persona.nombre);
+                cmd.Parameters.Add(parametroPersona);
 
+                parametroPersona = new SqlParameter("@apellido", persona.apellido);
+                cmd.Parameters.Add(parametroPersona);
 
-            SqlCommand cmd = new SqlCommand("INSERT INTO Usuario(nombreUsuario, contrasenna, idRoll, estado, idPersona)VALUES(@nombreUsuario, @contrasenna, @idRoll, @estado, @idPersona)", Conexion);
-            SqlParameter parametro;
+                parametroPersona = new SqlParameter("@correo", persona.correo);
+                cmd.Parameters.Add(parametroPersona);
 
-            parametro = new SqlParameter("@nombreUsuario", usuario.NombreUsuario);
-            cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@contrasenna", usuario.Contrasenna);
-            cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@idRoll", usuario.idRol);
-            cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@estado", usuario.estado);
-            cmd.Parameters.Add(parametro);
-            parametro = new SqlParameter("@idPersona", personaInsertada);
-            cmd.Parameters.Add(parametro);
+                parametroPersona = new SqlParameter("@telefono", persona.telefono);
+                cmd.Parameters.Add(parametroPersona);
 
-            Conexion.Open();
-            cmd.ExecuteNonQuery();
-            Conexion.Close();
+                parametroPersona = new SqlParameter("@identificacion", persona.identificacion);
+                cmd.Parameters.Add(parametroPersona);
+
+                int personaInsertada;
+
+                Conexion.Open();
+                personaInsertada = (int)cmd.ExecuteNonQuery();
+                Conexion.Close();
+
+                if (personaInsertada == 1)
+                {
+                    cmd = new SqlCommand(String.Format("Select id from Persona where Identificacion='{0}'", persona.identificacion), Conexion);
+                    Conexion.Open();
+                    int ID = (int)cmd.ExecuteScalar();
+                    Conexion.Close();
+                    cmd = new SqlCommand(String.Format("INSERT INTO Usuario(nombreUsuario, contrasenna, idRoll, estado, idPersona)VALUES('{0}', hashbytes('MD5','{1}'), {2}, {3}, {4})", usuario.NombreUsuario, usuario.Contrasenna, usuario.idRol, usuario.estado, ID), Conexion);
+                    Conexion.Open();
+                    personaInsertada += cmd.ExecuteNonQuery();
+                    if (personaInsertada == 2)
+                    {
+                        Resultado = String.Format( "{0} registrada correctamente {2}Usuario {1} asignado correctamente",persona.nombre, usuario.NombreUsuario, Environment.NewLine);
+                    }
+                    Conexion.Close();
+                }
+            }
+            return Resultado;
         }
 
 

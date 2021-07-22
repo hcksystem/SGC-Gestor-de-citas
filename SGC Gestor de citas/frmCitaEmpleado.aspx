@@ -53,11 +53,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   <%-- <layouttemplate>
-                                    <div class="container">
-                                        <asp:PlaceHolder ID="groupPlaceHolder" runat="server"></asp:PlaceHolder>
-                                    </div>
-                                </layouttemplate>--%>
+   
                                 </ItemTemplate>
 
                             </asp:ListView>

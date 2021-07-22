@@ -25,6 +25,10 @@ namespace LogicaNegocio_BLL_
         {
             return daln.ObtenerTodasLasCitas();
         }
+        public DataTable ObtenerMisCitas(int IDUsuario,int Tipo)
+        {
+            return daln.ObtenerMisCitas(IDUsuario,Tipo);
+        }
 
         public void CambiarEstadoCita(int id)
         {

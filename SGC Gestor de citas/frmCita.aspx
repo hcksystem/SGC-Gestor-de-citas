@@ -1,12 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador.Master" AutoEventWireup="true" CodeBehind="frmCita.aspx.cs" Inherits="SGC_Gestor_de_citas.frmCita" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+
+    <link href="assets/css/estiloLista.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <style>
-    .btn{background-color:#626c7d}
-    .btn:hover{background-color:#0c3254;}         
+    <style>
+        .btn {
+            background-color: #626c7d
+        }
+
+            .btn:hover {
+                background-color: #0c3254;
+            }
+
+        .h6, h6 {
+            font-size: 1rem;
+            font-weight: bold;
+        }
     </style>
     <div class="panel-header-sm">
     </div>
@@ -17,6 +33,31 @@
 
                     <div class="card-header">
                         <h5 class="title">Gestión de citas</h5>
+
+                        <input type="checkbox" id="btn-modal" />
+                        <label for="btn-modal" class="lbl-modal">Ayuda</label>
+                        <div class="modal">
+                            <div class="contenedorlista" style="overflow: scroll">
+                                <header>Ayuda</header>
+                                <label for="btn-modal">X</label>
+                                <h5>Citas</h5>
+
+                                <p>
+                                    Este es el formulario principal de citas, en este se mostrará un listado de todos los servicios que brinda el negocio, en cada uno se muestra:<br />
+                                    * El nombre del servicio.<br />
+                                    * La descripción del servicio.<br />
+                                    * El precio del servicio.
+                             <br />
+
+                                </p>
+                                <br />
+                                <h6>Botón reservar cita</h6>
+                                <p>Al seleccionar este botón se mostrará el formulario encargado de facilitar el horario y su respectivo trámite para sacar su cita.</p>
+
+
+                            </div>
+
+                        </div>
                     </div>
                     <hr />
                     <div class="card-body">
@@ -55,11 +96,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   <%-- <layouttemplate>
-                                    <div class="container">
-                                        <asp:PlaceHolder ID="groupPlaceHolder" runat="server"></asp:PlaceHolder>
-                                    </div>
-                                </layouttemplate>--%>
+
                                 </ItemTemplate>
 
                             </asp:ListView>
@@ -70,31 +107,37 @@
                 </div>
             </div>
         </div>
-         <div class="fixed-plugin">
-        <div class="dropdown show-dropdown">
-            <a href="#" data-toggle="dropdown">
-                <i class="fa fa-cog fa-2x"></i>
-            </a>
-            
-            <ul class="dropdown-menu"> 
-               
-                <li class="button-container">
-                    
-                    <a href="frmCita.aspx" target="_blank" style="width: 50px;">
-                        <div  style="overflow: scroll">
-                           <p style="color:dimgrey">Ayuda<br />En este formulario se muestran todos los servicios que se ofrecen. <br />Botón reservar: Al elegir el servicio se redirige automáticamente al formulario de reservación de su cita.</p>
-                        </div>
-                         
 
-                       
-                       
-                    </a>
+        <div class="fixed-plugin">
+            <div class="dropdown show-dropdown">
+                <a href="#" data-toggle="dropdown">
+                    <i class="fa fa-cog fa-2x"></i>
+                </a>
 
-                </li>
-            </ul>
+                <ul class="dropdown-menu">
+
+                    <li class="button-container">
+
+                        <a href="frmCita.aspx" target="_blank" style="width: 50px;">
+                            <div style="overflow: scroll">
+                                <p style="color: dimgrey">
+                                    Ayuda<br />
+                                    En este formulario se muestran todos los servicios que se ofrecen.
+                                    <br />
+                                    Botón reservar: Al elegir el servicio se redirige automáticamente al formulario de reservación de su cita.
+                                </p>
+                            </div>
+
+
+
+
+                        </a>
+
+                    </li>
+                </ul>
             </div>
-        
+
+        </div>
+
     </div>
- 
-        
 </asp:Content>

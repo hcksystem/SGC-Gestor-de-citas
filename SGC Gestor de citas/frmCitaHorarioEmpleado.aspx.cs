@@ -1,9 +1,12 @@
-﻿using Entidades;
+﻿using AccesoDatos_DAL_;
+using Entidades;
 using LogicaDeNegocio_BLL_;
 using LogicaNegocio_BLL_;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,27 +18,35 @@ namespace SGC_Gestor_de_citas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["ID"] == null)
             {
-                txtFechaAtencion.Text = DateTime.Today.ToString("yyyy-MM-dd");
-               
-
-                BLLServicio blls = new BLLServicio();
-                dropServicio.DataSource = blls.ObtenerTodosServiciosLista();
-                dropServicio.DataTextField = "nombre";
-                dropServicio.DataValueField = "id";
-                dropServicio.DataBind();
-                int idServicio;
-
-                if (!String.IsNullOrEmpty(Request.QueryString["id"]))
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                if (!IsPostBack)
                 {
-                    if (Int32.TryParse(Request.QueryString["id"], out idServicio))
+                    txtFechaAtencion.Text = DateTime.Today.ToString("yyyy-MM-dd");
+
+
+                    BLLServicio blls = new BLLServicio();
+                    dropServicio.DataSource = blls.ObtenerTodosServiciosLista();
+                    dropServicio.DataTextField = "nombre";
+                    dropServicio.DataValueField = "id";
+                    dropServicio.DataBind();
+                    int idServicio;
+
+                    if (!String.IsNullOrEmpty(Request.QueryString["id"]))
                     {
-                        dropServicio.SelectedValue = idServicio.ToString();
+                        if (Int32.TryParse(Request.QueryString["id"], out idServicio))
+                        {
+                            dropServicio.SelectedValue = idServicio.ToString();
+                        }
                     }
+                    idServicio = Convert.ToInt16(dropServicio.SelectedValue);
+                    infoServicio(idServicio);
+
                 }
-                idServicio = Convert.ToInt16(dropServicio.SelectedValue);
-                infoServicio(idServicio);
             }
         }
 
@@ -52,7 +63,50 @@ namespace SGC_Gestor_de_citas
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             BLLCita cita = new BLLCita();
-            MessageBox.Show(cita.InsertarCita(txtDescripcion.Text, 1, Convert.ToInt32(Session["IDServicio"].ToString()), Convert.ToInt32(Session["ID"].ToString()), txtFechaAtencion.Text, HorarioDisponible.SelectedItem.Text));
+            string Mensaje= (cita.InsertarCita(txtDescripcion.Text, 1, Convert.ToInt32(Session["IDServicio"].ToString()), Convert.ToInt32(Session["ID"].ToString()), txtFechaAtencion.Text, HorarioDisponible.SelectedItem.Text));
+
+            ClientScript.RegisterStartupScript(
+                             this.GetType(),
+                             "Registro",
+                              "mensajeRedirect('Cita','" + Mensaje + "','success','frmCita.aspx')",
+                             true
+                             );
+
+            DALUsuario daluser = new DALUsuario();
+            string Correo = daluser.ObtenerCorreo(Convert.ToInt32(Session["ID"].ToString()));
+
+            string body =
+                "<Body>" +
+                "<h1>SGC Citas</h1>" +
+                "<h4>Estimado cliente</h4>" +
+                "<span> Su cita para el servicio: " + Session["NombreServicio"].ToString() + ", se ha reservado con éxito.<br/> Día: </span>" + txtFechaAtencion.Text.ToString() +
+                "<br/><span> Hora: </span>" + HorarioDisponible.SelectedItem.Text +
+                // "<span> número de comprobante de cita </span>" +scalar algo +
+                "<br/>" +
+                "<span> ¡IMPORTANTE!</span> " +
+                "<br/>" +
+                "<span> La hora seleccionada solo es valida para un servicio, si desea más de un servicio, debe seleccionar otra cita </span>" +
+                "<br/>" +
+                "<span>Saludos cordiales, gracias por su preferencia.</span>" +
+                "</body>";
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Credentials = new NetworkCredential("solucionessgc3@gmail.com", "solu1234");
+            smtp.TargetName = "STARTTLS/smtp.gmail.com";
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("solucionessgc3@gmail.com", "Soluciones SGC Citas");
+            mail.To.Add(new MailAddress(Correo));
+            mail.Subject = "Mensaje de confirmacion";
+            mail.IsBodyHtml = true;
+            mail.Body = body;
+            smtp.Send(mail);
+
+            
+            Response.Redirect("frmCita.aspx");
         }
 
         protected void dropServicio_SelectedIndexChanged(object sender, EventArgs e)

@@ -138,9 +138,6 @@
 
                                 </div>
                             </div>
-
-
-
                             <br />
 
                             <div class="form-group col-sm-12 col-xs-12">
@@ -201,56 +198,56 @@
                                 <div class="form-group">
                                     <asp:GridView ID="gridFactura" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="8" AllowPaging="True" OnRowDeleting="gridFactura_RowDeleting">
                                         <Columns>
-                                <asp:BoundField DataField="ID" HeaderText="ID"
-            SortExpression="ID" />
-                        <asp:BoundField DataField="Tipo" HeaderText="Tipo"
-            SortExpression="Tipo" />
-                        <asp:BoundField DataField="Descripcion" HeaderText="Descripcion"
-            SortExpression="Descripcion" />
-                    <asp:BoundField DataField="Precio" HeaderText="Precio"
-            SortExpression="Precio" />
-                    <asp:BoundField DataField="Cantidad" HeaderText="Cantidad"
-            SortExpression="Cantidad" />
-                                            <asp:TemplateField> 
+                                                <asp:BoundField DataField="ID" HeaderText="ID"
+                            SortExpression="ID" />
+                                        <asp:BoundField DataField="Tipo" HeaderText="Tipo"
+                            SortExpression="Tipo" />
+                                        <asp:BoundField DataField="Descripcion" HeaderText="Descripcion"
+                            SortExpression="Descripcion" />
+                                    <asp:BoundField DataField="Precio" HeaderText="Precio"
+                            SortExpression="Precio" />
+                                    <asp:BoundField DataField="Cantidad" HeaderText="Cantidad"
+                            SortExpression="Cantidad" />
+                            <asp:TemplateField> 
 
-    <ItemTemplate>
+                        <ItemTemplate>
 
-        <asp:LinkButton runat="server" id="btnDelete"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Desea eliminar esta linea?');" />
+                        <asp:LinkButton runat="server" id="btnDelete"  CommandName="Delete" Text="Delete" OnClientClick="return confirm('Desea eliminar esta linea?');" />
 
-        <img src="assets/img/basurero.jpg" width="25px" alt="">
+                        <img src="assets/img/basurero.jpg" width="25px" alt="">
  
 
-    </ItemTemplate> 
+                        </ItemTemplate> 
 
-</asp:TemplateField> 
-                                  <asp:TemplateField> 
+                        </asp:TemplateField> 
+                        <asp:TemplateField> 
                                       
-    <ItemTemplate>
+        <ItemTemplate>
 
         <asp:LinkButton runat="server" id="btnImprimir"  CommandName="Imprimir" Text="Imprimir factura" OnClientClick="return confirm('Desea eliminar esta linea?');" />
 
         <img src="assets/img/impresion.png" width="25px" alt="">
  
 
-    </ItemTemplate> 
+            </ItemTemplate> 
 
-</asp:TemplateField> 
-    </Columns>
+            </asp:TemplateField> 
+            </Columns>
 
-                                        <HeaderStyle CssClass="table-info" />
-                                    </asp:GridView>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <asp:Button ID="btnGuardar" CssClass="btn btn-outline-primary" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
-                                    <asp:Button ID="btnCancelar" CssClass="btn btn-outline-primary" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <HeaderStyle CssClass="table-info" />
+            </asp:GridView>
         </div>
     </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <asp:Button ID="btnGuardar" CssClass="btn btn-outline-primary" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
+            <asp:Button ID="btnCancelar" CssClass="btn btn-outline-primary" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </asp:Content>

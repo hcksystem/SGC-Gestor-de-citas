@@ -504,9 +504,9 @@ body, .modal {
 }
 
 .contenedorlista {
-    width: 100% !important;
-    height: 500px;
-    margin: 50px 10px 20px 500px !important;
+    width: 35% !important;
+    height: 398px;
+    margin: 50px 10px 20px 250px !important;
     background: #fff;
     box-shadow: 1px 7px 25px rgba(0,0,0,0.6);
     transition: all 500ms ease;
@@ -521,7 +521,7 @@ body, .modal {
 .contenedorlista header {
     padding: 10px;
     margin: 0px 0px 0px 0px;
-    background: #0b1864;
+    background: #0c3254;
     color: #fff;
 }
 
@@ -3956,7 +3956,7 @@ Created using IcoMoon - icomoon.io
             position: relative;
             text-transform: uppercase;
             cursor: pointer;
-            font-size: 0.7142em;
+            font-size: 0.79em;
             padding: 10px 8px;
             line-height: 1.625rem;
         }
@@ -4900,7 +4900,7 @@ Created using IcoMoon - icomoon.io
     }
 
     .card label {
-        font-size: 0.8571em;
+        font-size: 1.1rem;
         margin-bottom: 0px;
         color: #9A9A9A;
     }

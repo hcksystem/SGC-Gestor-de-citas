@@ -14,17 +14,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
-        .btn {
-            background-color: #626c7d
-        }
-
-            .btn:hover {
-                background-color: #0c3254;
-            }
 
         .table th {
             color: white
         }
+       .btn{
+           margin-bottom: -4px;
+       }
+      .mover{
+          margin-top:-23px;
+      }
     </style>
 
     <div class="panel-header-sm">
@@ -44,20 +43,21 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <asp:Label ID="Label3" runat="server" Text="Buscar producto"></asp:Label>
+                               <%-- <asp:Label ID="Label3" runat="server" Text="Buscar producto"></asp:Label>--%>
                                 <br />
-                                <asp:TextBox ID="txtBuscar" runat="server" AutoPostBack="true" placeHolder="Buscar por nombre de producto" CssClass="form-control p-3" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="txtBuscar" runat="server" AutoPostBack="true" placeHolder="Buscar por nombre de producto" CssClass="form-control mover" OnTextChanged="txtBuscar_TextChanged" ></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-2 ">
                             <div class="form-group">
-                                <br />
-                                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn " OnClick="btnBuscar_Click" />
+                                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" class="btn btn-primary btn-round" OnClick="btnBuscar_Click"/>
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <br />
+                        <br />
+                        <div class="col-md-8" style="overflow:scroll">
                             <div class="form-group">
-                                <asp:GridView ID="gridInventario" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="8" AllowPaging="True" OnRowDataBound="gridInventario_RowDataBound" OnSelectedIndexChanged="gridInventario_SelectedIndexChanged">
+                                <asp:GridView ID="gridInventario" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="8" AllowPaging="True" OnRowDataBound="gridInventario_RowDataBound" OnSelectedIndexChanged="gridInventario_SelectedIndexChanged" Width="100%">
                                     <Columns>
                                         <asp:CommandField ButtonType="Image" SelectImageUrl="~/assets/img/Seleccionar).png" ShowSelectButton="True" HeaderText="Seleccionar" />
                                         <asp:BoundField DataField="id" HeaderText="Codigo"></asp:BoundField>
@@ -72,6 +72,7 @@
                                 </asp:GridView>
                             </div>
                         </div>
+
                         <div class="col-md-2">
                             <div class="form-group">
                                 <asp:TextBox ID="txtStock" runat="server" Visible="false"></asp:TextBox>
@@ -91,10 +92,11 @@
                                 <asp:DropDownList ID="dropSumRes" runat="server" CssClass="form-control" AutoPostBack="true" Visible="false"></asp:DropDownList>
                             </div>
                         </div>
+                        <br />
                         <div class="col-md-4">
                             <div class="form-group">
-                                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-round " OnClick="btnGuardar_Click" Visible="false" />
-                                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-round " OnClick="btnCancelar_Click" Visible="false" />
+                                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary btn-round" OnClick="btnGuardar_Click" Visible="false" />
+                                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-primary btn-round" OnClick="btnCancelar_Click" Visible="false" />
                             </div>
                         </div>
                     </div>

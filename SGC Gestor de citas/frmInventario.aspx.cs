@@ -19,19 +19,27 @@ namespace SGC_Gestor_de_citas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["ID"] == null)
             {
-
-                 //cargar combo con enum
-                Array enumList = Enum.GetValues(typeof(entradasSalidasInventario));
-                foreach (entradasSalidasInventario getSumRes in enumList)
-                {
-                    dropSumRes.Items.Add(new ListItem(getSumRes.ToString(), ((int)getSumRes).ToString()));
-                }
-
-                cargarDatos();
-
+                Response.Redirect("frmLogin.aspx");
             }
+            else
+            {
+                if (!IsPostBack)
+                {
+
+                    //cargar combo con enum
+                    Array enumList = Enum.GetValues(typeof(entradasSalidasInventario));
+                    foreach (entradasSalidasInventario getSumRes in enumList)
+                    {
+                        dropSumRes.Items.Add(new ListItem(getSumRes.ToString(), ((int)getSumRes).ToString()));
+                    }
+
+                    cargarDatos();
+
+                }
+            }
+           
         }
         public void limpiarDatos()
         {
@@ -86,7 +94,7 @@ namespace SGC_Gestor_de_citas
             BLLInventario bllc = new BLLInventario();
             DataTable dt = bllc.ObtenerInventarioPorID(id);
 
-            txtStock.Text = dt.Rows[0]["cantidad"].ToString(); //quede aca con que no encuentra posicion 0
+            txtStock.Text = dt.Rows[0]["cantidad"].ToString(); 
         }
 
         protected int sumaInventario(int num)

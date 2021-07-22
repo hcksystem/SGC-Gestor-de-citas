@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.AspNetCore.Components.Analyzers.3.1.0\build\netstandard2.0\Microsoft.AspNetCore.Components.Analyzers.props" Condition="Exists('..\packages\Microsoft.AspNetCore.Components.Analyzers.3.1.0\build\netstandard2.0\Microsoft.AspNetCore.Components.Analyzers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -48,15 +49,51 @@
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.Authorization, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Authorization.3.1.0\lib\netstandard2.0\Microsoft.AspNetCore.Authorization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Components, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Components.3.1.0\lib\netstandard2.0\Microsoft.AspNetCore.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Components.Forms, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Components.Forms.3.1.0\lib\netstandard2.0\Microsoft.AspNetCore.Components.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Components.Web, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Components.Web.3.1.0\lib\netstandard2.0\Microsoft.AspNetCore.Components.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Metadata, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Metadata.3.1.0\lib\netstandard2.0\Microsoft.AspNetCore.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.JSInterop, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.JSInterop.3.1.0\lib\netstandard2.0\Microsoft.JSInterop.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1449.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -85,11 +122,39 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.7.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.7.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -142,6 +207,7 @@
     <Content Include="assets\css\Iniciosesion.css" />
     <Content Include="assets\css\login.css" />
     <Content Include="assets\css\loginRegistro.css" />
+    <Content Include="assets\css\modal.css" />
     <Content Include="assets\css\now-ui-dashboard.css" />
     <Content Include="assets\css\now-ui-dashboard.min.css" />
     <Content Include="assets\css\sweetalert2.min.css" />
@@ -151,6 +217,7 @@
     <Content Include="assets\demo\docs.min.js" />
     <Content Include="assets\img\apple-icon.png" />
     <Content Include="assets\img\basurero.jpg" />
+    <Content Include="assets\img\cancelar.png" />
     <Content Include="assets\img\cejas.jpg" />
     <Content Include="assets\img\cortes-600x400.jpg" />
     <Content Include="assets\img\dedo.jpg" />
@@ -190,6 +257,7 @@
     <Content Include="frmCitaHorarioCliente.aspx" />
     <Content Include="frmCitaHorarioEmpleado.aspx" />
     <Content Include="frmFacturacion.aspx" />
+    <Content Include="frmFacturacionEmpleado.aspx" />
     <Content Include="frmGestorCita.aspx" />
     <Content Include="frmInventario.aspx" />
     <Content Include="frmLogin.aspx" />
@@ -201,18 +269,20 @@
     <Content Include="frmMenuAdministrador.aspx" />
     <Content Include="frmMenuCliente.aspx" />
     <Content Include="frmMenuEmpleado.aspx" />
+    <Content Include="frmMisCitas.aspx" />
     <Content Include="frmPerfilCliente.aspx" />
     <Content Include="frmRegistro.aspx" />
     <Content Include="frmReporteCitas.aspx" />
     <Content Include="frmReporteInventario.aspx" />
     <Content Include="frmReporteProducto.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
-    <Content Include="LoginSGC.aspx" />
     <Content Include="ManualAyuda.aspx" />
     <Content Include="nucleo-icons.html" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="Test.aspx" />
     <Content Include="TestReport.aspx" />
+    <Content Include="TestReportProducto.aspx" />
     <Content Include="Web.config" />
     <Content Include="WS.asmx" />
   </ItemGroup>
@@ -270,6 +340,21 @@
     </Compile>
     <Compile Include="Cliente.Master.designer.cs">
       <DependentUpon>Cliente.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DSVentas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSVentas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSVentas1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSVentas1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSVentas2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSVentas2.xsd</DependentUpon>
     </Compile>
     <Compile Include="Empleado.Master.cs">
       <DependentUpon>Empleado.Master</DependentUpon>
@@ -331,6 +416,13 @@
     </Compile>
     <Compile Include="frmFacturacion.aspx.designer.cs">
       <DependentUpon>frmFacturacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacturacionEmpleado.aspx.cs">
+      <DependentUpon>frmFacturacionEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmFacturacionEmpleado.aspx.designer.cs">
+      <DependentUpon>frmFacturacionEmpleado.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmGestorCita.aspx.cs">
       <DependentUpon>frmGestorCita.aspx</DependentUpon>
@@ -409,6 +501,13 @@
     <Compile Include="frmMenuEmpleado.aspx.designer.cs">
       <DependentUpon>frmMenuEmpleado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmMisCitas.aspx.cs">
+      <DependentUpon>frmMisCitas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMisCitas.aspx.designer.cs">
+      <DependentUpon>frmMisCitas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmPerfilCliente.aspx.cs">
       <DependentUpon>frmPerfilCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -444,12 +543,8 @@
     <Compile Include="frmReporteProducto.aspx.designer.cs">
       <DependentUpon>frmReporteProducto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="LoginSGC.aspx.cs">
-      <DependentUpon>LoginSGC.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LoginSGC.aspx.designer.cs">
-      <DependentUpon>LoginSGC.aspx</DependentUpon>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ManualAyuda.aspx.cs">
       <DependentUpon>ManualAyuda.aspx</DependentUpon>
@@ -457,6 +552,11 @@
     </Compile>
     <Compile Include="ManualAyuda.aspx.designer.cs">
       <DependentUpon>ManualAyuda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductoDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolucionesSGCDataSet.cs">
@@ -481,6 +581,13 @@
     </Compile>
     <Compile Include="TestReport.aspx.designer.cs">
       <DependentUpon>TestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReportProducto.aspx.cs">
+      <DependentUpon>TestReportProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportProducto.aspx.designer.cs">
+      <DependentUpon>TestReportProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="WS.asmx.cs">
       <DependentUpon>WS.asmx</DependentUpon>
@@ -546,9 +653,53 @@
     <Content Include="CitasDataSet.xss">
       <DependentUpon>CitasDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="DSVentas.xsc">
+      <DependentUpon>DSVentas.xsd</DependentUpon>
+    </Content>
+    <None Include="DSVentas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSVentas.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DSVentas.xss">
+      <DependentUpon>DSVentas.xsd</DependentUpon>
+    </Content>
+    <Content Include="DSVentas1.xsc">
+      <DependentUpon>DSVentas1.xsd</DependentUpon>
+    </Content>
+    <None Include="DSVentas1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSVentas1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DSVentas1.xss">
+      <DependentUpon>DSVentas1.xsd</DependentUpon>
+    </Content>
+    <Content Include="DSVentas2.xsc">
+      <DependentUpon>DSVentas2.xsd</DependentUpon>
+    </Content>
+    <None Include="DSVentas2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSVentas2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DSVentas2.xss">
+      <DependentUpon>DSVentas2.xsd</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="SolucionesSGCDataSet.xsc">
       <DependentUpon>SolucionesSGCDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="ProductoDataSet.xsc">
+      <DependentUpon>ProductoDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ProductoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ProductoDataSet.xss">
+      <DependentUpon>ProductoDataSet.xsd</DependentUpon>
     </Content>
     <None Include="SolucionesSGCDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -588,7 +739,6 @@
     <EmbeddedResource Include="Citas.rdlc" />
     <EmbeddedResource Include="ReportCita.rdlc" />
     <EmbeddedResource Include="ReporteProducto.rdlc" />
-    <EmbeddedResource Include="ReporteProductoVendido.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -621,6 +771,7 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.AspNetCore.Components.Analyzers.3.1.0\build\netstandard2.0\Microsoft.AspNetCore.Components.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.AspNetCore.Components.Analyzers.3.1.0\build\netstandard2.0\Microsoft.AspNetCore.Components.Analyzers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

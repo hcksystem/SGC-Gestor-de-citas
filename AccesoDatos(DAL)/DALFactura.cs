@@ -58,6 +58,11 @@ namespace AccesoDatos_DAL_
                 parametro.DbType = DbType.Int32;
                 cmd.Parameters.Add(parametro);
                 cmd.ExecuteNonQuery();
+                if (det.idServicio != null)
+                {
+                    cmd = new SqlCommand(String.Format("Update a set estado=2 from Cita a where Fecha='{0}' and idUsuario={1} and idServicio={2} and estado=1", DateTime.Now.ToString("yyyy/MM/dd"), factura.idUsuario, det.idServicio), Conexion);
+                    int CancelarCita = cmd.ExecuteNonQuery();
+                }
             }
                 Conexion.Close();
             return "Factura Ingresada Correctamente";

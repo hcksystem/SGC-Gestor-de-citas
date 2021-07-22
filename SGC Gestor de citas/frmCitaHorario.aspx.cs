@@ -79,7 +79,6 @@ namespace SGC_Gestor_de_citas
             //string compara;
             if (result < 0)
                 HorarioDisponible.Enabled = false;
-
             else
                 HorarioDisponible.Enabled = true;
             HorarioDisponible.DataSource = cita.ObtenerHorarioDisponible(txtFechaAtencion.Text);
@@ -95,12 +94,6 @@ namespace SGC_Gestor_de_citas
         {
             BLLCita cita = new BLLCita();
             String Mensaje = cita.InsertarCita(txtDescripcion.Text, 1, Convert.ToInt32(Session["IDServicio"].ToString()), Convert.ToInt32(Session["ID"].ToString()), txtFechaAtencion.Text, HorarioDisponible.SelectedItem.Text);
-            ClientScript.RegisterStartupScript(
-                              this.GetType(),
-                              "Registro",
-                               "mensajeRedirect('Cita','"+ Mensaje + "','success','frmCita.aspx')",
-                              true
-                              );
             DALUsuario daluser = new DALUsuario();
             string Correo = daluser.ObtenerCorreo(Convert.ToInt32(Session["ID"].ToString()));
             
@@ -108,11 +101,15 @@ namespace SGC_Gestor_de_citas
                 "<Body>" +
                 "<h1>SGC Citas</h1>" +
                 "<h4>Estimado cliente</h4>" +
-                "<span> Su cita para el servicio "+ Session["NombreServicio"].ToString() + " se ha reservado con éxito.<br/> Día: </span>" + txtFechaAtencion.Text.ToString() +
+                "<span> Su cita para el servicio: "+ Session["NombreServicio"].ToString() + ", se ha reservado con éxito.<br/> Día: </span>" + txtFechaAtencion.Text.ToString() +
                 "<br/><span> Hora: </span>" + HorarioDisponible.SelectedItem.Text +
                 // "<span> número de comprobante de cita </span>" +scalar algo +
-                "<br/><span> ¡IMPORTANTE! <br/ La hora seleccionada solo es valida para un servicio, si desea más de un servicio, debe seleccionar otra cita </span>" +
-                "<br/><span>Saludos cordiales, gracias por su preferencia.</span>" +
+                "<br/>" +
+                "<span> ¡IMPORTANTE!</span> " +
+                "<br/>" +
+                "<span> La hora seleccionada solo es valida para un servicio, si desea más de un servicio, debe seleccionar otra cita </span>" +
+                "<br/>" +
+                "<span>Saludos cordiales, gracias por su preferencia.</span>" +
                 "</body>";
 
             
@@ -137,7 +134,12 @@ namespace SGC_Gestor_de_citas
             smtp.Send(mail);
             
             limpiarDatos();
-            Response.Redirect("frmCita.aspx");
+            ClientScript.RegisterStartupScript(
+                              this.GetType(),
+                              "Registro",
+                               "mensajeRedirect('Cita','" + Mensaje + "','success','frmCita.aspx')",
+                              true
+                              );
         }
 
         private void limpiarDatos()

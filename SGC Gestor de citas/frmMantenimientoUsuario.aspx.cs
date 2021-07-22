@@ -92,7 +92,7 @@ namespace SGC_Gestor_de_citas
                 {
                     BLLPersona bllp = new BLLPersona();
                     BLLUsuario bllu = new BLLUsuario();
-                    //bllp.InsertarPersona(txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtTelefono.Text, txtIdentificacion.Text);
+
                     Persona p = new Persona();
                     Usuario u = new Usuario();
 
@@ -106,15 +106,28 @@ namespace SGC_Gestor_de_citas
                     u.Contrasenna = txtContrasenna.Text;
                     u.idRol = Convert.ToInt32(dropRol.SelectedValue);
                     u.estado = Convert.ToInt32(dropEstado.SelectedValue);
-                    // u.idPersona = p.id;
-                    bllu.InsertarUsuario(p, u);
-
-                    ClientScript.RegisterStartupScript(
-                                 this.GetType(),
-                                 "Registro",
-                                  "mensajeRedirect('Usuario',' Guardado con éxito','success','frmMantenimientoUsuario.aspx')",
-                                 true
-                                 );
+                    string mensaje = bllu.InsertarUsuario(p, u);
+                    mensaje = mensaje.Replace("\r\n", "y ");
+                    if (mensaje.Contains("(x)"))
+                    {
+                        mensaje = mensaje.Replace("(x)", "");
+                        mensaje = mensaje.Substring(0, mensaje.Length - 2);
+                        ClientScript.RegisterStartupScript(
+                                     this.GetType(),
+                                     "Registro",
+                                      "mensajeRedirect('Usuario','" + mensaje.Replace("(x)", "") + "','error','#')",
+                                     true
+                                     );
+                    }
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(
+                                     this.GetType(),
+                                     "Registro",
+                                      "mensajeRedirect('Usuario','" + mensaje.Replace("(x)", "") + "','success','frmMantenimientoUsuario.aspx')",
+                                     true
+                                     );
+                    }
                 }
             }
             catch (Exception)
@@ -236,7 +249,7 @@ namespace SGC_Gestor_de_citas
             }
             LimpiarDatos();
             CargarDatos();
-            lblcontrasenna.Visible = false;
+            
             txtContrasenna.Visible = false;
             btnGuardar.Visible = true;
             btnModificar.Visible = false;

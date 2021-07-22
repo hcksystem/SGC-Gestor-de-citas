@@ -45,10 +45,9 @@ namespace SGC_Gestor_de_citas
         }
         private void LlenarCombos()
         {
-            //dropEstado.DataSource = Enum.GetNames(typeof(estado));
-            //dropEstado.DataBind();
+           
             Array enumList = Enum.GetValues(typeof(estado));
-            // Array enumNombres = Enum.GetNames(typeof(estado));
+           
 
             foreach (estado getestado in enumList)
             {
@@ -139,10 +138,7 @@ namespace SGC_Gestor_de_citas
                                         "mensajeRedirect('Servicio','" + mensaje + "','success','frmMantenimientoServicio.aspx')",
                                        true
                                        );
-                        //ese scripManager genera la alerta
-                        //string mjs = "Servicio registrado correctamente";
-
-                        // If directory does not exist, create it. 
+                       
                     }
             }
             catch (Exception ex)
@@ -175,10 +171,7 @@ namespace SGC_Gestor_de_citas
 
                 FotoSugerida.Visible = false;
             }
-            //// fileUpLoad = gridServicios.Rows[gridServicios.EditIndex].FindControl("FileUpload1") as FileUpload;
-            //string fileName = fileUpLoad.FileName;
-            //string fullPath = Path.GetFullPath(fileName);
-            //fileUpLoad.SaveAs(fullPath);
+         
 
         }
         protected void gridServicios_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -194,7 +187,7 @@ namespace SGC_Gestor_de_citas
                 ClientScript.RegisterStartupScript(
                     this.GetType(),
                      "Registro",
-                     "mensajeRedirect('Servicio',' Eliminado con éxito','success','frmMantenimientoUsuario.aspx')",
+                     "mensajeRedirect('Servicio',' Eliminado con éxito','success','frmMantenimientoServicio.aspx')",
                      true
                      );
             }
@@ -249,9 +242,7 @@ namespace SGC_Gestor_de_citas
         protected void gridServicios_SelectedIndexChanged(object sender, EventArgs e)
         {
             int servicio = Convert.ToInt32(gridServicios.SelectedRow.Cells[2].Text);
-            // int negocio = Convert.ToInt32(gridServicios.SelectedRow.Cells[2].Text);
-
-            //Server.Transfer("frmMantenimientoUsuario.aspx"+usuario);
+     
             txtNombre.ToolTip =""+servicio;
             if (gridServicios.Columns.Count > 0)
 

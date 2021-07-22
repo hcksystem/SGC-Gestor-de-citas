@@ -27,12 +27,6 @@ namespace SGC_Gestor_de_citas
             {
                 us = bllu.ObtenerUsuario();
 
-                ClientScript.RegisterStartupScript(
-                           this.GetType(),
-                           us.NombreUsuario,
-                            "mensajeRedirect('Bienvenido','Credenciales correctas','success')",
-                           true
-                           );
                 switch (us.idRol)
                 {
                     case 1:
@@ -40,19 +34,35 @@ namespace SGC_Gestor_de_citas
                         Session["Usuario"] = us.NombreUsuario;
                         Session["Rol"] = us.idRol;
 
-
-                        Response.Redirect("frmMenuAdministrador.aspx", false); Context.ApplicationInstance.CompleteRequest();
+                        ClientScript.RegisterStartupScript(
+                          this.GetType(),
+                          us.NombreUsuario,
+                           "mensajeRedirect('Bienvenido','Credenciales correctas','success','frmMenuAdministrador.aspx')",
+                          true
+                          );
                         break;
                     case 2:
                         Session["ID"] = us.id;
                         Session["Usuario"] = us.NombreUsuario;
                         Session["Rol"] = us.idRol;
+                        ClientScript.RegisterStartupScript(
+                          this.GetType(),
+                          us.NombreUsuario,
+                           "mensajeRedirect('Bienvenido','Credenciales correctas','success','frmMenuEmpleado.aspx')",
+                          true
+                          );
                         break;
                     case 3:
                         Session["ID"] = us.id;
                         Session["Usuario"] = us.NombreUsuario;
                         Session["Rol"] = us.idRol;
-                        Response.Redirect("frmMenuCliente.aspx", false); Context.ApplicationInstance.CompleteRequest();
+                ClientScript.RegisterStartupScript(
+                           this.GetType(),
+                           us.NombreUsuario,
+                            "mensajeRedirect('Bienvenido','Credenciales correctas','success','frmMenuCliente.aspx')",
+                           true
+                           );
+                        //Response.Redirect("frmMenuCliente.aspx", false); Context.ApplicationInstance.CompleteRequest();
                         break;
                 }
 

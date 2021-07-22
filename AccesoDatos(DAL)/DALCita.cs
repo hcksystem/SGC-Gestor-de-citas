@@ -29,10 +29,23 @@ namespace AccesoDatos_DAL_
             return dt;
         }
 
+        public DataTable ObtenerMisCitas(int iDUsuario,int Tipo)
+        {
+            DataTable dt = new DataTable();
+            string val = "";
+            if (Tipo != 0) {
+                val = String.Format("and estado={0}", Tipo);
+            }
+            SqlCommand cmd = new SqlCommand(string.Format("SELECT id, descripcion, estado, idServicio, idUsuario, Fecha, Hora FROM Cita where idUsuario={0} {1} ",iDUsuario, val), Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+
         public DataTable ObtenerTodasLasCitas()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT id, descripcion, esado, idServicio, idUsuario. idCliente, idHorario FROM Cita", Conexion);
+            SqlCommand cmd = new SqlCommand("SELECT id, descripcion, estado, idServicio, idUsuario, Fecha, Hora FROM Cita", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
@@ -73,7 +86,7 @@ namespace AccesoDatos_DAL_
 
         public void EliminarCita(int Identificacion)
         {
-            SqlCommand cmd = new SqlCommand("DELETE FROM Cita WHERE id = @id", Conexion);
+            SqlCommand cmd = new SqlCommand("Update a set Estado=3 FROM Cita a WHERE id = @id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", Identificacion);

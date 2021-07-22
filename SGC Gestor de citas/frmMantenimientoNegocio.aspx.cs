@@ -88,10 +88,7 @@ namespace SGC_Gestor_de_citas
             txtMision.Text = dt.Rows[0]["mision"].ToString();
             txtVision.Text = dt.Rows[0]["vision"].ToString();
 
-            //FileUpload fileUpLoad = gridNegocio.Rows[gridNegocio.EditIndex].FindControl("FileUpload1") as FileUpload;
-            //string fileName = fileUpLoad.FileName;
-            //string fullPath = Path.GetFullPath(fileName);
-            //fileUpLoad.SaveAs(fullPath);
+          
 
         }
 
@@ -113,16 +110,7 @@ namespace SGC_Gestor_de_citas
 
                 BLLNegocio blln = new BLLNegocio();
                 blln.InsertarNegocio(txtNombreNegocio.Text, imagenOriginal, txtDescripcion.Text, txtMision.Text, txtVision.Text);
-
-                //ese scripManager genera la alerta
-                //string mjs = "Negocio registrado correctamente";
-                //ScriptManager.RegisterStartupScript(this, this.GetType(),
-                //    "alert",
-                //    "alert('" + mjs + "');window.location-'frmMantenimientoNegocio.aspx';", true);
-                //CargarDatos();
-                //        }
-
-
+               
                 ClientScript.RegisterStartupScript(
                                this.GetType(),
                                "Registro",
@@ -211,7 +199,7 @@ namespace SGC_Gestor_de_citas
                 ClientScript.RegisterStartupScript(
                     this.GetType(),
                      "Registro",
-                     "mensajeRedirect('Negocio',' Eliminado con éxito','success','frmMantenimientoUsuario.aspx')",
+                     "mensajeRedirect('Negocio',' Eliminado con éxito','success','frmMantenimientoNegocio.aspx')",
                      true
                      );
 

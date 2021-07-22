@@ -47,6 +47,43 @@
 
                     <div class="card-header">
                         <h5 class="title">Negocio</h5>
+
+                         <input type="checkbox" id="btn-modal" />
+                        <label for="btn-modal" class="lbl-modal">Ayuda</label>
+                        <div class="modal">
+                            <div class="contenedorlista" style="overflow: scroll">
+                                <header>Ayuda</header>
+                                <label for="btn-modal">X</label>
+                                <h5>Mantenimiento de categorías</h5>
+                                <h6>Nombre de la categoría</h6>
+                                <p>
+                                    Espacio donde se debe indicar una categoría en la cual desee catalogar sus productos.
+                             <br />
+                                    Por ejemplo: cosméticos, electrónicos, cuidado para la piel, productos de latex etc.
+                                </p>
+                                <br />
+                                <h6>Botón de guardar</h6>
+                                <p>Se guardará la categoría que se digito en el espacio de nombre</p>
+                                <br />
+                                <h6>Mostrar Lista</h6>
+                                <p>
+                                    Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado
+                            de las categorías que tenemos almacenadas hasta el momento, en esa lista tendríamos acceso a la opción de seleccionar o eliminar una categoría.
+                                </p>
+                                <br />
+                                <h6>Seleccionar</h6>
+                                <p>
+                                    Se habilitarán los espacios para que se edite la información necesaria y se llenarán los campos dentro del formulario para seguidamente editar lo que se desee y se le da al botón modificar. Luego de esto se podrán visualizar los cambios atualizados en la tabla.
+                                </p>
+                                <br />
+                                <h6>Eliminar</h6>
+                                <p>
+                                    Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro que desea eliminar este registro?"), si se le da aceptar, se eliminará el registro selecionado y si se le da cancelar la acción se anulará.
+                                </p>
+
+                            </div>
+
+                        </div>
                     </div>
                     <hr />
                     <div class="card-body">
@@ -96,7 +133,6 @@
                                     <br />
 
                                     <asp:FileUpload ID="FileUpload1" accept=".jpg" runat="server" ForeColor="#626c7d" Font-Size="Small" />
-                                    <%--<asp:Image ID="Image1" runat="server" Visible="false" />--%>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteN"
                                         ControlToValidate="FileUpload1" ErrorMessage="El logo es necesario" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -127,7 +163,7 @@
                                 <label for="tab-1">Mostrar lista</label>
                                 <div class="tab-content">
                                     <div style="overflow: scroll">
-                                        <asp:GridView CssClass="mGrid GridView" ID="gridNegocio" Width="1220" OnRowDataBound="gridNegocio_RowDataBound" PagerStyle-CssClass="pgr" PageSize="2" runat="server" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridNegocio_RowCancelingEdit" OnRowDeleting="gridNegocio_RowDeleting" OnRowEditing="gridNegocio_RowEditing" OnRowUpdating="gridNegocio_RowUpdating" OnPageIndexChanging="gridNegocio_PageIndexChanging" OnSelectedIndexChanged="gridNegocio_SelectedIndexChanged">
+                                        <asp:GridView CssClass="mGrid GridView" ID="gridNegocio" Width="100%" OnRowDataBound="gridNegocio_RowDataBound" PagerStyle-CssClass="pgr" PageSize="2" runat="server" AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" ShowFooter="True" OnRowCancelingEdit="gridNegocio_RowCancelingEdit" OnRowDeleting="gridNegocio_RowDeleting" OnRowEditing="gridNegocio_RowEditing" OnRowUpdating="gridNegocio_RowUpdating" OnPageIndexChanging="gridNegocio_PageIndexChanging" OnSelectedIndexChanged="gridNegocio_SelectedIndexChanged">
                                             <Columns>
                                                 <asp:TemplateField ShowHeader="true" HeaderText="Seleccionar">
                                                     <ItemTemplate>

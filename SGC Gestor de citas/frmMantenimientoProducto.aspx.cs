@@ -44,8 +44,7 @@ namespace SGC_Gestor_de_citas
 
         private void CargarDatos(string sortExpression = null)
         {
-            //dropEstado.DataSource = Enum.GetNames(typeof(estado));
-            //dropEstado.DataBind();
+           
             Array enumList = Enum.GetValues(typeof(estado));
             foreach (estado getestado in enumList)
             {

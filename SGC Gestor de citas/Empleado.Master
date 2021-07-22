@@ -67,11 +67,39 @@
                             <p>Citas</p>
                         </a>
                     </li>
+                         <li class="nav-item dropdown">
                     <li>
-                        <a href="#">
-                            <i class="now-ui-icons files_single-copy-04"></i>
-                            <p>Reportes</p>
+                        <a data-toggle="collapse" href="#pagesExamples1">
+
+                            <i class="now-ui-icons education_paper"></i>
+                            <p>
+                                Reportes <b class="caret"></b>
+                            </p>
                         </a>
+                        <div class="collapse " id="pagesExamples1">
+                            <ul class="nav">
+                                <li>
+                                    <a href="TestReport.aspx">
+                                        <span class="sidebar-mini-icon"><i class="now-ui-icons education_agenda-bookmark"></i></span>
+                                        <span class="sidebar-normal"> Citas </span>
+                                    </a>
+                                </li>
+                                    <li>
+                                    <a href="#">
+                                        <span class="sidebar-mini-icon"><i class="now-ui-icons shopping_cart-simple"></i></span>
+                                        <span class="sidebar-normal">Productos </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="sidebar-mini-icon"><i class="now-ui-icons shopping_credit-card"></i></span>
+                                        <span class="sidebar-normal">Ventas</span>
+                                    </a>
+                                </li>                             
+                              
+                            </ul>
+                        </div>
+                    </li>
                     </li>
                     <li>
                         <a href="frmFacturacionEmpleado.aspx">
@@ -105,7 +133,7 @@
 
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="LoginSGC.aspx">Cerrar Sesión</a>
+                                    <a class="dropdown-item" href="frmLogin.aspx">Cerrar Sesión</a>
                                 </div>
                             </li>
 

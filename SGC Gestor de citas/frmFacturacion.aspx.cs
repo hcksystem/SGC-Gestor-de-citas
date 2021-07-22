@@ -96,6 +96,7 @@ namespace SGC_Gestor_de_citas
                 Detalle = listDetalle
             };
            string result= BLLFactura.InsertarFactura(factura);
+
             ClientScript.RegisterStartupScript(
                               this.GetType(),
                               "Registro",

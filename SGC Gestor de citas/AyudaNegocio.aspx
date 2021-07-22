@@ -35,6 +35,7 @@
                                 </p>
                             </h6>
                         </div>
+
                         <h6>Nombre</h6>
         <p>
             Este espacio es para digitar el nombre que tendrá el negocio, por ejemplo: Tienda Glow, Beauty Store etc. 
@@ -75,6 +76,9 @@
                         <br />
                         <h6>Botón cancelar</h6>
                         <p>Con este botón podremos limpiar todos los campos del formulario, en caso de que nos arrepintamos de hacer el registro</p>
+
+
+
                          <div class="typography-line">
                             <blockquote>
                                 <p class="blockquote " style="border-block-color: aqua">

@@ -14,7 +14,17 @@ namespace SGC_Gestor_de_citas
         public SqlConnection cn = new SqlConnection("Data Source =.; Initial Catalog = SolucionesSGC; User ID = sa; Password=123456");
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["ID"] == null)
+            {
+                Response.Redirect("frmLogin.aspx");
+            }
+            else
+            {
+                if (!IsPostBack)
+                {
 
+                }
+            }
         }
 
         public List<Entidades.Servicio> listaServicios_GetData()

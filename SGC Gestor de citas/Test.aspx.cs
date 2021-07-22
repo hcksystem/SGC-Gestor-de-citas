@@ -13,5 +13,10 @@ namespace SGC_Gestor_de_citas
         {
 
         }
+
+        protected void Alert_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
