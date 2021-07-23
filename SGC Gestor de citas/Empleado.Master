@@ -25,16 +25,17 @@
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Soluciones SGC - Empleado</title>
+    <title>Soluciones SGC - Administrador</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
     <!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
+
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -42,6 +43,15 @@
 
 
 <body>
+    <style>
+        .bg-white {
+            background-color: #626c7d !important;
+        }
+        .navbar.bg-white:not(.navbar-transparent) a:not(.dropdown-item):not(.btn) {
+    color: #fff;
+}
+    </style>
+
     <div class="wrapper ">
         <div class="sidebar" data-color="blue">
             <!--
@@ -61,46 +71,14 @@
                             <p>Inicio</p>
                         </a>
                     </li>
+                    
                     <li>
                         <a href="frmCitaEmpleado.aspx">
                             <i class="now-ui-icons ui-1_calendar-60"></i>
                             <p>Citas</p>
                         </a>
                     </li>
-                         <li class="nav-item dropdown">
-                    <li>
-                        <a data-toggle="collapse" href="#pagesExamples1">
 
-                            <i class="now-ui-icons education_paper"></i>
-                            <p>
-                                Reportes <b class="caret"></b>
-                            </p>
-                        </a>
-                        <div class="collapse " id="pagesExamples1">
-                            <ul class="nav">
-                                <li>
-                                    <a href="TestReport.aspx">
-                                        <span class="sidebar-mini-icon"><i class="now-ui-icons education_agenda-bookmark"></i></span>
-                                        <span class="sidebar-normal"> Citas </span>
-                                    </a>
-                                </li>
-                                    <li>
-                                    <a href="#">
-                                        <span class="sidebar-mini-icon"><i class="now-ui-icons shopping_cart-simple"></i></span>
-                                        <span class="sidebar-normal">Productos </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="sidebar-mini-icon"><i class="now-ui-icons shopping_credit-card"></i></span>
-                                        <span class="sidebar-normal">Ventas</span>
-                                    </a>
-                                </li>                             
-                              
-                            </ul>
-                        </div>
-                    </li>
-                    </li>
                     <li>
                         <a href="frmFacturacionEmpleado.aspx">
                             <i class="now-ui-icons business_money-coins"></i>
@@ -112,35 +90,48 @@
         </div>
         <div class="main-panel" id="main-panel">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
-                <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <div class="navbar-toggle">
-                            <button type="button" class="navbar-toggler">
-                                <span class="navbar-toggler-bar bar1"></span>
-                                <span class="navbar-toggler-bar bar2"></span>
-                                <span class="navbar-toggler-bar bar3"></span>
-                            </button>
-                        </div>
-                        <a class="navbar-brand" href="#pablo">Inicio</a>
-                    </div>
+            <nav class="navbar navbar-expand-lg bg-primary navbar-absolute bg-white">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="frmMenuEmpleado.aspx">Inicio</a>
+          </div>
 
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="now-ui-icons media-1_button-power"></i>
-
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="frmLogin.aspx">Cerrar Sesión</a>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
+            <div class="navbar-wrapper">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
                 </div>
-            </nav>
+          <div class="navbar-collapse justify-content-end collapse show" id="navigation" style="">
+           
+            <ul class="navbar-nav">
+             
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="now-ui-icons location_world"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Some Actions</span>
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                 
+                </div>
+              </li>
+            
+            </ul>
+          </div>
+        </div>
+      </nav>
             <!-- End Navbar -->
             <div class="panel-header panel-header-lg">
                 <canvas id="bigDashboardChart"></canvas>
@@ -153,27 +144,11 @@
                 </div>
             </form>
         </div>
-
+       
     </div>
-    <div class="fixed-plugin">
-        <div class="dropdown show-dropdown">
-            <a href="#" data-toggle="dropdown">
-                <i class="fa fa-cog fa-2x"></i>
-            </a>
-            <ul class="dropdown-menu">
-                <li class="button-container">
-                    <a href="https://demos.creative-tim.com/now-ui-dashboard-pro/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
-                        <i class="now-ui-icons files_single-copy-04"></i>
-                        Ayuda
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!--   Core JS Files   -->
 
-    <script src="assets/js/core/jquery.min.js"></script>
-    <script src="assets/js/core/popper.min.js"></script>
+    <%--<script src="assets/js/core/jquery.min.js"></script>--%>
+    <%--<script src="assets/js/core/popper.min.js"></script>--%>
     <script src="assets/js/core/bootstrap.min.js"></script>
     <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- Chart JS -->
@@ -183,224 +158,7 @@
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="assets/js/now-ui-dashboard.min.js?v=1.5.0"></script>
     <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-    <script>
-        $(document).ready(function () {
-            // Javascript method's body can be found in assets/js/demos.js
-            demo.initDashboardPageCharts();
 
-        });
 
-    </script>
-    <%-- <script>
-         $(document).ready(function () {
-             $().ready(function () {
-                 $sidebar = $('.sidebar');
-                 $sidebar_img_container = $sidebar.find('.sidebar-background');
-
-
-
-                 $full_page = $('.full-page');
-
-
-
-                 $sidebar_responsive = $('body > .navbar-collapse');
-                 sidebar_mini_active = true;
-
-
-
-                 window_width = $(window).width();
-
-
-
-                 fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-
-
-                 // if( window_width > 767 && fixed_plugin_open == 'Dashboard' ){
-                 //     if($('.fixed-plugin .dropdown').hasClass('show-dropdown')){
-                 //         $('.fixed-plugin .dropdown').addClass('show');
-                 //     }
-                 //
-                 // }
-
-
-
-                 $('.fixed-plugin a').click(function (event) {
-                     // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-                     if ($(this).hasClass('switch-trigger')) {
-                         if (event.stopPropagation) {
-                             event.stopPropagation();
-                         }
-                         else if (window.event) {
-                             window.event.cancelBubble = true;
-                         }
-                     }
-                 });
-
-
-
-                 $('.fixed-plugin .background-color span').click(function () {
-                     $(this).siblings().removeClass('active');
-                     $(this).addClass('active');
-
-
-
-                     var new_color = $(this).data('color');
-
-
-
-                     if ($sidebar.length != 0) {
-                         $sidebar.attr('data-color', new_color);
-                     }
-
-
-
-                     if ($full_page.length != 0) {
-                         $full_page.attr('filter-color', new_color);
-                     }
-
-
-
-                     if ($sidebar_responsive.length != 0) {
-                         $sidebar_responsive.attr('data-color', new_color);
-                     }
-                 });
-
-
-
-                 $('.fixed-plugin .img-holder').click(function () {
-                     $full_page_background = $('.full-page-background');
-
-
-
-                     $(this).parent('li').siblings().removeClass('active');
-                     $(this).parent('li').addClass('active');
-
-
-
-
-                     var new_image = $(this).find("img").attr('src');
-
-
-
-                     if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                         $sidebar_img_container.fadeOut('fast', function () {
-                             $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                             $sidebar_img_container.fadeIn('fast');
-                         });
-                     }
-
-
-
-                     if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-
-
-                         $full_page_background.fadeOut('fast', function () {
-                             $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                             $full_page_background.fadeIn('fast');
-                         });
-                     }
-
-
-
-                     if ($('.switch-sidebar-image input:checked').length == 0) {
-                         var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-                         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-
-
-                         $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                         $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                     }
-
-
-
-                     if ($sidebar_responsive.length != 0) {
-                         $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-                     }
-                 });
-
-
-
-                 $('.switch-sidebar-image input').on("switchChange.bootstrapSwitch", function () {
-                     $full_page_background = $('.full-page-background');
-
-
-
-                     $input = $(this);
-
-
-
-                     if ($input.is(':checked')) {
-                         if ($sidebar_img_container.length != 0) {
-                             $sidebar_img_container.fadeIn('fast');
-                             $sidebar.attr('data-image', '#');
-                         }
-
-
-
-                         if ($full_page_background.length != 0) {
-                             $full_page_background.fadeIn('fast');
-                             $full_page.attr('data-image', '#');
-                         }
-
-
-
-                         background_image = true;
-                     } else {
-                         if ($sidebar_img_container.length != 0) {
-                             $sidebar.removeAttr('data-image');
-                             $sidebar_img_container.fadeOut('fast');
-                         }
-
-
-
-                         if ($full_page_background.length != 0) {
-                             $full_page.removeAttr('data-image', '#');
-                             $full_page_background.fadeOut('fast');
-                         }
-
-
-
-                         background_image = false;
-                     }
-                 });
-
-
-
-                 $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
-                     var $btn = $(this);
-
-
-
-                     if (sidebar_mini_active == true) {
-                         $('body').removeClass('sidebar-mini');
-                         sidebar_mini_active = false;
-                         nowuiDashboard.showSidebarMessage('Sidebar mini deactivated...');
-                     } else {
-                         $('body').addClass('sidebar-mini');
-                         sidebar_mini_active = true;
-                         nowuiDashboard.showSidebarMessage('Sidebar mini activated...');
-                     }
-
-
-
-                     // we simulate the window Resize so the charts will get updated in realtime.
-                     var simulateWindowResize = setInterval(function () {
-                         window.dispatchEvent(new Event('resize'));
-                     }, 180);
-
-
-
-                     // we stop the simulation of Window Resize after the animations are completed
-                     setTimeout(function () {
-                         clearInterval(simulateWindowResize);
-                     }, 1000);
-                 });
-             });
-         });
-    </script>--%>
 </body>
 </html>

@@ -11,18 +11,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
-        .btn {
-            background-color: #626c7d
-        }
-
-            .btn:hover {
-                background-color: #0c3254;
-            }
-
+       
         .h6, h6 {
             font-size: 1rem;
             font-weight: bold;
         }
+      
     </style>
     <div class="panel-header-sm">
     </div>
@@ -83,12 +77,12 @@
                                 <ItemTemplate>
                                     <div class="col-md">
                                         <div class="card text-center border-primary mb-4">
-                                            <div class="card-body">
+                                            <div class="card-body" style="height:180px; width:300px" >
                                                 <h5 class="card-title"><%#:Item.Nombre %></h5>
                                                 <p class="card-text"><%#:Item.Descripcion %></p>
-                                                <p class="card-text"><%# Eval("precioEstimado","${0:N2}") %></p>
-                                                <asp:Button CssClass="btn"
-                                                    ID="btnReservar"
+                                                <p class="card-text"><%# Eval("precioEstimado","₡{0:N2}") %></p>
+                                                <asp:Button class=" btn-primary btn-round"
+                                                    ID="btnReservar" 
                                                     runat="server" Text="Reservar Cita"
                                                     CommandArgument='<%#:Item.ID %>'
                                                     OnCommand="btnReservar_Command" />
@@ -106,37 +100,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="fixed-plugin">
-            <div class="dropdown show-dropdown">
-                <a href="#" data-toggle="dropdown">
-                    <i class="fa fa-cog fa-2x"></i>
-                </a>
-
-                <ul class="dropdown-menu">
-
-                    <li class="button-container">
-
-                        <a href="frmCita.aspx" target="_blank" style="width: 50px;">
-                            <div style="overflow: scroll">
-                                <p style="color: dimgrey">
-                                    Ayuda<br />
-                                    En este formulario se muestran todos los servicios que se ofrecen.
-                                    <br />
-                                    Botón reservar: Al elegir el servicio se redirige automáticamente al formulario de reservación de su cita.
-                                </p>
-                            </div>
-
-
-
-
-                        </a>
-
-                    </li>
-                </ul>
-            </div>
-
         </div>
 
     </div>

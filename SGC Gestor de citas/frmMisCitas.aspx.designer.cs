@@ -24,12 +24,21 @@ namespace SGC_Gestor_de_citas
         protected global::System.Web.UI.WebControls.GridView gridCitasPendientes;
 
         /// <summary>
-        /// Control GridView1.
+        /// Control gridCitasCanceladas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView gridCitasCanceladas;
+
+        /// <summary>
+        /// Control gridCitasHistorico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridCitasHistorico;
     }
 }

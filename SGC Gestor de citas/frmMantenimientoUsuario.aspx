@@ -12,7 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
-
+    <link href="assets/css/estiloLista.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -25,6 +25,10 @@
         .tab label::after {
             top: 42px;
         }
+             .h6, h6 {
+            font-size: 1rem;
+            font-weight: bold;
+        }
     </style>
 
     <div class="panel-header-sm">
@@ -35,6 +39,76 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="title">Formulario de Usuarios</h5>
+                          <input type="checkbox" id="btn-modal" />
+                        <label for="btn-modal" class="lbl-modal">Ayuda</label>
+                        <div class="modal">
+                            <div class="contenedorlista" style="overflow: scroll">
+                                <header>Ayuda</header>
+                                <label for="btn-modal">X</label>
+                                <h5>Mantenimiento de Usuario</h5>
+                                <h6>Nombre</h6>
+            <p>
+            Este espacio es para digitar un nombre propio de persona. 
+           </p>
+           <br />
+            <h6>Apellido</h6>
+            <p>
+          Este espacio es para digitar un apellido de persona. 
+           </p>
+           <br />
+            <h6>Correo</h6>
+        <p>
+            Este espacio es para su correo electrónico, ejemplo: persona1@gmail.com.
+        </p>
+         <br />
+        <h6>Teléfono</h6>
+        <p>
+            Espacio para digitar su numero telefónico, de preferencia un número de celular al cuál si es necesario se le pueda contactar.
+        </p>
+         <br />
+         <h6>Identificación</h6>
+        <p>
+            Este espacio es para su cédula o número de identificación tiene que agregar los ceros (0), por ejemplo 808880888.
+        </p>
+         <br />
+        <h6>Contraseña</h6>
+        <p>Este espacio es para su contraseña, la misma debe de tener entre 8 y 15 caracteres, una mayúscula, una minúscula y no puede tener caracteres especiales, ejemplo: (@-*/·"$%)
+        </p>
+        <br />
+        <h6>Rol de usuario</h6>
+        <p>El rol viene a dar los permisos que tendrá el usuario del sistema sobre el mismo, el administrador tendrá acceso a todo el sistema: reportes, mantenimientos, facturación, el empleado tendrá acceso a lo mismo que el administrador excepto a mantenimientos y reportes y el cliente solo podrá gestionar las citas.
+        </p>
+         <br />
+          <h6>Estado</h6>
+          <p>
+            En este espacio se verá reflejado el estado del usuario.<br />
+             Activos: Usuarios que están actualmente activos en el sistema.<br />
+             Inactivos: Usuarios que fueron eliminados.
+           </p>
+           <br />
+          <h6>Mostrar Lista</h6>
+                            <p>
+                            Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado de los usuarios que tenemos almacenados hasta el momento, en esa lista tendríamos acceso a la opción de seleccionar o eliminar un usuario.
+                            <br />
+                            Si se selecciona el botón de seleccionar dentro de la tabla, se llenaran los campos del formulario, para proceder a modificar el campo que se desee.
+                            Modificar: Este botón se habilitará luego de darle click al botón de seleccionar.
+                            
+                            <br />
+                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro"), si se le da aceptar, se eliminará la tabla y si se le da cancelar se cancelará la eliminación y va a redireccionar al menú principal.
+                        </p>
+                        <br />
+                        <h6>Botón guardar</h6>
+                        <p>
+                            Al tocar este botón lo que estamos haciendo es registrar todos los datos de los campos anteriores que dijitamos, 
+                            los cambios se podrán visualizar dando click en la etiqueta "Mostrar lista", antes mencionada.
+                        </p>
+                        <br />
+                        <h6>Botón cancelar</h6>
+                        <p>Cancela a acción y hace una redirección al menú principal.</p>
+
+                            </div>
+
+                        </div>
                     </div>
                     <hr />
                     <div class="card-body">
@@ -157,7 +231,7 @@
 
                                         <asp:GridView ID="gridUsuarios" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="2" AllowPaging="True" AllowSorting="True" Width="100%" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged" OnPageIndexChanging="gridUsuarios_PageIndexChanging" OnRowDeleting="gridUsuarios_RowDeleting" OnRowDataBound="gridUsuarios_RowDataBound">
                                             <Columns>
-                                                <asp:CommandField ShowSelectButton="True" HeaderText="Modificar" ShowHeader="true" SelectText="Editar" SelectImageUrl="~/assets/img/Seleccionar).png" ButtonType="Image" />
+                                                <asp:CommandField ShowSelectButton="True" HeaderText="Seleccionar" ShowHeader="true" SelectText="Editar" SelectImageUrl="~/assets/img/Seleccionar).png" ButtonType="Image" />
                                                 <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" HeaderText="Eliminar" ShowHeader="true" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />
                                                 <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
                                                 <asp:BoundField DataField="nombreUsuario" HeaderText="Nombre de usuario" />

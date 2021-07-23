@@ -132,7 +132,7 @@ namespace SGC_Gestor_de_citas
         {
             limpiarDatos();
             btnGuardar.Visible = true;
-            //btnModificar.Visible = false;
+            btnModificar.Visible = false;
         }
 
 

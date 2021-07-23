@@ -28,7 +28,6 @@ namespace SGC_Gestor_de_citas
                 {
                     txtFechaAtencion.Text = DateTime.Today.ToString("yyyy-MM-dd");
 
-
                     BLLServicio blls = new BLLServicio();
                     dropServicio.DataSource = blls.ObtenerTodosServiciosLista();
                     dropServicio.DataTextField = "nombre";
@@ -45,10 +44,10 @@ namespace SGC_Gestor_de_citas
                     }
                     idServicio = Convert.ToInt16(dropServicio.SelectedValue);
                     infoServicio(idServicio);
-
                 }
             }
         }
+
 
         private void infoServicio(int id)
         {
@@ -60,18 +59,36 @@ namespace SGC_Gestor_de_citas
             lblPrecio.Text = (s.PrecioEstimado).ToString();
             lblId.Text = (s.ID).ToString();
         }
+
+        protected void dropServicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void txtFechaAtencion_TextChanged(object sender, EventArgs e)
+        {
+            DateTime fecha_atencion = DateTime.Parse(txtFechaAtencion.Text);
+            int result = DateTime.Compare(fecha_atencion, DateTime.Today);
+
+            BLLCita cita = new BLLCita();
+            //string compara;
+            if (result < 0)
+                HorarioDisponible.Enabled = false;
+            else
+                HorarioDisponible.Enabled = true;
+            HorarioDisponible.DataSource = cita.ObtenerHorarioDisponible(txtFechaAtencion.Text);
+            HorarioDisponible.DataTextField = "Hora";
+            HorarioDisponible.DataValueField = "Hora";
+            HorarioDisponible.DataBind();
+
+
+        }
+
+
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             BLLCita cita = new BLLCita();
-            string Mensaje= (cita.InsertarCita(txtDescripcion.Text, 1, Convert.ToInt32(Session["IDServicio"].ToString()), Convert.ToInt32(Session["ID"].ToString()), txtFechaAtencion.Text, HorarioDisponible.SelectedItem.Text));
-
-            ClientScript.RegisterStartupScript(
-                             this.GetType(),
-                             "Registro",
-                              "mensajeRedirect('Cita','" + Mensaje + "','success','frmCita.aspx')",
-                             true
-                             );
-
+            String Mensaje = cita.InsertarCita(txtDescripcion.Text, 1, Convert.ToInt32(Session["IDServicio"].ToString()), Convert.ToInt32(Session["ID"].ToString()), txtFechaAtencion.Text, HorarioDisponible.SelectedItem.Text);
             DALUsuario daluser = new DALUsuario();
             string Correo = daluser.ObtenerCorreo(Convert.ToInt32(Session["ID"].ToString()));
 
@@ -90,12 +107,18 @@ namespace SGC_Gestor_de_citas
                 "<span>Saludos cordiales, gracias por su preferencia.</span>" +
                 "</body>";
 
+
+
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
             smtp.EnableSsl = true;
             smtp.UseDefaultCredentials = false;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Credentials = new NetworkCredential("solucionessgc3@gmail.com", "solu1234");
             smtp.TargetName = "STARTTLS/smtp.gmail.com";
+
+
+
+
 
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("solucionessgc3@gmail.com", "Soluciones SGC Citas");
@@ -105,31 +128,30 @@ namespace SGC_Gestor_de_citas
             mail.Body = body;
             smtp.Send(mail);
 
-            
-            Response.Redirect("frmCita.aspx");
+            limpiarDatos();
+            ClientScript.RegisterStartupScript(
+                              this.GetType(),
+                              "Registro",
+                               "mensajeRedirect('Cita','" + Mensaje + "','success','frmCitaEmpleado.aspx')",
+                              true
+                              );
         }
 
-        protected void dropServicio_SelectedIndexChanged(object sender, EventArgs e)
+        private void limpiarDatos()
         {
-
+            txtFechaAtencion.Text = "";
+            HorarioDisponible.Dispose();
+            txtDescripcion.Text = "";
         }
 
-        protected void txtFechaAtencion_TextChanged(object sender, EventArgs e)
+        protected void HorarioDisponible_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DateTime fecha_atencion = DateTime.Parse(txtFechaAtencion.Text);
-            int result = DateTime.Compare(fecha_atencion, DateTime.Today);
+        }
 
-            BLLCita cita = new BLLCita();
-            //string compara;
-            if (result < 0)
-                HorarioDisponible.Enabled = false;
-
-            else
-            HorarioDisponible.Enabled = true;
-            HorarioDisponible.DataSource = cita.ObtenerHorarioDisponible(txtFechaAtencion.Text);
-            HorarioDisponible.DataTextField = "Hora";
-            HorarioDisponible.DataValueField = "Hora";
-            HorarioDisponible.DataBind();
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            limpiarDatos();
+            Response.Redirect("frmCitaEmpleado.aspx");
         }
     }
 }

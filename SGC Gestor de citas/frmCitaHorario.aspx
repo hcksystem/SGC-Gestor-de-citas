@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador.Master" AutoEventWireup="true" CodeBehind="frmCitaHorario.aspx.cs" Inherits="SGC_Gestor_de_citas.frmCitaHorario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -14,17 +15,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
-        .btn {
-            background-color: #626c7d
-        }
-
-            .btn:hover {
-                background-color: #0c3254;
-            }
-
+  
         h5 {
             margin-bottom: -20px;
         }
+                .h6, h6 {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+                .btn{
+                    margin-bottom:-62px;
+                }
     </style>
     <div class="panel-header-sm">
     </div>
@@ -35,6 +36,7 @@
                     <div class="card-header">
                         <h5 class="title">Gestión de citas</h5>
                         <br />
+
                         <input type="checkbox" id="btn-modal" />
                         <label for="btn-modal" class="lbl-modal">Ayuda</label>
                         <div class="modal">
@@ -63,7 +65,7 @@
                                 <br />
                                 <h6>Descripción </h6>
                                 <p>
-                                   Espacio para digitar una descripción: por ejemplo: corte de pelo pelón, decoloración, balayage.
+                                   Espacio para digitar una descripción: por ejemplo: corte de pelo - en capas, decoloración, balayage.
                                     <br />
                                     Este espacio es opcional, pero tome en cuenta que es muy importante para nosotros que se brinde esta información.
                                 </p>
@@ -136,8 +138,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
 
-                                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-round" OnClick="btnGuardar_Click" />
-                                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-round" />
+                           <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary btn-round" OnClick="btnGuardar_Click" />
+                                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-primary btn-round" OnClick="btnCancelar_Click" />
 
                                 </div>
 

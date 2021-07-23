@@ -11,6 +11,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+
+    <link href="assets/css/estiloLista.css" rel="stylesheet" />
+    <style>
+              .h6, h6 {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       
@@ -22,6 +30,78 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="title">Mantenimiento de Servicios</h5>
+
+                          <input type="checkbox" id="btn-modal" />
+                        <label for="btn-modal" class="lbl-modal">Ayuda</label>
+                        <div class="modal">
+                            <div class="contenedorlista" style="overflow: scroll">
+                                <header>Ayuda</header>
+                                <label for="btn-modal">X</label>
+                                <h5>Mantenimiento de servicios</h5>
+
+                                 <h6>Nombre</h6>
+         <p>
+          Este espacio es para digitar un nombre del servicio que se brindará, por ejemplo: Cortes de pelo, Spa, manicure, etc. 
+           </p>
+           <br />
+           <h6>Precio estimado</h6>
+       
+        <p>Espacio para digitar el precio del servicio, por ejemplo: 10000 colones.
+        </p>
+        <h6>Duración</h6>
+        <p>
+            Espacio para un tiempo estimado de duración del servicio, por ejemplo: 60.<br />
+            Nota: debe de llenar este espacio con la cantidad de minutos, por ejemplo: una hora equivale a 60 minutos, sólo se permiten cantidades.
+        </p>
+          <br />
+        <h6>Descripción</h6>
+        <p>Este espacio es para digitar una breve descripción del servicio que se brindará, por ejemplo: esmaltado de uñas semipermante.
+        </p>
+      <br />
+        <h6>Foto</h6>
+       
+        <p>En este apartado se digitará el botón de elegir archivo, seguidamente se abrirá la carpeta de archivos, se elegirá una imagen representativa al servicio que se dará.
+        </p>
+          <br />
+        <h6>Estado</h6>
+          <p>
+            En este espacio se verá reflejado el estado del producto.<br />
+             Activos: Servicios que se ofrecen actualmente en el negocio.<br />
+             Inactivos: Sevicios que ya no se ofrecen y que ya se han eliminado.
+           </p>
+           <br />
+        <h6>Producto necesario</h6>
+        <p>Al dar click en el espacio, se mostrarán todos los productos resgistrados, se elegirá el necesario para brindar el servicio.
+        </p>
+        <h6>Negocio</h6>
+       
+        <p> En este espacio se verá reflejado el negocio creado con anterioridad en el mantenimiento de negocio.
+        </p>
+        <h6>Mostrar Lista</h6>
+                        <p>
+                            Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado de todos los servicio que tenemos almacenados hasta el momento, en esa lista tendriamos acceso a la opción de seleccionar o eliminar un servicio.
+                            <br />
+                            Seleccionar: al dar click en este botón se habilitarán los espacios para que se edite la información necesaria dentro del formulario y se le da guardar.
+                            Luego de esto se podrán visualizar los cambios realizados en la tabla.
+                            <br />
+                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro"), si se le da aceptar, se eliminará la tabla y si se le da cancelar se cancelará la eliminación.
+       
+                        </p>
+                        <br />
+                        <h6>Botón guardar</h6>
+                        <p>
+                            Al tocar este botón lo que estamos haciendo es registrar todos los datos de los campos anteriores que dijitamos, 
+                            los cambios se podrán visualizar dando click en la etiqueta "Mostrar lista", antes mencionada.
+
+                        </p>
+                        <br />
+                        <h6>Botón cancelar</h6>
+                        <p>Cancela la acción y hace una redirección al menú principal.</p>
+
+                            </div>
+
+                        </div>
+
                     </div>
                     <hr />
                     <div class="card-body">
@@ -42,7 +122,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteS"
                                         ControlToValidate="txtPrecio" ErrorMessage="El precio del servicio es necesario" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="El precio no puede ser negativo, no debe contener puntos o comas, solo se acepta un dígito entero" ControlToValidate="txtPrecio" ValidationGroup="ManteS" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="El precio no puede ser negativo, no debe contener puntos, solo se acepta un dígito entero, si necesita colocar un decimal, indiquelo utilizando ',' coma " ControlToValidate="txtPrecio" ValidationGroup="ManteS" ValidationExpression="^[0-9]\d*(\,\d+)?$"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-md-4 pl-1">
@@ -101,7 +181,7 @@
                             <div class="col-md-4 pl-1">
                                 <div class="form-group">
                                     <asp:Button ID="btnGuardar" class="btn btn-primary btn-round" runat="server" ValidationGroup="ManteS" Text="Guardar" OnClick="btnGuardar_Click" />
-                                    <asp:Button ID="btnCancelar" runat="server" class="btn btn-primary btn-round" Text="Limpiar" />
+                                    <asp:Button ID="btnCancelar" runat="server" class="btn btn-primary btn-round" Text="Cancelar" OnClick="btnCancelar_Click"/>
                                     <asp:Button ID="btnModificar" class="btn btn-primary btn-round" runat="server" Text="Modificar" Visible="false" OnClick="btnModificar_Click" />
                                 </div>
                             </div>                                                  
@@ -197,20 +277,8 @@
                                     </asp:GridView>
                                 </div>
                             </div>
-                        </div> <div class="fixed-plugin">
-                                <div class="dropdown show-dropdown">
-                                    <a href="#" data-toggle="dropdown">
-                                        <i class="fa fa-cog fa-2x"></i>
-                                    </a>
- 
-                                    <div class="dropdown-menu" id="global">
-                                        
-                                        <p>aca comienza el texto</p>
- 
+                        </div> 
 
-                                    </div>
-                                </div>
-                            </div>
                     </div>
                     </div>
                 </div>

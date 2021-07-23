@@ -13,7 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
-    
+    <link href="assets/css/estiloLista.css" rel="stylesheet" />
     <style  type="text/css">
         
         #global {
@@ -31,6 +31,10 @@
         .texto {
             padding: 4px;
             background: #fff;
+        }
+           .h6, h6 {
+            font-size: 1rem;
+            font-weight: bold;
         }
     </style>
 
@@ -54,32 +58,41 @@
                             <div class="contenedorlista" style="overflow: scroll">
                                 <header>Ayuda</header>
                                 <label for="btn-modal">X</label>
-                                <h5>Mantenimiento de categorías</h5>
-                                <h6>Nombre de la categoría</h6>
-                                <p>
-                                    Espacio donde se debe indicar una categoría en la cual desee catalogar sus productos.
-                             <br />
-                                    Por ejemplo: cosméticos, electrónicos, cuidado para la piel, productos de latex etc.
-                                </p>
-                                <br />
-                                <h6>Botón de guardar</h6>
-                                <p>Se guardará la categoría que se digito en el espacio de nombre</p>
-                                <br />
-                                <h6>Mostrar Lista</h6>
-                                <p>
-                                    Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado
-                            de las categorías que tenemos almacenadas hasta el momento, en esa lista tendríamos acceso a la opción de seleccionar o eliminar una categoría.
-                                </p>
-                                <br />
-                                <h6>Seleccionar</h6>
-                                <p>
-                                    Se habilitarán los espacios para que se edite la información necesaria y se llenarán los campos dentro del formulario para seguidamente editar lo que se desee y se le da al botón modificar. Luego de esto se podrán visualizar los cambios atualizados en la tabla.
-                                </p>
-                                <br />
-                                <h6>Eliminar</h6>
-                                <p>
-                                    Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro que desea eliminar este registro?"), si se le da aceptar, se eliminará el registro selecionado y si se le da cancelar la acción se anulará.
-                                </p>
+                                <h5>Mantenimiento de Negocio</h5>
+                                  <h6>Nombre</h6>
+        <p>
+            Este espacio es para digitar el nombre que tendrá el negocio, por ejemplo: Tienda Glow, Beauty Store etc. 
+        </p>
+        <h6>Descripción</h6>
+        <p>Este espacio es para digitar una breve descripción del negocio, por ejemplo: Negocio de belleza y cuidado personal.
+        </p>
+        <h6>Nuestra visión</h6>
+        <p>
+            Espacio para colocar la visión del negocio, por ejemplo: Satisfacer siempre las necesidades de nuestros clientes.
+        </p>
+        <h6>Nuestra misión</h6>
+        <p>Espacio para colocar a misión del negocio, por ejemplo: Llegar a convertirnos en un negocio reconocido a nivel nacional.
+        </p>
+        <h6>Logo</h6>
+        <p>En este apartado se selecciona el botón de elegir archivo, seguidamente se abrirá la carpeta de archivos, se elegirá una imagen representativa al logo del negocio, se buscará el logo o la imagen representativa. </p>           
+        <h6>Mostrar Lista</h6>
+                        <p>
+                            Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado del negocio que tenemos almacenado hasta el momento, en esa lista tendríamos acceso a la opción de seleccionar o eliminar un servicio.
+                            <br />
+                            Si se selecciona el botón de seleccionar dentro de la tabla, se llenaran los  campos del formulario, para proceder a modificar el campo que se desee.
+                            Modificar: Este botón se habilitará luego de darle click al botón de seleccionar.
+                            
+                            <br />
+                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro"), si se le da OK, se eliminará la tabla y si se le da OK se cancelará la eliminación y va a redireccionar al menú principal.
+                        </p>
+                        <br />
+                        <h6>Botón guardar negocio</h6>
+                        <p>
+                            Al tocar este botón lo que estamos haciendo es registrar todos los datos de los campos anteriores que dijitamos, los cambios se podrán visualizar dando click en la etiqueta "Mostrar lista", antes mencionada.
+                        </p>
+                        <br />
+                        <h6>Botón cancelar</h6>
+                        <p>Cancela a acción y hace na redirección al menú principal.</p>
 
                             </div>
 

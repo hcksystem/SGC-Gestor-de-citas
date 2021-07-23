@@ -9,20 +9,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+    <link href="assets/css/estiloLista.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <style>
-        .btn {
-            background-color: #626c7d
-        }
-
-            .btn:hover {
-                background-color: #0c3254;
-            }
-
+   <style>
+  
         h5 {
             margin-bottom: -20px;
         }
+                .h6, h6 {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+                .btn{
+                    margin-bottom:-62px;
+                }
     </style>
     <div class="panel-header-sm">
     </div>
@@ -32,6 +33,51 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="title">Gestión de citas</h5>
+                        <br />
+
+                        <input type="checkbox" id="btn-modal" />
+                        <label for="btn-modal" class="lbl-modal">Ayuda</label>
+                        <div class="modal">
+                            <div class="contenedorlista" style="overflow: scroll">
+                                <header>Ayuda</header>
+                                <label for="btn-modal">X</label>
+                                <h5>Cita</h5>
+                                <br />
+                                <h6>Resumen de servicio elegido</h6>
+                                <p>
+                                    Espacio donde se visualizará el resumen del servicio seleccionado, es importante verificar que se haya elegido el servicio deseado, sino se puede dar click en el botón que dice "cancelar" para retroceder una pantalla y elegir el servicio que se desea.
+                             <br />  
+                                </p>
+                                <br />
+                                <h6>Fecha de atención</h6>
+                                <p>Espacio para elegir la fecha de atención, se visualizará un calendario para reservar la cita, tome en cuenta que si el espacio adyacente "horario disponible" no habilita las horas es por qué no hay citas en la fecha seleccionada, igualmente solo estarán habilitadas las fechas en las que el negocio labora.</p>
+                                <br />
+                                <p>Horario de atención: de lunes a viernes de 8:00 a.m a 5:00p.m</p>
+                                <h6>Horario disponible</h6>
+                                <p>
+                                    Se mostrarán las horas disponibles para la fecha seleccionada.
+                                    <br />
+                                    NOTA: Para que se habiliten las horas se debe seleccionar primero una fecha, si no hay horas disponibles proceda a elegir otra fecha, si no sale la hora que se desea es por que la cita ya fue reservada.
+                           
+                                </p>
+                                <br />
+                                <h6>Descripción </h6>
+                                <p>
+                                   Espacio para digitar una descripción: por ejemplo: corte de pelo - en capas, decoloración, balayage.
+                                    <br />
+                                    Este espacio es opcional, pero tome en cuenta que es muy importante para nosotros que se brinde esta información.
+                                </p>
+                                <br />
+                                <h6>Botón Guardar</h6>
+                                <p>
+                                    Al tocar este botón se reservará su cita, seguidamente se mostrará un mensaje
+                               "se ha registrado correctamente".
+                                </p>
+                                <h6>!IMPORTANTE¡ Podrá ver la confirmación de su cita en su correo electrónico</h6>
+                            </div>
+
+                        </div>
+                        <hr />
 
                         <asp:Label ID="Label3" runat="server" class="col col-form-label" Text="Nombre" Font-Bold="true">Servicio seleccionado</asp:Label>
                         <div class="col-md-6">
@@ -72,7 +118,7 @@
                             <div class="col-md-4 pl-1">
                                 <div class="form-group">
                                     <label>Horario disponible:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="HorarioDisponible" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList CssClass="form-control" ID="HorarioDisponible" runat="server" OnSelectedIndexChanged="HorarioDisponible_SelectedIndexChanged"></asp:DropDownList>
 
                                 </div>
                             </div>
@@ -90,8 +136,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
 
-                                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-round" OnClick="btnGuardar_Click" />
-                                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-round" />
+                           <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary btn-round" OnClick="btnGuardar_Click" />
+                                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" class="btn btn-primary btn-round" OnClick="btnCancelar_Click" />
 
                                 </div>
 

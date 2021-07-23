@@ -5,7 +5,9 @@ using LogicaNegocio_BLL_;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -40,6 +42,8 @@ namespace SGC_Gestor_de_citas
             txtPropositoProducto.Text = dt.Rows[0]["proposito"].ToString();
             txtPrecioProducto.Text = dt.Rows[0]["precio"].ToString();
             dropEstado.SelectedValue = dt.Rows[0]["estado"].ToString();
+
+           
         }
 
         private void CargarDatos(string sortExpression = null)
@@ -176,6 +180,7 @@ namespace SGC_Gestor_de_citas
             limpiarDatos();
             btnGuardar.Visible = true;
             btnModificar.Visible = false;
+            Response.Redirect("frmMenuAdministrador.aspx");
 
         }
 

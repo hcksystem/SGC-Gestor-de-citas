@@ -18,7 +18,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
-   
+   <link href="assets/css/estiloLista.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -39,31 +39,29 @@
                                 <header>Ayuda</header>
                                 <label for="btn-modal">X</label>
                                 <h5>Mis citas</h5>
-                                <h6>Nombre de la categoría</h6>
+                                
                                 <p>
-                                    Espacio donde se debe indicar una categoría en la cual desee catalogar sus productos.
-                             <br />
-                                    Por ejemplo: cosméticos, electrónicos, cuidado para la piel, productos de latex etc.
+                                    Formulario diseñado para visualización y cancelación de sus citas.<br />
+                                    En este se mostrará una tabla con tres botones:  
+                            
                                 </p>
                                 <br />
-                                <h6>Botón de guardar</h6>
-                                <p>Se guardará la categoría que se digito en el espacio de nombre</p>
+                                <h6>Citas pendientes</h6>
+                                <p>Muestra todas las citas pendientes, esto quiere decir que todavía no hemos recibido el servicio.</p>
                                 <br />
-                                <h6>Mostrar Lista</h6>
+                                <h6>Botón cacelar cita</h6>
+                                <p>Su función es cancelar las citas a las que por alguna razón no va a poder asistir.</p>
+                                <h6>Citas canceladas</h6>
                                 <p>
-                                    Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado
-                            de las categorías que tenemos almacenadas hasta el momento, en esa lista tendríamos acceso a la opción de seleccionar o eliminar una categoría.
+                                   Muestra todas las citas canceladas, esto quiere decir que son citas a las que ya no vamos a asistir.
                                 </p>
                                 <br />
-                                <h6>Seleccionar</h6>
+                                <h6>Citas Hostórico</h6>
                                 <p>
-                                    Se habilitarán los espacios para que se edite la información necesaria y se llenarán los campos dentro del formulario para seguidamente editar lo que se desee y se le da al botón modificar. Luego de esto se podrán visualizar los cambios atualizados en la tabla.
+                                   Mustra un listado de todas las citas, tanto pendientes como canceladas y atendidas.
                                 </p>
                                 <br />
-                                <h6>Eliminar</h6>
-                                <p>
-                                    Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro que desea eliminar este registro?"), si se le da aceptar, se eliminará el registro selecionado y si se le da cancelar la acción se anulará.
-                                </p>
+                               
 
                             </div>
 
@@ -83,7 +81,6 @@
     <li class="nav-item active"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Citas Pendientes</a></li>
     <li class="nav-item"><a class="nav-link" id="menu1-tab" data-toggle="tab" href="#menu1" role="tab" aria-controls="profile" aria-selected="false">Citas Canceladas</a></li>
     <li class="nav-item"><a class="nav-link" id="menu2-tab" data-toggle="tab" href="#menu2" role="tab" aria-controls="profile" aria-selected="false">Citas Histórico</a></li>
-    <li class="nav-item"><a class="nav-link" id="menu3-tab" data-toggle="tab" href="#menu3" role="tab" aria-controls="profile" aria-selected="false">Menu 3</a></li>
   </ul>
 <div class="tab-content">
     <div id="home" class="tab-pane fade show active">
@@ -106,14 +103,9 @@
     </div>
     <div class="tab-pane fade" id="menu1" role="tabpanel" aria-labelledby="menu1">
       
-          <div id="home" class="tab-pane fade show active">
-      <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="4" AllowPaging="True" Width="100%" OnPageIndexChanging="gridMisCitas_PageIndexChanging" OnRowDeleting="gridMisCitas_RowDeleting" OnRowDataBound="gridMisCitas_RowDataBound" OnRowCommand="gridMisCitas_RowCommand">
+          <div id="home1" class="tab-pane fade show active">
+      <asp:GridView ID="gridCitasCanceladas" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="4" AllowPaging="True" Width="100%" OnPageIndexChanging="gridCitasCanceladas_PageIndexChanging" OnRowDeleting="gridCitasCanceladas_RowDeleting" OnRowDataBound="gridCitasCanceladas_RowDataBound" OnRowCommand="gridCitasCanceladas_RowCommand">
                                         <Columns>
-                                    <asp:TemplateField ShowHeader="true" HeaderText="Cancelar cita" >
-                                    <ItemTemplate>
-                                     <asp:ImageButton ID="ImageButton1" runat="server" CommandArgument='<%# Eval("id") %>' CommandName="Cancelar" ImageUrl="~/assets/img/cancelar.png" Text="Eliminar" />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
                              <asp:BoundField DataField="id" HeaderText="ID"></asp:BoundField>
                              <asp:BoundField DataField="Fecha" HeaderText="Fecha" ></asp:BoundField>
                             <asp:BoundField DataField="Hora" HeaderText="Hora"></asp:BoundField>
@@ -127,13 +119,23 @@
 
     </div>
     <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      
+      <div id="home2" class="tab-pane fade show active">
+      <asp:GridView ID="gridCitasHistorico" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="4" AllowPaging="True" Width="100%" OnPageIndexChanging="gridCitasHistorico_PageIndexChanging" OnRowDeleting="gridCitasHistorico_RowDeleting" OnRowDataBound="gridCitasHistorico_RowDataBound" OnRowCommand="gridCitasHistorico_RowCommand">
+                                        <Columns>
+                                   
+                             <asp:BoundField DataField="id" HeaderText="ID"></asp:BoundField>
+                             <asp:BoundField DataField="Fecha" HeaderText="Fecha" ></asp:BoundField>
+                            <asp:BoundField DataField="Hora" HeaderText="Hora"></asp:BoundField>
+                              <asp:BoundField DataField="idServicio" HeaderText="Servicio"></asp:BoundField>
+
+                                        </Columns>
+
+                                        <HeaderStyle CssClass="table-info" />
+                                    </asp:GridView>
     </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Menu 3</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
     </div>
+  
   </div>
                                     
                                 </div>

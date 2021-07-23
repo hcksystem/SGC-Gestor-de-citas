@@ -55,7 +55,7 @@ namespace SGC_Gestor_de_citas
             }
 
             BLLProducto bllp = new BLLProducto();
-            DataTable dt = bllp.ObtenerTodosLosProductos();
+            DataTable dt = bllp.ObtenerTodosLosProductosActivos();
             dropProducto.DataSource = dt;
             dropProducto.DataTextField = "nombre";
             dropProducto.DataValueField = "id";
@@ -307,6 +307,12 @@ namespace SGC_Gestor_de_citas
 
         protected void FotoSugerida_Click(object sender, ImageClickEventArgs e)
         {
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            limpiarDatos();
+            Response.Redirect("frmMenuAdministrador.aspx");
         }
     }
 }

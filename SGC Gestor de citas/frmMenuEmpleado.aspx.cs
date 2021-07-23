@@ -11,7 +11,10 @@ namespace SGC_Gestor_de_citas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Usuario"] != null)
+            {
+                Label2.Text = Session["Usuario"].ToString();
+            }
         }
     }
 }

@@ -45,16 +45,34 @@ namespace SGC_Gestor_de_citas
                 if (bllpersona.CompararClave(txtOldPassword.Text))
                 {
                     nuevaClave = txtNewPassword.Text;
+
+                    ClientScript.RegisterStartupScript(
+                       this.GetType(),
+                        "Registro",
+                        "mensajeRedirect('Contraseña',' actualizada','success','frmLogin.aspx')",
+                        true
+                        );
                 }
-                else { 
-                //Alert la clave no coincide
+                else {
+                    //Alert la clave no coincide
+                    ClientScript.RegisterStartupScript(
+                       this.GetType(),
+                        "Registro",
+                        "mensajeRedirect('Contraseña',' No coincide','error','frmPerfilCliente.aspx')",
+                        true
+                        );
+                    txtOldPassword.Text = "";
+                    txtNewPassword.Text = "";
+                    txtOldPassword.Focus();
                 }
             }
            int result= bllpersona.Actualizar(persona,nuevaClave);//1 Actualizo la persona, 2 Actualizo la persona  y la clave y si es 0 no hizo nada
             switch (result) {
                 case 1://redirect a la misma pagina para que se vean los cambios
+                    Response.Redirect("frmPerfilCliente.aspx");
                     break;
                 case 2://redirect a login para que pruebe la clave, recuerden cerrar la session
+                    Response.Redirect("frmLogin.aspx");
                     break;
                 case 0://No paso nada
                     break;

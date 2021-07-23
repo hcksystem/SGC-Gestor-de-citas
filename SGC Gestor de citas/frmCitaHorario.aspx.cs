@@ -26,13 +26,7 @@ namespace SGC_Gestor_de_citas
                 if (!IsPostBack)
                 {
                     txtFechaAtencion.Text = DateTime.Today.ToString("yyyy-MM-dd");
-                    ////cargar combo con enum
-                    //Array enumList = Enum.GetValues(typeof(horarioEnum));
-                    //foreach (horarioEnum getHorario in enumList)
-                    //{
-                    //    dropEstadoHorario.Items.Add(new ListItem(getHorario.ToString(), ((int)getHorario).ToString()));
-                    //}
-
+                
                     BLLServicio blls = new BLLServicio();
                     dropServicio.DataSource = blls.ObtenerTodosServiciosLista();
                     dropServicio.DataTextField = "nombre";
@@ -151,6 +145,12 @@ namespace SGC_Gestor_de_citas
 
         protected void HorarioDisponible_SelectedIndexChanged(object sender, EventArgs e)
         { 
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            limpiarDatos();
+            Response.Redirect("frmCita.aspx");
         }
     }
     }

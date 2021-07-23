@@ -69,6 +69,10 @@
                                     Se habilitarán los espacios para que se edite la información necesaria y se llenarán los campos dentro del formulario para seguidamente editar lo que se desee y se le da al botón modificar. Luego de esto se podrán visualizar los cambios atualizados en la tabla.
                                 </p>
                                 <br />
+                                <h6>Botón de modificar</h6>
+                                <p>Botón que se encarga de insertar la modificacion realizada a la categoría que se digito en el espacio de nombre <br />
+                                    Nota: este botón solo sera visible cuando se seleccione en la tabla una categoría </p>
+                                <br />
                                 <h6>Eliminar</h6>
                                 <p>
                                     Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro que desea eliminar este registro?"), si se le da aceptar, se eliminará el registro selecionado y si se le da cancelar la acción se anulará.

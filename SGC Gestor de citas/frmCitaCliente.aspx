@@ -8,11 +8,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+
+    <link href="assets/css/estiloLista.css" rel="stylesheet" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <style>
-    .btn{background-color:#626c7d}
-    .btn:hover{background-color:#0c3254;} 
+    
            .h6, h6 {
     font-size: 1rem;
     font-weight: bold;
@@ -34,32 +36,17 @@
                             <div class="contenedorlista" style="overflow: scroll">
                                 <header>Ayuda</header>
                                 <label for="btn-modal">X</label>
-                                <h5>Mantenimiento de categorías</h5>
-                                <h6>Nombre de la categoría</h6>
+                                <h5>Citas</h5>
                                 <p>
-                                    Espacio donde se debe indicar una categoría en la cual desee catalogar sus productos.
+                                    Este es el formulario principal de citas, en este se mostrará un listado de todos los servicios que brinda el negocio, en cada uno se muestra:<br />
+                                    * El nombre del servicio.<br />
+                                    * La descripción del servicio.<br />
+                                    * El precio del servicio.
                              <br />
-                                    Por ejemplo: cosméticos, electrónicos, cuidado para la piel, productos de latex etc.
                                 </p>
                                 <br />
-                                <h6>Botón de guardar</h6>
-                                <p>Se guardará la categoría que se digito en el espacio de nombre</p>
-                                <br />
-                                <h6>Mostrar Lista</h6>
-                                <p>
-                                    Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado
-                            de las categorías que tenemos almacenadas hasta el momento, en esa lista tendríamos acceso a la opción de seleccionar o eliminar una categoría.
-                                </p>
-                                <br />
-                                <h6>Seleccionar</h6>
-                                <p>
-                                    Se habilitarán los espacios para que se edite la información necesaria y se llenarán los campos dentro del formulario para seguidamente editar lo que se desee y se le da al botón modificar. Luego de esto se podrán visualizar los cambios atualizados en la tabla.
-                                </p>
-                                <br />
-                                <h6>Eliminar</h6>
-                                <p>
-                                    Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro que desea eliminar este registro?"), si se le da aceptar, se eliminará el registro selecionado y si se le da cancelar la acción se anulará.
-                                </p>
+                                <h6>Botón reservar cita</h6>
+                                <p>Al seleccionar este botón se mostrará el formulario encargado de facilitar el horario y su respectivo trámite para sacar su cita.</p>
 
                             </div>
 
@@ -90,11 +77,11 @@
                                 <ItemTemplate>
                                     <div class="col-md">
                                         <div class="card text-center border-primary mb-4">
-                                            <div class="card-body">
+                                            <div class="card-body" style="height:180px; width:300px">
                                                 <h5 class="card-title"><%#:Item.Nombre %></h5>
                                                 <p class="card-text"><%#:Item.Descripcion %></p>
-                                                <p class="card-text"><%# Eval("precioEstimado","${0:N2}") %></p>
-                                                <asp:Button CssClass="btn"
+                                                <p class="card-text"><%# Eval("precioEstimado","₡{0:N2}") %></p>
+                                                <asp:Button CssClass= "btn-primary btn-round"
                                                     ID="btnReservar"
                                                     runat="server" Text="Reservar Cita"
                                                     CommandArgument='<%#:Item.ID %>'

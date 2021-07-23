@@ -18,7 +18,7 @@ namespace SGC_Gestor_de_citas
         protected void Session_Start(object sender, EventArgs e)
         {
             Session["init"] = 0;
-            Session.Timeout = 15;
+            Session.Timeout = 60;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

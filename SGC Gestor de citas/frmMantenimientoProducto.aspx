@@ -13,9 +13,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <link href="assets/css/estiloLista.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+    <style>
+          .h6, h6 {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    </style>
 <div class="panel-header-sm">
 </div>
 <div class="content">
@@ -24,6 +30,85 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="title">Formulario de Productos</h5>
+
+                    <input type="checkbox" id="btn-modal" />
+                        <label for="btn-modal" class="lbl-modal">Ayuda</label>
+                        <div class="modal">
+                            <div class="contenedorlista" style="overflow: scroll">
+                                <header>Ayuda</header>
+                                <label for="btn-modal">X</label>
+                                <h5>Mantenimiento de productos</h5>
+
+                             <h6>Nombre del producto</h6>
+                            <p>
+                                Este espacio es requerido, lo que significa que es un dato indispensable
+                            para tener éxito en el registro de los productos.
+                            El dato debe ser breve y claro, ejemplos: Cepillo eléctrico, plancha de cabello, shampoo etc.
+                            </p>
+                            <br />
+                            <h6>Categoría</h6>
+                            <p>
+                                Este espacio es para que categorice o asigne un producto a un grupo de materiales
+                            segun su categoría, para que le sea mas fácil buscarlos a futuro.
+                            por ejemplo: Cuidado para la piel, utencilios básicos, cosméticos, etc.
+                            </p>
+                            <br />
+                            <h6>Descripción</h6>
+                            <p>
+                                Este espacio es para que brevemente se describa el producto, 
+                            por ejemplo: color negro brillante(tintes), tipos de fijacion (ceras o gel para cabello)
+                            </p>
+                            <br />
+                                  <h6>Propósito</h6>
+                            <p>
+                                Este espacio tiene como fin que se indique cuál es el propósito que tiene ese producto que almacenamos
+                            ya sea que lo queremos vender, si es para consumo del local o alguna otra idea que tengamos.
+                            </p>
+                            <br />
+                            <h6>Precio Unitario</h6>
+                            <p>
+                              En este espacio dijitaremos el valor unitario de cada uno de esos productos, este precio es 
+                            el valor de salida que tendría el producto, no el valor en el cual lo adquirimos.
+                            </p>
+                                <br />
+                            <h6>Cantidad que se posee</h6>
+                            <p>Representa la cantidad bruta de productos que se estan incluyendo, esta se verá reflejada en el inventario, por ejemplo (1, 2, 3, etc).</p>
+                            <br />
+                          <h6>Estado</h6>
+                           <p>
+                               En este espacio se verá reflejado el estado del producto.<br />
+                               Activos: Productos que están actualmente en posesión de inventario.<br />
+                               Inactivos: Productos que ya salieron y que ya se han eliminado.
+                           </p>
+                                <br />
+                                <h6>Nota para inventario</h6>
+                                <p>
+                                    Nota opcional, se puede utilizar para comunicar alguna nota importante para luego visualizarlo en el formulario de inventario.
+                                </p>
+                            <br />
+                            <h6>Mostrar Lista</h6>
+                            <p>
+                            Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado de los productos que tenemos almacenados hasta el momento, en esa lista tendríamos acceso a la opción de seleccionar o eliminar un producto.
+                            <br />
+                            Si se selecciona el botón de seleccionar dentro de la tabla, se llenaran los campos del formulario, para proceder a modificar el campo que se desee.
+                            Modificar: Este botón se habilitará luego de darle click al botón de seleccionar.
+                            
+                            <br />
+                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro"), si se le da aceptar, se eliminará la tabla y si se le da cancelar se cancelará la eliminación y va a redireccionar al menú principal.
+                        </p>
+                        <br />
+                        <h6>Botón guardar</h6>
+                        <p>
+                            Al tocar este botón lo que estamos haciendo es registrar todos los datos de los campos anteriores que dijitamos, los cambios se podrán visualizar dando click en la etiqueta "Mostrar lista", antes mencionada.
+                        </p>
+                        <br />
+                        <h6>Botón cancelar</h6>
+                        <p>Cancela a acción y hace una redirección al menú principal.</p>
+
+                            </div>
+
+                        </div>
+
             </div>
             <hr />
             <div class="card-body">
@@ -69,7 +154,7 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtPrecioProducto" ErrorMessage="Digite el precio del producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
-                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="El precio no puede ser negativo, no debe contener puntos o comas, solo se acepta un dígito entero" ControlToValidate="txtPrecioProducto" ValidationGroup="ManteP" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
+                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="El precio no puede ser negativo, no debe contener puntos, se acepta un dígito entero, si necesita un decimal debe indicarlo con una coma','" ControlToValidate="txtPrecioProducto" ValidationGroup="ManteP" ValidationExpression="^[0-9]\d*(\,\d+)?$"></asp:RegularExpressionValidator>
 
                 </div>
             </div>   
@@ -139,20 +224,7 @@
                 </div>
                 </div>
                 </div>
-                <div class="fixed-plugin">
-                                <div class="dropdown show-dropdown">
-                                    <a href="#" data-toggle="dropdown">
-                                        <i class="fa fa-cog fa-2x"></i>
-                                    </a>
- 
-                                    <div class="dropdown-menu" id="global">
-                                        
-                                        <p>aca comienza el texto</p>
- 
-
-                                    </div>
-                                </div>
-                            </div>
+             
                 </div>
             </div>
         </div>

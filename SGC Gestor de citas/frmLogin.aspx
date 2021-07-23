@@ -45,11 +45,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteL"
                                         ControlToValidate="txtContrasennaInicio" ErrorMessage="Digite su contraseña" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
-                                      <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                                ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$"
-                                ErrorMessage="La contraseña debe tener entre 8 y 15 caracteres, al menos un número, una mayúscula, una minúscula y no puede tener caracteres especiales"
-                                ControlToValidate="txtContrasennaInicio" Display="Dynamic" ForeColor="Red"
-                                ValidationGroup="ManteL"></asp:RegularExpressionValidator>--%>
+                
                       
 
                                 </div>
@@ -60,6 +56,9 @@
                                 </div>
                                 <div id="register-link" class="text-right">
                                     <a href="frmRegistro.aspx" class="text-info">Registrarse</a>
+                                </div>
+                                 <div id="olvido-link" class="text-right">
+                                    <a href="#" class="text-info">¿Olvidó su contraseña?</a>
                                 </div>
                             </form>
                         </div>

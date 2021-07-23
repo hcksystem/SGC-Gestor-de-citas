@@ -24,6 +24,7 @@ namespace SGC_Gestor_de_citas
             if (!IsPostBack)
             {
                 CargarDatos();
+                LlenarCombos();
             }
         }
 
@@ -40,7 +41,7 @@ namespace SGC_Gestor_de_citas
             {
                 throw;
             }
-            LlenarCombos();
+           
         }
 
         private void EditarDatos()//este metodo carga los espacios del formulario con los datos almacenados en la BD 
@@ -82,6 +83,7 @@ namespace SGC_Gestor_de_citas
             txtNombre.Text = "";
             txtApellido.Text = "";
             txtNombreUsuario.Text = "";
+            txtIdentificacion.Text = "";
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -144,6 +146,7 @@ namespace SGC_Gestor_de_citas
             LimpiarDatos();
             btnModificar.Visible = false;
             btnGuardar.Visible = true;
+            Response.Redirect("frmMenuAdministrador.aspx");
         }
 
         protected void gridUsuarios_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)

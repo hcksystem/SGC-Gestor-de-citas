@@ -13,7 +13,19 @@ namespace SGC_Gestor_de_citas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                txtNombre.Focus();
+            }
+        }
+        public void limpiarDatos()
+        {
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtTelefono.Text = "";
+            txtCorreo.Text = "";
+            txtContrasennaInicio.Text = "";
+            txtNombreUsuario.Text = "";
         }
 
         protected void btnRegistarme_Click(object sender, EventArgs e)
@@ -33,25 +45,36 @@ namespace SGC_Gestor_de_citas
             usu.idRol = 3;
             usu.estado = 1;
 
-           string Mensaje= bllu.InsertarUsuario(per, usu);
-            if (Mensaje.Contains("(x)"))
+            string mensaje = bllu.InsertarUsuario(per, usu);
+            mensaje = mensaje.Replace("\r\n", "y ");
+
+           // string Mensaje= bllu.InsertarUsuario(per, usu);
+
+            if (mensaje.Contains("(x)"))
             {
+                mensaje = mensaje.Replace("(x)", "");
+                mensaje = mensaje.Substring(0, mensaje.Length - 2);
+
                 ClientScript.RegisterStartupScript(
-               this.GetType(),
-               "Registro",
-                  "mensajeRedirect('Registro','" + Mensaje.Replace("(x)","") + "','error','#')",
-   true
-   );
+                                    this.GetType(),
+                                    "Registro",
+                                     "mensajeRedirect('Usuario','" + mensaje.Replace("(x)", "") + "','error','#')",
+                                    true
+                                    );
             }
             else
             {
                 ClientScript.RegisterStartupScript(
-               this.GetType(),
-               "Registro",
-                  "mensajeRedirect('Registro','" + Mensaje.Replace("(x)", "") + "','success','frmLogin.aspx')",
-   true
-   );
+                                    this.GetType(),
+                                    "Registro",
+                                     "mensajeRedirect('Usuario','" + mensaje.Replace("(x)", "") + "','success','frmLogin.aspx')",
+                                    true
+                                    );
+   
             }
+
+            limpiarDatos();
+            //Response.Redirect("frmLogin.aspx");
            
         }
     }

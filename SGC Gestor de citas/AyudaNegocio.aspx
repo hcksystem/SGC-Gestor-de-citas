@@ -36,6 +36,9 @@
                             </h6>
                         </div>
 
+
+                        
+
                         <h6>Nombre</h6>
         <p>
             Este espacio es para digitar el nombre que tendrá el negocio, por ejemplo: Tienda Glow, Beauty Store etc. 
