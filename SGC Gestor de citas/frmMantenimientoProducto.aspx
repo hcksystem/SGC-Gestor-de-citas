@@ -154,7 +154,7 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtPrecioProducto" ErrorMessage="Digite el precio del producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
-                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="El precio no puede ser negativo, no debe contener puntos, se acepta un dígito entero, si necesita un decimal debe indicarlo con una coma','" ControlToValidate="txtPrecioProducto" ValidationGroup="ManteP" ValidationExpression="^[0-9]\d*(\,\d+)?$"></asp:RegularExpressionValidator>
+                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" Display="Dynamic" runat="server" ErrorMessage="El precio no puede ser negativo, no debe contener puntos, se acepta un dígito entero, si necesita un decimal debe indicarlo con una coma','" ControlToValidate="txtPrecioProducto" ValidationGroup="ManteP" ValidationExpression="^[0-9]\d*(\,\d+)?$"></asp:RegularExpressionValidator>
 
                 </div>
             </div>   

@@ -10,6 +10,10 @@
     <script src="assets/js/mensaje.js"></script>
     <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -20,6 +24,24 @@
 <body>
     <%--<form runat="server">--%>
 
+    <script type="text/javascript">
+      function mostrarPassword() {
+          var cambio = document.getElementById("txtContrasennaInicio");
+          if (cambio.type == "password") {
+              cambio.type = "text";
+              $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+          } else {
+              cambio.type = "password";
+              $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+          }
+      }
+      $(document).ready(function () {
+          //CheckBox mostrar contraseña
+          $('#ShowPassword').click(function () {
+              $('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
+          });
+      });
+</script>
 
         <div id="login">
             <h3 class="text-center text-white pt-5">Login form</h3>
@@ -41,7 +63,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="text-info">Contraseña:</label><br>
-                                    <asp:TextBox ID="txtContrasennaInicio" runat="server" TextMode="Password" CssClass="form-control" TabIndex="2" placeHolder="* Requerido *"></asp:TextBox>
+                                          <div class="input-group-append">
+                                            <asp:TextBox ID="txtContrasennaInicio" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <div class="input-group-append">
+                                                <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()">
+                                                    <span class="fa fa-eye-slash icon"></span>
+                                                </button>
+                                            </div>
+                                        </div>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteL"
                                         ControlToValidate="txtContrasennaInicio" ErrorMessage="Digite su contraseña" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -58,7 +87,7 @@
                                     <a href="frmRegistro.aspx" class="text-info">Registrarse</a>
                                 </div>
                                  <div id="olvido-link" class="text-right">
-                                    <a href="#" class="text-info">¿Olvidó su contraseña?</a>
+                                    <a href="frmOlvideMiContrasenna.aspx" class="text-info">¿Olvidó su contraseña?</a>
                                 </div>
                             </form>
                         </div>

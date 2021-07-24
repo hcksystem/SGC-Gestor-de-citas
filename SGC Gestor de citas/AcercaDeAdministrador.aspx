@@ -27,9 +27,9 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <p>Desarrolladores</p>
-                                <p>Yirlani González Martínez</p><br />
-                                <p>Michael Pérez González</p>
+                                <p>Desarrolladores:</p>
+                                <p>* Yirlani González Martínez</p>
+                                <p>* Michael Pérez González</p>
                             </div>
                         </div>
 

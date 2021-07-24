@@ -17,6 +17,9 @@ namespace SGC_Gestor_de_citas
             if (!Page.IsPostBack) {
                 persona = new Persona();
                 CargarDatos();
+
+               
+
             }
 
         }
@@ -80,6 +83,34 @@ namespace SGC_Gestor_de_citas
             }
 
 
+        }
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox1.Checked == false)
+            {
+                string pass = txtOldPassword.Text;
+                txtOldPassword.TextMode = TextBoxMode.Password;
+                txtOldPassword.Attributes.Add("value", pass);
+            }
+            if (CheckBox1.Checked)
+            {
+                txtOldPassword.TextMode = TextBoxMode.SingleLine;
+            }
+        }
+
+        protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox2.Checked == false)
+            {
+                string pass = txtNewPassword.Text;
+                txtNewPassword.TextMode = TextBoxMode.Password;
+                txtNewPassword.Attributes.Add("value", pass);
+            }
+            if (CheckBox2.Checked)
+            {
+                txtNewPassword.TextMode = TextBoxMode.SingleLine;
+            }
         }
     }
 }

@@ -15,6 +15,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
 
+
+
     <link href="assets/css/estiloLista.css" rel="stylesheet" />
 
 <!--     Fonts and icons     -->
@@ -30,6 +32,24 @@
         <title>Registro</title>
     </head>
     <body>
+        <script type="text/javascript">
+      function mostrarPassword() {
+          var cambio = document.getElementById("txtContrasennaInicio");
+          if (cambio.type == "password") {
+              cambio.type = "text";
+              $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+          } else {
+              cambio.type = "password";
+              $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+          }
+      }
+      $(document).ready(function () {
+          //CheckBox mostrar contraseña
+          $('#ShowPassword').click(function () {
+              $('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
+          });
+      });
+</script>
         <form runat="server">
             <div class="panel-header-sm">
     </div>
@@ -163,7 +183,14 @@
                             <tr>
                 <th>Contraseña</th>
                 <td colspan="2">
-                 <asp:TextBox ID="txtContrasennaInicio" runat="server" TextMode="Password" CssClass="form-control" TabIndex="7" placeHolder="* Requerido *"></asp:TextBox>
+                         <div class="input-group-append">
+                                            <asp:TextBox ID="txtContrasennaInicio" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <div class="input-group-append">
+                                                <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()">
+                                                    <span class="fa fa-eye-slash icon"></span>
+                                                </button>
+                                            </div>
+                                        </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ValidationGroup="ManteL"
                                     ControlToValidate="txtContrasennaInicio" ErrorMessage="Digite su contraseña" Display="Dynamic"
                                     ForeColor="Red"></asp:RequiredFieldValidator>

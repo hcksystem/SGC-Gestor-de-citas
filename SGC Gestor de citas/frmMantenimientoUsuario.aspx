@@ -13,6 +13,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
     <link href="assets/css/estiloLista.css" rel="stylesheet" />
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -29,7 +31,12 @@
             font-size: 1rem;
             font-weight: bold;
         }
+                    .card label {
+    
+    margin-left: 8px;
+}
     </style>
+
 
     <div class="panel-header-sm">
     </div>
@@ -119,7 +126,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Nombre</label>
-                                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                                    <asp:TextBox ID="txtNombre" runat="server" TabIndex="1" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="ManteN"
                                         ControlToValidate="txtNombre" ErrorMessage=" *Es necesario indicar un nombre" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -128,7 +135,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Apellido</label>
-                                    <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                                    <asp:TextBox ID="txtApellido" runat="server" TabIndex="2" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteN"
                                         ControlToValidate="txtApellido" ErrorMessage=" *El apellido es necesario" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -137,40 +144,40 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Correo electrónico</label>
-                                    <asp:TextBox ID="txtCorreo" TextMode="Email" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                                    <asp:TextBox ID="txtCorreo" TextMode="Email" TabIndex="3" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="ManteN"
                                         ControlToValidate="txtCorreo" ErrorMessage="El correo electrónico es necesario" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                        ErrorMessage="El correo electrónico no esta digitado correctamente" ControlToValidate="txtCorreo" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ValidationGroup="ManteN"></asp:RegularExpressionValidator>
+                                        ErrorMessage="El correo electrónico no esta digitado correctamente" ControlToValidate="txtCorreo" Display="Dynamic" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ValidationGroup="ManteN"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Teléfono</label>
-                                    <asp:TextBox ID="txtTelefono" TextMode="Phone" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                                    <asp:TextBox ID="txtTelefono" TextMode="Phone" TabIndex="4" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="ManteN"
                                         ControlToValidate="txtTelefono" ErrorMessage="El teléfono es necesario" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Digite un número de teléfono con el formato adecuado (ej:8888-8888)" ValidationGroup="ManteN" ValidationExpression="^[5-9]\d{3}-?\d{4}$" ControlToValidate="txtTelefono"></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" Display="Dynamic" ErrorMessage="Digite un número de teléfono con el formato adecuado (ej:8888-8888)" ValidationGroup="ManteN" ValidationExpression="^[5-9]\d{3}-?\d{4}$" ControlToValidate="txtTelefono"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Identificación</label>
-                                    <asp:TextBox ID="txtIdentificacion" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                                    <asp:TextBox ID="txtIdentificacion" TabIndex="5" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="ManteN"
                                         ControlToValidate="txtIdentificacion" ErrorMessage="La identificación es necesaria" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Formato de identificación incorrecto, ej: 202220222) " ValidationGroup="ManteN" ValidationExpression="^[1-9]-?\d{4}-?\d{4}$" ControlToValidate="txtIdentificacion"></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" Display="Dynamic" runat="server" ErrorMessage="Formato de identificación incorrecto, ej: 202220222) " ValidationGroup="ManteN" ValidationExpression="^[1-9]-?\d{4}-?\d{4}$" ControlToValidate="txtIdentificacion"></asp:RegularExpressionValidator>
 
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Nombre de usuario</label>
-                                    <asp:TextBox ID="txtNombreUsuario" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                                    <asp:TextBox ID="txtNombreUsuario" TabIndex="6" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="ManteN"
                                         ControlToValidate="txtNombreUsuario" ErrorMessage="El nombre de usuario es necesario" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -180,10 +187,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Contraseña</label>
-                                    <asp:TextBox ID="txtContrasenna" TextMode="Password" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="ManteN"
-                                        ControlToValidate="txtContrasenna" ErrorMessage="La contraseña es necesaria" Display="Dynamic"
-                                        SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                                         
+                                <asp:TextBox ID="txtContrasenna" TabIndex="7" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:CheckBox ID="CheckBox1" runat="server" Text="Mostrar contraseña" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" />
+
+                               <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="ManteN"
+                                ControlToValidate="txtContrasenna" ErrorMessage="La contraseña es necesaria" Display="Dynamic"
+                                SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
                                         ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$"
                                         ErrorMessage="La contraseña debe tener entre 8 y 15 caracteres, al menos un número, una mayúscula, una minúscula y no puede tener caracteres especiales"
@@ -196,13 +206,13 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Rol de usuario</label>
-                                    <asp:DropDownList ID="dropRol" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <asp:DropDownList ID="dropRol" TabIndex="8" runat="server" CssClass="form-control"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Estado</label>
-                                    <asp:DropDownList ID="dropEstado" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <asp:DropDownList ID="dropEstado" TabIndex="9" runat="server" CssClass="form-control"></asp:DropDownList>
                                 </div>
                             </div>
 

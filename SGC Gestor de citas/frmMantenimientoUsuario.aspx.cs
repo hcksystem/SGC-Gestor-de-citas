@@ -25,6 +25,7 @@ namespace SGC_Gestor_de_citas
             {
                 CargarDatos();
                 LlenarCombos();
+                txtNombre.Focus();
             }
         }
 
@@ -258,5 +259,18 @@ namespace SGC_Gestor_de_citas
             btnModificar.Visible = false;
         }
 
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox1.Checked == false)
+            {
+                string pass = txtContrasenna.Text;
+                txtContrasenna.TextMode = TextBoxMode.Password;
+                txtContrasenna.Attributes.Add("value", pass);
+            }
+            if (CheckBox1.Checked)
+            {
+                txtContrasenna.TextMode = TextBoxMode.SingleLine;
+            }
+        }
     }
 }
