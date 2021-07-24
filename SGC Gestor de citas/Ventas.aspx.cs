@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace SGC_Gestor_de_citas
 {
-    public partial class TestReportProducto : System.Web.UI.Page
+    public partial class Ventas : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace SGC_Gestor_de_citas
 
             LocalReport localReport = ReportViewer1.LocalReport;
 
-            localReport.ReportPath = "ReporteProducto.rdlc";
+            localReport.ReportPath = "rptVenta.rdlc";
             DataSet dataset = new DataSet("DataSet1");
             string Desde = txtDesde.Text;
             string Hasta = txtHasta.Text;
@@ -49,7 +49,7 @@ namespace SGC_Gestor_de_citas
             ReportDataSource dsCitas = new ReportDataSource();
             dsCitas.Name = "DataSet1";
             dsCitas.Value = dataset.Tables["DataSet1"];
-
+            localReport.DataSources.Clear();
             localReport.DataSources.Add(dsCitas);
         }
         protected void GenerarCitasPorFecha(String Desde, String Hasta, ref DataSet dataset)

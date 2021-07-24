@@ -284,7 +284,7 @@
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="Test.aspx" />
     <Content Include="TestReport.aspx" />
-    <Content Include="TestReportProducto.aspx" />
+    <Content Include="Ventas.aspx" />
     <Content Include="TestReportProductoPorServicio.aspx" />
     <Content Include="Web.config" />
     <Content Include="WS.asmx" />
@@ -344,20 +344,20 @@
     <Compile Include="Cliente.Master.designer.cs">
       <DependentUpon>Cliente.Master</DependentUpon>
     </Compile>
-    <Compile Include="DSVentas.Designer.cs">
+    <Compile Include="dsProductosPorServicio.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DSVentas.xsd</DependentUpon>
+      <DependentUpon>dsProductosPorServicio.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DSVentas1.Designer.cs">
+    <Compile Include="dsVenta.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DSVentas1.xsd</DependentUpon>
+      <DependentUpon>dsVenta.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DSVentas2.Designer.cs">
+    <Compile Include="dsVentas5.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DSVentas2.xsd</DependentUpon>
+      <DependentUpon>dsVentas5.xsd</DependentUpon>
     </Compile>
     <Compile Include="Empleado.Master.cs">
       <DependentUpon>Empleado.Master</DependentUpon>
@@ -599,12 +599,12 @@
     <Compile Include="TestReport.aspx.designer.cs">
       <DependentUpon>TestReport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TestReportProducto.aspx.cs">
-      <DependentUpon>TestReportProducto.aspx</DependentUpon>
+    <Compile Include="Ventas.aspx.cs">
+      <DependentUpon>Ventas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TestReportProducto.aspx.designer.cs">
-      <DependentUpon>TestReportProducto.aspx</DependentUpon>
+    <Compile Include="Ventas.aspx.designer.cs">
+      <DependentUpon>Ventas.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReportProductoPorServicio.aspx.cs">
       <DependentUpon>TestReportProductoPorServicio.aspx</DependentUpon>
@@ -677,38 +677,38 @@
     <Content Include="CitasDataSet.xss">
       <DependentUpon>CitasDataSet.xsd</DependentUpon>
     </Content>
-    <Content Include="DSVentas.xsc">
-      <DependentUpon>DSVentas.xsd</DependentUpon>
+    <Content Include="dsVentas5.xsc">
+      <DependentUpon>dsVentas5.xsd</DependentUpon>
     </Content>
-    <None Include="DSVentas.xsd">
+    <Content Include="dsVenta.xsc">
+      <DependentUpon>dsVenta.xsd</DependentUpon>
+    </Content>
+    <Content Include="dsProductosPorServicio.xsc">
+      <DependentUpon>dsProductosPorServicio.xsd</DependentUpon>
+    </Content>
+    <None Include="dsProductosPorServicio.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSVentas.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsProductosPorServicio.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <Content Include="DSVentas.xss">
-      <DependentUpon>DSVentas.xsd</DependentUpon>
+    <Content Include="dsProductosPorServicio.xss">
+      <DependentUpon>dsProductosPorServicio.xsd</DependentUpon>
     </Content>
-    <Content Include="DSVentas1.xsc">
-      <DependentUpon>DSVentas1.xsd</DependentUpon>
-    </Content>
-    <None Include="DSVentas1.xsd">
+    <None Include="dsVenta.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSVentas1.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsVenta.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <Content Include="DSVentas1.xss">
-      <DependentUpon>DSVentas1.xsd</DependentUpon>
+    <Content Include="dsVenta.xss">
+      <DependentUpon>dsVenta.xsd</DependentUpon>
     </Content>
-    <Content Include="DSVentas2.xsc">
-      <DependentUpon>DSVentas2.xsd</DependentUpon>
-    </Content>
-    <None Include="DSVentas2.xsd">
+    <None Include="dsVentas5.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSVentas2.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsVentas5.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <Content Include="DSVentas2.xss">
-      <DependentUpon>DSVentas2.xsd</DependentUpon>
+    <Content Include="dsVentas5.xss">
+      <DependentUpon>dsVentas5.xsd</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="SolucionesSGCDataSet.xsc">
@@ -764,6 +764,8 @@
     <EmbeddedResource Include="ReportCita.rdlc" />
     <EmbeddedResource Include="ReporteProducto.rdlc" />
     <EmbeddedResource Include="ReporteProductoPorServicio.rdlc" />
+    <EmbeddedResource Include="rptProductosPorServicio.rdlc" />
+    <EmbeddedResource Include="rptVenta.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

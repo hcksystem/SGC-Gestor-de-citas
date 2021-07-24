@@ -106,16 +106,19 @@
                                     <th>Correo</th>
                                     <td colspan="2">
                                         <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" TabIndex="1" placeHolder="* Requerido *"></asp:TextBox>
-
-
                                     </td>
-                                    
                                     <td>
                                         <asp:Button ID="btnSolicitarContrasenna" runat="server" Text="Solicitar " OnClick="btnSolicitarContrasenna_Click" />
                                     </td>
+                                    <td id="CodigoVerificacion" runat="server" visible="false">
+                                        <asp:TextBox ID="txtCodigoVerificacion" runat="server" CssClass="form-control" TabIndex="1" placeHolder="* Requerido *"></asp:TextBox>
+                                        </td>
+                                    <td id="tdVerificar" runat="server" visible="false">
+                                        <asp:Button ID="btnVerificar" runat="server" CssClass="btn btn-info" TabIndex="1" OnClick="btnVerificar_Click"></asp:Button>
+                                        </td>
                                 </tr>
 
-                                <tr>
+                                <tr runat="server" visible="false" id="NuevaContrasena">
                                     <th>Nueva contraseña</th>
                                     <td colspan="2">
                                         <div class="input-group-append">
@@ -128,22 +131,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>Confirme contraseña</th>
-                                    <td colspan="2">
-
-                                        <div class="input-group">
-                                            <asp:TextBox ID="txtPassword1" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
-                                            <div class="input-group-append">
-                                                <button id="show_password1" class="btn btn-primary" type="button" onclick="mostrarPassword1()">
-                                                    <span class="fa fa-eye-slash icon"></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
+                                <tr runat="server" id="confirmar" visible="false">
                                     <th></th>
                                     <td colspan="1">
                                         <asp:Button ID="btnConfirmar" CssClass="btn btn-primary btn-round" runat="server" Text="Confirmar" OnClick="btnConfirmar_Click" />

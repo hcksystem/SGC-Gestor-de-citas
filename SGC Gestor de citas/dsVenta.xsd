@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DSVentas1" targetNamespace="http://tempuri.org/DSVentas1.xsd" xmlns:mstns="http://tempuri.org/DSVentas1.xsd" xmlns="http://tempuri.org/DSVentas1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="dsVenta" targetNamespace="http://tempuri.org/dsVenta.xsd" xmlns:mstns="http://tempuri.org/dsVenta.xsd" xmlns="http://tempuri.org/dsVenta.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="SolucionesSGCv1.Properties.Settings.Conexion (Web.config)" DbObjectName="SolucionesSGC.dbo.VW_Ventas" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT numeroFactura, fecha, Usuario, CorreoUsuario, IdentificacionUsuario, NombreProducto, DescProducto, Servicio, Categoria, Total, Filtro FROM dbo.VW_Ventas</CommandText>
+                    <CommandText>SELECT numeroFactura, fecha, Usuario, CorreoUsuario, IdentificacionUsuario, NombreProducto, DescProducto, Servicio, Categoria, Total, idcategoria, Filtro FROM dbo.VW_Ventas</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -29,6 +29,7 @@
               <Mapping SourceColumn="Servicio" DataSetColumn="Servicio" />
               <Mapping SourceColumn="Categoria" DataSetColumn="Categoria" />
               <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="idcategoria" DataSetColumn="idcategoria" />
               <Mapping SourceColumn="Filtro" DataSetColumn="Filtro" />
             </Mappings>
             <Sources />
@@ -38,13 +39,19 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DSVentas1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DSVentas1" msprop:Generator_UserDSName="DSVentas1">
+  <xs:element name="dsVenta" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dsVenta" msprop:Generator_UserDSName="dsVenta">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="VW_Ventas" msprop:Generator_TableClassName="VW_VentasDataTable" msprop:Generator_TableVarName="tableVW_Ventas" msprop:Generator_TablePropName="VW_Ventas" msprop:Generator_RowDeletingName="VW_VentasRowDeleting" msprop:Generator_RowChangingName="VW_VentasRowChanging" msprop:Generator_RowEvHandlerName="VW_VentasRowChangeEventHandler" msprop:Generator_RowDeletedName="VW_VentasRowDeleted" msprop:Generator_UserTableName="VW_Ventas" msprop:Generator_RowChangedName="VW_VentasRowChanged" msprop:Generator_RowEvArgName="VW_VentasRowChangeEvent" msprop:Generator_RowClassName="VW_VentasRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="numeroFactura" msprop:Generator_ColumnVarNameInTable="columnnumeroFactura" msprop:Generator_ColumnPropNameInRow="numeroFactura" msprop:Generator_ColumnPropNameInTable="numeroFacturaColumn" msprop:Generator_UserColumnName="numeroFactura" type="xs:int" />
+              <xs:element name="numeroFactura" msprop:Generator_ColumnVarNameInTable="columnnumeroFactura" msprop:Generator_ColumnPropNameInRow="numeroFactura" msprop:Generator_ColumnPropNameInTable="numeroFacturaColumn" msprop:Generator_UserColumnName="numeroFactura" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_UserColumnName="Usuario">
                 <xs:simpleType>
@@ -96,10 +103,11 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="idcategoria" msprop:Generator_ColumnVarNameInTable="columnidcategoria" msprop:Generator_ColumnPropNameInRow="idcategoria" msprop:Generator_ColumnPropNameInTable="idcategoriaColumn" msprop:Generator_UserColumnName="idcategoria" type="xs:int" minOccurs="0" />
               <xs:element name="Filtro" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFiltro" msprop:Generator_ColumnPropNameInRow="Filtro" msprop:Generator_ColumnPropNameInTable="FiltroColumn" msprop:Generator_UserColumnName="Filtro" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="502" />
+                    <xs:maxLength value="520" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -108,9 +116,5 @@
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:VW_Ventas" />
-      <xs:field xpath="mstns:numeroFactura" />
-    </xs:unique>
   </xs:element>
 </xs:schema>

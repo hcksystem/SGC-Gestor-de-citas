@@ -20,17 +20,17 @@ namespace SGC_Gestor_de_citas {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DSVentas1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dsProductosPorServicio")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DSVentas1 : global::System.Data.DataSet {
+    public partial class dsProductosPorServicio : global::System.Data.DataSet {
         
-        private VW_VentasDataTable tableVW_Ventas;
+        private VW_ProductoPorServicioDataTable tableVW_ProductoPorServicio;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DSVentas1() {
+        public dsProductosPorServicio() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace SGC_Gestor_de_citas {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected DSVentas1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected dsProductosPorServicio(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace SGC_Gestor_de_citas {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["VW_Ventas"] != null)) {
-                    base.Tables.Add(new VW_VentasDataTable(ds.Tables["VW_Ventas"]));
+                if ((ds.Tables["VW_ProductoPorServicio"] != null)) {
+                    base.Tables.Add(new VW_ProductoPorServicioDataTable(ds.Tables["VW_ProductoPorServicio"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace SGC_Gestor_de_citas {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public VW_VentasDataTable VW_Ventas {
+        public VW_ProductoPorServicioDataTable VW_ProductoPorServicio {
             get {
-                return this.tableVW_Ventas;
+                return this.tableVW_ProductoPorServicio;
             }
         }
         
@@ -127,7 +127,7 @@ namespace SGC_Gestor_de_citas {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DSVentas1 cln = ((DSVentas1)(base.Clone()));
+            dsProductosPorServicio cln = ((dsProductosPorServicio)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace SGC_Gestor_de_citas {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["VW_Ventas"] != null)) {
-                    base.Tables.Add(new VW_VentasDataTable(ds.Tables["VW_Ventas"]));
+                if ((ds.Tables["VW_ProductoPorServicio"] != null)) {
+                    base.Tables.Add(new VW_ProductoPorServicioDataTable(ds.Tables["VW_ProductoPorServicio"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace SGC_Gestor_de_citas {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableVW_Ventas = ((VW_VentasDataTable)(base.Tables["VW_Ventas"]));
+            this.tableVW_ProductoPorServicio = ((VW_ProductoPorServicioDataTable)(base.Tables["VW_ProductoPorServicio"]));
             if ((initTable == true)) {
-                if ((this.tableVW_Ventas != null)) {
-                    this.tableVW_Ventas.InitVars();
+                if ((this.tableVW_ProductoPorServicio != null)) {
+                    this.tableVW_ProductoPorServicio.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace SGC_Gestor_de_citas {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DSVentas1";
+            this.DataSetName = "dsProductosPorServicio";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DSVentas1.xsd";
+            this.Namespace = "http://tempuri.org/dsProductosPorServicio.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableVW_Ventas = new VW_VentasDataTable();
-            base.Tables.Add(this.tableVW_Ventas);
+            this.tableVW_ProductoPorServicio = new VW_ProductoPorServicioDataTable();
+            base.Tables.Add(this.tableVW_ProductoPorServicio);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeVW_Ventas() {
+        private bool ShouldSerializeVW_ProductoPorServicio() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace SGC_Gestor_de_citas {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DSVentas1 ds = new DSVentas1();
+            dsProductosPorServicio ds = new dsProductosPorServicio();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,41 +270,37 @@ namespace SGC_Gestor_de_citas {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void VW_VentasRowChangeEventHandler(object sender, VW_VentasRowChangeEvent e);
+        public delegate void VW_ProductoPorServicioRowChangeEventHandler(object sender, VW_ProductoPorServicioRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class VW_VentasDataTable : global::System.Data.TypedTableBase<VW_VentasRow> {
+        public partial class VW_ProductoPorServicioDataTable : global::System.Data.TypedTableBase<VW_ProductoPorServicioRow> {
             
             private global::System.Data.DataColumn columnnumeroFactura;
             
-            private global::System.Data.DataColumn columnfecha;
+            private global::System.Data.DataColumn columnFechaFact;
             
-            private global::System.Data.DataColumn columnUsuario;
+            private global::System.Data.DataColumn columnidServicio;
             
-            private global::System.Data.DataColumn columnCorreoUsuario;
+            private global::System.Data.DataColumn columnNombreServicio;
             
-            private global::System.Data.DataColumn columnIdentificacionUsuario;
+            private global::System.Data.DataColumn columnPrecioServicio;
             
             private global::System.Data.DataColumn columnNombreProducto;
             
-            private global::System.Data.DataColumn columnDescProducto;
+            private global::System.Data.DataColumn columnPrecioProducto;
             
-            private global::System.Data.DataColumn columnServicio;
-            
-            private global::System.Data.DataColumn columnCategoria;
-            
-            private global::System.Data.DataColumn columnTotal;
+            private global::System.Data.DataColumn columnCatProducto;
             
             private global::System.Data.DataColumn columnFiltro;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VentasDataTable() {
-                this.TableName = "VW_Ventas";
+            public VW_ProductoPorServicioDataTable() {
+                this.TableName = "VW_ProductoPorServicio";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -312,7 +308,7 @@ namespace SGC_Gestor_de_citas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal VW_VentasDataTable(global::System.Data.DataTable table) {
+            internal VW_ProductoPorServicioDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -329,7 +325,7 @@ namespace SGC_Gestor_de_citas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected VW_VentasDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected VW_ProductoPorServicioDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -344,33 +340,33 @@ namespace SGC_Gestor_de_citas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn fechaColumn {
+            public global::System.Data.DataColumn FechaFactColumn {
                 get {
-                    return this.columnfecha;
+                    return this.columnFechaFact;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn UsuarioColumn {
+            public global::System.Data.DataColumn idServicioColumn {
                 get {
-                    return this.columnUsuario;
+                    return this.columnidServicio;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CorreoUsuarioColumn {
+            public global::System.Data.DataColumn NombreServicioColumn {
                 get {
-                    return this.columnCorreoUsuario;
+                    return this.columnNombreServicio;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdentificacionUsuarioColumn {
+            public global::System.Data.DataColumn PrecioServicioColumn {
                 get {
-                    return this.columnIdentificacionUsuario;
+                    return this.columnPrecioServicio;
                 }
             }
             
@@ -384,33 +380,17 @@ namespace SGC_Gestor_de_citas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DescProductoColumn {
+            public global::System.Data.DataColumn PrecioProductoColumn {
                 get {
-                    return this.columnDescProducto;
+                    return this.columnPrecioProducto;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ServicioColumn {
+            public global::System.Data.DataColumn CatProductoColumn {
                 get {
-                    return this.columnServicio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CategoriaColumn {
-                get {
-                    return this.columnCategoria;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TotalColumn {
-                get {
-                    return this.columnTotal;
+                    return this.columnCatProducto;
                 }
             }
             
@@ -433,62 +413,53 @@ namespace SGC_Gestor_de_citas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VentasRow this[int index] {
+            public VW_ProductoPorServicioRow this[int index] {
                 get {
-                    return ((VW_VentasRow)(this.Rows[index]));
+                    return ((VW_ProductoPorServicioRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event VW_VentasRowChangeEventHandler VW_VentasRowChanging;
+            public event VW_ProductoPorServicioRowChangeEventHandler VW_ProductoPorServicioRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event VW_VentasRowChangeEventHandler VW_VentasRowChanged;
+            public event VW_ProductoPorServicioRowChangeEventHandler VW_ProductoPorServicioRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event VW_VentasRowChangeEventHandler VW_VentasRowDeleting;
+            public event VW_ProductoPorServicioRowChangeEventHandler VW_ProductoPorServicioRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event VW_VentasRowChangeEventHandler VW_VentasRowDeleted;
+            public event VW_ProductoPorServicioRowChangeEventHandler VW_ProductoPorServicioRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddVW_VentasRow(VW_VentasRow row) {
+            public void AddVW_ProductoPorServicioRow(VW_ProductoPorServicioRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VentasRow AddVW_VentasRow(int numeroFactura, System.DateTime fecha, string Usuario, string CorreoUsuario, string IdentificacionUsuario, string NombreProducto, string DescProducto, string Servicio, string Categoria, decimal Total, string Filtro) {
-                VW_VentasRow rowVW_VentasRow = ((VW_VentasRow)(this.NewRow()));
+            public VW_ProductoPorServicioRow AddVW_ProductoPorServicioRow(string numeroFactura, System.DateTime FechaFact, int idServicio, string NombreServicio, decimal PrecioServicio, string NombreProducto, decimal PrecioProducto, string CatProducto, string Filtro) {
+                VW_ProductoPorServicioRow rowVW_ProductoPorServicioRow = ((VW_ProductoPorServicioRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         numeroFactura,
-                        fecha,
-                        Usuario,
-                        CorreoUsuario,
-                        IdentificacionUsuario,
+                        FechaFact,
+                        idServicio,
+                        NombreServicio,
+                        PrecioServicio,
                         NombreProducto,
-                        DescProducto,
-                        Servicio,
-                        Categoria,
-                        Total,
+                        PrecioProducto,
+                        CatProducto,
                         Filtro};
-                rowVW_VentasRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowVW_VentasRow);
-                return rowVW_VentasRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VentasRow FindBynumeroFactura(int numeroFactura) {
-                return ((VW_VentasRow)(this.Rows.Find(new object[] {
-                            numeroFactura})));
+                rowVW_ProductoPorServicioRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowVW_ProductoPorServicioRow);
+                return rowVW_ProductoPorServicioRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                VW_VentasDataTable cln = ((VW_VentasDataTable)(base.Clone()));
+                VW_ProductoPorServicioDataTable cln = ((VW_ProductoPorServicioDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -496,90 +467,76 @@ namespace SGC_Gestor_de_citas {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new VW_VentasDataTable();
+                return new VW_ProductoPorServicioDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnnumeroFactura = base.Columns["numeroFactura"];
-                this.columnfecha = base.Columns["fecha"];
-                this.columnUsuario = base.Columns["Usuario"];
-                this.columnCorreoUsuario = base.Columns["CorreoUsuario"];
-                this.columnIdentificacionUsuario = base.Columns["IdentificacionUsuario"];
+                this.columnFechaFact = base.Columns["FechaFact"];
+                this.columnidServicio = base.Columns["idServicio"];
+                this.columnNombreServicio = base.Columns["NombreServicio"];
+                this.columnPrecioServicio = base.Columns["PrecioServicio"];
                 this.columnNombreProducto = base.Columns["NombreProducto"];
-                this.columnDescProducto = base.Columns["DescProducto"];
-                this.columnServicio = base.Columns["Servicio"];
-                this.columnCategoria = base.Columns["Categoria"];
-                this.columnTotal = base.Columns["Total"];
+                this.columnPrecioProducto = base.Columns["PrecioProducto"];
+                this.columnCatProducto = base.Columns["CatProducto"];
                 this.columnFiltro = base.Columns["Filtro"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnnumeroFactura = new global::System.Data.DataColumn("numeroFactura", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnnumeroFactura = new global::System.Data.DataColumn("numeroFactura", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnumeroFactura);
-                this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnfecha);
-                this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUsuario);
-                this.columnCorreoUsuario = new global::System.Data.DataColumn("CorreoUsuario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCorreoUsuario);
-                this.columnIdentificacionUsuario = new global::System.Data.DataColumn("IdentificacionUsuario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdentificacionUsuario);
+                this.columnFechaFact = new global::System.Data.DataColumn("FechaFact", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaFact);
+                this.columnidServicio = new global::System.Data.DataColumn("idServicio", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidServicio);
+                this.columnNombreServicio = new global::System.Data.DataColumn("NombreServicio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNombreServicio);
+                this.columnPrecioServicio = new global::System.Data.DataColumn("PrecioServicio", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrecioServicio);
                 this.columnNombreProducto = new global::System.Data.DataColumn("NombreProducto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNombreProducto);
-                this.columnDescProducto = new global::System.Data.DataColumn("DescProducto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescProducto);
-                this.columnServicio = new global::System.Data.DataColumn("Servicio", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnServicio);
-                this.columnCategoria = new global::System.Data.DataColumn("Categoria", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCategoria);
-                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotal);
+                this.columnPrecioProducto = new global::System.Data.DataColumn("PrecioProducto", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrecioProducto);
+                this.columnCatProducto = new global::System.Data.DataColumn("CatProducto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCatProducto);
                 this.columnFiltro = new global::System.Data.DataColumn("Filtro", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFiltro);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnnumeroFactura}, true));
-                this.columnnumeroFactura.AllowDBNull = false;
-                this.columnnumeroFactura.Unique = true;
-                this.columnUsuario.AllowDBNull = false;
-                this.columnUsuario.MaxLength = 101;
-                this.columnCorreoUsuario.MaxLength = 50;
-                this.columnIdentificacionUsuario.MaxLength = 50;
+                this.columnnumeroFactura.MaxLength = 30;
+                this.columnNombreServicio.MaxLength = 50;
                 this.columnNombreProducto.MaxLength = 50;
-                this.columnDescProducto.MaxLength = 50;
-                this.columnServicio.MaxLength = 50;
-                this.columnCategoria.MaxLength = 50;
+                this.columnCatProducto.MaxLength = 50;
                 this.columnFiltro.ReadOnly = true;
-                this.columnFiltro.MaxLength = 502;
+                this.columnFiltro.MaxLength = 319;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VentasRow NewVW_VentasRow() {
-                return ((VW_VentasRow)(this.NewRow()));
+            public VW_ProductoPorServicioRow NewVW_ProductoPorServicioRow() {
+                return ((VW_ProductoPorServicioRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new VW_VentasRow(builder);
+                return new VW_ProductoPorServicioRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(VW_VentasRow);
+                return typeof(VW_ProductoPorServicioRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.VW_VentasRowChanged != null)) {
-                    this.VW_VentasRowChanged(this, new VW_VentasRowChangeEvent(((VW_VentasRow)(e.Row)), e.Action));
+                if ((this.VW_ProductoPorServicioRowChanged != null)) {
+                    this.VW_ProductoPorServicioRowChanged(this, new VW_ProductoPorServicioRowChangeEvent(((VW_ProductoPorServicioRow)(e.Row)), e.Action));
                 }
             }
             
@@ -587,8 +544,8 @@ namespace SGC_Gestor_de_citas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.VW_VentasRowChanging != null)) {
-                    this.VW_VentasRowChanging(this, new VW_VentasRowChangeEvent(((VW_VentasRow)(e.Row)), e.Action));
+                if ((this.VW_ProductoPorServicioRowChanging != null)) {
+                    this.VW_ProductoPorServicioRowChanging(this, new VW_ProductoPorServicioRowChangeEvent(((VW_ProductoPorServicioRow)(e.Row)), e.Action));
                 }
             }
             
@@ -596,8 +553,8 @@ namespace SGC_Gestor_de_citas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.VW_VentasRowDeleted != null)) {
-                    this.VW_VentasRowDeleted(this, new VW_VentasRowChangeEvent(((VW_VentasRow)(e.Row)), e.Action));
+                if ((this.VW_ProductoPorServicioRowDeleted != null)) {
+                    this.VW_ProductoPorServicioRowDeleted(this, new VW_ProductoPorServicioRowChangeEvent(((VW_ProductoPorServicioRow)(e.Row)), e.Action));
                 }
             }
             
@@ -605,14 +562,14 @@ namespace SGC_Gestor_de_citas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.VW_VentasRowDeleting != null)) {
-                    this.VW_VentasRowDeleting(this, new VW_VentasRowChangeEvent(((VW_VentasRow)(e.Row)), e.Action));
+                if ((this.VW_ProductoPorServicioRowDeleting != null)) {
+                    this.VW_ProductoPorServicioRowDeleting(this, new VW_ProductoPorServicioRowChangeEvent(((VW_ProductoPorServicioRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveVW_VentasRow(VW_VentasRow row) {
+            public void RemoveVW_ProductoPorServicioRow(VW_ProductoPorServicioRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -621,7 +578,7 @@ namespace SGC_Gestor_de_citas {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DSVentas1 ds = new DSVentas1();
+                dsProductosPorServicio ds = new dsProductosPorServicio();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -639,7 +596,7 @@ namespace SGC_Gestor_de_citas {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "VW_VentasDataTable";
+                attribute2.FixedValue = "VW_ProductoPorServicioDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -683,85 +640,99 @@ namespace SGC_Gestor_de_citas {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class VW_VentasRow : global::System.Data.DataRow {
+        public partial class VW_ProductoPorServicioRow : global::System.Data.DataRow {
             
-            private VW_VentasDataTable tableVW_Ventas;
+            private VW_ProductoPorServicioDataTable tableVW_ProductoPorServicio;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal VW_VentasRow(global::System.Data.DataRowBuilder rb) : 
+            internal VW_ProductoPorServicioRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableVW_Ventas = ((VW_VentasDataTable)(this.Table));
+                this.tableVW_ProductoPorServicio = ((VW_ProductoPorServicioDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int numeroFactura {
-                get {
-                    return ((int)(this[this.tableVW_Ventas.numeroFacturaColumn]));
-                }
-                set {
-                    this[this.tableVW_Ventas.numeroFacturaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime fecha {
+            public string numeroFactura {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableVW_Ventas.fechaColumn]));
+                        return ((string)(this[this.tableVW_ProductoPorServicio.numeroFacturaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha\' de la tabla \'VW_Ventas\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'numeroFactura\' de la tabla \'VW_ProductoPorServicio\' es DB" +
+                                "Null.", e);
                     }
                 }
                 set {
-                    this[this.tableVW_Ventas.fechaColumn] = value;
+                    this[this.tableVW_ProductoPorServicio.numeroFacturaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Usuario {
-                get {
-                    return ((string)(this[this.tableVW_Ventas.UsuarioColumn]));
-                }
-                set {
-                    this[this.tableVW_Ventas.UsuarioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string CorreoUsuario {
+            public System.DateTime FechaFact {
                 get {
                     try {
-                        return ((string)(this[this.tableVW_Ventas.CorreoUsuarioColumn]));
+                        return ((global::System.DateTime)(this[this.tableVW_ProductoPorServicio.FechaFactColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CorreoUsuario\' de la tabla \'VW_Ventas\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaFact\' de la tabla \'VW_ProductoPorServicio\' es DBNull" +
+                                ".", e);
                     }
                 }
                 set {
-                    this[this.tableVW_Ventas.CorreoUsuarioColumn] = value;
+                    this[this.tableVW_ProductoPorServicio.FechaFactColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string IdentificacionUsuario {
+            public int idServicio {
                 get {
                     try {
-                        return ((string)(this[this.tableVW_Ventas.IdentificacionUsuarioColumn]));
+                        return ((int)(this[this.tableVW_ProductoPorServicio.idServicioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdentificacionUsuario\' de la tabla \'VW_Ventas\' es DBNull." +
-                                "", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'idServicio\' de la tabla \'VW_ProductoPorServicio\' es DBNul" +
+                                "l.", e);
                     }
                 }
                 set {
-                    this[this.tableVW_Ventas.IdentificacionUsuarioColumn] = value;
+                    this[this.tableVW_ProductoPorServicio.idServicioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string NombreServicio {
+                get {
+                    try {
+                        return ((string)(this[this.tableVW_ProductoPorServicio.NombreServicioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NombreServicio\' de la tabla \'VW_ProductoPorServicio\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_ProductoPorServicio.NombreServicioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal PrecioServicio {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableVW_ProductoPorServicio.PrecioServicioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PrecioServicio\' de la tabla \'VW_ProductoPorServicio\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVW_ProductoPorServicio.PrecioServicioColumn] = value;
                 }
             }
             
@@ -770,78 +741,49 @@ namespace SGC_Gestor_de_citas {
             public string NombreProducto {
                 get {
                     try {
-                        return ((string)(this[this.tableVW_Ventas.NombreProductoColumn]));
+                        return ((string)(this[this.tableVW_ProductoPorServicio.NombreProductoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NombreProducto\' de la tabla \'VW_Ventas\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NombreProducto\' de la tabla \'VW_ProductoPorServicio\' es D" +
+                                "BNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVW_Ventas.NombreProductoColumn] = value;
+                    this[this.tableVW_ProductoPorServicio.NombreProductoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DescProducto {
+            public decimal PrecioProducto {
                 get {
                     try {
-                        return ((string)(this[this.tableVW_Ventas.DescProductoColumn]));
+                        return ((decimal)(this[this.tableVW_ProductoPorServicio.PrecioProductoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DescProducto\' de la tabla \'VW_Ventas\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PrecioProducto\' de la tabla \'VW_ProductoPorServicio\' es D" +
+                                "BNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVW_Ventas.DescProductoColumn] = value;
+                    this[this.tableVW_ProductoPorServicio.PrecioProductoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Servicio {
+            public string CatProducto {
                 get {
                     try {
-                        return ((string)(this[this.tableVW_Ventas.ServicioColumn]));
+                        return ((string)(this[this.tableVW_ProductoPorServicio.CatProductoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Servicio\' de la tabla \'VW_Ventas\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CatProducto\' de la tabla \'VW_ProductoPorServicio\' es DBNu" +
+                                "ll.", e);
                     }
                 }
                 set {
-                    this[this.tableVW_Ventas.ServicioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Categoria {
-                get {
-                    try {
-                        return ((string)(this[this.tableVW_Ventas.CategoriaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Categoria\' de la tabla \'VW_Ventas\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_Ventas.CategoriaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal Total {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableVW_Ventas.TotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Total\' de la tabla \'VW_Ventas\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableVW_Ventas.TotalColumn] = value;
+                    this[this.tableVW_ProductoPorServicio.CatProductoColumn] = value;
                 }
             }
             
@@ -850,123 +792,123 @@ namespace SGC_Gestor_de_citas {
             public string Filtro {
                 get {
                     try {
-                        return ((string)(this[this.tableVW_Ventas.FiltroColumn]));
+                        return ((string)(this[this.tableVW_ProductoPorServicio.FiltroColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Filtro\' de la tabla \'VW_Ventas\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Filtro\' de la tabla \'VW_ProductoPorServicio\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVW_Ventas.FiltroColumn] = value;
+                    this[this.tableVW_ProductoPorServicio.FiltroColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsfechaNull() {
-                return this.IsNull(this.tableVW_Ventas.fechaColumn);
+            public bool IsnumeroFacturaNull() {
+                return this.IsNull(this.tableVW_ProductoPorServicio.numeroFacturaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetfechaNull() {
-                this[this.tableVW_Ventas.fechaColumn] = global::System.Convert.DBNull;
+            public void SetnumeroFacturaNull() {
+                this[this.tableVW_ProductoPorServicio.numeroFacturaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsCorreoUsuarioNull() {
-                return this.IsNull(this.tableVW_Ventas.CorreoUsuarioColumn);
+            public bool IsFechaFactNull() {
+                return this.IsNull(this.tableVW_ProductoPorServicio.FechaFactColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetCorreoUsuarioNull() {
-                this[this.tableVW_Ventas.CorreoUsuarioColumn] = global::System.Convert.DBNull;
+            public void SetFechaFactNull() {
+                this[this.tableVW_ProductoPorServicio.FechaFactColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsIdentificacionUsuarioNull() {
-                return this.IsNull(this.tableVW_Ventas.IdentificacionUsuarioColumn);
+            public bool IsidServicioNull() {
+                return this.IsNull(this.tableVW_ProductoPorServicio.idServicioColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetIdentificacionUsuarioNull() {
-                this[this.tableVW_Ventas.IdentificacionUsuarioColumn] = global::System.Convert.DBNull;
+            public void SetidServicioNull() {
+                this[this.tableVW_ProductoPorServicio.idServicioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNombreServicioNull() {
+                return this.IsNull(this.tableVW_ProductoPorServicio.NombreServicioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNombreServicioNull() {
+                this[this.tableVW_ProductoPorServicio.NombreServicioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPrecioServicioNull() {
+                return this.IsNull(this.tableVW_ProductoPorServicio.PrecioServicioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPrecioServicioNull() {
+                this[this.tableVW_ProductoPorServicio.PrecioServicioColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNombreProductoNull() {
-                return this.IsNull(this.tableVW_Ventas.NombreProductoColumn);
+                return this.IsNull(this.tableVW_ProductoPorServicio.NombreProductoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNombreProductoNull() {
-                this[this.tableVW_Ventas.NombreProductoColumn] = global::System.Convert.DBNull;
+                this[this.tableVW_ProductoPorServicio.NombreProductoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDescProductoNull() {
-                return this.IsNull(this.tableVW_Ventas.DescProductoColumn);
+            public bool IsPrecioProductoNull() {
+                return this.IsNull(this.tableVW_ProductoPorServicio.PrecioProductoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDescProductoNull() {
-                this[this.tableVW_Ventas.DescProductoColumn] = global::System.Convert.DBNull;
+            public void SetPrecioProductoNull() {
+                this[this.tableVW_ProductoPorServicio.PrecioProductoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsServicioNull() {
-                return this.IsNull(this.tableVW_Ventas.ServicioColumn);
+            public bool IsCatProductoNull() {
+                return this.IsNull(this.tableVW_ProductoPorServicio.CatProductoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetServicioNull() {
-                this[this.tableVW_Ventas.ServicioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsCategoriaNull() {
-                return this.IsNull(this.tableVW_Ventas.CategoriaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetCategoriaNull() {
-                this[this.tableVW_Ventas.CategoriaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsTotalNull() {
-                return this.IsNull(this.tableVW_Ventas.TotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetTotalNull() {
-                this[this.tableVW_Ventas.TotalColumn] = global::System.Convert.DBNull;
+            public void SetCatProductoNull() {
+                this[this.tableVW_ProductoPorServicio.CatProductoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsFiltroNull() {
-                return this.IsNull(this.tableVW_Ventas.FiltroColumn);
+                return this.IsNull(this.tableVW_ProductoPorServicio.FiltroColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetFiltroNull() {
-                this[this.tableVW_Ventas.FiltroColumn] = global::System.Convert.DBNull;
+                this[this.tableVW_ProductoPorServicio.FiltroColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -974,22 +916,22 @@ namespace SGC_Gestor_de_citas {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class VW_VentasRowChangeEvent : global::System.EventArgs {
+        public class VW_ProductoPorServicioRowChangeEvent : global::System.EventArgs {
             
-            private VW_VentasRow eventRow;
+            private VW_ProductoPorServicioRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VentasRowChangeEvent(VW_VentasRow row, global::System.Data.DataRowAction action) {
+            public VW_ProductoPorServicioRowChangeEvent(VW_ProductoPorServicioRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public VW_VentasRow Row {
+            public VW_ProductoPorServicioRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1005,7 +947,7 @@ namespace SGC_Gestor_de_citas {
         }
     }
 }
-namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
+namespace SGC_Gestor_de_citas.dsProductosPorServicioTableAdapters {
     
     
     /// <summary>
@@ -1017,7 +959,7 @@ namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class VW_VentasTableAdapter : global::System.ComponentModel.Component {
+    public partial class VW_ProductoPorServicioTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1031,7 +973,7 @@ namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public VW_VentasTableAdapter() {
+        public VW_ProductoPorServicioTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1128,17 +1070,15 @@ namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "VW_Ventas";
+            tableMapping.DataSetTable = "VW_ProductoPorServicio";
             tableMapping.ColumnMappings.Add("numeroFactura", "numeroFactura");
-            tableMapping.ColumnMappings.Add("fecha", "fecha");
-            tableMapping.ColumnMappings.Add("Usuario", "Usuario");
-            tableMapping.ColumnMappings.Add("CorreoUsuario", "CorreoUsuario");
-            tableMapping.ColumnMappings.Add("IdentificacionUsuario", "IdentificacionUsuario");
+            tableMapping.ColumnMappings.Add("FechaFact", "FechaFact");
+            tableMapping.ColumnMappings.Add("idServicio", "idServicio");
+            tableMapping.ColumnMappings.Add("NombreServicio", "NombreServicio");
+            tableMapping.ColumnMappings.Add("PrecioServicio", "PrecioServicio");
             tableMapping.ColumnMappings.Add("NombreProducto", "NombreProducto");
-            tableMapping.ColumnMappings.Add("DescProducto", "DescProducto");
-            tableMapping.ColumnMappings.Add("Servicio", "Servicio");
-            tableMapping.ColumnMappings.Add("Categoria", "Categoria");
-            tableMapping.ColumnMappings.Add("Total", "Total");
+            tableMapping.ColumnMappings.Add("PrecioProducto", "PrecioProducto");
+            tableMapping.ColumnMappings.Add("CatProducto", "CatProducto");
             tableMapping.ColumnMappings.Add("Filtro", "Filtro");
             this._adapter.TableMappings.Add(tableMapping);
         }
@@ -1156,8 +1096,8 @@ namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT numeroFactura, fecha, Usuario, CorreoUsuario, IdentificacionUsuario, Nombr" +
-                "eProducto, DescProducto, Servicio, Categoria, Total, Filtro FROM dbo.VW_Ventas";
+            this._commandCollection[0].CommandText = "SELECT numeroFactura, FechaFact, idServicio, NombreServicio, PrecioServicio, Nomb" +
+                "reProducto, PrecioProducto, CatProducto, Filtro FROM dbo.VW_ProductoPorServicio";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1165,7 +1105,7 @@ namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSVentas1.VW_VentasDataTable dataTable) {
+        public virtual int Fill(dsProductosPorServicio.VW_ProductoPorServicioDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1178,9 +1118,9 @@ namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSVentas1.VW_VentasDataTable GetData() {
+        public virtual dsProductosPorServicio.VW_ProductoPorServicioDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSVentas1.VW_VentasDataTable dataTable = new DSVentas1.VW_VentasDataTable();
+            dsProductosPorServicio.VW_ProductoPorServicioDataTable dataTable = new dsProductosPorServicio.VW_ProductoPorServicioDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1254,7 +1194,7 @@ namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(DSVentas1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(dsProductosPorServicio dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1264,7 +1204,7 @@ namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(DSVentas1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(dsProductosPorServicio dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1274,7 +1214,7 @@ namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(DSVentas1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(dsProductosPorServicio dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1308,7 +1248,7 @@ namespace SGC_Gestor_de_citas.DSVentas1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(DSVentas1 dataSet) {
+        public virtual int UpdateAll(dsProductosPorServicio dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

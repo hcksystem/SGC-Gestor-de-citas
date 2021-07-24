@@ -11,7 +11,7 @@ namespace SGC_Gestor_de_citas
 {
 
 
-    public partial class TestReportProducto
+    public partial class Ventas
     {
 
         /// <summary>
