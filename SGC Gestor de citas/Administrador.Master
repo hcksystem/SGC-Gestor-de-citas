@@ -233,7 +233,7 @@
                                     <a class="dropdown-item" href="AcercaDeAdministrador.aspx">Acerca de
           <i class="now-ui-icons travel_info"></i>
                                     </a>
-                                    <a class="dropdown-item" href="frmLogin.aspx">Cerrar sesión
+                                    <a class="dropdown-item" href="frmLogOut.aspx">Cerrar sesión
           <i class="now-ui-icons media-1_button-power"></i>
                                     </a>
                                 </div>
@@ -263,7 +263,7 @@
     </div>
 
     <%--<script src="assets/js/core/jquery.min.js"></script>--%>
-    <%--<script src="assets/js/core/popper.min.js"></script>--%>
+    <script src="assets/js/core/popper.min.js"></script>
     <script src="assets/js/core/bootstrap.min.js"></script>
     <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- Chart JS -->

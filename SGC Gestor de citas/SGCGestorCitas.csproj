@@ -256,11 +256,13 @@
     <Content Include="frmCitaHorario.aspx" />
     <Content Include="frmCitaHorarioCliente.aspx" />
     <Content Include="frmCitaHorarioEmpleado.aspx" />
+    <Content Include="frmFactura.aspx" />
     <Content Include="frmFacturacion.aspx" />
     <Content Include="frmFacturacionEmpleado.aspx" />
     <Content Include="frmGestorCita.aspx" />
     <Content Include="frmInventario.aspx" />
     <Content Include="frmLogin.aspx" />
+    <Content Include="frmLogOut.aspx" />
     <Content Include="frmMantenimientoCategoria.aspx" />
     <Content Include="frmMantenimientoNegocio.aspx" />
     <Content Include="frmMantenimientoProducto.aspx" />
@@ -344,6 +346,16 @@
     <Compile Include="Cliente.Master.designer.cs">
       <DependentUpon>Cliente.Master</DependentUpon>
     </Compile>
+    <Compile Include="dsFact.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsFact.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsFact1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsFact1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsProductosPorServicio.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -413,6 +425,13 @@
     <Compile Include="frmCitaHorarioEmpleado.aspx.designer.cs">
       <DependentUpon>frmCitaHorarioEmpleado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmFactura.aspx.cs">
+      <DependentUpon>frmFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmFactura.aspx.designer.cs">
+      <DependentUpon>frmFactura.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmFacturacion.aspx.cs">
       <DependentUpon>frmFacturacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -447,6 +466,13 @@
     </Compile>
     <Compile Include="frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogOut.aspx.cs">
+      <DependentUpon>frmLogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmLogOut.aspx.designer.cs">
+      <DependentUpon>frmLogOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmMantenimientoCategoria.aspx.cs">
       <DependentUpon>frmMantenimientoCategoria.aspx</DependentUpon>
@@ -686,6 +712,28 @@
     <Content Include="dsProductosPorServicio.xsc">
       <DependentUpon>dsProductosPorServicio.xsd</DependentUpon>
     </Content>
+    <Content Include="dsFact.xsc">
+      <DependentUpon>dsFact.xsd</DependentUpon>
+    </Content>
+    <None Include="dsFact.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsFact.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="dsFact.xss">
+      <DependentUpon>dsFact.xsd</DependentUpon>
+    </Content>
+    <Content Include="dsFact1.xsc">
+      <DependentUpon>dsFact1.xsd</DependentUpon>
+    </Content>
+    <None Include="dsFact1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsFact1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="dsFact1.xss">
+      <DependentUpon>dsFact1.xsd</DependentUpon>
+    </Content>
     <None Include="dsProductosPorServicio.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsProductosPorServicio.Designer.cs</LastGenOutput>
@@ -764,6 +812,9 @@
     <EmbeddedResource Include="ReportCita.rdlc" />
     <EmbeddedResource Include="ReporteProducto.rdlc" />
     <EmbeddedResource Include="ReporteProductoPorServicio.rdlc" />
+    <EmbeddedResource Include="rptFact.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptProductosPorServicio.rdlc" />
     <EmbeddedResource Include="rptVenta.rdlc" />
   </ItemGroup>

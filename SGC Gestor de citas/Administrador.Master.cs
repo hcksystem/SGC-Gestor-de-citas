@@ -11,19 +11,31 @@ namespace SGC_Gestor_de_citas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack) {
-                if (Convert.ToInt32(Session["Rol"]) != 1)
+            if (Session["ID"] == null) {
+                Response.Redirect("frmLogin.aspx");
+            }
+            else {
+                if (!Page.IsPostBack)
                 {
-                switch (Convert.ToInt32(Session["Rol"])) {
-                        case 2:
-                            Response.Redirect("frmMenuEmpleado.aspx");
-                            break;
-                        case 3:
-                            Response.Redirect("frmMenuCliente.aspx");
-                            break;
-                }
+                    if (Convert.ToInt32(Session["Rol"]) != 1)
+                    {
+                        switch (Convert.ToInt32(Session["Rol"]))
+                        {
+                            case 2:
+                                Response.Redirect("frmMenuEmpleado.aspx");
+                                break;
+                            case 3:
+                                Response.Redirect("frmMenuCliente.aspx");
+                                break;
+                        }
+                    }
                 }
             }
+        }
+
+        protected void linkLogout_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

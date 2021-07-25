@@ -15,7 +15,23 @@ namespace SGC_Gestor_de_citas
         private Usuario us = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
+                
+                    if (Session["ID"] != null)
+                    {
+                        
+                        Session.Clear();
+                        Session.RemoveAll();
+                        Session.Abandon();
+                        Response.Redirect("frmLogin.aspx");
+                    }
+                
+            
+        }
+        public void Logout()
+        {
+            Session.Abandon();
+            //Response.Cookies.Add(new HttpCookie("ASP.NET_SessionID", ""));
         }
 
         protected void btnIniciar_Click(object sender, EventArgs e)

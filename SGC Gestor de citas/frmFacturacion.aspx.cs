@@ -35,7 +35,15 @@ namespace SGC_Gestor_de_citas
                     ProductosServicios.Columns.Add("Descripcion", typeof(String));
                     ProductosServicios.Columns.Add("Precio", typeof(Double));
                     ProductosServicios.Columns.Add("Cantidad", typeof(Double));
-
+                    dropMetodopago.SelectedIndex = 0;
+                    if (dropMetodopago.SelectedIndex==1)
+                    {
+                        Ult4Digitos.Visible = true;
+                    }
+                    else
+                    {
+                        Ult4Digitos.Visible = false;
+                    }
                     //cargar combo con enum
                     Array enumList = Enum.GetValues(typeof(enumMetodoPago));
                     foreach (enumMetodoPago getPago in enumList)
@@ -45,8 +53,6 @@ namespace SGC_Gestor_de_citas
                 }
                 catch (Exception)
                 {
-
-                    throw;
                 }
                 
                 LlenarCombos();
@@ -85,15 +91,17 @@ namespace SGC_Gestor_de_citas
                 detalle.cantidad = Cantidad;
                 listDetalle.Add(detalle);
             }
-
+            String[] Cliente=txtBuscarCliente.Text.Split(';');
             Factura factura = new Factura
             {
                 idUsuario = Convert.ToInt32(Session["ID"].ToString()),
                 numeroFactura = Numeracion,
                 fecha = DateTime.Now,
-                idMetodoPago = Convert.ToInt32(dropMetodopago.SelectedValue),
+                idMetodoPago = Convert.ToInt32(dropMetodopago.SelectedItem.Value),
                 totalFactura = Total,
-                Detalle = listDetalle
+                Detalle = listDetalle,
+                idCliente1 = Convert.ToInt32(Cliente[1].ToString()),
+                tarjetaDigitos = txtNumTarjeta.Text
             };
            string result= BLLFactura.InsertarFactura(factura);
 
@@ -173,6 +181,18 @@ namespace SGC_Gestor_de_citas
             gridFactura.DataSource = ProductosServicios;
             gridFactura.DataBind();
 
+        }
+
+        protected void dropMetodopago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dropMetodopago.SelectedItem.Text.Equals("Tarjeta"))
+            {
+                Ult4Digitos.Visible = true;
+            }
+            else
+            {
+                Ult4Digitos.Visible = false;
+            }
         }
     }
 }

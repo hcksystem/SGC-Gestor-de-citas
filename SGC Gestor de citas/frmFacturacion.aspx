@@ -240,8 +240,10 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Método de pago:</label>
-                                    <asp:DropDownList ID="dropMetodopago" runat="server" CssClass="form-control"></asp:DropDownList>
-                                    <asp:TextBox ID="txtNumTarjeta" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
+                                    <asp:DropDownList ID="dropMetodopago" AutoPostBack="true" OnSelectedIndexChanged="dropMetodopago_SelectedIndexChanged" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <div runat="server" id="Ult4Digitos">
+                                    <asp:TextBox ID="txtNumTarjeta" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
                                 </div>
                             </div>
                             <div class="form-group col-sm-12 col-xs-12">

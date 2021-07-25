@@ -38,7 +38,7 @@ namespace SGC_Gestor_de_citas
 
         protected void Session_End(object sender, EventArgs e)
         {
-            Response.Redirect("frmLogin.aspx");
+            //Response.Redirect("frmLogin.aspx");
 
         }
 

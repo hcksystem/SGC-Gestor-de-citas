@@ -17,12 +17,11 @@ namespace SGC_Gestor_de_citas
             {
                 Response.Redirect("frmLogin.aspx");
             }
-
             if (!IsPostBack)
             {
                 cargarCitasPendientes(1);
                 cargarCitasCanceladas(2);
-                cargarCitasHistorico(3);
+                cargarCitasHistorico(0);
             }
             
         }
@@ -131,7 +130,7 @@ namespace SGC_Gestor_de_citas
                 BLLCita bllu = new BLLCita();
                 bllu.EliminarCita(index);
                  cargarCitasPendientes(1);
-
+                        cargarCitasCanceladas(2);
                 ClientScript.RegisterStartupScript(
                     this.GetType(),
                      "Registro",
@@ -252,7 +251,7 @@ namespace SGC_Gestor_de_citas
                 throw;
             }
 
-            cargarCitasHistorico(3);
+            cargarCitasHistorico(0);
         }
 
         protected void gridCitasHistorico_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -273,7 +272,7 @@ namespace SGC_Gestor_de_citas
         protected void gridCitasHistorico_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gridCitasHistorico.PageIndex = e.NewPageIndex;
-            this.cargarCitasHistorico(3);
+            this.cargarCitasHistorico(0);
         }
 
         protected void gridCitasHistorico_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -287,7 +286,7 @@ namespace SGC_Gestor_de_citas
                         int index = Convert.ToInt32(e.CommandArgument);
                         BLLCita bllu = new BLLCita();
                         bllu.EliminarCita(index);
-                        cargarCitasHistorico(3);
+                        cargarCitasHistorico(0);
 
                         ClientScript.RegisterStartupScript(
                             this.GetType(),
@@ -303,7 +302,7 @@ namespace SGC_Gestor_de_citas
                 throw;
             }
 
-            cargarCitasHistorico(3);
+            cargarCitasHistorico(0);
         }
     }
 }

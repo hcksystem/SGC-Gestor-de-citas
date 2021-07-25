@@ -34,9 +34,9 @@ namespace AccesoDatos_DAL_
             DataTable dt = new DataTable();
             string val = "";
             if (Tipo != 0) {
-                val = String.Format("and estado={0}", Tipo);
+                val = String.Format("and a.estado={0}", Tipo);
             }
-            SqlCommand cmd = new SqlCommand(string.Format("SELECT id, descripcion, estado, idServicio, idUsuario, Fecha, Hora FROM Cita where idUsuario={0} {1} ",iDUsuario, val), Conexion);
+            SqlCommand cmd = new SqlCommand(string.Format("SELECT a.id, a.descripcion, a.estado,b.nombre[idServicio], idUsuario, Fecha, Hora FROM Cita a inner join Servicio b on a.idServicio=b.id where idUsuario={0} {1} ", iDUsuario, val), Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
@@ -86,7 +86,7 @@ namespace AccesoDatos_DAL_
 
         public void EliminarCita(int Identificacion)
         {
-            SqlCommand cmd = new SqlCommand("Update a set Estado=3 FROM Cita a WHERE id = @id", Conexion);
+            SqlCommand cmd = new SqlCommand("Update a set Estado=2 FROM Cita a WHERE id = @id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", Identificacion);

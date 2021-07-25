@@ -26,6 +26,7 @@
             <rsweb:ReportViewer  Width="100%" Skin="WebBlue" 
             ZoomMode="Percent" 
             ZoomPercent="100" ID="ReportViewer1" runat="server"></rsweb:ReportViewer>
+
         </div>
         </div>
 </asp:Content>

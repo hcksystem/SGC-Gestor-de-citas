@@ -12,10 +12,35 @@ namespace Entidades
         public DateTime fecha { get; set; }
         public int idUsuario { get; set; }
         public int idMetodoPago { get; set; }
+
+        public string tarjetaDigitos;
+
+        public string GetTarjetaDigitos()
+        {
+            return tarjetaDigitos;
+        }
+
+        public void SetTarjetaDigitos(string value)
+        {
+            tarjetaDigitos = value;
+        }
+
         public Double totalFactura { get; set; }
         public List<DetalleFactura> Detalle { get; set; }
 
-        public Factura(int numeroFactura, DateTime fecha, int idUsuario, int idMetodoPago, double totalFactura, List<DetalleFactura> detalle)
+        public int idCliente1;
+
+        public int GetidCliente()
+        {
+            return idCliente1;
+        }
+
+        public void SetidCliente(int value)
+        {
+            idCliente1 = value;
+        }
+
+        public Factura(int numeroFactura, DateTime fecha, int idUsuario, int idMetodoPago, double totalFactura, List<DetalleFactura> detalle,int idCliente,string TarjetaDigitos)
         {
             this.numeroFactura = numeroFactura;
             this.fecha = fecha;
@@ -23,6 +48,8 @@ namespace Entidades
             this.idMetodoPago = idMetodoPago;
             this.totalFactura = totalFactura;
             Detalle = detalle;
+            this.idCliente1 = idCliente;
+            this.tarjetaDigitos = TarjetaDigitos;
         }
 
         public Factura()
@@ -33,6 +60,8 @@ namespace Entidades
             this.idMetodoPago = 0;
             this.totalFactura = 0;
             Detalle = new List<DetalleFactura>();
+            this.idCliente1 = 0;
+            this.tarjetaDigitos = "";
         }
     }
     public class DetalleFactura {

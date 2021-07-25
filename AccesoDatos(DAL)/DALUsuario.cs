@@ -174,36 +174,14 @@ namespace AccesoDatos_DAL_
         }
 
         public void Modificar(int id, string nombreUsuario, string contrasenna, int idRoll, int estado, int idPersona)
-        {
-            SqlCommand cmd = new SqlCommand("UPDATE Usuario SET nombreUsuario=@nombreUsuario, contrasenna=@contrasenna, idRoll=@idRoll, estado=@estado, idPersona=@idPersona WHERE id=@id", Conexion);
-            SqlParameter parametro;
-
-            parametro = new SqlParameter("@id", id);
-            parametro.DbType = DbType.Int32;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@nombreUsuario", nombreUsuario);
-            parametro.DbType = DbType.String;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@contrasenna", contrasenna);
-            parametro.DbType = DbType.String;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@idRoll", idRoll);
-            parametro.DbType = DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@estado", estado);
-            parametro.DbType = DbType.Int16;
-            cmd.Parameters.Add(parametro);
-
-            parametro = new SqlParameter("@idPersona", idPersona);
-            parametro.DbType = DbType.Int16;
-            cmd.Parameters.Add(parametro);
+        { string pass = "";
+            if (contrasenna.Length > 0) {
+                pass = string.Format("contrasenna=hashbytes('MD5','{0}'),",contrasenna);
+            }
+            SqlCommand cmd = new SqlCommand(String.Format(String.Format("UPDATE Usuario SET nombreUsuario='{1}',{0}  idRoll={2}, estado={3}, idPersona={4} WHERE id={5}",pass,nombreUsuario,idRoll,estado,idPersona,id)), Conexion);
 
             Conexion.Open();
-            cmd.ExecuteNonQuery();
+            int i=cmd.ExecuteNonQuery();
             Conexion.Close();
         }
 
