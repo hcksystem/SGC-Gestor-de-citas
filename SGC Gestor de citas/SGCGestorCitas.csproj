@@ -812,9 +812,9 @@
     <EmbeddedResource Include="ReportCita.rdlc" />
     <EmbeddedResource Include="ReporteProducto.rdlc" />
     <EmbeddedResource Include="ReporteProductoPorServicio.rdlc" />
-    <EmbeddedResource Include="rptFact.rdlc">
+    <None Include="rptFact.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </None>
     <EmbeddedResource Include="rptProductosPorServicio.rdlc" />
     <EmbeddedResource Include="rptVenta.rdlc" />
   </ItemGroup>

@@ -40,7 +40,7 @@ namespace Entidades
             idCliente1 = value;
         }
 
-        public Factura(int numeroFactura, DateTime fecha, int idUsuario, int idMetodoPago, double totalFactura, List<DetalleFactura> detalle,int idCliente,string TarjetaDigitos)
+        public Factura(int numeroFactura, DateTime fecha, int idUsuario, int idMetodoPago, double totalFactura, List<DetalleFactura> detalle,int idCliente,string TarjetaDigitos,int IdCita)
         {
             this.numeroFactura = numeroFactura;
             this.fecha = fecha;
@@ -71,8 +71,9 @@ namespace Entidades
         public Double precio { get; set; }
         public int idEncabezado { get; set; }
         public int idProducto { get; set; }
+        public int IdCita { get; set; }
 
-        public DetalleFactura(int id, int idServicio, int cantidad, double precio, int idEncabezado, int idProducto)
+        public DetalleFactura(int id, int idServicio, int cantidad, double precio, int idEncabezado, int idProducto,int pIdCita)
         {
             this.id = id;
             this.idServicio = idServicio;
@@ -80,6 +81,7 @@ namespace Entidades
             this.precio = precio;
             this.idEncabezado = idEncabezado;
             this.idProducto = idProducto;
+            this.IdCita = pIdCita;
         }
         public DetalleFactura()
         {
@@ -89,6 +91,7 @@ namespace Entidades
             this.precio = 0;
             this.idEncabezado = 0;
             this.idProducto = 0;
+            this.IdCita = 0;
         }
     }
 }

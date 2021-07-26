@@ -151,7 +151,7 @@
                                     <a class="dropdown-item" href="AcercaDeCliente.aspx">Acerca de
           <i class="now-ui-icons travel_info"></i>
                                     </a>
-                                    <a class="dropdown-item" href="frmLogin.aspx">Cerrar sesión
+                                    <a class="dropdown-item" href="frmLogOut.aspx">Cerrar sesión
           <i class="now-ui-icons media-1_button-power"></i>
                                     </a>
                                 </div>

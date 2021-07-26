@@ -89,51 +89,63 @@ namespace SGC_Gestor_de_citas
             BLLCita cita = new BLLCita();
             String Mensaje = cita.InsertarCita(txtDescripcion.Text, 1, Convert.ToInt32(Session["IDServicio"].ToString()), Convert.ToInt32(Session["ID"].ToString()), txtFechaAtencion.Text, HorarioDisponible.SelectedItem.Text);
             DALUsuario daluser = new DALUsuario();
-            string Correo = daluser.ObtenerCorreo(Convert.ToInt32(Session["ID"].ToString()));
-            
-            string body =
-                "<Body>" +
-                "<h1>SGC Citas</h1>" +
-                "<h4>Estimado cliente</h4>" +
-                "<span> Su cita para el servicio: "+ Session["NombreServicio"].ToString() + ", se ha reservado con éxito.<br/> Día: </span>" + txtFechaAtencion.Text.ToString() +
-                "<br/><span> Hora: </span>" + HorarioDisponible.SelectedItem.Text +
-                // "<span> número de comprobante de cita </span>" +scalar algo +
-                "<br/>" +
-                "<span> ¡IMPORTANTE!</span> " +
-                "<br/>" +
-                "<span> La hora seleccionada solo es valida para un servicio, si desea más de un servicio, debe seleccionar otra cita </span>" +
-                "<br/>" +
-                "<span>Saludos cordiales, gracias por su preferencia.</span>" +
-                "</body>";
+            if (!Mensaje.Contains("error"))
+            {
+                string Correo = daluser.ObtenerCorreo(Convert.ToInt32(Session["ID"].ToString()));
 
-            
-
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.EnableSsl = true;
-            smtp.UseDefaultCredentials = false;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.Credentials = new NetworkCredential("solucionessgc3@gmail.com", "solu1234");
-            smtp.TargetName = "STARTTLS/smtp.gmail.com";
+                string body =
+                    "<Body>" +
+                    "<h1>SGC Citas</h1>" +
+                    "<h4>Estimado cliente</h4>" +
+                    "<span> Su cita para el servicio: " + Session["NombreServicio"].ToString() + ", se ha reservado con éxito.<br/> Día: </span>" + txtFechaAtencion.Text.ToString() +
+                    "<br/><span> Hora: </span>" + HorarioDisponible.SelectedItem.Text +
+                    // "<span> número de comprobante de cita </span>" +scalar algo +
+                    "<br/>" +
+                    "<span> ¡IMPORTANTE!</span> " +
+                    "<br/>" +
+                    "<span> La hora seleccionada solo es valida para un servicio, si desea más de un servicio, debe seleccionar otra cita </span>" +
+                    "<br/>" +
+                    "<span>Saludos cordiales, gracias por su preferencia.</span>" +
+                    "</body>";
 
 
 
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Credentials = new NetworkCredential("solucionessgc3@gmail.com", "solu1234");
+                smtp.TargetName = "STARTTLS/smtp.gmail.com";
 
 
-            MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("solucionessgc3@gmail.com", "Soluciones SGC Citas");
-            mail.To.Add(new MailAddress(Correo));
-            mail.Subject = "Mensaje de confirmacion";
-            mail.IsBodyHtml = true;
-            mail.Body = body;
-            smtp.Send(mail);
-            
-            limpiarDatos();
-            ClientScript.RegisterStartupScript(
-                              this.GetType(),
-                              "Registro",
-                               "mensajeRedirect('Cita','" + Mensaje + "','success','frmCita.aspx')",
-                              true
-                              );
+
+
+
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("solucionessgc3@gmail.com", "Soluciones SGC Citas");
+                mail.To.Add(new MailAddress(Correo));
+                mail.Subject = "Mensaje de confirmacion";
+                mail.IsBodyHtml = true;
+                mail.Body = body;
+                smtp.Send(mail);
+
+                limpiarDatos();
+                ClientScript.RegisterStartupScript(
+                                  this.GetType(),
+                                  "Registro",
+                                   "mensajeRedirect('Cita','" + Mensaje + "','success','frmCita.aspx')",
+                                  true
+                                  );
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(
+                                  this.GetType(),
+                                  "Registro",
+                                   "mensajeRedirect('Cita','" + Mensaje + "','error','#')",
+                                  true
+                                  );
+            }
         }
 
         private void limpiarDatos()

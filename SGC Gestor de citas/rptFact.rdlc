@@ -966,7 +966,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Sum(Fields!SubTotalEnc.Value, "DataSet1")</Value>
+                  <Value>=First(Fields!SubTotalEnc.Value, "DataSet1")</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -996,7 +996,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Sum(Fields!IVAEnc.Value, "DataSet1")</Value>
+                  <Value>=First(Fields!IVAEnc.Value, "DataSet1")</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1026,7 +1026,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Sum(Fields!TotalEnc.Value, "DataSet1")</Value>
+                  <Value>=First(Fields!TotalEnc.Value, "DataSet1")</Value>
                   <Style />
                 </TextRun>
               </TextRuns>

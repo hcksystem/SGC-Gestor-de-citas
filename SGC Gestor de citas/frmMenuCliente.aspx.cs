@@ -17,6 +17,21 @@ namespace SGC_Gestor_de_citas
             {
                 Label1.Text = Session["Usuario"].ToString();
             }
+            //grvListado.DataSource = listaNegocio_GetData();
+            //grvListado.DataBind();
+
+
+
+            System.Web.UI.HtmlControls.HtmlImage imageControl = (System.Web.UI.HtmlControls.HtmlImage)FindControl("imageControl");
+            BLLNegocio bllc = new BLLNegocio();
+            DataTable dt = bllc.ObtenerTodosLosNegocios();
+
+            listar();
+
+
+
+
+
         }
 
         // El tipo devuelto puede ser modificado a IEnumerable, sin embargo, para ser compatible con la paginación y ordenación de 

@@ -75,12 +75,12 @@ namespace SGC_Gestor_de_citas
                    "<Body>" +
                    "<h1>SGC Citas</h1>" +
                    "<h4>Estimado cliente</h4>" +
-                   "<span> Por favor introducir el siguiente codigo: <b>" + Session["Codigo"].ToString() + "</b> y asi poder restablecer la contraseña.<br/> Dicho Codigo vence : </span>" + FechaVencimiento +
+                   "<span> Por favor introducir el siguiente código: <b>" + Session["Codigo"].ToString() + "</b> y así poder restablecer la contraseña.<br/> Dicho código vence : </span>" + FechaVencimiento +
                    // "<span> número de comprobante de cita </span>" +scalar algo +
                    "<br/>" +
                    "<span> ¡IMPORTANTE!</span> " +
                    "<br/>" +
-                   "<span> Si el codigo debera volverlo a solicitar </span>" +
+                   "<span> Si el código vence deberá volverlo a solicitar </span>" +
                    "<br/>" +
                    "<span>Saludos cordiales, gracias por su preferencia.</span>" +
                    "</body>";
