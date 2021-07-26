@@ -88,7 +88,7 @@
                     </div>
                     <hr />
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row" style="overflow:scroll">
 
 
                             <fieldset class="form-group row">

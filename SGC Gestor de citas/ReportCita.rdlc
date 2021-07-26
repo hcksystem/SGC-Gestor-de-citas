@@ -6,22 +6,22 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.77196cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.77196cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.77196cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.77196cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.77196cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.48092cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -495,7 +495,7 @@
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>2.5cm</Size>
+                <Size>2.77196cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox13">
                     <CanGrow>true</CanGrow>
@@ -553,7 +553,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>2.5cm</Size>
+                <Size>2.77196cm</Size>
                 <CellContents>
                   <Textbox Name="Fecha">
                     <CanGrow>true</CanGrow>
@@ -605,7 +605,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Height>1.2cm</Height>
-        <Width>17.5cm</Width>
+        <Width>19.11266cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -614,7 +614,12 @@
       </Tablix>
     </ReportItems>
     <Height>2.0625in</Height>
-    <Style />
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+      <BackgroundColor>#e9faff</BackgroundColor>
+    </Style>
   </Body>
   <Width>7.52467in</Width>
   <Page>
@@ -792,6 +797,7 @@
         <Border>
           <Style>None</Style>
         </Border>
+        <BackgroundColor>White</BackgroundColor>
       </Style>
     </PageHeader>
     <PageFooter>
@@ -815,7 +821,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox24</rd:DefaultName>
           <Top>1.71662cm</Top>
-          <Left>11.865cm</Left>
+          <Left>10.95188cm</Left>
           <Height>0.6cm</Height>
           <Width>6.25708cm</Width>
           <Style>
@@ -863,6 +869,7 @@
         <Border>
           <Style>None</Style>
         </Border>
+        <BackgroundColor>White</BackgroundColor>
       </Style>
     </PageFooter>
     <PageHeight>29.7cm</PageHeight>

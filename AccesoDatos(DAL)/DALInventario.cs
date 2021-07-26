@@ -63,6 +63,15 @@ namespace AccesoDatos_DAL_
             da.Fill(dt);
             return dt;
         }
+
+        public DataTable ObtenerTodosLosInventariosActivos()
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Inventario.id, dbo.Producto.id AS idProducto, dbo.Producto.nombre, dbo.Inventario.cantidad, dbo.Inventario.descripcion FROM dbo.Inventario INNER JOIN  dbo.Producto ON dbo.Inventario.idProducto = dbo.Producto.id where dbo.Producto.estado=1", Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
         public void EliminarInventario(int Identificacion)
         {
             SqlCommand cmd = new SqlCommand("DELETE FROM Inventario WHERE id = @id", Conexion);

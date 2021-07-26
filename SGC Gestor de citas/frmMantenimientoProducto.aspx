@@ -161,8 +161,8 @@
                
                 <div class="col-md-4">
                 <div class="form-group">
-                    <label>Cantidad actual</label>
-                    <asp:TextBox ID="txtCantidad" TextMode="Number" min="1" step="1" Text="0" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
+                    <asp:Label ID="lblCantidad" runat="server" ForeColor="#9A9A9A" Font-Size="Large">Cantidad actual</asp:Label>
+                    <asp:TextBox ID="txtCantidad" TextMode="Number" min="1" step="1" Text="1" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteP"
                         ControlToValidate="txtCantidad" ErrorMessage="Digite la cantidad del producto" Display="Dynamic"
                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -177,7 +177,7 @@
 
                    <div class="col-md-6">
                 <div class="form-group">
-                    <label>Nota para inventario</label>
+                    <asp:Label ID="lblNota" runat="server" ForeColor="#9A9A9A" Font-Size="Large">Nota para inventario</asp:Label>
                     <asp:TextBox ID="txtNota" min="1" step="1"  runat="server" CssClass="form-control" placeHolder="* Opcional *"></asp:TextBox>
                     
                 </div>
@@ -205,7 +205,6 @@
                     <div class="tab-content">
                    <div style="overflow: scroll">
 
-                   
 
           <asp:GridView ID="gridProductos" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" OnRowDeleting="gridProductos_RowDeleting" OnPageIndexChanging="gridProductos_PageIndexChanging" OnSelectedIndexChanged="gridProductos_SelectedIndexChanged" OnRowDataBound="gridProductos_RowDataBound" Width="100%">
             <Columns>

@@ -19,6 +19,7 @@
         <div class="form-group">
             <asp:RadioButtonList RepeatLayout="Flow" RepeatDirection="Horizontal" ID="RadioButtonList1" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" AutoPostBack="true" CssClass="form-check">
             <asp:ListItem class="form-check-input" Text="Fecha" Value="1"></asp:ListItem>
+                
             <asp:ListItem class="form-check-input" Text="Filtro Reporte" Value="2"></asp:ListItem>
             </asp:RadioButtonList>
         </div>

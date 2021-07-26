@@ -89,12 +89,13 @@
                     </div>
                     <hr />
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row" style="overflow:scroll">
 
 
                             <fieldset class="form-group row">
-                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
                                     <ContentTemplate>
+                                        
                                         <asp:GridView ID="grvListado" runat="server" BorderStyle="NotSet" BorderColor="Transparent" BorderWidth="0px"
                                             AutoGenerateColumns="false" CssClass="table table-hover"
                                             CellSpacing="20" CellPadding="20"
@@ -119,6 +120,7 @@
 
 
                                         </asp:GridView>
+                                           
                                     </ContentTemplate>
 
                                 </asp:UpdatePanel>

@@ -133,7 +133,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>cantidad</Value>
+                              <Value>Cantidad</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -163,7 +163,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>precio</Value>
+                              <Value>Precio</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -557,13 +557,18 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.919in</Height>
-    <Style />
+    <Height>0.7315in</Height>
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+      <BackgroundColor>#e9faff</BackgroundColor>
+    </Style>
   </Body>
   <Width>8.09153in</Width>
   <Page>
     <PageHeader>
-      <Height>4.85069cm</Height>
+      <Height>4.82423cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -571,9 +576,9 @@
           <Source>Embedded</Source>
           <Value>MicrosoftTeamsimage29</Value>
           <Sizing>FitProportional</Sizing>
-          <Left>0.29422cm</Left>
-          <Height>2.54cm</Height>
-          <Width>3.4925cm</Width>
+          <Left>0.07056cm</Left>
+          <Height>1.81391cm</Height>
+          <Width>3.71616cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -595,8 +600,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
-          <Top>0.87285cm</Top>
-          <Left>3.96311cm</Left>
+          <Top>0.29104cm</Top>
+          <Left>3.92783cm</Left>
           <Height>0.6cm</Height>
           <Width>2.79104cm</Width>
           <ZIndex>1</ZIndex>
@@ -625,8 +630,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
-          <Top>1.7457cm</Top>
-          <Left>3.96311cm</Left>
+          <Top>1.21391cm</Top>
+          <Left>3.822cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>2</ZIndex>
@@ -657,10 +662,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox20</rd:DefaultName>
-          <Top>0.29104cm</Top>
-          <Left>7.43325cm</Left>
+          <Top>0.30896cm</Top>
+          <Left>8.46388cm</Left>
           <Height>0.89104cm</Height>
-          <Width>5.50333cm</Width>
+          <Width>4.40654cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -687,10 +692,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>NombreCliente</rd:DefaultName>
-          <Top>2.8896cm</Top>
+          <Top>2.02557cm</Top>
           <Left>2.90569cm</Left>
           <Height>0.6cm</Height>
-          <Width>9.71778cm</Width>
+          <Width>7.97153cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -717,8 +722,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>IDCliente</rd:DefaultName>
-          <Top>2.8896cm</Top>
-          <Left>16.86749cm</Left>
+          <Top>2.80196cm</Top>
+          <Left>4.06763cm</Left>
           <Height>0.6cm</Height>
           <Width>3.21438cm</Width>
           <ZIndex>5</ZIndex>
@@ -740,17 +745,20 @@
               <TextRuns>
                 <TextRun>
                   <Value>=Sum(Fields!numeroFactura.Value, "DataSet1")</Value>
-                  <Style />
+                  <Style>
+                    <FontSize>12pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>numeroFactura</rd:DefaultName>
-          <Top>0.42016cm</Top>
-          <Left>11.69458cm</Left>
+          <Top>0.30896cm</Top>
+          <Left>12.87042cm</Left>
           <Height>0.6cm</Height>
-          <Width>2.5cm</Width>
+          <Width>1.03063cm</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
@@ -759,7 +767,7 @@
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
+            <PaddingBottom>1pt</PaddingBottom>
           </Style>
         </Textbox>
         <Textbox Name="CorreoCliente">
@@ -807,8 +815,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Fechafact</rd:DefaultName>
-          <Top>1.84891cm</Top>
-          <Left>13.0175cm</Left>
+          <Top>0.29104cm</Top>
+          <Left>15.88604cm</Left>
           <Height>0.6cm</Height>
           <Width>4.48438cm</Width>
           <ZIndex>8</ZIndex>
@@ -839,8 +847,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox79</rd:DefaultName>
-          <Top>2.81905cm</Top>
-          <Left>12.87042cm</Left>
+          <Top>2.73141cm</Top>
+          <Left>0.07056cm</Left>
           <Height>0.6cm</Height>
           <Width>3.9618cm</Width>
           <ZIndex>9</ZIndex>
@@ -871,7 +879,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox84</rd:DefaultName>
-          <Top>2.85433cm</Top>
+          <Top>1.9903cm</Top>
           <Left>0.07056cm</Left>
           <Height>0.6cm</Height>
           <Width>2.79986cm</Width>
@@ -945,8 +953,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>NombreCreado</rd:DefaultName>
-          <Top>0.51717cm</Top>
-          <Left>0.37042cm</Left>
+          <Top>0.10583cm</Top>
+          <Left>3.04681cm</Left>
           <Height>0.6cm</Height>
           <Width>4.0475cm</Width>
           <Style>
@@ -974,7 +982,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>SubTotalEnc</rd:DefaultName>
-          <Top>0.51717cm</Top>
+          <Top>0.17639cm</Top>
           <Left>16.32479cm</Left>
           <Height>0.6cm</Height>
           <Width>3.37312cm</Width>
@@ -1004,7 +1012,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>IVAEnc</rd:DefaultName>
-          <Top>1.25828cm</Top>
+          <Top>0.9175cm</Top>
           <Left>16.32479cm</Left>
           <Height>0.6cm</Height>
           <Width>3.37312cm</Width>
@@ -1034,73 +1042,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>TotalEnc</rd:DefaultName>
-          <Top>2.03467cm</Top>
+          <Top>1.69389cm</Top>
           <Left>16.32479cm</Left>
           <Height>0.6cm</Height>
           <Width>3.37312cm</Width>
           <ZIndex>3</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="mision">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!mision.Value, "DataSet1")</Value>
-                  <Style />
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>mision</rd:DefaultName>
-          <Top>0.88759cm</Top>
-          <Left>4.93826cm</Left>
-          <Height>0.6cm</Height>
-          <Width>10.755cm</Width>
-          <ZIndex>4</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="vision">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!vision.Value, "DataSet1")</Value>
-                  <Style />
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>vision</rd:DefaultName>
-          <Top>1.55814cm</Top>
-          <Left>4.93826cm</Left>
-          <Height>0.6cm</Height>
-          <Width>10.755cm</Width>
-          <ZIndex>5</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1128,11 +1074,139 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox78</rd:DefaultName>
-          <Top>2.52801cm</Top>
-          <Left>4.93826cm</Left>
+          <Top>2.435cm</Top>
+          <Left>3.822cm</Left>
           <Height>0.6cm</Height>
           <Width>10.755cm</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox86">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Subtotal:</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox84</rd:DefaultName>
+          <Top>0.17639cm</Top>
+          <Left>13.34854cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.79986cm</Width>
+          <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox80">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Iva:</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox79</rd:DefaultName>
+          <Top>0.9175cm</Top>
+          <Left>13.34854cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.79986cm</Width>
           <ZIndex>6</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox81">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Total:</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox79</rd:DefaultName>
+          <Top>1.65861cm</Top>
+          <Left>13.34854cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.79986cm</Width>
+          <ZIndex>7</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox82">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Atendido por:</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox79</rd:DefaultName>
+          <Top>0.10583cm</Top>
+          <Left>0.07056cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.79986cm</Width>
+          <ZIndex>8</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

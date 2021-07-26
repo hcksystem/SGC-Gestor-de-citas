@@ -1153,8 +1153,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
+        <Top>0cm</Top>
         <Height>1.8cm</Height>
-        <Width>28.4925cm</Width>
+        <Width>28.49251cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1163,7 +1164,11 @@
       </Tablix>
     </ReportItems>
     <Height>2in</Height>
-    <Style />
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+    </Style>
   </Body>
   <Width>11.24877in</Width>
   <Page>
@@ -1175,8 +1180,8 @@
         <Image Name="Image2">
           <Source>Embedded</Source>
           <Value>MicrosoftTeamsimage29</Value>
-          <Sizing>FitProportional</Sizing>
-          <Height>2.54cm</Height>
+          <Sizing>Fit</Sizing>
+          <Height>2.61055cm</Height>
           <Width>3.4925cm</Width>
           <Style>
             <Border>
@@ -1341,6 +1346,7 @@
         <Border>
           <Style>None</Style>
         </Border>
+        <BackgroundColor>White</BackgroundColor>
       </Style>
     </PageHeader>
     <PageFooter>
@@ -1412,6 +1418,7 @@
         <Border>
           <Style>None</Style>
         </Border>
+        <BackgroundColor>#e9faff</BackgroundColor>
       </Style>
     </PageFooter>
     <PageHeight>29.7cm</PageHeight>

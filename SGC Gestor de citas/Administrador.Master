@@ -167,14 +167,14 @@
                                     </li>
                                     <li>
                                         <a href="Ventas.aspx">
-                                            <span class="sidebar-mini-icon"><i class="now-ui-icons shopping_cart-simple"></i></span>
-                                            <span class="sidebar-normal">Productos </span>
+                                            <span class="sidebar-mini-icon"><i class="now-ui-icons shopping_credit-card"></i></span>
+                                            <span class="sidebar-normal">Ventas </span>
                                         </a>
-                                    </li>
+                                    </li >
                                     <li>
                                         <a href="TestReportProductoPorServicio.aspx">
-                                            <span class="sidebar-mini-icon"><i class="now-ui-icons shopping_credit-card"></i></span>
-                                            <span class="sidebar-normal">Ventas</span>
+                                            <span class="sidebar-mini-icon"><i class="now-ui-icons shopping_cart-simple"></i></span>
+                                            <span class="sidebar-normal">Productos</span>
                                         </a>
                                     </li>
                                 </ul>

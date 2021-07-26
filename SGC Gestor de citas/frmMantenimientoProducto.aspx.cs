@@ -182,6 +182,10 @@ namespace SGC_Gestor_de_citas
             btnModificar.Visible = false;
             Response.Redirect("frmMenuAdministrador.aspx");
 
+            lblCantidad.Visible = true;
+            lblNota.Visible = true;
+            txtNota.Visible = true;
+            txtCantidad.Visible = true;
         }
 
         protected void gridProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -200,6 +204,12 @@ namespace SGC_Gestor_de_citas
 
             btnGuardar.Visible = false;
             btnModificar.Visible = true;
+
+            lblCantidad.Visible = false;
+            lblNota.Visible = false;
+            txtNota.Visible = false;
+            txtCantidad.Visible = false;
+
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
@@ -223,6 +233,10 @@ namespace SGC_Gestor_de_citas
 
                 throw;
             }
+            lblCantidad.Visible = true;
+            lblNota.Visible = true;
+            txtNota.Visible = true;
+            txtCantidad.Visible = true;
         }
 
         protected void gridProductos_RowDataBound(object sender, GridViewRowEventArgs e)

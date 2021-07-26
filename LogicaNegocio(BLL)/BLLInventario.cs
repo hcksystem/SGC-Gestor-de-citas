@@ -36,6 +36,11 @@ namespace LogicaNegocio_BLL_
             DALInventario daln = new DALInventario();
             return daln.ObtenerTodosLosInventarios();
         }
+        public DataTable ObtenerTodosLosInventariosActivos()
+        {
+            DALInventario daln = new DALInventario();
+            return daln.ObtenerTodosLosInventariosActivos();
+        }
 
         public void EliminarInventarios(int Identificacion)
         {

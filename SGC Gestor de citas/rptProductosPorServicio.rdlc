@@ -807,9 +807,14 @@
       </Tablix>
     </ReportItems>
     <Height>1.50233in</Height>
-    <Style />
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+      <BackgroundColor>White</BackgroundColor>
+    </Style>
   </Body>
-  <Width>9.84252in</Width>
+  <Width>9.82056in</Width>
   <Page>
     <PageHeader>
       <Height>2.57528cm</Height>
@@ -819,7 +824,7 @@
         <Image Name="Image2">
           <Source>Embedded</Source>
           <Value>MicrosoftTeamsimage29</Value>
-          <Sizing>FitProportional</Sizing>
+          <Sizing>Fit</Sizing>
           <Height>2.54cm</Height>
           <Width>3.4925cm</Width>
           <Style>
@@ -994,10 +999,11 @@
         <Border>
           <Style>None</Style>
         </Border>
+        <BackgroundColor>White</BackgroundColor>
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>3.04271cm</Height>
+      <Height>2.48709cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1065,6 +1071,7 @@
         <Border>
           <Style>None</Style>
         </Border>
+        <BackgroundColor>#e9faff</BackgroundColor>
       </Style>
     </PageFooter>
     <PageHeight>29.7cm</PageHeight>

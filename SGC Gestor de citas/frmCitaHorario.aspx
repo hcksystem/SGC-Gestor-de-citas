@@ -2,16 +2,18 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+   <link href="assets/css/estilogrid.css" rel="stylesheet" />
+    <link href="assets/css/acordeon.css" rel="stylesheet" />
     <script src="assets/js/sweetalert2.all.min.js"></script>
     <script src="assets/js/mensaje.js"></script>
     <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
 
-     <link href="assets/css/estiloLista.css" rel="stylesheet" />
+    <link href="assets/css/estiloLista.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
@@ -24,7 +26,7 @@
             font-weight: bold;
         }
                 .btn{
-                    margin-bottom:-62px;
+                    margin-bottom:1px;
                 }
     </style>
     <div class="panel-header-sm">
@@ -134,6 +136,7 @@
                             <br />
 
                             <div class="col-md-4">
+                                <br />
                                 <div class="form-group">
 
                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary btn-round" OnClick="btnGuardar_Click" />

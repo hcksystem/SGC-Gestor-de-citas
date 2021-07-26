@@ -11,6 +11,11 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        ToolBarButtonsCell{
+            width: 100%;
+        }
+    </style>
     <div class="content" style="overflow:scroll">
     <div class="form-inline">
         <div class="form-group">
@@ -30,7 +35,7 @@
         <div class="form-group">
             <asp:Button CssClass="btn btn-info" runat="server" ID="btnGenerar" Text="Generar" OnClick="btnGenerar_Click" />
         </div>
-        <div >
+        <div>
             <rsweb:ReportViewer  Width="100%" Skin="WebBlue" 
             ZoomMode="Percent" 
             ZoomPercent="100" ID="ReportViewer1" runat="server"></rsweb:ReportViewer>

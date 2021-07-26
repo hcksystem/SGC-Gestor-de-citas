@@ -22,7 +22,7 @@
             font-weight: bold;
         }
                 .btn{
-                    margin-bottom:-62px;
+                    margin-bottom:1px;
                 }
     </style>
     <div class="panel-header-sm">
@@ -134,6 +134,7 @@
                             <br />
 
                             <div class="col-md-4">
+                                <br />
                                 <div class="form-group">
 
                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary btn-round" OnClick="btnGuardar_Click" />

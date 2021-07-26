@@ -57,7 +57,7 @@ namespace SGC_Gestor_de_citas
                 BLLInventario blli = new BLLInventario();
             if (txtBuscar.Text.Length == 0)
             {
-                gridInventario.DataSource = blli.ObtenerTodosLosInventarios();
+                gridInventario.DataSource = blli.ObtenerTodosLosInventariosActivos();
             }
             else {
                 SqlDataAdapter da = new SqlDataAdapter("SELECT Inventario.id, Producto.id AS idProducto, Producto.nombre, Inventario.cantidad, Inventario.descripcion FROM Inventario INNER JOIN Producto ON Inventario.idProducto = Producto.id where Producto.nombre like '" + txtBuscar.Text + "%'", cn);
