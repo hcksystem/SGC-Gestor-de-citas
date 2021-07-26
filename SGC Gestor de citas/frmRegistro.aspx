@@ -86,17 +86,17 @@
          <br />
         <h6>Teléfono</h6>
         <p>
-            Espacio para digitar su numero telefónico, de preferencia un número de celular al cuál si es necesario se le pueda contactar.
+            Espacio para digitar su número telefónico, de preferencia un número de celular al cuál si es necesario se le pueda contactar.
         </p>
          <br />
          <h6>Identificación</h6>
         <p>
-            Este espacio es para su cédula o número de identificación tiene que agregar los ceros (0), por ejemplo 808880888.
+            Este espacio es para digitar su número de identificación, tiene que agregar los ceros (0), por ejemplo 808880888.
         </p>
          <br />
         <h6>Nombre de usuario</h6>
          <p>
-             Espacio para digitar un nombre de usuario, este es espacio es muy importante ya que será el que se utilizará para ingresar al sistema. <br />
+             Espacio para digitar un nombre de usuario, este espacio es muy importante ya que será el que se utilizará para ingresar al sistema. <br />
              por ejemplo: juansito27.
          </p>
                                 <br />
@@ -112,6 +112,11 @@
                                 <h6>Botón guardar</h6>
                                 <br />
                                 <p>Botón que guarda la nueva información de su perfil.</p>
+                                <br />
+                                <h6>Botón volver</h6>
+                                <p>
+                                    Este botón lo regresará al formulario de inicio de sesión.
+                                </p>
                             </div>
 
                         </div>
@@ -184,7 +189,7 @@
                 <th>Contraseña</th>
                 <td colspan="2">
                          <div class="input-group-append">
-                                            <asp:TextBox ID="txtContrasennaInicio" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtContrasennaInicio" TextMode="Password" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                             <div class="input-group-append">
                                                 <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()">
                                                     <span class="fa fa-eye-slash icon"></span>
@@ -210,6 +215,7 @@
             <tr>
                 <td colspan="2">
                    <asp:Button ID="btnRegistarme" runat="server" Text="Registrarme" CssClass="btn btn-info btn-md" OnClick="btnRegistarme_Click" ValidationGroup="ManteL" />
+                    <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-info btn-md" OnClick="btnVolver_Click"/>
                 </tr>    
         </table>
                     </div>

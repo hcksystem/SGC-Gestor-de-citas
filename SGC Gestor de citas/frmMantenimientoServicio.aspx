@@ -84,7 +84,7 @@
                             Seleccionar: al dar click en este botón se habilitarán los espacios para que se edite la información necesaria dentro del formulario y se le da guardar.
                             Luego de esto se podrán visualizar los cambios realizados en la tabla.
                             <br />
-                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro"), si se le da aceptar, se eliminará la tabla y si se le da cancelar se cancelará la eliminación.
+                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("¿Esta seguro?"), si se le da aceptar, se eliminará la tabla y si se le da cancelar se cancelará la eliminación.
        
                         </p>
                         <br />
@@ -136,7 +136,7 @@
                             </div>
                             <div class="col-md-6 pl-1">
                                 <div class="form-group">
-                                    <label>Descripcion</label>
+                                    <label>Descripción</label>
                                     <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="ManteS"
                                         ControlToValidate="txtDescripcion" ErrorMessage="La descripción es necesaria" Display="Dynamic"

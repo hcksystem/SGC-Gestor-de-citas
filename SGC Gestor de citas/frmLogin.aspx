@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <label for="password" class="text-info">Contraseña:</label><br>
                                           <div class="input-group-append">
-                                            <asp:TextBox ID="txtContrasennaInicio" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtContrasennaInicio" TextMode="Password" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                             <div class="input-group-append">
                                                 <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()">
                                                     <span class="fa fa-eye-slash icon"></span>

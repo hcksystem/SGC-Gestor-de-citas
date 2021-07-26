@@ -61,20 +61,19 @@ $(document).ready(function(){
                                 <h6>Citas pendientes</h6>
                                 <p>Muestra todas las citas pendientes, esto quiere decir que todavía no hemos recibido el servicio.</p>
                                 <br />
-                                <h6>Botón cacelar cita</h6>
+                                <h6>Botón cancelar cita</h6>
                                 <p>Su función es cancelar las citas a las que por alguna razón no va a poder asistir.</p>
                                 <h6>Citas canceladas</h6>
                                 <p>
                                    Muestra todas las citas canceladas, esto quiere decir que son citas a las que ya no vamos a asistir.
                                 </p>
                                 <br />
-                                <h6>Citas Hostórico</h6>
+                                <h6>Citas Histórico</h6>
                                 <p>
                                    Mustra un listado de todas las citas, tanto pendientes como canceladas y atendidas.
                                 </p>
                                 <br />
                                
-
                             </div>
 
                         </div>

@@ -175,6 +175,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AcercaDeAdministrador.aspx" />
+    <Content Include="AcercaDeCliente.aspx" />
+    <Content Include="AcercaDeEmpleado.aspx" />
     <Content Include="assets\calendario\jquery-3.6.0.min.js" />
     <Content Include="assets\calendario\jquery-ui-1.12.1.custom\AUTHORS.txt" />
     <Content Include="assets\calendario\jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
@@ -298,6 +300,20 @@
     </Compile>
     <Compile Include="AcercaDeAdministrador.aspx.designer.cs">
       <DependentUpon>AcercaDeAdministrador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AcercaDeCliente.aspx.cs">
+      <DependentUpon>AcercaDeCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AcercaDeCliente.aspx.designer.cs">
+      <DependentUpon>AcercaDeCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AcercaDeEmpleado.aspx.cs">
+      <DependentUpon>AcercaDeEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AcercaDeEmpleado.aspx.designer.cs">
+      <DependentUpon>AcercaDeEmpleado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador.Master.cs">
       <DependentUpon>Administrador.Master</DependentUpon>

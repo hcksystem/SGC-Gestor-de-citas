@@ -43,26 +43,25 @@
                             <p>
                                 Este espacio es requerido, lo que significa que es un dato indispensable
                             para tener éxito en el registro de los productos.
-                            El dato debe ser breve y claro, ejemplos: Cepillo eléctrico, plancha de cabello, shampoo etc.
+                            El dato debe ser breve y claro, ejemplos: cepillo eléctrico, plancha de cabello, shampoo etc.
                             </p>
                             <br />
                             <h6>Categoría</h6>
                             <p>
                                 Este espacio es para que categorice o asigne un producto a un grupo de materiales
-                            segun su categoría, para que le sea mas fácil buscarlos a futuro.
-                            por ejemplo: Cuidado para la piel, utencilios básicos, cosméticos, etc.
+                            según su categoría, para que le sea más fácil buscarlos a futuro.
+                            por ejemplo: cuidado para la piel, utencilios básicos, cosméticos, etc.
                             </p>
                             <br />
                             <h6>Descripción</h6>
                             <p>
                                 Este espacio es para que brevemente se describa el producto, 
-                            por ejemplo: color negro brillante(tintes), tipos de fijacion (ceras o gel para cabello)
+                            por ejemplo: color negro brillante(tintes), tipos de fijación (ceras o gel para cabello)
                             </p>
                             <br />
                                   <h6>Propósito</h6>
                             <p>
-                                Este espacio tiene como fin que se indique cuál es el propósito que tiene ese producto que almacenamos
-                            ya sea que lo queremos vender, si es para consumo del local o alguna otra idea que tengamos.
+                                Este espacio tiene como fin que se indique cuál es el propósito que tiene ese producto que almacenamos ya sea que lo queremos vender, si es para consumo del local o alguna otra idea que tengamos.
                             </p>
                             <br />
                             <h6>Precio Unitario</h6>
@@ -91,10 +90,11 @@
                             Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado de los productos que tenemos almacenados hasta el momento, en esa lista tendríamos acceso a la opción de seleccionar o eliminar un producto.
                             <br />
                             Si se selecciona el botón de seleccionar dentro de la tabla, se llenaran los campos del formulario, para proceder a modificar el campo que se desee.
+                                <br />
                             Modificar: Este botón se habilitará luego de darle click al botón de seleccionar.
                             
                             <br />
-                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro"), si se le da aceptar, se eliminará la tabla y si se le da cancelar se cancelará la eliminación y va a redireccionar al menú principal.
+                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("¿Esta seguro?"), si se le da aceptar, se eliminará la tabla y si se le da cancelar se cancelará la eliminación y va a redireccionar al menú principal.
                         </p>
                         <br />
                         <h6>Botón guardar</h6>
@@ -103,7 +103,7 @@
                         </p>
                         <br />
                         <h6>Botón cancelar</h6>
-                        <p>Cancela a acción y hace una redirección al menú principal.</p>
+                        <p>Cancela la acción y hace una redirección al menú principal.</p>
 
                             </div>
 

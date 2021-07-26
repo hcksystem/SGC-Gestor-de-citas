@@ -56,12 +56,11 @@
                                 </p>
                                 <br />
                                 <h6>Botón de guardar</h6>
-                                <p>Se guardará la categoría que se digito en el espacio de nombre</p>
+                                <p>Se guardará la categoría que se digitó en el espacio de nombre</p>
                                 <br />
                                 <h6>Mostrar Lista</h6>
                                 <p>
-                                    Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado
-                            de las categorías que tenemos almacenadas hasta el momento, en esa lista tendríamos acceso a la opción de seleccionar o eliminar una categoría.
+                                    Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado de las categorías que tenemos almacenadas hasta el momento, en esta lista tendríamos acceso a la opción de seleccionar o eliminar una categoría.
                                 </p>
                                 <br />
                                 <h6>Seleccionar</h6>
@@ -70,12 +69,12 @@
                                 </p>
                                 <br />
                                 <h6>Botón de modificar</h6>
-                                <p>Botón que se encarga de insertar la modificacion realizada a la categoría que se digito en el espacio de nombre <br />
+                                <p>Botón que se encarga de insertar la modificación realizada a la categoría que se digitó en el espacio de nombre <br />
                                     Nota: este botón solo sera visible cuando se seleccione en la tabla una categoría </p>
                                 <br />
                                 <h6>Eliminar</h6>
                                 <p>
-                                    Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro que desea eliminar este registro?"), si se le da aceptar, se eliminará el registro selecionado y si se le da cancelar la acción se anulará.
+                                    Al tocar este botón se mostrará un mensaje de confirmación como este, ("¿Esta seguro que desea eliminar este registro?"), si se le da aceptar, se eliminará el registro selecionado y si se le da cancelar la acción se anulará.
                                 </p>
 
                             </div>
@@ -132,7 +131,7 @@
                                                 <asp:CommandField ShowSelectButton="True" SelectText="Editar" ShowHeader="true" HeaderText="Seleccionar" ButtonType="Image" SelectImageUrl="~/assets/img/Seleccionar).png" />
                                                 <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" ShowHeader="true" HeaderText="Eliminar" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />
                                                 <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
-                                                <asp:BoundField DataField="descripcion" HeaderText="Nombre Categoría" />
+                                                <asp:BoundField DataField="descripcion" HeaderText="Nombre categoría" />
                                             </Columns>
                                         </asp:GridView>
                                     </div>

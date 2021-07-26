@@ -80,7 +80,7 @@ namespace SGC_Gestor_de_citas
                     ClientScript.RegisterStartupScript(
                        this.GetType(),
                         "Registro",
-                        "mensajeRedirect('Contraseña',' Datos Actualizados correctamente','success','frmPerfilCliente.aspx')",
+                        "mensajeRedirect('Información',' Datos Actualizados correctamente','success','frmPerfilCliente.aspx')",
                         true
                         );
                     break;
@@ -133,6 +133,16 @@ namespace SGC_Gestor_de_citas
             {
                 txtNewPassword.TextMode = TextBoxMode.SingleLine;
             }
+        }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmMenuCliente.aspx");
         }
     }
 }

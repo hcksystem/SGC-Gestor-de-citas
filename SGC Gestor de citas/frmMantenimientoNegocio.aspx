@@ -71,19 +71,20 @@
             Espacio para colocar la visión del negocio, por ejemplo: Satisfacer siempre las necesidades de nuestros clientes.
         </p>
         <h6>Nuestra misión</h6>
-        <p>Espacio para colocar a misión del negocio, por ejemplo: Llegar a convertirnos en un negocio reconocido a nivel nacional.
+        <p>Espacio para colocar la misión del negocio, por ejemplo: Llegar a convertirnos en un negocio reconocido a nivel nacional.
         </p>
         <h6>Logo</h6>
         <p>En este apartado se selecciona el botón de elegir archivo, seguidamente se abrirá la carpeta de archivos, se elegirá una imagen representativa al logo del negocio, se buscará el logo o la imagen representativa. </p>           
         <h6>Mostrar Lista</h6>
                         <p>
-                            Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado del negocio que tenemos almacenado hasta el momento, en esa lista tendríamos acceso a la opción de seleccionar o eliminar un servicio.
+                            Sobre esta palabra tenemos la opción de tocar o clickear para que se nos despliegue un listado del negocio que tenemos almacenado hasta el momento, en esta lista tendríamos acceso a la opción de seleccionar o eliminar un servicio.
                             <br />
-                            Si se selecciona el botón de seleccionar dentro de la tabla, se llenaran los  campos del formulario, para proceder a modificar el campo que se desee.
+                            Si se selecciona el botón de seleccionar dentro de la tabla, se llenarán los  campos del formulario, para proceder a modificar el campo que se desee.
+                            <br />
                             Modificar: Este botón se habilitará luego de darle click al botón de seleccionar.
                             
                             <br />
-                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro"), si se le da OK, se eliminará la tabla y si se le da OK se cancelará la eliminación y va a redireccionar al menú principal.
+                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("¿Esta seguro?"), si se le da aceptar, se eliminará la tabla y si se le da cancelar se cancelará la eliminación y va a redireccionar al menú principal.
                         </p>
                         <br />
                         <h6>Botón guardar negocio</h6>
@@ -92,7 +93,7 @@
                         </p>
                         <br />
                         <h6>Botón cancelar</h6>
-                        <p>Cancela a acción y hace na redirección al menú principal.</p>
+                        <p>Cancela la acción y hace una redirección al menú principal.</p>
 
                             </div>
 

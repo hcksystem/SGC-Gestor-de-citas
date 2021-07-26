@@ -77,5 +77,10 @@ namespace SGC_Gestor_de_citas
             //Response.Redirect("frmLogin.aspx");
            
         }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmLogin.aspx");
+        }
     }
 }

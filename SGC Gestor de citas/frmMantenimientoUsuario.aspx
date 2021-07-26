@@ -101,7 +101,7 @@
                             Modificar: Este botón se habilitará luego de darle click al botón de seleccionar.
                             
                             <br />
-                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("Esta seguro"), si se le da aceptar, se eliminará la tabla y si se le da cancelar se cancelará la eliminación y va a redireccionar al menú principal.
+                            Eliminar: Al tocar este botón se mostrará un mensaje de confirmación como este, ("¿Esta seguro?"), si se le da aceptar, se eliminará la tabla y si se le da cancelar se cancelará la eliminación y va a redireccionar al menú principal.
                         </p>
                         <br />
                         <h6>Botón guardar</h6>
@@ -188,7 +188,7 @@
                                 <div class="form-group">
                                     <label>Contraseña</label>
                                          
-                                <asp:TextBox ID="txtContrasenna" TabIndex="7" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtContrasenna" TabIndex="7" TextMode="Password" runat="server" CssClass="form-control" placeHolder="* Requerido *"></asp:TextBox>
                                     <asp:CheckBox ID="CheckBox1" runat="server" Text="Mostrar contraseña" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" />
 
                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="ManteN"
@@ -239,7 +239,7 @@
                                 <div class="tab-content">
                                     <div style="overflow: scroll">
 
-                                        <asp:GridView ID="gridUsuarios" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="2" AllowPaging="True" AllowSorting="True" Width="100%" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged" OnPageIndexChanging="gridUsuarios_PageIndexChanging" OnRowDeleting="gridUsuarios_RowDeleting" OnRowDataBound="gridUsuarios_RowDataBound">
+                                        <asp:GridView ID="gridUsuarios" CssClass="mGrid GridView" runat="server" DataKeyNames="id" AutoGenerateColumns="False" PageSize="5" AllowPaging="True" AllowSorting="True" Width="100%" OnSelectedIndexChanged="gridUsuarios_SelectedIndexChanged" OnPageIndexChanging="gridUsuarios_PageIndexChanging" OnRowDeleting="gridUsuarios_RowDeleting" OnRowDataBound="gridUsuarios_RowDataBound">
                                             <Columns>
                                                 <asp:CommandField ShowSelectButton="True" HeaderText="Seleccionar" ShowHeader="true" SelectText="Editar" SelectImageUrl="~/assets/img/Seleccionar).png" ButtonType="Image" />
                                                 <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" HeaderText="Eliminar" ShowHeader="true" ButtonType="Image" DeleteImageUrl="~/assets/img/basurero.jpg" />

@@ -32,7 +32,7 @@ namespace AccesoDatos_DAL_
                 }
             }
                 Conexion.Close();
-            return "Factura Ingresada Correctamente";
+            return "Factura ingresada correctamente";
         }
     }
 }

@@ -137,7 +137,7 @@ namespace SGC_Gestor_de_citas
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("frmMenuAdministrador.aspx");
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)

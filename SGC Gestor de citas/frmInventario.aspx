@@ -60,8 +60,8 @@
                                 <asp:GridView ID="gridInventario" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="8" AllowPaging="True" OnRowDataBound="gridInventario_RowDataBound" OnSelectedIndexChanged="gridInventario_SelectedIndexChanged" Width="100%">
                                     <Columns>
                                         <asp:CommandField ButtonType="Image" SelectImageUrl="~/assets/img/Seleccionar).png" ShowSelectButton="True" HeaderText="Seleccionar" />
-                                        <asp:BoundField DataField="id" HeaderText="Codigo"></asp:BoundField>
-                                        <asp:BoundField DataField="idProducto" HeaderText="Producto" Visible="true"></asp:BoundField>
+                                        <asp:BoundField DataField="id" HeaderText="Código"></asp:BoundField>
+                                        <asp:BoundField DataField="idProducto" HeaderText="id producto" Visible="true"></asp:BoundField>
                                         <asp:BoundField DataField="nombre" HeaderText="Producto"></asp:BoundField>
                                         <asp:BoundField DataField="cantidad" HeaderText="Cantidad"></asp:BoundField>
                                         <asp:BoundField DataField="descripcion" HeaderText="Descripción"></asp:BoundField>

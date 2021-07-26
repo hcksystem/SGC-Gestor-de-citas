@@ -52,7 +52,7 @@
                                 <h6>Fecha de atención</h6>
                                 <p>Espacio para elegir la fecha de atención, se visualizará un calendario para reservar la cita, tome en cuenta que si el espacio adyacente "horario disponible" no habilita las horas es por qué no hay citas en la fecha seleccionada, igualmente solo estarán habilitadas las fechas en las que el negocio labora.</p>
                                 <br />
-                                <p>Horario de atención: de lunes a viernes de 8:00 a.m a 5:00p.m</p>
+                        
                                 <h6>Horario disponible</h6>
                                 <p>
                                     Se mostrarán las horas disponibles para la fecha seleccionada.

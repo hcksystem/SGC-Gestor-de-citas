@@ -147,9 +147,10 @@
                                 <p>
                                     Espacio donde se debe elegir el servicio que se va a facturar, puede buscarlo por cualquier dato: nombre del servicio, precio, o id.
                                     <br />
-                                    Estos estan divididos por productos(P) y servicios(S): por ejemplo:<br />
-                                    * (S;1;Cortes de hombre; 8000).<br />
-                                    * (P;1;Gel;5000).
+                                    Estos están divididos por productos(P), servicios(S) y citas (C): por ejemplo:<br />
+                                    * (S;1;Cortes de hombre; precio).<br />
+                                    * (P;1;Gel;precio).
+                                    * (C;1;persona1;precio).
 
                                 </p>
                                 <br />
@@ -214,7 +215,7 @@
                                 <div class="form-group">
                                     <label>Cliente:</label>
                                     <asp:Label ID="lblCliente" runat="server"></asp:Label>
-                                    <asp:TextBox ID="txtBuscarCliente" runat="server" CssClass="form-control autosuggest"></asp:TextBox>
+                                    <asp:TextBox ID="txtBuscarCliente" runat="server" CssClass="form-control autosuggest" AutoPostBack="true" OnTextChanged="txtBuscarCliente_TextChanged"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Fact"
                                         ControlToValidate="txtBuscarCliente" ErrorMessage="Indique la persona a quien se va a facturar" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -229,7 +230,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Servicios</label>
-                                    <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control autosuggest"></asp:TextBox>
+                                    <asp:TextBox ID="txtBuscar" AutoPostBack="true" OnTextChanged="txtBuscar_TextChanged" runat="server" CssClass="form-control autosuggest"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Fact"
                                         ControlToValidate="txtBuscar" ErrorMessage="Indique el servicio o producto a agregar" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -250,21 +251,33 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-inline">
+                                    <table>
+                                        <tr>
+                                            <td>
                                     <div class=" form-group">
                                         <label class="control-label">Cantidad</label>
-                                        <asp:TextBox ID="txtCantidad" TextMode="Number" runat="server" CssClass="form-control-sm"></asp:TextBox>
+                                        <asp:TextBox ID="txtCantidad" TextMode="Number" runat="server" CssClass="form-control-sm" min="1" Text="1"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Fact"
                                             ControlToValidate="txtCantidad" ErrorMessage="Digite la cantidad del producto" Display="Dynamic"
                                             ForeColor="Red"></asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="La cantidad debe ser un número positivo" ControlToValidate="txtCantidad" ValidationExpression="^[1-9][0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
-                                    </div>
+                                    </div></td><td>
                                     <div class="form-group">
                                         <asp:Button CssClass="btn btn-outline-primary" runat="server" ID="btnAgregar" Text="Agregar Linea" OnClick="btnAgregar_Click1" ValidationGroup="Fact" />
                                     </div>
+                                                </td></tr>
+                                        <tr><td>
                                     <div class="form-group">
-                                        <asp:Label ID="Label1" runat="server" Text="Total:" Font-Bold="true"></asp:Label>
-                                        <asp:Label runat="server" ID="TotalFact" Text=""></asp:Label>
+                                        <table><tr><td>
+                                        <asp:Label ID="Label1" runat="server" Text="Subtotal:" Font-Bold="true"></asp:Label></td><td>
+                                        <asp:Label runat="server" ID="TotalFact" Text=""></asp:Label></td></tr>
+                                        <tr><td><asp:Label ID="Label4" runat="server" Text="IVA:" Font-Bold="true"></asp:Label></td><td>
+                                         <asp:Label runat="server" ID="TotalIVA" Text=""></asp:Label></td></tr>
+                                        <tr><td><asp:Label ID="Label2" runat="server" Text="Total:" Font-Bold="true"></asp:Label></td><td>
+                                        <asp:Label runat="server" ID="TotalTotal" Text=""></asp:Label></td></tr>
+                                            </table>
                                     </div>
+                                            </td></tr></table>
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -310,16 +323,7 @@
                                                 </ItemTemplate>
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField>
-
-                                                <ItemTemplate>
-
-                                                    <asp:LinkButton runat="server" ID="btnImprimir" CommandName="Imprimir" Text="Imprimir factura" OnClientClick="return confirm('Desea eliminar esta linea?');" />
-
-                                                    <img src="assets/img/impresion.png" width="25px" alt="">
-                                                </ItemTemplate>
-
-                                            </asp:TemplateField>
+                                
                                         </Columns>
 
                                         <HeaderStyle CssClass="table-info" />
@@ -330,6 +334,7 @@
                                 <div class="form-group">
                                     <asp:Button ID="btnGuardar" CssClass="btn btn-outline-primary" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
                                     <asp:Button ID="btnCancelar" CssClass="btn btn-outline-primary" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+                                    <asp:Button ID="btnImprimir" runat="server" Text="Imprimir" CssClass="btn btn-outline-primary" OnClick="btnImprimir_Click" />
                                 </div>
                             </div>
                         </div>
@@ -338,4 +343,5 @@
             </div>
         </div>
     </div>
+         
 </asp:Content>

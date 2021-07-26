@@ -143,7 +143,7 @@
                                     <asp:Button runat="server" CssClass="btn-block btn btn-primary" Text="Guardar" ID="Guardar" OnClick="Guardar_Click"></asp:Button>
                                 </td>
                                 <td>
-                                    <asp:Button runat="server" CssClass="btn-block btn btn-secondary" Text="Cancelar"></asp:Button></td>
+                                    <asp:Button runat="server" ID="btnCancelar" CssClass="btn-block btn btn-secondary" Text="Cancelar" OnClick="btnCancelar_Click"></asp:Button></td>
                             </tr>
                         </table>
                     </div>
