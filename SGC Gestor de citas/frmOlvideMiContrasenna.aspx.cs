@@ -30,7 +30,12 @@ namespace SGC_Gestor_de_citas
             {
                 cmd = new SqlCommand(String.Format("Update a set Estado=1 from OlvidoMiContraseña a where idUsuario='{0}' and Codigo='{1}'", Session["idUsuario"].ToString(), Session["Codigo"].ToString()), con);
                 cmd.ExecuteNonQuery();
-                Response.Redirect("FrmLogin.aspx");
+                ClientScript.RegisterStartupScript(
+                                 this.GetType(),
+                                 "Registro",
+                                  "mensajeRedirect('Contraseña','Actualizada con éxito','success','frmLogin.aspx')",
+                                 true
+                                 );
             }
             else { 
             
@@ -66,7 +71,19 @@ namespace SGC_Gestor_de_citas
                     EnviarCorreo(txtCorreo.Text, FechaFinal);
                     CodigoVerificacion.Visible = true;
                     tdVerificar.Visible = true;
+
+
+
+                    ClientScript.RegisterStartupScript(
+                                 this.GetType(),
+                                 "Registro",
+                                  "mensajeRedirect('Verificar','Código enviado a su correo electrónico','info','#')",
+                                 true
+                                 );
+                    txtCodigoVerificacion.Focus();
                 }
+
+
             
             }
         }
@@ -96,7 +113,7 @@ namespace SGC_Gestor_de_citas
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("solucionessgc3@gmail.com", "Soluciones SGC Citas");
             mail.To.Add(new MailAddress(Correo));
-            mail.Subject = "Mensaje de confirmacion";
+            mail.Subject = "Mensaje de confirmación";
             mail.IsBodyHtml = true;
             mail.Body = body;
             smtp.Send(mail);

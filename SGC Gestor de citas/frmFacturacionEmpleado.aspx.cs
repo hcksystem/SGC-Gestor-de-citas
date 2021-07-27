@@ -118,7 +118,7 @@ namespace SGC_Gestor_de_citas
                 ClientScript.RegisterStartupScript(
                                   this.GetType(),
                                   "Registro",
-                                   "mensajeRedirect('Factura N° " + Numeracion + "','" + result + "','success','frmFacturacion.aspx')",
+                                   "mensajeRedirect('Factura N° " + Numeracion + "','" + result + "','success','frmFacturacionEmpleado.aspx')",
                                   true
                                   );
             }

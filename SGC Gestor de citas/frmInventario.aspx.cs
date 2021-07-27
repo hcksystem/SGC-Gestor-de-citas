@@ -47,7 +47,6 @@ namespace SGC_Gestor_de_citas
             {
                 txtCantidadNueva.Text = "";
                 txtStock.Text = "";
-                Session["ID"] = null;
                 txtBuscar.Text = "";
             }
         }

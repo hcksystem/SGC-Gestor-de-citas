@@ -53,7 +53,7 @@ namespace SGC_Gestor_de_citas
                         ClientScript.RegisterStartupScript(
                           this.GetType(),
                           us.NombreUsuario,
-                           "mensajeRedirect('Bienvenido','Credenciales correctas','success','frmMenuAdministrador.aspx')",
+                           "mensajeRedirect('Bienvenid@','Credenciales correctas','success','frmMenuAdministrador.aspx')",
                           true
                           );
                         break;
@@ -64,7 +64,7 @@ namespace SGC_Gestor_de_citas
                         ClientScript.RegisterStartupScript(
                           this.GetType(),
                           us.NombreUsuario,
-                           "mensajeRedirect('Bienvenido','Credenciales correctas','success','frmMenuEmpleado.aspx')",
+                           "mensajeRedirect('Bienvenid@','Credenciales correctas','success','frmMenuEmpleado.aspx')",
                           true
                           );
                         break;
@@ -75,7 +75,7 @@ namespace SGC_Gestor_de_citas
                 ClientScript.RegisterStartupScript(
                            this.GetType(),
                            us.NombreUsuario,
-                            "mensajeRedirect('Bienvenido','Credenciales correctas','success','frmMenuCliente.aspx')",
+                            "mensajeRedirect('Bienvenid@','Credenciales correctas','success','frmMenuCliente.aspx')",
                            true
                            );
                         //Response.Redirect("frmMenuCliente.aspx", false); Context.ApplicationInstance.CompleteRequest();
@@ -88,6 +88,16 @@ namespace SGC_Gestor_de_citas
                 txtContrasennaInicio.Text = "";
                 txtNombreUsuario.Text = "";
             }
+            else
+            {
+                ClientScript.RegisterStartupScript(
+                                           this.GetType(),
+                                           us.NombreUsuario,
+                                            "mensajeRedirect('Error','Credenciales incorrectas','error','#')",
+                                           true
+                                           );
+            }
+
         }
     }
 }

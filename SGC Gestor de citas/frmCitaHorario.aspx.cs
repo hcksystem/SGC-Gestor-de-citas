@@ -103,7 +103,7 @@ namespace SGC_Gestor_de_citas
                     "<br/>" +
                     "<span> ¡IMPORTANTE!</span> " +
                     "<br/>" +
-                    "<span> La hora seleccionada solo es valida para un servicio, si desea más de un servicio, debe seleccionar otra cita </span>" +
+                    "<span> La hora seleccionada solo es válida para un servicio, si desea más de un servicio, debe seleccionar otra cita </span>" +
                     "<br/>" +
                     "<span>Saludos cordiales, gracias por su preferencia.</span>" +
                     "</body>";
@@ -124,7 +124,7 @@ namespace SGC_Gestor_de_citas
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress("solucionessgc3@gmail.com", "Soluciones SGC Citas");
                 mail.To.Add(new MailAddress(Correo));
-                mail.Subject = "Mensaje de confirmacion";
+                mail.Subject = "Mensaje de confirmación";
                 mail.IsBodyHtml = true;
                 mail.Body = body;
                 smtp.Send(mail);

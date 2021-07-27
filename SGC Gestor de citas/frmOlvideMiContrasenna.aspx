@@ -94,13 +94,14 @@
                     <div class="card" style="margin: 26px 13px 0px 42px;">
 
                         <div class="card-header">
-                            <h5 class="title">Recuperacion de contraseña</h5>
+                            <br />
+                            <h5 class="title">Recuperación de contraseña</h5>
                         </div>
 
                         <div class="card-body">
                             <div class="row">
                             </div>
-
+                            <br />
                             <table class="table table-hover">
                                 <tr>
                                     <th>Correo</th>
@@ -108,13 +109,13 @@
                                         <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" TabIndex="1" placeHolder="* Requerido *"></asp:TextBox>
                                     </td>
                                     <td>
-                                        <asp:Button ID="btnSolicitarContrasenna" runat="server" Text="Solicitar " OnClick="btnSolicitarContrasenna_Click" />
+                                        <asp:Button ID="btnSolicitarContrasenna" runat="server" Text="Solicitar " OnClick="btnSolicitarContrasenna_Click" CssClass="btn btn-primary"/>
                                     </td>
                                     <td id="CodigoVerificacion" runat="server" visible="false">
                                         <asp:TextBox ID="txtCodigoVerificacion" runat="server" CssClass="form-control" TabIndex="1" placeHolder="* Requerido *"></asp:TextBox>
                                         </td>
                                     <td id="tdVerificar" runat="server" visible="false">
-                                        <asp:Button ID="btnVerificar" runat="server" CssClass="btn btn-info" TabIndex="1" OnClick="btnVerificar_Click"></asp:Button>
+                                        <asp:Button ID="btnVerificar" runat="server" CssClass="btn btn-primary" TabIndex="1" OnClick="btnVerificar_Click" Text="Verificar"></asp:Button>
                                         </td>
                                 </tr>
 
