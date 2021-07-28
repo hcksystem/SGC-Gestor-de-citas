@@ -29,6 +29,7 @@
     <script src="assets/js/mensaje.js"></script>
     <link href="assets/css/sweetalert2.min.css" rel="stylesheet" />
     <link href="assets/css/estiloLista.css" rel="stylesheet" />
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
@@ -147,10 +148,10 @@
                                 <p>
                                     Espacio donde se debe elegir el servicio que se va a facturar, puede buscarlo por cualquier dato: nombre del servicio, precio, o id.
                                     <br />
-                                    Estos están divididos por productos(P), servicios(S) y citas (C): por ejemplo:<br />
+                                    Estos estan divididos por productos(P), servicios(S) y citas (C): por ejemplo:<br />
                                     * (S;1;Cortes de hombre; precio).<br />
                                     * (P;1;Gel;precio).
-                                    * (C;1;persona1;precio).
+                                    * (C;1;persona1;cédula).
 
                                 </p>
                                 <br />
@@ -170,6 +171,17 @@
                                     Botón que se encarga de escribir una línea del detalle de la factura, este se irá agregando cada vez que se elija un producto o un servicio.
                                 </p>
                                 <br />
+                                    
+                                <h6>Subtotal</h6>
+                                <p>
+                                    Campo que realiza la suma unitaria por cantidad.
+                                </p>
+                                     <br />
+                                <h6>IVA</h6>
+                                <p>
+                                    0.13 de impuestos.
+                                </p>
+                                <br />
                                 <h6>Total</h6>
                                 <p>
                                     Campo que realiza la suma de cada línea insertada y muestra el monto total a facturar.
@@ -180,10 +192,13 @@
                             </div>
                             <br />
                             <h6>Botón guardar</h6>
-                            <p>Botón encargado de guardar la factura</p>
+                            <p>Botón encargado de guardar la factura.</p>
                             <br />
                             <h6>Botón cancelar</h6>
                             <p>Cancela a acción y hace una redirección al menú principal.</p>
+                            <br />
+                            <h6>Botón imprimir</h6>
+                            <p>Imprime la factura actual.</p>
                         </div>
                     </div>
                     <hr style="margin-top: 0rem;" />
@@ -229,7 +244,7 @@
 
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label>Servicios</label>
+                                    <label>Servicios citas y productos</label>
                                     <asp:TextBox ID="txtBuscar" AutoPostBack="true" OnTextChanged="txtBuscar_TextChanged" runat="server" CssClass="form-control autosuggest"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Fact"
                                         ControlToValidate="txtBuscar" ErrorMessage="Indique el servicio o producto a agregar" Display="Dynamic"
@@ -269,11 +284,11 @@
                                         <tr><td>
                                     <div class="form-group">
                                         <table><tr><td>
-                                        <asp:Label ID="Label1" runat="server" Text="Subtotal:" Font-Bold="true"></asp:Label></td><td>
+                                        <asp:Label ID="Label1" runat="server" Text="Subtotal: ₡" Font-Bold="true"></asp:Label></td><td>
                                         <asp:Label runat="server" ID="TotalFact" Text=""></asp:Label></td></tr>
-                                        <tr><td><asp:Label ID="Label4" runat="server" Text="IVA:" Font-Bold="true"></asp:Label></td><td>
+                                        <tr><td><asp:Label ID="Label4" runat="server" Text="IVA: ₡" Font-Bold="true"></asp:Label></td><td>
                                          <asp:Label runat="server" ID="TotalIVA" Text=""></asp:Label></td></tr>
-                                        <tr><td><asp:Label ID="Label2" runat="server" Text="Total:" Font-Bold="true"></asp:Label></td><td>
+                                        <tr><td><asp:Label ID="Label2" runat="server" Text="Total: ₡" Font-Bold="true"></asp:Label></td><td>
                                         <asp:Label runat="server" ID="TotalTotal" Text=""></asp:Label></td></tr>
                                             </table>
                                     </div>
@@ -309,7 +324,7 @@
                                                 SortExpression="Tipo" />
                                             <asp:BoundField DataField="Descripcion" HeaderText="Descripcion"
                                                 SortExpression="Descripcion" />
-                                            <asp:BoundField DataField="Precio" HeaderText="Precio"
+                                            <asp:BoundField DataField="Precio" HeaderText="Precio unitario"
                                                 SortExpression="Precio" />
                                             <asp:BoundField DataField="Cantidad" HeaderText="Cantidad"
                                                 SortExpression="Cantidad" />
@@ -317,9 +332,8 @@
 
                                                 <ItemTemplate>
 
-                                                    <asp:LinkButton runat="server" ID="btnDelete" CommandName="Delete" Text="Delete" OnClientClick="return confirm('Desea eliminar esta linea?');" />
-
-                                                    <img src="assets/img/basurero.jpg" width="25px" alt="">
+                                                    <asp:LinkButton runat="server" ID="btnDelete" CommandName="Delete" Text="Eliminar" OnClientClick="return confirm('¿Desea eliminar esta linea?');" />
+    <img src="assets/img/basurero.jpg" width="25px" alt="">
                                                 </ItemTemplate>
 
                                             </asp:TemplateField>

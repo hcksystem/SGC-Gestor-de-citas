@@ -118,7 +118,7 @@ namespace SGC_Gestor_de_citas
                 ClientScript.RegisterStartupScript(
                                   this.GetType(),
                                   "Registro",
-                                   "mensajeRedirect('Factura N° " + Numeracion + "','" + result + "','success','frmFacturacionEmpleado.aspx')",
+                                   "mensajeRedirect('Factura N° " + Numeracion + "','" + result + "','success','frmFacturacion.aspx')",
                                   true
                                   );
             }
@@ -136,7 +136,7 @@ namespace SGC_Gestor_de_citas
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("frmMenuAdministrador.aspx");
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -170,83 +170,167 @@ namespace SGC_Gestor_de_citas
 
         protected void btnAgregar_Click1(object sender, EventArgs e)
         {
+            bool Validaciones = false;
+            String MensajeError = "";
+            string[] detalle = txtBuscar.Text.Split(';');
             try
             {
-                string[] detalle = txtBuscar.Text.Split(';');
-                Boolean flag = false;
-                foreach (int i in Citas)
+                int CantidadProducto = 0;
+                int InventarioProducto = 0;
+                int CodigoProducto = 0;
+                switch (detalle[0].ToString())
                 {
-                    if (i == Convert.ToInt32(detalle[1].ToString()))
+                    case "(P)":
+                        CodigoProducto = Convert.ToInt32(detalle[1].ToString());
+                        InventarioProducto = Convert.ToInt32(detalle[4].ToString());
+                        break;
+                    case "(S)":
+                        CodigoProducto = Convert.ToInt32(detalle[4].ToString());
+                        InventarioProducto = Convert.ToInt32(detalle[5].ToString());
+                        break;
+                    case "(C)":
+                        CodigoProducto = Convert.ToInt32(detalle[7].ToString());
+                        InventarioProducto = Convert.ToInt32(detalle[8].ToString());
+                        break;
+                }
+                int Cantidad = 0;
+                foreach (DataRow dr in ProductosServicios.Rows)
+                {
+                    string[] pdetalle = dr["Descripcion"].ToString().Split(';');
+                    switch (dr["Tipo"].ToString())
                     {
-                        flag = true;
+                        case "(P)":
+                            if (Convert.ToInt32(pdetalle[0].ToString()) == CodigoProducto)
+                            {
+                                Cantidad += Convert.ToInt32(dr["Cantidad"].ToString());
+                            }
+                            break;
+                        case "(S)":
+                            if (Convert.ToInt32(pdetalle[2].ToString()) == CodigoProducto)
+                            {
+                                Cantidad += Convert.ToInt32(dr["Cantidad"].ToString());
+                            }
+                            break;
+                        case "(C)":
+                            if (Convert.ToInt32(pdetalle[3].ToString()) == CodigoProducto)
+                            {
+                                Cantidad += Convert.ToInt32(dr["Cantidad"].ToString());
+                            }
+                            break;
+                    }
+                }
+                if (Cantidad >= InventarioProducto)
+                {
+                    Validaciones = true;
+                    MensajeError = "La cantidad solicitada es mayor a la factura con respecto al inventario";
+                }
+
+                if (detalle[0].ToString().Equals("(P)"))
+                {
+                    if (Convert.ToInt32(detalle[4].ToString()) < Convert.ToInt32(txtCantidad.Text))
+                    {
+                        Validaciones = true;
+                        MensajeError = "La cantidad indicada es mayor a lo que se encuentra en inventario";
+                        txtBuscar.Enabled = true;
+                    }
+                }
+
+                if (Validaciones == false)
+                {
+                    Boolean flag = false;
+                    foreach (int i in Citas)
+                    {
+                        if (i == Convert.ToInt32(detalle[1].ToString()))
+                        {
+                            flag = true;
+                        };
                     };
-                };
-                if (!flag)
-                {
-                    DataRow ProServ = ProductosServicios.NewRow();
-                    string[] cliente = txtBuscarCliente.Text.Split(';');
-                    String IDCitaCliente = "";
-                    if (detalle[0].ToString().Equals("(C)"))
+                    if (!flag)
                     {
-                        IDCitaCliente = detalle[6].ToString();
-                        Citas[NoSeq] = Convert.ToInt32(detalle[1].ToString());
-                        NoSeq++;
-                        ProServ["Cantidad"] = String.Format("{0}", 1);
-                    }
-                    else
-                    {
-                        ProServ["Cantidad"] = txtCantidad.Text;
-                    }
-                    String IDClienteFact = cliente[3].ToString();
-                    if (IDCitaCliente.Equals(IDClienteFact) || !detalle[0].Equals("(C)"))
-                    {
-                        ProServ["ID"] = detalle[1].ToString();
-                        ProServ["Tipo"] = detalle[0].ToString();
+                        DataRow ProServ = ProductosServicios.NewRow();
+                        string[] cliente = txtBuscarCliente.Text.Split(';');
+                        String IDCitaCliente = "";
                         if (detalle[0].ToString().Equals("(C)"))
                         {
-                            ProServ["Descripcion"] = String.Format("{0};{1};{2}", detalle[1].ToString(), detalle[2].ToString(), detalle[4].ToString());
+                            IDCitaCliente = detalle[6].ToString();
+                            Citas[NoSeq] = Convert.ToInt32(detalle[1].ToString());
+                            NoSeq++;
+                            ProServ["Cantidad"] = String.Format("{0}", 1);
                         }
                         else
                         {
-                            ProServ["Descripcion"] = detalle[2].ToString();
+                            ProServ["Cantidad"] = txtCantidad.Text;
                         }
-                        NumberStyles style = NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands;
-                        CultureInfo provider = new CultureInfo("en-US");
-                        Double precio = Double.Parse(detalle[3].ToString(), style, provider);
-                        ProServ["Precio"] = precio;
-                        ProductosServicios.Rows.Add(ProServ);
-                        gridFactura.DataSource = ProductosServicios;
-                        gridFactura.DataBind();
-                        TotalFactura += precio * Convert.ToDouble(txtCantidad.Text);
-                        txtBuscar.Text = "";
+                        String IDClienteFact = cliente[3].ToString();
+                        if (IDCitaCliente.Equals(IDClienteFact) || !detalle[0].Equals("(C)"))
+                        {
+                            ProServ["ID"] = detalle[1].ToString();
+                            ProServ["Tipo"] = detalle[0].ToString();
+                            if (detalle[0].ToString().Equals("(C)"))
+                            {
+                                ProServ["Descripcion"] = String.Format("{0};{1};{2};{3}", detalle[1].ToString(), detalle[2].ToString(), detalle[4].ToString(), detalle[7].ToString());
+                            }
+                            else
+                            {
+                                string CodProducto = "";
+                                if (detalle[0].ToString().Equals("P"))
+                                {
+                                    CodProducto = detalle[1].ToString();
+                                }
+                                else
+                                {
+                                    CodProducto = detalle[4].ToString();
+                                }
+                                ProServ["Descripcion"] = String.Format("{0};{1};{2}", detalle[1].ToString(), detalle[2].ToString(), CodProducto);
+                            }
+                            NumberStyles style = NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands;
+                            CultureInfo provider = new CultureInfo("en-US");
+                            Double precio = Double.Parse(detalle[3].ToString(), style, provider);
+                            ProServ["Precio"] = precio;
+                            ProductosServicios.Rows.Add(ProServ);
+                            gridFactura.DataSource = ProductosServicios;
+                            gridFactura.DataBind();
+                            TotalFactura += precio * Convert.ToDouble(txtCantidad.Text);
+                            txtBuscar.Text = "";
+                            txtBuscar.Focus();
+                            TotalFact.Text = TotalFactura + "";
+                            TotalIVA.Text = (TotalFactura * 0.13) + "";
+                            TotalTotal.Text = (TotalFactura * 1.13) + "";
+                        }
+                        else
+                        {
+                            ClientScript.RegisterStartupScript(
+                                              this.GetType(),
+                                              "Error de Cita",
+                                               "mensajeRedirect('Error de Cita','La cita seleccionada no corresponde al cliente','error','#')",
+                                              true
+                                              );
+                        }
+                        txtBuscar.Enabled = true;
                         txtBuscar.Focus();
-                        TotalFact.Text = TotalFactura + "";
-                        TotalIVA.Text = (TotalFactura * 0.13) + "";
-                        TotalTotal.Text = (TotalFactura * 1.13) + "";
                     }
                     else
                     {
                         ClientScript.RegisterStartupScript(
-                                          this.GetType(),
-                                          "Error de Cita",
-                                           "mensajeRedirect('Error de Cita','La cita seleccionada no corresponde al cliente','error','#')",
-                                          true
-                                          );
+                                                  this.GetType(),
+                                                  "Error de Cita",
+                                                   "mensajeRedirect('Error de Cita','La cita seleccionada ya se encuentra en el detalle de factura','error','#')",
+                                                  true
+                                                  );
+                        txtBuscar.Text = "";
+                        txtBuscar.Enabled = true;
+                        txtBuscar.Focus();
                     }
-                    txtBuscar.Enabled = true;
-                    txtBuscar.Focus();
-                }
+                }//FIN FLAG
                 else
                 {
                     ClientScript.RegisterStartupScript(
-                                              this.GetType(),
-                                              "Error de Cita",
-                                               "mensajeRedirect('Error de Cita','La cita seleccionada ya se encuentra en el detalle de factura','error','#')",
-                                              true
-                                              );
-                    txtBuscar.Text = "";
-                    txtBuscar.Enabled = true;
-                    txtBuscar.Focus();
+                                                      this.GetType(),
+                                                      "Error de Cita",
+                                                       "mensajeRedirect('Error de Cita','" + MensajeError + "','error','#')",
+                                                      true
+                                                      );
+                    this.txtBuscar.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -280,6 +364,8 @@ namespace SGC_Gestor_de_citas
             ProductosServicios.Rows[e.RowIndex].Delete();
             ProductosServicios.AcceptChanges();
             TotalFact.Text = TotalFactura + "";
+            TotalIVA.Text = (TotalFactura * 0.13) + "";
+            TotalTotal.Text = (TotalFactura * 1.13) + "";
             gridFactura.DataSource = ProductosServicios;
             gridFactura.DataBind();
 
@@ -305,13 +391,18 @@ namespace SGC_Gestor_de_citas
         }
         protected void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            txtBuscar.Enabled = false;
+            if (txtBuscar.Text.Length > 0)
+            {
+                txtBuscar.Enabled = false;
+            }
         }
 
         protected void txtBuscarCliente_TextChanged(object sender, EventArgs e)
         {
-            txtBuscarCliente.Enabled = false;
-
+            if (txtBuscar.Text.Length > 0)
+            {
+                txtBuscarCliente.Enabled = false;
+            }
         }
     }
 }

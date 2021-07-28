@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Karantina&display=swap" rel="stylesheet">
 
+    <link href="assets/css/estiloLista.css" rel="stylesheet" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -74,6 +76,10 @@
             color: black;
             background: transparent;
         }
+         .h6, h6 {
+            font-size: 1rem;
+            font-weight: bold;
+        }
     </style>
 
     <div class="panel-header-sm">
@@ -85,6 +91,33 @@
 
                     <div class="card-header">
                         <h5 class="title"></h5>
+                        <input type="checkbox" id="btn-modal" />
+                        <label for="btn-modal" class="lbl-modal">Ayuda</label>
+                        <div class="modal">
+                            <div class="contenedorlista" style="overflow: scroll">
+                                <header>Ayuda</header>
+                                <label for="btn-modal">X</label>
+                                <h5>Menú principal</h5>
+                                <h6>Menu Horizontal color gris</h6>
+                                <p>
+                                    Este menú cuenta con dos opciones en la esquina superior derecha, al seleccionar el icono de tuerca se desplegarán dos opciones:
+                                    <br />
+                                    * Cerrar sesión: Al presionar cerrar sesión, se mostrará un mensaje que dice: "Sesión finalizada con éxito", al presionar aceptar, se redirigirá al formulario de inicio de sesión en donde ya no podrá ingresar a menos de que vuelva a digitar sus credenciales.
+                                    <br />
+                                    * Acerca de: Al presionar este botón, se abrirá un formulario con la información importante.
+                                </p>
+                                <br />
+                                <h6>Menú vertical color azul</h6>
+                                <p>Este menú muestra todos los formularios dentro del sistema: estos son los encargados de redireccionar a el usuaario por el formulario que desee, cada uno tiene un nombre representativo al formulario que le corresponde mostrar.</p>
+                                <br />
+                                <h6>Contenido central de la página</h6>
+                                <p>
+                                   El contenido del menú principal muestra el negocio creado desde el mantenimiento de negocios.
+                                </p>
+                                
+                            </div>
+
+                        </div>
                     </div>
                     <hr />
                     <div class="card-body">

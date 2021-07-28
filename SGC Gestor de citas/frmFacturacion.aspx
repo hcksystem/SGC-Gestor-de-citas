@@ -245,7 +245,7 @@
 
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label>Servicios</label>
+                                    <label>Servicios, citas y productos</label>
                                     <asp:TextBox ID="txtBuscar" AutoPostBack="true" OnTextChanged="txtBuscar_TextChanged" runat="server" CssClass="form-control autosuggest"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Fact"
                                         ControlToValidate="txtBuscar" ErrorMessage="Indique el servicio o producto a agregar" Display="Dynamic"
@@ -258,7 +258,7 @@
                                     <label>Método de pago:</label>
                                     <asp:DropDownList ID="dropMetodopago" AutoPostBack="true" OnSelectedIndexChanged="dropMetodopago_SelectedIndexChanged" runat="server" CssClass="form-control"></asp:DropDownList>
                                     <div runat="server" id="Ult4Digitos">
-                                    <asp:TextBox ID="txtNumTarjeta" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtNumTarjeta" runat="server" CssClass="form-control" placeHolder="* Digite los últimos 4 números de su tarjeta *"></asp:TextBox>
                                         </div>
                                 </div>
                             </div>
@@ -285,11 +285,11 @@
                                         <tr><td>
                                     <div class="form-group">
                                         <table><tr><td>
-                                        <asp:Label ID="Label1" runat="server" Text="Subtotal:" Font-Bold="true"></asp:Label></td><td>
+                                        <asp:Label ID="Label1" runat="server" Text="Subtotal: ₡" Font-Bold="true"></asp:Label></td><td>
                                         <asp:Label runat="server" ID="TotalFact" Text=""></asp:Label></td></tr>
-                                        <tr><td><asp:Label ID="Label4" runat="server" Text="IVA:" Font-Bold="true"></asp:Label></td><td>
+                                        <tr><td><asp:Label ID="Label4" runat="server" Text="IVA: ₡" Font-Bold="true"></asp:Label></td><td>
                                          <asp:Label runat="server" ID="TotalIVA" Text=""></asp:Label></td></tr>
-                                        <tr><td><asp:Label ID="Label2" runat="server" Text="Total:" Font-Bold="true"></asp:Label></td><td>
+                                        <tr><td><asp:Label ID="Label2" runat="server" Text="Total: ₡" Font-Bold="true"></asp:Label></td><td>
                                         <asp:Label runat="server" ID="TotalTotal" Text=""></asp:Label></td></tr>
                                             </table>
                                     </div>
@@ -333,7 +333,7 @@
 
                                                 <ItemTemplate>
 
-                                                    <asp:LinkButton runat="server" ID="btnDelete" CommandName="Delete" Text="Delete" OnClientClick="return confirm('¿Desea eliminar esta linea?');" />
+                                                    <asp:LinkButton runat="server" ID="btnDelete" CommandName="Delete" Text="Eliminar" OnClientClick="return confirm('¿Desea eliminar esta linea?');" />
     <img src="assets/img/basurero.jpg" width="25px" alt="">
                                                 </ItemTemplate>
 
