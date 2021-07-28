@@ -187,6 +187,12 @@
                             <p>Facturación</p>
                         </a>
                     </li>
+                     <li>
+                        <a href="frmInactivos.aspx">
+                            <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                            <p>Inactivos</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -148,6 +148,18 @@ namespace AccesoDatos_DAL_
             cmd.ExecuteNonQuery();
             Conexion.Close();
         }
+        public void ActivarProducto(int id)
+        {
+            //aca se cambiaria el estado en casi de trabajar con enum
+            SqlCommand cmd = new SqlCommand("UPDATE Producto SET estado = '1' where id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@id", id);
+            cmd.Parameters.Add(parametro);
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+        }
 
 
         public DataTable ObtenerTodosLosProductos()
@@ -175,6 +187,14 @@ namespace AccesoDatos_DAL_
         {
             DataTable dt = new DataTable();
             SqlCommand cmd = new SqlCommand("SELECT dbo.Producto.id, dbo.Producto.nombre, dbo.Categoria.descripcion AS idcategoria, dbo.Producto.descripcion, dbo.Producto.proposito, dbo.Producto.precio, CASE WHEN Producto.estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS estado FROM dbo.Producto INNER JOIN dbo.Categoria ON dbo.Producto.idcategoria = dbo.Categoria.id WHERE(dbo.Producto.estado = 1)", Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+        public DataTable ObtenerTodosLosProductosInactivos()
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Producto.id, dbo.Producto.nombre, dbo.Producto.descripcion,dbo.Producto.precio, CASE WHEN Producto.estado = 2 THEN 'Inactivo' ELSE 'Activo' END AS estado FROM dbo.Producto WHERE(dbo.Producto.estado = 2)", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;

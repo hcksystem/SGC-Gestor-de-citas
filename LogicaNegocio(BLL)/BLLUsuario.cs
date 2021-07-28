@@ -29,6 +29,10 @@ namespace LogicaDeNegocio_BLL_
         {
             dalu.CambiarEstadoUsuario(id);
         }
+        public void ActivarUsuario(int id)
+        {
+            dalu.ActivarUsuario(id);
+        }
 
         public void EliminarUsuario(int Identificacion)
         {
@@ -65,5 +69,9 @@ namespace LogicaDeNegocio_BLL_
             return dalu.GetSHA256(texto);
         }
 
+        public DataTable ObtenerTodosLosUsuariosInactivos()
+        {
+            return dalu.ObtenerTodosLosUsuariosInactivos();
+        }
     }
 }

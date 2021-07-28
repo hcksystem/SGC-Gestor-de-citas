@@ -52,10 +52,30 @@ namespace AccesoDatos_DAL_
             cmd.ExecuteNonQuery();
             Conexion.Close();
         }
+        public void ActivarServicio(int id)
+        {
+            //verificar que en el enum el numero dos si corresponda apagado o eliminar
+            SqlCommand cmd = new SqlCommand("UPDATE Servicio SET estado = '1' where id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@id", id);
+            cmd.Parameters.Add(parametro);
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+        }
         public DataTable ObtenerTodosLosServiciosActivos()
         {
             DataTable dt = new DataTable();
             SqlCommand cmd = new SqlCommand("Select * from VW_Servicios", Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+        public DataTable ObtenerTodosLosServiciosInactivos()
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT id, nombre, descripcion, estado FROM Servicio where estado =2", Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;

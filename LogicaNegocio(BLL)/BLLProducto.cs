@@ -37,6 +37,11 @@ namespace LogicaNegocio_BLL_
             DALProducto dalp = new DALProducto();
             dalp.CambiarEstadoProducto(id);
         }
+        public void ActivarProducto(int id)
+        {
+            DALProducto dalp = new DALProducto();
+            dalp.ActivarProducto(id);
+        }
         public DataTable ObtenerTodosLosProductos()
         {
             DALProducto dalp = new DALProducto();
@@ -51,6 +56,11 @@ namespace LogicaNegocio_BLL_
         {
             DALProducto dalp = new DALProducto();
             return dalp.ObtenerTodosLosProductosActivos();
+        }
+        public DataTable ObtenerTodosLosProductosInactivos()
+        {
+            DALProducto dalp = new DALProducto();
+            return dalp.ObtenerTodosLosProductosInactivos();
         }
         public void EliminarProducto(int Identificacion)
         {

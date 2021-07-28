@@ -35,9 +35,17 @@ namespace LogicaDeNegocio_BLL_
         {
             return dals.ObtenerTodosLosServicios();
         }
+        public DataTable ObtenerTodosLosServiciosInactivos()
+        {
+            return dals.ObtenerTodosLosServiciosInactivos();
+        }
         public void CambiarEstadoServicio(int id)
         {
             dals.CambiarEstadoServicio(id);
+        }
+        public void ActivarServicio(int id)
+        {
+            dals.ActivarServicio(id);
         }
         public DataTable ObtenerTodosLosServiciosActivos()
         {

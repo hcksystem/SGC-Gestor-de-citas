@@ -262,6 +262,7 @@
     <Content Include="frmFacturacion.aspx" />
     <Content Include="frmFacturacionEmpleado.aspx" />
     <Content Include="frmGestorCita.aspx" />
+    <Content Include="frmInactivos.aspx" />
     <Content Include="frmInventario.aspx" />
     <Content Include="frmLogin.aspx" />
     <Content Include="frmLogOut.aspx" />
@@ -468,6 +469,13 @@
     </Compile>
     <Compile Include="frmGestorCita.aspx.designer.cs">
       <DependentUpon>frmGestorCita.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmInactivos.aspx.cs">
+      <DependentUpon>frmInactivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmInactivos.aspx.designer.cs">
+      <DependentUpon>frmInactivos.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmInventario.aspx.cs">
       <DependentUpon>frmInventario.aspx</DependentUpon>

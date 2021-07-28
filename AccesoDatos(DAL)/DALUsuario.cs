@@ -78,6 +78,15 @@ namespace AccesoDatos_DAL_
             return Resultado;
         }
 
+        public DataTable ObtenerTodosLosUsuariosInactivos()
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Usuario.id, dbo.Roll.descripcion AS idRoll, CASE WHEN Usuario.estado = 2 THEN 'Inactivo' ELSE 'Activo' END AS estado, dbo.Persona.nombre,dbo.Persona.apellido, dbo.Persona.identificacion FROM dbo.Usuario INNER JOIN dbo.Roll ON dbo.Usuario.idRoll = dbo.Roll.id INNER JOIN dbo.Persona ON dbo.Usuario.idPersona = dbo.Persona.id WHERE(dbo.Usuario.estado = 2)", Conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
+        }
+
 
         public Usuario ObtenerUsuario()
         {
@@ -97,6 +106,18 @@ namespace AccesoDatos_DAL_
         {
             //aca se cambiaria el estado en casi de trabajar con enum
             SqlCommand cmd = new SqlCommand("UPDATE Usuario SET estado = '2' where id=@id", Conexion);
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@id", id);
+            cmd.Parameters.Add(parametro);
+            Conexion.Open();
+            cmd.ExecuteNonQuery();
+            Conexion.Close();
+        }
+        public void ActivarUsuario(int id)
+        {
+            //aca se cambiaria el estado en casi de trabajar con enum
+            SqlCommand cmd = new SqlCommand("UPDATE Usuario SET estado = '1' where id=@id", Conexion);
             SqlParameter parametro;
 
             parametro = new SqlParameter("@id", id);
