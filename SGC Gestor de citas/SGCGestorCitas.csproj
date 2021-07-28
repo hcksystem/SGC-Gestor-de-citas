@@ -248,10 +248,6 @@
     <Content Include="assets\js\sweetalert2.all.min.js" />
     <Content Include="assets\js\sweetalert2.js" />
     <Content Include="assets\js\sweetalert2.min.js" />
-    <Content Include="AyudaNegocio.aspx" />
-    <Content Include="AyudaProducto.aspx" />
-    <Content Include="AyudaServicio.aspx" />
-    <Content Include="AyudaUsuario.aspx" />
     <Content Include="frmCita.aspx" />
     <Content Include="frmCitaCliente.aspx" />
     <Content Include="frmCitaEmpleado.aspx" />
@@ -322,34 +318,6 @@
     </Compile>
     <Compile Include="Administrador.Master.designer.cs">
       <DependentUpon>Administrador.Master</DependentUpon>
-    </Compile>
-    <Compile Include="AyudaNegocio.aspx.cs">
-      <DependentUpon>AyudaNegocio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AyudaNegocio.aspx.designer.cs">
-      <DependentUpon>AyudaNegocio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AyudaProducto.aspx.cs">
-      <DependentUpon>AyudaProducto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AyudaProducto.aspx.designer.cs">
-      <DependentUpon>AyudaProducto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AyudaServicio.aspx.cs">
-      <DependentUpon>AyudaServicio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AyudaServicio.aspx.designer.cs">
-      <DependentUpon>AyudaServicio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AyudaUsuario.aspx.cs">
-      <DependentUpon>AyudaUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AyudaUsuario.aspx.designer.cs">
-      <DependentUpon>AyudaUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="CitasDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
