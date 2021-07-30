@@ -31,6 +31,19 @@ $(document).ready(function(){
     }
 });
 </script>
+    <script type = "text/javascript">
+        function Confirm() {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Esta seguro que desea cancelar su cita?")) {
+                confirm_value.value = "Si";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -90,7 +103,7 @@ $(document).ready(function(){
                                 <div class="form-group">
                                     <ul class="nav nav-pills nav-fill" id="myTab">
     <li class="nav-item active"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Citas Pendientes</a></li>
-    <li class="nav-item"><a class="nav-link" id="menu1-tab" data-toggle="tab" href="#menu1" role="tab" aria-controls="profile" aria-selected="false">Citas Canceladas</a></li>
+    <li class="nav-item"><a class="nav-link" id="menu1-tab" data-toggle="tab" href="#menu1" role="tab" aria-controls="profile" aria-selected="false">Citas</a></li>
     <li class="nav-item"><a class="nav-link" id="menu2-tab" data-toggle="tab" href="#menu2" role="tab" aria-controls="profile" aria-selected="false">Citas Histórico</a></li>
   </ul>
 <div class="tab-content">
@@ -99,7 +112,7 @@ $(document).ready(function(){
                                         <Columns>
                                     <asp:TemplateField ShowHeader="true" HeaderText="Cancelar cita" >
                                     <ItemTemplate>
-                                     <asp:ImageButton ID="ImageButton1" runat="server" CommandArgument='<%# Eval("id") %>' CommandName="Cancelar" ImageUrl="~/assets/img/cancelar.png" Text="Eliminar" />
+                                     <asp:ImageButton  OnClientClick="Confirm()" ID="ImageButton1" runat="server" CommandArgument='<%# Eval("id") %>' CommandName="Cancelar" ImageUrl="~/assets/img/cancelar.png" Text="Eliminar" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                              <asp:BoundField DataField="id" HeaderText="ID"></asp:BoundField>
@@ -120,6 +133,7 @@ $(document).ready(function(){
                              <asp:BoundField DataField="id" HeaderText="ID"></asp:BoundField>
                              <asp:BoundField DataField="Fecha" HeaderText="Fecha" ></asp:BoundField>
                             <asp:BoundField DataField="Hora" HeaderText="Hora"></asp:BoundField>
+                            <asp:BoundField DataField="detEstado" HeaderText="Estado"></asp:BoundField>
                               <asp:BoundField DataField="idServicio" HeaderText="Servicio"></asp:BoundField>
 
                                         </Columns>

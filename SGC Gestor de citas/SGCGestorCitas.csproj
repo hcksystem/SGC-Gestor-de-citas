@@ -277,6 +277,7 @@
     <Content Include="frmReporteCitas.aspx" />
     <Content Include="frmReporteInventario.aspx" />
     <Content Include="frmReporteProducto.aspx" />
+    <Content Include="frmRespaldos.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
     <Content Include="ManualAyuda.aspx" />
@@ -571,6 +572,13 @@
     <Compile Include="frmReporteProducto.aspx.designer.cs">
       <DependentUpon>frmReporteProducto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmRespaldos.aspx.cs">
+      <DependentUpon>frmRespaldos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmRespaldos.aspx.designer.cs">
+      <DependentUpon>frmRespaldos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -796,6 +804,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="imagenes\Negocio\Servicios\" />
+    <Folder Include="Respaldos\" />
     <Folder Include="SqlServerTypes\x64\" />
     <Folder Include="SqlServerTypes\x86\" />
   </ItemGroup>

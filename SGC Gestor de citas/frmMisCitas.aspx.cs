@@ -103,17 +103,17 @@ namespace SGC_Gestor_de_citas
 
         protected void gridMisCitas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string item = e.Row.Cells[2].Text;
-                foreach (ImageButton button in e.Row.Cells[1].Controls.OfType<ImageButton>())
-                {
-                    if (button.CommandName == "Cancelar")
-                    {
-                        button.Attributes["onclick"] = "if(!confirm('Está seguro que desea cancelar esta cita? " + item + "?')){ return false; };";
-                    }
-                }
-            }
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    string item = e.Row.Cells[2].Text;
+            //    foreach (ImageButton button in e.Row.Cells[1].Controls.OfType<ImageButton>())
+            //    {
+            //        if (button.CommandName == "Cancelar")
+            //        {
+            //            button.Attributes["onclick"] = "if(!confirm('Está seguro que desea cancelar esta cita? " + item + "?')){ return false; };";
+            //        }
+            //    }
+            //}
         }
 
             
@@ -125,18 +125,27 @@ namespace SGC_Gestor_de_citas
                 switch (e.CommandName)
                 {
                     case "Cancelar":
-                //Recorre la linea y elimina el id
-                int index = Convert.ToInt32(e.CommandArgument);
-                BLLCita bllu = new BLLCita();
-                bllu.EliminarCita(index);
-                 cargarCitasPendientes(1);
-                        cargarCitasCanceladas(2);
-                ClientScript.RegisterStartupScript(
-                    this.GetType(),
-                     "Registro",
-                     "mensajeRedirect('Cita',' Cancelada con éxito','success','frmMisCitas.aspx')",
-                     true
-                     );
+                        string confirmValue = Request.Form["confirm_value"];
+                        if (confirmValue == "Si")
+                        {
+                            //Recorre la linea y elimina el id
+                            int index = Convert.ToInt32(e.CommandArgument);
+                            BLLCita bllu = new BLLCita();
+                            bllu.EliminarCita(index);
+                            cargarCitasPendientes(1);
+                            cargarCitasCanceladas(2);
+                            ClientScript.RegisterStartupScript(
+                                this.GetType(),
+                                 "Registro",
+                                 "mensajeRedirect('Cita',' Cancelada con éxito','success','frmMisCitas.aspx')",
+                                 true
+                                 );
+                        }
+                        else
+                        {
+                            
+                        }
+                        
                         break;
             }
             }

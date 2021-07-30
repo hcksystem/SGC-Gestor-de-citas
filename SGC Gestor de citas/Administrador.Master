@@ -193,6 +193,12 @@
                             <p>Inactivos</p>
                         </a>
                     </li>
+                    <li>
+                        <a href="frmRespaldos.aspx">
+                            <i class="now-ui-icons arrows-1_cloud-upload-94"></i>
+                            <p>Respaldos</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

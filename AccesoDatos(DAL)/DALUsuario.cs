@@ -21,11 +21,18 @@ namespace AccesoDatos_DAL_
             SqlCommand cmd = new SqlCommand(string.Format("Select count(1)[Total] from Persona where identificacion='{0}'",persona.identificacion),Conexion);
             Conexion.Open();
             int Identificacion = (int)cmd.ExecuteScalar();
-            cmd = new SqlCommand(string.Format("Select count(1)[Total] from Usuario where nombreUsuario='{0}'", usuario.NombreUsuario),Conexion);
+            cmd = new SqlCommand(string.Format("Select count(1)[Total] from Usuario where nombreUsuario='{0}'", usuario.NombreUsuario), Conexion);
             int NombreUsuario = (int)cmd.ExecuteScalar();
+            cmd = new SqlCommand(string.Format("Select count(1)[Total] from Persona where Correo='{0}'",persona.correo), Conexion);
+            int Correo = (int)cmd.ExecuteScalar();
             if (Identificacion > 0)
             {
                 Resultado += String.Format(" (x)Esta Identificacion ya se encuentra registrada {0}", Environment.NewLine);
+
+            }
+            if (Correo > 0)
+            {
+                Resultado += String.Format(" (x)Este correo ya se encuentra registrado {0}", Environment.NewLine);
 
             }
             if (NombreUsuario > 0)
@@ -33,7 +40,7 @@ namespace AccesoDatos_DAL_
                 Resultado += String.Format(" (x)Este nombre de usuario ya se encuentra registrado {0}", Environment.NewLine);
             }
             Conexion.Close();
-            if ((Identificacion + NombreUsuario) == 0)
+            if ((Identificacion + NombreUsuario+Correo) == 0)
             {
                 cmd = new SqlCommand("if not exists(Select identificacion from Persona where Identificacion=@Identificacion)begin insert into Persona (nombre, apellido, correo, telefono, identificacion) values (@nombre, @apellido, @correo, @telefono, @identificacion); end", Conexion);
                 //SqlParameter parametro;

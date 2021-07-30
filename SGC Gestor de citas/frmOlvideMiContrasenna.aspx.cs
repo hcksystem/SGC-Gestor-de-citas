@@ -121,13 +121,26 @@ namespace SGC_Gestor_de_citas
 
         protected void btnVerificar_Click(object sender, EventArgs e)
         {
-            if (txtCodigoVerificacion.Text.Equals(Session["Codigo"].ToString()))
-            {
-                NuevaContrasena.Visible = true;
-                confirmar.Visible = true;
+            if (txtCodigoVerificacion.Text.Contains(" ")) {
+
+                ClientScript.RegisterStartupScript(
+                             this.GetType(),
+                             "Registro",
+                              "mensajeRedirect('Verificar','El código tiene espacios, por favor acostumbrese a revisar lo que copia, estamos?','info','#')",
+                             true
+                             );
             }
-            else { 
-            
+            else
+            {
+                if (txtCodigoVerificacion.Text.TrimEnd().TrimStart().Equals(Session["Codigo"].ToString()))
+                {
+                    NuevaContrasena.Visible = true;
+                    confirmar.Visible = true;
+                }
+                else
+                {
+
+                }
             }
         }
     }

@@ -36,7 +36,7 @@ namespace AccesoDatos_DAL_
             if (Tipo != 0) {
                 val = String.Format("and a.estado={0}", Tipo);
             }
-            SqlCommand cmd = new SqlCommand(string.Format("SELECT a.id, a.descripcion, a.estado,b.nombre[idServicio], idUsuario, Fecha, Hora FROM Cita a inner join Servicio b on a.idServicio=b.id where idUsuario={0} {1} ", iDUsuario, val), Conexion);
+            SqlCommand cmd = new SqlCommand(string.Format("SELECT a.id, a.descripcion, case when c.idCita is null then 'Cancelado' else 'Facturado' end[detEstado], a.estado,b.nombre[idServicio], idUsuario, Fecha, Hora  FROM Cita a  inner join Servicio b on a.idServicio=b.id  left join detalleFactura c on a.Id=c.idCita where idUsuario={0} {1} ", iDUsuario, val), Conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
