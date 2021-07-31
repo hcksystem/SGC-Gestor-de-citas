@@ -33,7 +33,7 @@
     .btn-primary {
     
     margin-left: 20px;
-    margin-top: 62px
+    margin-top: -16px
 }
     .btn:not(:disabled):not(.disabled) {
     
@@ -42,6 +42,17 @@
         .h6, h6 {
             font-size: 1rem;
             font-weight: bold;
+        }
+        .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 8px 60px;
+    
+}
+        .table{
+            margin-top:22px;
+            margin-left:20px;
+        }
+        .btn-outline-warning{
+            margin-left:20px;
         }
   </style>
 
@@ -61,15 +72,17 @@
                                 <header>Ayuda</header>
                                 <label for="btn-modal">X</label>
                                 <h5>Formulario de respaldos</h5>
-                                <h6>Crear respaldo</h6>
+                                <h6>Botón realizar respaldo</h6>
                                 <p>
-                                    Espacio donde se debe .
+                                    Botón que se encarga de realizar los respaldos de la información actual del sistema.
+                                    podrá visualizarlo en la tabla de restaurar respaldos.
                              
                                 </p>
                                 <br />
                                     <h6>Restaurar respaldo</h6>
                                 <p>
-                                    Espacio donde se debe .
+                                    Espacio que se encarga de restaurar la información.
+                                    Nota: tome en en cuenta la fecha y hora del archivo que desea restaurar para no afectar información valiosa para la empresa.
                              
                                     
                                 </p>
@@ -82,7 +95,7 @@
                     <hr />
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6" >
                                 <div class="form-group">
 
                                 <asp:Button runat="server" Text="Realizar Backup" CssClass="btn btn-outline-warning" OnClick="Unnamed_Click" />
@@ -107,6 +120,8 @@
                             <div class="col-6">
                             <div class="form-inline">
                                 <div class="form-group">
+                                    <br />
+                                    <br />
                                 <asp:Button ID="btnRestaurar" runat="server" Text="Restaurar" CssClass="btn btn-primary btn-round" Width="127px" OnClick="btnRestaurar_Click" />
                                     </div>
                             </div>
@@ -114,10 +129,10 @@
                              
                         </div>
                         <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
+                            <div class="col-12">
+                                <div class="form-group" style="overflow:scroll">
                                    <asp:GridView CssClass="table table-hover" ID="GridView1" runat="server"  OnRowCommand="GridView1_RowCommand"
-                                        AutoGenerateColumns="false" AllowPaging="True" >
+                                        AutoGenerateColumns="false" AllowPaging="True" PageSize="3" OnPageIndexChanging="GridView1_PageIndexChanging" >
                                        <columns>
                                        <asp:TemplateField HeaderText="Nombre Backup">
                                                     <ItemTemplate>

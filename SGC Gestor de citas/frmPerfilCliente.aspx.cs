@@ -40,7 +40,6 @@ namespace SGC_Gestor_de_citas
 
         protected void Guardar_Click(object sender, EventArgs e)
         {
-
             BLLPersona bllpersona = new BLLPersona();
             persona.nombre = txtNombre.Text;
             persona.correo = txtCorreo.Text;
@@ -48,20 +47,48 @@ namespace SGC_Gestor_de_citas
             persona.identificacion = txtID.Text;
             persona.telefono = txtTelefono.Text;
             string nuevaClave = "";
-            if (txtNewPassword.Text.Length > 0) {
+            if (txtNewPassword.Text.Length > 0)
+            {
                 //Confirm para que alerte
-                if (bllpersona.CompararClave(txtOldPassword.Text))
+                if (bllpersona.CompararClave(txtOldPassword.Text,Session["ID"].ToString()))
                 {
                     nuevaClave = txtNewPassword.Text;
+                    int result = bllpersona.Actualizar(persona, nuevaClave);//1 Actualizo la persona, 2 Actualizo la persona  y la clave y si es 0 no hizo nada
+                    switch (result)
+                    {
+                        case 1://redirect a la misma pagina para que se vean los cambios
+                            ClientScript.RegisterStartupScript(
+                               this.GetType(),
+                                "Registro",
+                                "mensajeRedirect('Información',' Datos Actualizados correctamente','success','frmPerfilCliente.aspx')",
+                                true
+                                );
+                            break;
+                        case 2://redirect a login para que pruebe la clave, recuerden cerrar la session
 
-                    ClientScript.RegisterStartupScript(
-                       this.GetType(),
-                        "Registro",
-                        "mensajeRedirect('Contraseña',' actualizada','success','frmLogin.aspx')",
-                        true
-                        );
+                            ClientScript.RegisterStartupScript(
+                               this.GetType(),
+                                "Registro",
+                                "mensajeRedirect('Contraseña',' Por favor inicie sesion de nuevo con su nueva contraseña','success','frmLogin.aspx')",
+                                true
+                                );
+                            break;
+                        case 0://No paso nada
+                            ClientScript.RegisterStartupScript(
+                               this.GetType(),
+                                "Registro",
+                                "mensajeRedirect('Contraseña','Ha ocurrido un error por favor intentar de nuevo, o comunicarse con Soporte','error','#')",
+                                true
+                                );
+                            break;
+
+                    }
                 }
-                else {
+                else
+                {
+                    txtOldPassword.Text = "";
+                    txtNewPassword.Text = "";
+                   // txtOldPassword.Focus();
                     //Alert la clave no coincide
                     ClientScript.RegisterStartupScript(
                        this.GetType(),
@@ -69,41 +96,40 @@ namespace SGC_Gestor_de_citas
                         "mensajeRedirect('Contraseña',' No coincide','error','#')",
                         true
                         );
-                    txtOldPassword.Text = "";
-                    txtNewPassword.Text = "";
-                    txtOldPassword.Focus();
                 }
             }
-           int result= bllpersona.Actualizar(persona,nuevaClave);//1 Actualizo la persona, 2 Actualizo la persona  y la clave y si es 0 no hizo nada
-            switch (result) {
-                case 1://redirect a la misma pagina para que se vean los cambios
-                    ClientScript.RegisterStartupScript(
-                       this.GetType(),
-                        "Registro",
-                        "mensajeRedirect('Información',' Datos Actualizados correctamente','success','frmPerfilCliente.aspx')",
-                        true
-                        );
-                    break;
-                case 2://redirect a login para que pruebe la clave, recuerden cerrar la session
+            else {
+                int result = bllpersona.Actualizar(persona, nuevaClave);//1 Actualizo la persona, 2 Actualizo la persona  y la clave y si es 0 no hizo nada
+                switch (result)
+                {
+                    case 1://redirect a la misma pagina para que se vean los cambios
+                        ClientScript.RegisterStartupScript(
+                           this.GetType(),
+                            "Registro",
+                            "mensajeRedirect('Información',' Datos Actualizados correctamente','success','frmPerfilCliente.aspx')",
+                            true
+                            );
+                        break;
+                    case 2://redirect a login para que pruebe la clave, recuerden cerrar la session
 
-                    ClientScript.RegisterStartupScript(
-                       this.GetType(),
-                        "Registro",
-                        "mensajeRedirect('Contraseña',' Por favor inicie sesion de nuevo con su nueva contraseña','success','frmLogin.aspx')",
-                        true
-                        );
-                    break;
-                case 0://No paso nada
-                    ClientScript.RegisterStartupScript(
-                       this.GetType(),
-                        "Registro",
-                        "mensajeRedirect('Contraseña','Ha ocurrido un error por favor intentar de nuevo, o comunicarse con Soporte','error','#')",
-                        true
-                        );
-                    break;
+                        ClientScript.RegisterStartupScript(
+                           this.GetType(),
+                            "Registro",
+                            "mensajeRedirect('Contraseña',' Por favor inicie sesion de nuevo con su nueva contraseña','success','frmLogin.aspx')",
+                            true
+                            );
+                        break;
+                    case 0://No paso nada
+                        ClientScript.RegisterStartupScript(
+                           this.GetType(),
+                            "Registro",
+                            "mensajeRedirect('Contraseña','Ha ocurrido un error por favor intentar de nuevo, o comunicarse con Soporte','error','#')",
+                            true
+                            );
+                        break;
 
+                }
             }
-
 
         }
 

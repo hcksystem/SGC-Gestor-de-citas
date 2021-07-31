@@ -91,5 +91,11 @@ namespace SGC_Gestor_de_citas
         {
             RealizarRestauracion();
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            this.CargarBackups();
+        }
     }
 }

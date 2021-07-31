@@ -54,9 +54,9 @@ namespace AccesoDatos_DAL_
 
         }
 
-        public bool CompararClave(string text1)
+        public bool CompararClave(string text1,string ID)
         {
-            String osql = string.Format("Select count(1) from Usuario where contrasenna=HASHBYTES('MD5','{0}') and id=1",text1);
+            String osql = string.Format("Select count(1) from Usuario where contrasenna=HASHBYTES('MD5','{0}') and id={1}",text1,ID);
             SqlCommand cmd = new SqlCommand(osql, Conexion);
             Conexion.Open();
             int result = (int)cmd.ExecuteScalar();
@@ -70,7 +70,7 @@ namespace AccesoDatos_DAL_
 
         public int Actualizar(Persona persona, string nuevaClave)
         {
-            SqlCommand cmd = new SqlCommand(String.Format("Update a set Identificacion='{0}',Nombre='{2}',correo='{3}',apellido='{4}' from Persona a inner join Usuario b on a.id=b.idPersona where b.id={1}",persona.identificacion,persona.id,persona.nombre,persona.correo,persona.apellido), Conexion);
+            SqlCommand cmd = new SqlCommand(String.Format("Update a set Identificacion='{0}',Nombre='{2}',correo='{3}',apellido='{4}',telefono='{5}' from Persona a inner join Usuario b on a.id=b.idPersona where b.id={1}",persona.identificacion,persona.id,persona.nombre,persona.correo,persona.apellido,persona.telefono), Conexion);
             Conexion.Open();
             int result = cmd.ExecuteNonQuery();
             if (nuevaClave.Length > 0) {

@@ -126,7 +126,7 @@ namespace SGC_Gestor_de_citas
                 ClientScript.RegisterStartupScript(
                              this.GetType(),
                              "Registro",
-                              "mensajeRedirect('Verificar','El código tiene espacios, por favor acostumbrese a revisar lo que copia, estamos?','info','#')",
+                              "mensajeRedirect('Verificar','El código tiene espacios, por favor verifique e intente de nuevo.','info','#')",
                              true
                              );
             }

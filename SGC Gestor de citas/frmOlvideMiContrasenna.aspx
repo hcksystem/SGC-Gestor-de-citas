@@ -102,7 +102,7 @@
                             <div class="row">
                             </div>
                             <br />
-                            <asp:Panel runat="server" DefaultButton="btnSolicitarContrasenna">
+                            
                             <table class="table table-hover">
                                 <tr>
                                     <th>Correo</th>
@@ -110,25 +110,18 @@
                                         <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" TabIndex="1" placeHolder="* Requerido *"></asp:TextBox>
                                     </td>
                                     <td>
-                                        <asp:Button ID="btnSolicitarContrasenna" runat="server" Text="Solicitar " OnClick="btnSolicitarContrasenna_Click" CssClass="btn btn-primary"/>
+                                        <asp:Button ID="btnSolicitarContrasenna" runat="server" CssClass="btn btn-primary btn-round" Text="Solicitar" OnClick="btnSolicitarContrasenna_Click" />
                                     </td>
-                                    </tr>
-                                </table>
-                                </asp:Panel>
-                            <asp:Panel runat="server" DefaultButton="btnVerificar">
-                                <table>
-                                    <tr>
                                     <td id="CodigoVerificacion" runat="server" visible="false">
                                         <asp:TextBox ID="txtCodigoVerificacion" runat="server" CssClass="form-control" TabIndex="1" placeHolder="* Requerido *"></asp:TextBox>
                                         </td>
                                     <td id="tdVerificar" runat="server" visible="false">
-                                        <asp:Button ID="btnVerificar" runat="server" CssClass="btn btn-primary" TabIndex="1" OnClick="btnVerificar_Click" Text="Verificar"></asp:Button>
+                                        <asp:Button ID="btnVerificar" runat="server" CssClass="btn btn-primary btn-round" TabIndex="1" Text="Verificar"  OnClick="btnVerificar_Click"></asp:Button>
                                         </td>
                                 </tr>
-                                </table>
-                                </asp:Panel>
-                            <asp:Panel runat="server" DefaultButton="btnConfirmar">
-                                <table class="table table-hover">
+
+ 
+
                                 <tr runat="server" visible="false" id="NuevaContrasena">
                                     <th>Nueva contraseña</th>
                                     <td colspan="2">
@@ -151,8 +144,9 @@
                                     </td>
                                 </tr>
 
+ 
+
                             </table>
-                                </asp:Panel>
 
                         </div>
 

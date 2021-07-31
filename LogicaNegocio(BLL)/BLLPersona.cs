@@ -45,9 +45,9 @@ namespace LogicaNegocio_BLL_
             daln.Modificar(ID, nombre, apellido, correo, telefono, Identificacion);
         }
 
-        public bool CompararClave(string text1)
+        public bool CompararClave(string text1,string ID)
         { DALPersona daln = new DALPersona();
-            return daln.CompararClave(text1);
+            return daln.CompararClave(text1,ID);
         }
 
         public int Actualizar(Persona persona, string nuevaClave)
