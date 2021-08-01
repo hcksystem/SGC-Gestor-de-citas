@@ -151,8 +151,8 @@
                                     <br />
                                     Estos estan divididos por productos(P), servicios(S) y citas (C): por ejemplo:<br />
                                     * (S;1;Cortes de hombre; precio).<br />
-                                    * (P;1;Gel;precio).
-                                    * (C;1;persona1;cédula).
+                                    * (P;1;Gel;precio).<br />
+                                    * (C;1;persona1;cédula;cantidad inventario).
 
                                 </p>
                                 <br />
@@ -221,20 +221,25 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Fecha:</label>
                                     <asp:Label ID="lblFecha" runat="server"><%=DateTime.Now.ToShortDateString() %></asp:Label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Cliente:</label>
+
+                                    <br />
+                                    <br />
+                                      <label>Cliente:</label>
                                     <asp:Label ID="lblCliente" runat="server"></asp:Label>
                                     <asp:TextBox ID="txtBuscarCliente" runat="server" CssClass="form-control autosuggest" AutoPostBack="true" OnTextChanged="txtBuscarCliente_TextChanged"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Fact"
                                         ControlToValidate="txtBuscarCliente" ErrorMessage="Indique la persona a quien se va a facturar" Display="Dynamic"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                  
                                 </div>
                             </div>
                             <br />
@@ -279,7 +284,7 @@
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="La cantidad debe ser un número positivo" ControlToValidate="txtCantidad" ValidationExpression="^[1-9][0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
                                     </div></td><td>
                                     <div class="form-group">
-                                        <asp:Button CssClass="btn btn-outline-primary" runat="server" ID="btnAgregar" Text="Agregar Linea" OnClick="btnAgregar_Click1" ValidationGroup="Fact" />
+                                        <asp:Button CssClass="btn btn-outline-primary" runat="server" ID="btnAgregar" Text="Agregar línea" OnClick="btnAgregar_Click1" ValidationGroup="Fact" />
                                     </div>
                                                 </td></tr>
                                         <tr><td>

@@ -106,7 +106,7 @@ namespace SGC_Gestor_de_citas
                         ClientScript.RegisterStartupScript(
                            this.GetType(),
                             "Registro",
-                            "mensajeRedirect('Información',' Datos Actualizados correctamente','success','frmPerfilCliente.aspx')",
+                            "mensajeRedirect('Información',' Datos actualizados correctamente','success','frmPerfilCliente.aspx')",
                             true
                             );
                         break;

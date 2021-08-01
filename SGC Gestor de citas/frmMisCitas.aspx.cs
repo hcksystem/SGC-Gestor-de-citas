@@ -21,7 +21,7 @@ namespace SGC_Gestor_de_citas
             {
                 cargarCitasPendientes(1);
                 cargarCitasCanceladas(2);
-                cargarCitasHistorico(0);
+                //cargarCitasHistorico(0);
             }
             
         }
@@ -55,17 +55,17 @@ namespace SGC_Gestor_de_citas
         }
         public void cargarCitasHistorico(int Tipo)
         {
-            try
-            {
-                BLLCita bllc = new BLLCita();
-                DataTable dt = bllc.ObtenerMisCitas(Convert.ToInt32(Session["ID"].ToString()), Tipo);
-                gridCitasHistorico.DataSource = dt;
-                gridCitasHistorico.DataBind();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            //try
+            //{
+            //    BLLCita bllc = new BLLCita();
+            //    DataTable dt = bllc.ObtenerMisCitas(Convert.ToInt32(Session["ID"].ToString()), Tipo);
+            //    gridCitasHistorico.DataSource = dt;
+            //    gridCitasHistorico.DataBind();
+            //}
+            //catch (Exception)
+            //{
+            //    throw;
+            //}
         }
 
         //Citas Pendientes
@@ -278,40 +278,40 @@ namespace SGC_Gestor_de_citas
             }
         }
 
-        protected void gridCitasHistorico_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            gridCitasHistorico.PageIndex = e.NewPageIndex;
-            this.cargarCitasHistorico(0);
-        }
+        //protected void gridCitasHistorico_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        //{
+        //    gridCitasHistorico.PageIndex = e.NewPageIndex;
+        //    this.cargarCitasHistorico(0);
+        //}
 
-        protected void gridCitasHistorico_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                switch (e.CommandName)
-                {
-                    case "Cancelar":
-                        //Recorre la linea y elimina el id
-                        int index = Convert.ToInt32(e.CommandArgument);
-                        BLLCita bllu = new BLLCita();
-                        bllu.EliminarCita(index);
-                        cargarCitasHistorico(0);
+        //protected void gridCitasHistorico_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    try
+        //    {
+        //        switch (e.CommandName)
+        //        {
+        //            case "Cancelar":
+        //                //Recorre la linea y elimina el id
+        //                int index = Convert.ToInt32(e.CommandArgument);
+        //                BLLCita bllu = new BLLCita();
+        //                bllu.EliminarCita(index);
+        //                cargarCitasHistorico(0);
 
-                        ClientScript.RegisterStartupScript(
-                            this.GetType(),
-                             "Registro",
-                             "mensajeRedirect('Cita',' Cancelada con éxito','success','frmMisCitas.aspx')",
-                             true
-                             );
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+        //                ClientScript.RegisterStartupScript(
+        //                    this.GetType(),
+        //                     "Registro",
+        //                     "mensajeRedirect('Cita',' Cancelada con éxito','success','frmMisCitas.aspx')",
+        //                     true
+        //                     );
+        //                break;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
 
-            cargarCitasHistorico(0);
-        }
+        //    cargarCitasHistorico(0);
+        //}
     }
 }

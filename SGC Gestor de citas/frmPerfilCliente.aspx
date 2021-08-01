@@ -28,6 +28,7 @@
     
     margin-left: 8px;
 }
+      
 
     </style>
 
@@ -125,8 +126,8 @@
                             <tr>
                                 <th>Cambiar Contraseña</th>
                                 <td>
-                                        <asp:TextBox ID="txtOldPassword" TextMode="Password" runat="server" CssClass="form-control" placeholder="Contraseña actual"></asp:TextBox>
-                                        <asp:CheckBox ID="CheckBox1" runat="server" Text="Mostrar contraseña" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" />
+                                        <asp:TextBox ID="txtOldPassword" TextMode="Password" runat="server" CssClass="form-control mb-4" placeholder="Contraseña actual"  ></asp:TextBox>
+                                        <asp:CheckBox ID="CheckBox1" runat="server" Text="Mostrar contraseña" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" Visible="false"/>
 
                                         
                                    

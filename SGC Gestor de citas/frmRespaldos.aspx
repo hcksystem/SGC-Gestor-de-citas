@@ -72,6 +72,7 @@
                                 <header>Ayuda</header>
                                 <label for="btn-modal">X</label>
                                 <h5>Formulario de respaldos</h5>
+                                <br />
                                 <h6>Botón realizar respaldo</h6>
                                 <p>
                                     Botón que se encarga de realizar los respaldos de la información actual del sistema.
@@ -81,7 +82,7 @@
                                 <br />
                                     <h6>Restaurar respaldo</h6>
                                 <p>
-                                    Espacio que se encarga de restaurar la información.
+                                    Espacio que se encarga de restaurar la información.<br />
                                     Nota: tome en en cuenta la fecha y hora del archivo que desea restaurar para no afectar información valiosa para la empresa.
                              
                                     

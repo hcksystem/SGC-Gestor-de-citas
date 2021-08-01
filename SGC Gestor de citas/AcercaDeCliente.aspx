@@ -18,7 +18,7 @@
                     <div class="card-header">
                         <h5 class="title">Sistema SGC versión 1.0</h5>
                     </div>
-                    <hr />
+                    <hr/>
                     <div class="card-body">
                         <h1></h1>
                         <h4>Empresa: Soluciones ARS</h4>

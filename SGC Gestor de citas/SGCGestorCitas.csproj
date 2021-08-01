@@ -257,6 +257,7 @@
     <Content Include="frmFactura.aspx" />
     <Content Include="frmFacturacion.aspx" />
     <Content Include="frmFacturacionEmpleado.aspx" />
+    <Content Include="frmFacturaEmpleado.aspx" />
     <Content Include="frmGestorCita.aspx" />
     <Content Include="frmInactivos.aspx" />
     <Content Include="frmInventario.aspx" />
@@ -431,6 +432,13 @@
     </Compile>
     <Compile Include="frmFacturacionEmpleado.aspx.designer.cs">
       <DependentUpon>frmFacturacionEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmFacturaEmpleado.aspx.cs">
+      <DependentUpon>frmFacturaEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmFacturaEmpleado.aspx.designer.cs">
+      <DependentUpon>frmFacturaEmpleado.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmGestorCita.aspx.cs">
       <DependentUpon>frmGestorCita.aspx</DependentUpon>

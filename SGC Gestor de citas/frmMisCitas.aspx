@@ -99,12 +99,12 @@ $(document).ready(function(){
                         <div class="row">
                            
 
-                            <div class="col-md-8" style="overflow: scroll;min-height:450px">
+                            <div class="col-md-12" style="overflow: scroll;min-height:450px">
                                 <div class="form-group">
                                     <ul class="nav nav-pills nav-fill" id="myTab">
     <li class="nav-item active"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Citas Pendientes</a></li>
     <li class="nav-item"><a class="nav-link" id="menu1-tab" data-toggle="tab" href="#menu1" role="tab" aria-controls="profile" aria-selected="false">Citas</a></li>
-    <li class="nav-item"><a class="nav-link" id="menu2-tab" data-toggle="tab" href="#menu2" role="tab" aria-controls="profile" aria-selected="false">Citas Histórico</a></li>
+<%--    <li class="nav-item"><a class="nav-link" id="menu2-tab" data-toggle="tab" href="#menu2" role="tab" aria-controls="profile" aria-selected="false">Citas Histórico</a></li>--%>
   </ul>
 <div class="tab-content">
     <div id="home" class="tab-pane fade show active">
@@ -143,10 +143,11 @@ $(document).ready(function(){
     </div>
 
     </div>
-    <div id="menu2" class="tab-pane fade">
+
+   <%-- <div id="menu2" class="tab-pane fade" visible="false">
       
       <div id="home2" class="tab-pane fade show active">
-      <asp:GridView ID="gridCitasHistorico" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="4" AllowPaging="True" Width="100%" OnPageIndexChanging="gridCitasHistorico_PageIndexChanging" OnRowDeleting="gridCitasHistorico_RowDeleting" OnRowDataBound="gridCitasHistorico_RowDataBound" OnRowCommand="gridCitasHistorico_RowCommand">
+      <asp:GridView ID="gridCitasHistorico" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" PageSize="4" AllowPaging="True" Width="100%" OnPageIndexChanging="gridCitasHistorico_PageIndexChanging" OnRowDeleting="gridCitasHistorico_RowDeleting" OnRowDataBound="gridCitasHistorico_RowDataBound" OnRowCommand="gridCitasHistorico_RowCommand" Visible="false">
                                         <Columns>
                                    
                              <asp:BoundField DataField="id" HeaderText="ID"></asp:BoundField>
@@ -159,7 +160,7 @@ $(document).ready(function(){
                                         <HeaderStyle CssClass="table-info" />
                                     </asp:GridView>
     </div>
-    </div>
+    </div>--%>
   
   </div>
                                     

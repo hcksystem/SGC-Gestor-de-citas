@@ -58,8 +58,9 @@ namespace SGC_Gestor_de_citas
                 }
 
                 LlenarCombos();
-
+                
             }
+           
         }
 
 
@@ -118,9 +119,10 @@ namespace SGC_Gestor_de_citas
                 ClientScript.RegisterStartupScript(
                                   this.GetType(),
                                   "Registro",
-                                   "mensajeRedirect('Factura N° " + Numeracion + "','" + result + "','success','frmFacturacion.aspx')",
+                                   "mensajeRedirect('Factura N° " + Numeracion + "','" + result + "','success','frmFacturacionEmpleado.aspx')",
                                   true
                                   );
+                btnImprimir.Visible = true;
             }
             catch (Exception ex)
             {
@@ -132,6 +134,7 @@ namespace SGC_Gestor_de_citas
                                   true
                                   );
             }
+            btnImprimir.Visible = true;
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -386,8 +389,8 @@ namespace SGC_Gestor_de_citas
         protected void btnImprimir_Click(object sender, EventArgs e)
         {
             int NoFact = Convert.ToInt32(lblNumero.Text) - 1;
-            Response.Write("<script>window.open ('FrmFactura.aspx?NoFact=" + NoFact + "','_blank');</script>");
-
+            Response.Write("<script>window.open ('FrmFacturaEmpleado.aspx?NoFact=" + NoFact + "','_blank');</script>");
+            btnImprimir.Visible = false;
         }
         protected void txtBuscar_TextChanged(object sender, EventArgs e)
         {

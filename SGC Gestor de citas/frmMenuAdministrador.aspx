@@ -15,10 +15,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <b>
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></b>
+    <b><asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></b>
 
     <style>
+        .panel-header-sm {
+   
+            margin-top: 20px;
+}
+        b{
+            margin-left: 36px;
+            font-size: 19px;
+        }
         .btn {
             background-color: #626c7d
         }

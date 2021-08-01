@@ -45,20 +45,21 @@
             });
         });
     </script>
+    
 
     <div id="login">
         <h3 class="text-center text-white pt-5">Login form</h3>
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
+                    <div id="login-box" class="col-md-12" style="box-shadow: 0 1px 15px 1px rgb(39 39 39 / 30%);">
                         <form runat="server" class="form" action="" method="post">
                             <br />
                             <h3 class="text-center text-info">Inicio de sesión</h3>
                             <br />
                             <div class="form-group">
                                 <label for="username" class="text-info">Nombre de usuario:</label><br>
-                                <asp:TextBox ID="txtNombreUsuario" runat="server" CssClass="form-control" TabIndex="1"
+                                <asp:TextBox ID="txtNombreUsuario" runat="server" CssClass="form-control" TabIndex="1" AutoComplete="off"
                                     placeHolder="* Requerido *"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="ManteL"
                                     ControlToValidate="txtNombreUsuario" ErrorMessage="Digite su nombre de usuario"

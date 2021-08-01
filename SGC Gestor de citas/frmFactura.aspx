@@ -29,7 +29,7 @@
                             <div class="col-md-12">
                                 <div class="form-inline">
                                 <div class="form-group">
-                                    <asp:TextBox runat="server" ID="txtNumFact" TextMode="Number" placeholder="Número Factura" AutoPostBack="true" OnTextChanged="txtNumFact_TextChanged"/><asp:ImageButton runat="server" ID="primero" ImageUrl="https://img.icons8.com/material-rounded/452/first.png" Width="32px"/><asp:ImageButton runat="server" ID="anterior" ImageUrl="https://img.icons8.com/material-rounded/452/previous.png" Width="32px"/><asp:ImageButton runat="server" ID="siguiente" ImageUrl="https://img.icons8.com/material-rounded/452/next.png" Width="32px"/><asp:ImageButton runat="server" ID="ultimo" ImageUrl="https://img.icons8.com/material-rounded/452/last.png" Width="32px"/>
+                                    <asp:TextBox runat="server" ID="txtNumFact" TextMode="Number" placeholder="Número Factura" AutoPostBack="true" OnTextChanged="txtNumFact_TextChanged"/>
                                 </div>
                                     </div>
                             </div>
