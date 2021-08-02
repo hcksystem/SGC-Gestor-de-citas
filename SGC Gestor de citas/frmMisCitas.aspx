@@ -103,7 +103,7 @@ $(document).ready(function(){
                                 <div class="form-group">
                                     <ul class="nav nav-pills nav-fill" id="myTab">
     <li class="nav-item active"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Citas Pendientes</a></li>
-    <li class="nav-item"><a class="nav-link" id="menu1-tab" data-toggle="tab" href="#menu1" role="tab" aria-controls="profile" aria-selected="false">Citas</a></li>
+    <li class="nav-item"><a class="nav-link" id="menu1-tab" data-toggle="tab" href="#menu1" role="tab" aria-controls="profile" aria-selected="false">Histórico de citas</a></li>
 <%--    <li class="nav-item"><a class="nav-link" id="menu2-tab" data-toggle="tab" href="#menu2" role="tab" aria-controls="profile" aria-selected="false">Citas Histórico</a></li>--%>
   </ul>
 <div class="tab-content">

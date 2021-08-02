@@ -177,6 +177,12 @@
                                             <span class="sidebar-normal">Productos</span>
                                         </a>
                                     </li>
+                                      <li>
+                                        <a href="FrmFactura.aspx">
+                                            <span class="sidebar-mini-icon"><i class="now-ui-icons files_single-copy-04"></i></span>
+                                            <span class="sidebar-normal">Facturas</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

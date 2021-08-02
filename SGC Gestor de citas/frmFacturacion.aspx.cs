@@ -54,11 +54,14 @@ namespace SGC_Gestor_de_citas
                     {
                         dropMetodopago.Items.Add(new ListItem(getPago.ToString(), ((int)getPago).ToString()));
                     }
+                   
                 }
                 catch (Exception)
                 {
                 }
-                
+                if (Session["Nofact"] != null) {
+                    btnImprimir.Enabled = true;
+                }
                 LlenarCombos();
                 
             }
@@ -123,6 +126,8 @@ namespace SGC_Gestor_de_citas
                                    "mensajeRedirect('Factura N° " + Numeracion + "','" + result + "','success','frmFacturacion.aspx')",
                                   true
                                   );
+                Session["Nofact"] = Numeracion;
+                btnImprimir.Enabled = true;
             }
             catch (Exception ex) {
 
@@ -290,9 +295,9 @@ namespace SGC_Gestor_de_citas
                             TotalFactura += precio * Convert.ToDouble(txtCantidad.Text);
                             txtBuscar.Text = "";
                             txtBuscar.Focus();
-                            TotalFact.Text = TotalFactura + "";
-                            TotalIVA.Text = (TotalFactura * 0.13) + "";
-                            TotalTotal.Text = (TotalFactura * 1.13) + "";
+                            TotalFact.Text = String.Format("{0:C}",TotalFactura);
+                            TotalIVA.Text = String.Format("{0:C}", (TotalFactura * 0.13));
+                            TotalTotal.Text = String.Format("{0:C}", (TotalFactura * 1.13));
                         }
                         else
                         {

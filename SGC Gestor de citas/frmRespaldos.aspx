@@ -12,6 +12,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
     <link href="assets/css/estiloLista.css" rel="stylesheet" />
+    <script type = "text/javascript">
+        function Confirm() {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Esta seguro que desea restaurar este backup <%=Session["BackupName"].ToString()%>?")) {
+                confirm_value.value = "Si";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <style>
@@ -123,7 +136,7 @@
                                 <div class="form-group">
                                     <br />
                                     <br />
-                                <asp:Button ID="btnRestaurar" runat="server" Text="Restaurar" CssClass="btn btn-primary btn-round" Width="127px" OnClick="btnRestaurar_Click" />
+                                <asp:Button  OnClientClick="Confirm()" ID="btnRestaurar" runat="server" Text="Restaurar" CssClass="btn btn-primary btn-round" Width="127px" OnClick="btnRestaurar_Click" />
                                     </div>
                             </div>
                                 </div>
@@ -135,7 +148,13 @@
                                    <asp:GridView CssClass="table table-hover" ID="GridView1" runat="server"  OnRowCommand="GridView1_RowCommand"
                                         AutoGenerateColumns="false" AllowPaging="True" PageSize="3" OnPageIndexChanging="GridView1_PageIndexChanging" >
                                        <columns>
-                                       <asp:TemplateField HeaderText="Nombre Backup">
+                                           <asp:TemplateField HeaderText="">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDescargar" runat ="server" CommandArgument='<%#Eval("NombreBackup")%>' CommandName ="Descargar"   Text ="Descargar">  
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                       <asp:TemplateField HeaderText="Nombre respaldo">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkNombreBackup" runat ="server" CommandArgument='<%#Eval("NombreBackup")%>' CommandName ="SelectBackup"   Text ='<%#Eval("NombreBackup")%>'>  
                                                         </asp:LinkButton>
@@ -163,4 +182,5 @@
             </div>
         </div>
    </div>
+
 </asp:Content>

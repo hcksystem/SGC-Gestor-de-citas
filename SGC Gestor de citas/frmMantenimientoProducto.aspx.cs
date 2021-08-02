@@ -104,15 +104,27 @@ namespace SGC_Gestor_de_citas
                 //Recorre la linea y elimina el id
                 int index = Convert.ToInt32(gridProductos.Rows[e.RowIndex].Cells[2].Text);
                 BLLProducto bllu = new BLLProducto();
-                bllu.CambiarEstadoProducto(index);
-                CargarDatos();
+                int Inv = bllu.GetInventory(index);
+                if (Inv == 0)
+                {
+                    bllu.CambiarEstadoProducto(index);
+                    CargarDatos();
 
-                ClientScript.RegisterStartupScript(
-                    this.GetType(),
-                     "Registro",
-                     "mensajeRedirect('Producto',' Eliminado con éxito','success','frmMantenimientoProducto.aspx')",
-                     true
-                     );
+                    ClientScript.RegisterStartupScript(
+                        this.GetType(),
+                         "Registro",
+                         "mensajeRedirect('Producto',' Eliminado con éxito','success','frmMantenimientoProducto.aspx')",
+                         true
+                         );
+                }
+                else {
+                    ClientScript.RegisterStartupScript(
+                      this.GetType(),
+                       "Registro",
+                       "mensajeRedirect('Producto','No puede realizar dicha accion','error','#')",
+                       true
+                       );
+                }
             }
             catch (Exception)
             {

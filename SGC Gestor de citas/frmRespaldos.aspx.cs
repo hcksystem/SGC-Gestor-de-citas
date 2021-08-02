@@ -5,9 +5,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace SGC_Gestor_de_citas
 {
@@ -17,6 +19,7 @@ namespace SGC_Gestor_de_citas
         {
             if (!Page.IsPostBack) {
                 CargarBackups();
+                Session["BackupName"] = "";
             }
         }
         protected void RealizarBackup()
@@ -27,27 +30,39 @@ namespace SGC_Gestor_de_citas
             connection.Open();
             SqlCommand command =
         new SqlCommand(sqlCitas, connection);
-            command.ExecuteNonQuery();
+            String Backup=(String)command.ExecuteScalar();
             CargarBackups();
+           
         }
         protected void RealizarRestauracion()
         {
             RealizarBackup();
-            string sqlCitas = String.Format("exec master..SP_Restore 'SolucionesSGC','{0}'", Session["Backup"].ToString());
-            SqlConnectionStringBuilder stringBuilder = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["SQL1"].ConnectionString);
-            stringBuilder.Remove("User Id");
-            stringBuilder.Remove("Password");
-            stringBuilder.Remove("Initial Catalog");
-                stringBuilder.InitialCatalog="master";
-            stringBuilder.UserID = "Seguridad";
-            stringBuilder.Password = "Seguridad2021";
-            SqlConnection connection = new
-        SqlConnection(stringBuilder.ConnectionString);
-            connection.Open();
-            SqlCommand command =
-        new SqlCommand(sqlCitas, connection);
-            command.ExecuteNonQuery();
-            CargarBackups();
+            if (Session["BackupName"].ToString().Length > 0)
+            {
+                string sqlCitas = String.Format("exec master..SP_Restore 'SolucionesSGC','{0}'", Session["Backup"].ToString());
+                SqlConnectionStringBuilder stringBuilder = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["SQL1"].ConnectionString);
+                stringBuilder.Remove("User Id");
+                stringBuilder.Remove("Password");
+                stringBuilder.Remove("Initial Catalog");
+                stringBuilder.InitialCatalog = "master";
+                stringBuilder.UserID = "Seguridad";
+                stringBuilder.Password = "Seguridad2021";
+                SqlConnection connection = new
+            SqlConnection(stringBuilder.ConnectionString);
+                connection.Open();
+                SqlCommand command =
+            new SqlCommand(sqlCitas, connection);
+                command.ExecuteNonQuery();
+                CargarBackups();
+            }
+            else {
+                ClientScript.RegisterStartupScript(
+                   this.GetType(),
+                    "Registro",
+                    "mensajeRedirect('Respaldo','Debe seleccionar un respaldo','error','#')",
+                    true
+                    );
+            }
         }
         protected void CargarBackups() {
             string ruta = Server.MapPath("~/Respaldos");
@@ -83,13 +98,31 @@ namespace SGC_Gestor_de_citas
                     String Ruta=Server.MapPath("~/Respaldos");
                     string NombreBackup = Convert.ToString(e.CommandArgument.ToString());
                     Session["Backup"] = Ruta +@"\"+ NombreBackup;
+                    Session["BackupName"] = NombreBackup;
+                    ClientScript.RegisterStartupScript(
+                    this.GetType(),
+                     "Registro",
+                     string.Format("mensajeRedirect('Respaldo',' Backup {0} Seleccionado correctamente','success','#')",NombreBackup),
+                     true
+                     );
+                    break;
+                case "Descargar":
+                    string url = Server.MapPath("~/Respaldos/" + e.CommandArgument.ToString());
+                    //Response.ContentType = "application/pdf";
+                    Response.AppendHeader("Content-Disposition", string.Format("attachment; filename={0}", e.CommandArgument.ToString()));
+                    Response.TransmitFile(url);
+                    Response.End();
                     break;
             }
         }
 
         protected void btnRestaurar_Click(object sender, EventArgs e)
         {
-            RealizarRestauracion();
+            string confirmValue = Request.Form["confirm_value"];
+            if (confirmValue == "Si")
+            {
+                RealizarRestauracion();
+            }
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)

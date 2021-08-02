@@ -26,8 +26,11 @@ namespace SGC_Gestor_de_citas
 
                     localReport.ReportPath = "rptFact.rdlc";
                     DataSet dataset = new DataSet("DataSet1");
-                    string NoFact = Request.QueryString["NoFact"];
-                    GenerarFactura(NoFact, ref dataset);
+                    if (txtNumFact.Text.Length == 0)
+                    {
+                        string NoFact = Request.QueryString["NoFact"];
+                        GenerarFactura(NoFact, ref dataset);
+                    }
                     ReportDataSource dsFact = new ReportDataSource();
                     dsFact.Name = "DataSet1";
                     dsFact.Value = dataset.Tables["DataSet1"];
@@ -40,23 +43,27 @@ namespace SGC_Gestor_de_citas
         protected void txtNumFact_TextChanged(object sender, EventArgs e)
         {
             // Set the processing mode for the ReportViewer to Local  
-            ReportViewer1.ProcessingMode = ProcessingMode.Local;
+            //ReportViewer1.ProcessingMode = ProcessingMode.Local;
 
-            LocalReport localReport = ReportViewer1.LocalReport;
+            //LocalReport localReport = ReportViewer1.LocalReport;
 
-            localReport.ReportPath = "rptFact.rdlc";
-            DataSet dataset = new DataSet("DataSet1");
-            string NoFact = txtNumFact.Text;
-            GenerarFactura(NoFact, ref dataset);
-            ReportDataSource dsFact = new ReportDataSource();
-            dsFact.Name = "DataSet1";
-            dsFact.Value = dataset.Tables["DataSet1"];
+            //localReport.ReportPath = "rptFact.rdlc";
+            //DataSet dataset = new DataSet("DataSet1");
+            //string NoFact = txtNumFact.Text;
+            //GenerarFactura(NoFact, ref dataset);
+            //ReportDataSource dsFact = new ReportDataSource();
+            //dsFact.Name = "DataSet1";
+            //dsFact.Value = dataset.Tables["DataSet1"];
 
-            localReport.DataSources.Add(dsFact);
+            //localReport.DataSources.Add(dsFact);
+            Response.Redirect("FrmFactura.aspx?NoFact="+txtNumFact.Text);
         }
 
         private void GenerarFactura(string noFact, ref DataSet dataset)
         {
+            if (txtNumFact.Text.Length > 0) {
+                noFact = txtNumFact.Text;
+            }
             string sqlCitas = String.Format("Select * from VW_Factura where numeroFactura='{0}'", noFact);
             SqlConnection connection = new
         SqlConnection(ConfigurationManager.ConnectionStrings["SQL1"].ConnectionString);

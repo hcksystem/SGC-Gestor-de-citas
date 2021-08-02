@@ -65,10 +65,15 @@ namespace AccesoDatos_DAL_
             cmdInventario.ExecuteNonQuery();
             Conexion.Close();
         }
-      
 
-
-
+        public int GetInventory(int index)
+        {//aca se cambiaria el estado en casi de trabajar con enum
+            SqlCommand cmd = new SqlCommand("Select Cantidad from Inventario where idProducto="+ index, Conexion);
+            Conexion.Open();
+            int Qty=(int)cmd.ExecuteScalar();
+            Conexion.Close();
+            return Qty;
+        }
 
         public void Modificar(int id, string Nombre, int idCategoria, string Descripcion, string Proposito, double Precio, int Estado)
         {

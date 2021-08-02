@@ -37,7 +37,11 @@
         <div >
             <rsweb:ReportViewer  Width="100%" Skin="WebBlue" 
             ZoomMode="Percent" 
-            ZoomPercent="100" ID="ReportViewer1" runat="server"></rsweb:ReportViewer>
+            ZoomPercent="100" ID="ReportViewer1" runat="server" ShowBackButton="False" 
+                ShowCredentialPrompts="False" ShowDocumentMapButton="False" 
+                ShowFindControls="False" ShowPageNavigationControls="False" 
+                ShowParameterPrompts="False" ShowPromptAreaButton="False" 
+                ShowZoomControl="False"></rsweb:ReportViewer>
         </div>
         </div>
 </asp:Content>

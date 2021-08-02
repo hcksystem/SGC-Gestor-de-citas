@@ -290,11 +290,11 @@
                                         <tr><td>
                                     <div class="form-group">
                                         <table><tr><td>
-                                        <asp:Label ID="Label1" runat="server" Text="Subtotal: ₡" Font-Bold="true"></asp:Label></td><td>
+                                        <asp:Label ID="Label1" runat="server" Text="Subtotal: " Font-Bold="true"></asp:Label></td><td>
                                         <asp:Label runat="server" ID="TotalFact" Text=""></asp:Label></td></tr>
-                                        <tr><td><asp:Label ID="Label4" runat="server" Text="IVA: ₡" Font-Bold="true"></asp:Label></td><td>
+                                        <tr><td><asp:Label ID="Label4" runat="server" Text="IVA: " Font-Bold="true"></asp:Label></td><td>
                                          <asp:Label runat="server" ID="TotalIVA" Text=""></asp:Label></td></tr>
-                                        <tr><td><asp:Label ID="Label2" runat="server" Text="Total: ₡" Font-Bold="true"></asp:Label></td><td>
+                                        <tr><td><asp:Label ID="Label2" runat="server" Text="Total: " Font-Bold="true"></asp:Label></td><td>
                                         <asp:Label runat="server" ID="TotalTotal" Text=""></asp:Label></td></tr>
                                             </table>
                                     </div>
@@ -330,7 +330,7 @@
                                                 SortExpression="Tipo" />
                                             <asp:BoundField DataField="Descripcion" HeaderText="Descripcion"
                                                 SortExpression="Descripcion" />
-                                            <asp:BoundField DataField="Precio" HeaderText="Precio unitario"
+                                            <asp:BoundField DataField="Precio" HeaderText="Precio unitario" DataFormatString="{0:###,###,###.00}"
                                                 SortExpression="Precio" />
                                             <asp:BoundField DataField="Cantidad" HeaderText="Cantidad"
                                                 SortExpression="Cantidad" />
@@ -354,7 +354,7 @@
                                 <div class="form-group">
                                     <asp:Button ID="btnGuardar" CssClass="btn btn-outline-primary" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
                                     <asp:Button ID="btnCancelar" CssClass="btn btn-outline-primary" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
-                                    <asp:Button ID="btnImprimir" runat="server" Text="Imprimir" CssClass="btn btn-outline-primary" OnClick="btnImprimir_Click" />
+                                    <asp:Button Enabled="false" ID="btnImprimir" runat="server" Text="Imprimir" CssClass="btn btn-outline-primary" OnClick="btnImprimir_Click" />
                                 </div>
                             </div>
                         </div>

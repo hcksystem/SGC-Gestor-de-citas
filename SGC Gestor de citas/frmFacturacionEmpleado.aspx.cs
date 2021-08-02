@@ -122,7 +122,7 @@ namespace SGC_Gestor_de_citas
                                    "mensajeRedirect('Factura N° " + Numeracion + "','" + result + "','success','frmFacturacionEmpleado.aspx')",
                                   true
                                   );
-                btnImprimir.Visible = true;
+               
             }
             catch (Exception ex)
             {
@@ -390,7 +390,7 @@ namespace SGC_Gestor_de_citas
         {
             int NoFact = Convert.ToInt32(lblNumero.Text) - 1;
             Response.Write("<script>window.open ('FrmFacturaEmpleado.aspx?NoFact=" + NoFact + "','_blank');</script>");
-            btnImprimir.Visible = false;
+          
         }
         protected void txtBuscar_TextChanged(object sender, EventArgs e)
         {

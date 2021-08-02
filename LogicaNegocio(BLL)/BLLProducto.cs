@@ -67,5 +67,11 @@ namespace LogicaNegocio_BLL_
             DALProducto dalp = new DALProducto();
             dalp.EliminarProducto(Identificacion);
         }
+
+        public int GetInventory(int index)
+        {
+            DALProducto dalp = new DALProducto();
+            return dalp.GetInventory(index);
+        }
     }
 }

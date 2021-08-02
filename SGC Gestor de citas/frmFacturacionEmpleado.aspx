@@ -352,7 +352,8 @@
                                 <div class="form-group">
                                     <asp:Button ID="btnGuardar" CssClass="btn btn-outline-primary" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
                                     <asp:Button ID="btnCancelar" CssClass="btn btn-outline-primary" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
-                                    <asp:Button ID="btnImprimir" runat="server" Text="Imprimir" CssClass="btn btn-outline-primary" Visible="false" OnClick="btnImprimir_Click" />
+
+                                    <asp:Button ID="btnImprimir" runat="server" Text="Imprimir" CssClass="btn btn-outline-primary"  OnClick="btnImprimir_Click" />
                                 </div>
                             </div>
                         </div>
