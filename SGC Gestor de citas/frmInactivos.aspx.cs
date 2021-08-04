@@ -193,7 +193,7 @@ namespace SGC_Gestor_de_citas
                 {
                     if (button.CommandName == "Delete")
                     {
-                        button.Attributes["onclick"] = "if(!confirm('Está seguro que desea eliminar este usuario? " + item + "?')){ return false; };";
+                        button.Attributes["onclick"] = "if(!confirm('Está seguro que desea activar este usuario? " + item + "?')){ return false; };";
                     }
                 }
             }

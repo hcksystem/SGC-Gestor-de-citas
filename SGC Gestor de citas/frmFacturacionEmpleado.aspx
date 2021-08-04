@@ -32,10 +32,10 @@
    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript">
-        $(document).ready(
-            function () {
-                $("#<%=txtBuscar.ClientID %>").autocomplete({
+      <script type="text/javascript">
+          $(document).ready(
+              function () {
+                  $("#<%=txtBuscar.ClientID %>").autocomplete({
                     source: function (request, response) {
                         $.ajax({
                             url: '<%=ResolveUrl("~/WS.asmx/GetAutoCompleteData") %>',
@@ -64,7 +64,7 @@
                     minLength: 1
                 });
             });
-    </script>
+      </script>
     <script type="text/javascript">
         $(document).ready(
             function () {
@@ -224,9 +224,10 @@
                                 <div class="form-group">
                                     <label>Fecha:</label>
                                     <asp:Label ID="lblFecha" runat="server"><%=DateTime.Now.ToShortDateString() %></asp:Label>
+
                                     <br />
                                     <br />
-                                    <label>Cliente:</label>
+                                      <label>Cliente:</label>
                                     <asp:Label ID="lblCliente" runat="server"></asp:Label>
                                     <asp:TextBox ID="txtBuscarCliente" runat="server" CssClass="form-control autosuggest" AutoPostBack="true" OnTextChanged="txtBuscarCliente_TextChanged"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Fact"
@@ -237,7 +238,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    
+                                  
                                 </div>
                             </div>
                             <br />
@@ -248,7 +249,7 @@
 
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label>Servicios citas y productos</label>
+                                    <label>Servicios, citas y productos</label>
                                     <asp:TextBox ID="txtBuscar" AutoPostBack="true" OnTextChanged="txtBuscar_TextChanged" runat="server" CssClass="form-control autosuggest"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Fact"
                                         ControlToValidate="txtBuscar" ErrorMessage="Indique el servicio o producto a agregar" Display="Dynamic"
@@ -261,7 +262,7 @@
                                     <label>Método de pago:</label>
                                     <asp:DropDownList ID="dropMetodopago" AutoPostBack="true" OnSelectedIndexChanged="dropMetodopago_SelectedIndexChanged" runat="server" CssClass="form-control"></asp:DropDownList>
                                     <div runat="server" id="Ult4Digitos">
-                                    <asp:TextBox ID="txtNumTarjeta" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtNumTarjeta" runat="server" CssClass="form-control" placeHolder="* Digite los últimos 4 números de su tarjeta *"></asp:TextBox>
                                         </div>
                                 </div>
                             </div>
@@ -282,17 +283,17 @@
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="La cantidad debe ser un número positivo" ControlToValidate="txtCantidad" ValidationExpression="^[1-9][0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
                                     </div></td><td>
                                     <div class="form-group">
-                                        <asp:Button CssClass="btn btn-outline-primary" runat="server" ID="btnAgregar" Text="Agregar Linea" OnClick="btnAgregar_Click1" ValidationGroup="Fact" />
+                                        <asp:Button CssClass="btn btn-outline-primary" runat="server" ID="btnAgregar" Text="Agregar línea" OnClick="btnAgregar_Click1" ValidationGroup="Fact" />
                                     </div>
                                                 </td></tr>
                                         <tr><td>
                                     <div class="form-group">
                                         <table><tr><td>
-                                        <asp:Label ID="Label1" runat="server" Text="Subtotal: ₡" Font-Bold="true"></asp:Label></td><td>
+                                        <asp:Label ID="Label1" runat="server" Text="Subtotal: " Font-Bold="true"></asp:Label></td><td>
                                         <asp:Label runat="server" ID="TotalFact" Text=""></asp:Label></td></tr>
-                                        <tr><td><asp:Label ID="Label4" runat="server" Text="IVA: ₡" Font-Bold="true"></asp:Label></td><td>
+                                        <tr><td><asp:Label ID="Label4" runat="server" Text="IVA: " Font-Bold="true"></asp:Label></td><td>
                                          <asp:Label runat="server" ID="TotalIVA" Text=""></asp:Label></td></tr>
-                                        <tr><td><asp:Label ID="Label2" runat="server" Text="Total: ₡" Font-Bold="true"></asp:Label></td><td>
+                                        <tr><td><asp:Label ID="Label2" runat="server" Text="Total: " Font-Bold="true"></asp:Label></td><td>
                                         <asp:Label runat="server" ID="TotalTotal" Text=""></asp:Label></td></tr>
                                             </table>
                                     </div>
@@ -328,7 +329,7 @@
                                                 SortExpression="Tipo" />
                                             <asp:BoundField DataField="Descripcion" HeaderText="Descripcion"
                                                 SortExpression="Descripcion" />
-                                            <asp:BoundField DataField="Precio" HeaderText="Precio unitario"
+                                            <asp:BoundField DataField="Precio" HeaderText="Precio unitario" DataFormatString="{0:###,###,###.00}"
                                                 SortExpression="Precio" />
                                             <asp:BoundField DataField="Cantidad" HeaderText="Cantidad"
                                                 SortExpression="Cantidad" />
@@ -352,8 +353,7 @@
                                 <div class="form-group">
                                     <asp:Button ID="btnGuardar" CssClass="btn btn-outline-primary" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
                                     <asp:Button ID="btnCancelar" CssClass="btn btn-outline-primary" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
-
-                                    <asp:Button ID="btnImprimir" runat="server" Text="Imprimir" CssClass="btn btn-outline-primary"  OnClick="btnImprimir_Click" />
+                                    <asp:Button Enabled="false" ID="btnImprimir" runat="server" Text="Imprimir" CssClass="btn btn-outline-primary" OnClick="btnImprimir_Click" />
                                 </div>
                             </div>
                         </div>

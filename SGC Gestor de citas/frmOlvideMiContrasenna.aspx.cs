@@ -58,10 +58,10 @@ namespace SGC_Gestor_de_citas
                 cmd = new SqlCommand(String.Format("Select a.id from Usuario a inner join Persona b on a.idPersona=b.id where b.correo='{0}'", txtCorreo.Text),con);
                 int IdUsuario = (int)cmd.ExecuteScalar();
                 Session["idUsuario"] = IdUsuario;
-                cmd = new SqlCommand(String.Format("insert into OlvidoMiContraseña(idUsuario) values ({0})",IdUsuario),con);
+                cmd = new SqlCommand(String.Format("insert into OlvidoMiContraseña(idUsuario,Codigo) values ({0},NewID())",IdUsuario),con);
                 int i = cmd.ExecuteNonQuery();
                 if (i > 0) {
-                    cmd = new SqlCommand(String.Format("Select Codigo,FechaFinal from OlvidoMiContraseña where idUsuario={0} and Estado=0", IdUsuario),con);
+                    cmd = new SqlCommand(String.Format("Select top 1 Codigo,FechaFinal from OlvidoMiContraseña where idUsuario={0} and Estado=0 order by  fecha desc", IdUsuario),con);
                     DataTable result = new DataTable();
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     // this will query your database and return the result to your datatable
@@ -132,14 +132,25 @@ namespace SGC_Gestor_de_citas
             }
             else
             {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQL1"].ConnectionString);
+                con.Open();
+                SqlCommand cmd = new SqlCommand(String.Format("Select count(1) from OlvidoMiContraseña where Codigo='{0}' and FechaFinal>=getdate()", Session["Codigo"].ToString()),con);
+                int flag =(int) cmd.ExecuteScalar();
+                con.Close();
                 if (txtCodigoVerificacion.Text.TrimEnd().TrimStart().Equals(Session["Codigo"].ToString()))
                 {
-                    NuevaContrasena.Visible = true;
-                    confirmar.Visible = true;
+                    if (flag > 0)
+                    {
+                        NuevaContrasena.Visible = true;
+                        confirmar.Visible = true;
+                    }
+                    else { 
+                    //Mostrar Mensaje de que la clave ya no esta vigente
+                    }
                 }
                 else
                 {
-
+                    //Mostrar Mensaje de que la clave no coincide
                 }
             }
         }

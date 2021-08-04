@@ -146,6 +146,7 @@ namespace SGC_Gestor_de_citas
                         num = sumaInventario(Convert.ToInt32(txtCantidadNueva.Text));
                         blli.InventarioSumRes(id, num);
 
+                      
 
                     }
                 }
@@ -182,12 +183,9 @@ namespace SGC_Gestor_de_citas
 
 
             }
-            ClientScript.RegisterStartupScript(
-                   this.GetType(),
-                    "Registro",
-                    "mensajeRedirect('Inventario',' Actualizado con éxito','success','frmInventario.aspx')",
-                    true);
-            
+
+
+
             limpiarDatos();
             cargarDatos();
             lblAcciones.Visible = false;
@@ -195,7 +193,16 @@ namespace SGC_Gestor_de_citas
             txtCantidadNueva.Visible = false;
             dropSumRes.Visible = false;
             btnGuardar.Visible = false;
+            ClientScript.RegisterStartupScript(
+                             this.GetType(),
+                             "Registro",
+                              "mensajeRedirect('inventario',' actualizado con éxito','success','frmInventario.aspx')",
+                             true
+                             );
             //txtBuscar.Text = "";
+
+
+
         }
 
         protected void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -226,7 +233,12 @@ namespace SGC_Gestor_de_citas
             txtCantidadNueva.Visible = true;
             dropSumRes.Visible = true;
             btnGuardar.Visible = true;
-
+            ClientScript.RegisterStartupScript(
+                             this.GetType(),
+                             "Registro",
+                              "mensajeRedirect('inventario','Articulo seleccionado satisfactoriamente','success','#')",
+                             true
+                             );
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -237,7 +249,8 @@ namespace SGC_Gestor_de_citas
             dropSumRes.Visible = false;
             btnGuardar.Visible = false;
             txtStock.Text = "";
-            Session["ID"] = null;
+            //Session["ID"] = null;
+            Response.Redirect("frmMenuAdministrador.aspx");
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)

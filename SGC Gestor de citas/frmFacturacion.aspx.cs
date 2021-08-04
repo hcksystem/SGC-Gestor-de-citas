@@ -360,7 +360,7 @@ namespace SGC_Gestor_de_citas
                 }
             }
             CultureInfo provider = new CultureInfo("en-US");
-            Double precio = Double.Parse(fila.Cells[3].Text, style, provider);
+            Double precio = Double.Parse(fila.Cells[3].Text.Replace("&#160;","").Replace(",","."), style, provider);
             TotalFactura = TotalFactura - (precio * Convert.ToDouble(fila.Cells[4].Text));
             ProductosServicios.Rows[e.RowIndex].Delete();
             ProductosServicios.AcceptChanges();

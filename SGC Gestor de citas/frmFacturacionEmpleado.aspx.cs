@@ -52,15 +52,18 @@ namespace SGC_Gestor_de_citas
                     {
                         dropMetodopago.Items.Add(new ListItem(getPago.ToString(), ((int)getPago).ToString()));
                     }
+
                 }
                 catch (Exception)
                 {
                 }
-
+                if (Session["Nofact"] != null)
+                {
+                    btnImprimir.Enabled = true;
+                }
                 LlenarCombos();
-                
+
             }
-           
         }
 
 
@@ -122,7 +125,8 @@ namespace SGC_Gestor_de_citas
                                    "mensajeRedirect('Factura N° " + Numeracion + "','" + result + "','success','frmFacturacionEmpleado.aspx')",
                                   true
                                   );
-               
+                Session["Nofact"] = Numeracion;
+                btnImprimir.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -134,12 +138,11 @@ namespace SGC_Gestor_de_citas
                                   true
                                   );
             }
-            btnImprimir.Visible = true;
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmMenuAdministrador.aspx");
+            Response.Redirect("frmMenuEmpleado.aspx");
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -296,9 +299,9 @@ namespace SGC_Gestor_de_citas
                             TotalFactura += precio * Convert.ToDouble(txtCantidad.Text);
                             txtBuscar.Text = "";
                             txtBuscar.Focus();
-                            TotalFact.Text = TotalFactura + "";
-                            TotalIVA.Text = (TotalFactura * 0.13) + "";
-                            TotalTotal.Text = (TotalFactura * 1.13) + "";
+                            TotalFact.Text = String.Format("{0:C}", TotalFactura);
+                            TotalIVA.Text = String.Format("{0:C}", (TotalFactura * 0.13));
+                            TotalTotal.Text = String.Format("{0:C}", (TotalFactura * 1.13));
                         }
                         else
                         {
@@ -362,7 +365,7 @@ namespace SGC_Gestor_de_citas
                 }
             }
             CultureInfo provider = new CultureInfo("en-US");
-            Double precio = Double.Parse(fila.Cells[3].Text, style, provider);
+            Double precio = Double.Parse(fila.Cells[3].Text.Replace("&#160;", "").Replace(",", "."), style, provider);
             TotalFactura = TotalFactura - (precio * Convert.ToDouble(fila.Cells[4].Text));
             ProductosServicios.Rows[e.RowIndex].Delete();
             ProductosServicios.AcceptChanges();
@@ -390,7 +393,7 @@ namespace SGC_Gestor_de_citas
         {
             int NoFact = Convert.ToInt32(lblNumero.Text) - 1;
             Response.Write("<script>window.open ('FrmFacturaEmpleado.aspx?NoFact=" + NoFact + "','_blank');</script>");
-          
+
         }
         protected void txtBuscar_TextChanged(object sender, EventArgs e)
         {

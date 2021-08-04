@@ -112,7 +112,7 @@
                             <div class="col-md-6" >
                                 <div class="form-group">
 
-                                <asp:Button runat="server" Text="Realizar Backup" CssClass="btn btn-outline-warning" OnClick="Unnamed_Click" />
+                                <asp:Button runat="server" Text="Realizar respaldo" CssClass="btn btn-outline-warning" OnClick="Unnamed_Click" />
                                 </div>
                             </div>
                         </div> <%--fin row 1--%>

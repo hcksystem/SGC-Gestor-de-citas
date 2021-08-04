@@ -120,14 +120,14 @@
                             </tr>
                             <tr>
                                 <th>Teléfono</th>
-                                <td>
+                                <td colspan="2">
                                     <asp:TextBox CssClass="form-control" runat="server" ID="txtTelefono" placeholder="E-mail"></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <th>Cambiar Contraseña</th>
                                 <td>
                                         <asp:TextBox ID="txtOldPassword" TextMode="Password" runat="server" CssClass="form-control mb-4" placeholder="Contraseña actual"  ></asp:TextBox>
-                                        <asp:CheckBox ID="CheckBox1" runat="server" Text="Mostrar contraseña" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" Visible="false"/>
+                                     <%--   <asp:CheckBox ID="CheckBox1" runat="server" Text="Mostrar contraseña" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" Visible="false"/>--%>
 
                                         
                                    
@@ -135,6 +135,11 @@
                                 </td>
                                 <td>
                                     <asp:TextBox CssClass="form-control" runat="server" TextMode="Password" ID="txtNewPassword" placeholder="Nueva contraseña"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
+                                        ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$"
+                                        ErrorMessage="La contraseña debe tener entre 8 y 15 caracteres, al menos un número, una mayúscula, una minúscula y no puede tener caracteres especiales"
+                                        ControlToValidate="txtNewPassword" Display="Dynamic" ForeColor="Red"
+                                        ValidationGroup="ManteN"></asp:RegularExpressionValidator>
                                     <asp:CheckBox ID="CheckBox2" runat="server" Text="Mostrar contraseña" OnCheckedChanged="CheckBox2_CheckedChanged" AutoPostBack="true" />
 
                                 </td>

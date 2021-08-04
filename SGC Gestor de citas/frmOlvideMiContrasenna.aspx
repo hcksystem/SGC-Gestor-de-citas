@@ -127,6 +127,15 @@
                                     <td colspan="2">
                                         <div class="input-group-append">
                                             <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="ManteN"
+                                ControlToValidate="txtPassword" ErrorMessage="La contraseña es necesaria" Display="Dynamic"
+                                SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
+                                        ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$"
+                                        ErrorMessage="La contraseña debe tener entre 8 y 15 caracteres, al menos un número, una mayúscula, una minúscula y no puede tener caracteres especiales"
+                                        ControlToValidate="txtPassword" Display="Dynamic" ForeColor="Red"
+                                        ValidationGroup="ManteN"></asp:RegularExpressionValidator>
+
                                             <div class="input-group-append">
                                                 <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()">
                                                     <span class="fa fa-eye-slash icon"></span>
@@ -138,7 +147,7 @@
                                 <tr runat="server" id="confirmar" visible="false">
                                     <th></th>
                                     <td colspan="1">
-                                        <asp:Button ID="btnConfirmar" CssClass="btn btn-primary btn-round" runat="server" Text="Confirmar" OnClick="btnConfirmar_Click" />
+                                        <asp:Button ID="btnConfirmar" CssClass="btn btn-primary btn-round" runat="server" Text="Confirmar" OnClick="btnConfirmar_Click" ValidationGroup="ManteN"/>
                                     
                                         <asp:Button ID="btnCancelar" CssClass="btn btn-primary btn-round" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
                                     </td>
