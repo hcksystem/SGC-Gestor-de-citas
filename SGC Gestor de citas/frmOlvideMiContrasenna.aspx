@@ -112,6 +112,7 @@
                                     <td>
                                         <asp:Button ID="btnSolicitarContrasenna" runat="server" CssClass="btn btn-primary btn-round" Text="Solicitar" OnClick="btnSolicitarContrasenna_Click" />
                                     </td>
+                                    <th>Código</th>
                                     <td id="CodigoVerificacion" runat="server" visible="false">
                                         <asp:TextBox ID="txtCodigoVerificacion" runat="server" CssClass="form-control" TabIndex="1" placeHolder="* Requerido *"></asp:TextBox>
                                         </td>

@@ -52,7 +52,7 @@
                     <hr />
                     <div class="card-body">
                         <div class="row">
-                            <asp:ListView ID="listaServicios" runat="server" GroupItemCount="30"
+                            <asp:ListView ID="listaServicios" runat="server" GroupItemCount="3"
                                 DataKeyNames="id"
                                 ItemType="Entidades.Servicio"
                                 SelectMethod="listaServicios_GetData">
@@ -72,7 +72,7 @@
                                 </GroupTemplate>
                                 <ItemTemplate>
                                     <div class="col-md">
-                                        <div class="card text-center border-primary mb-4">
+                                        <div class="card text-center border-primary mb-4" style="margin-top:30px">
                                             <div class="card-body" style="height:180px; width:300px">
                                                 <h5 class="card-title"><%#:Item.Nombre %></h5>
                                                 <p class="card-text"><%#:Item.Descripcion %></p>
