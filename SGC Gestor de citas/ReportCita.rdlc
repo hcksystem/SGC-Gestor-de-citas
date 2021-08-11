@@ -15,13 +15,13 @@
               <Width>2.77196cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.77196cm</Width>
+              <Width>3.6402cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.77196cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.48092cm</Width>
+              <Width>2.71905cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -46,7 +46,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -87,7 +87,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -128,7 +128,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -169,7 +169,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -210,7 +210,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -251,7 +251,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -287,6 +287,13 @@
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
+                            <TextRun>
+                              <Value xml:space="preserve">          </Value>
+                              <Style>
+                                <FontWeight>Normal</FontWeight>
+                                <Color>#333333</Color>
+                              </Style>
+                            </TextRun>
                             <TextRun>
                               <Value>=Fields!id.Value</Value>
                               <Style>
@@ -354,6 +361,13 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
+                              <Value xml:space="preserve">     </Value>
+                              <Style>
+                                <FontWeight>Normal</FontWeight>
+                                <Color>#333333</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
                               <Value>=Fields!Servicio.Value</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
@@ -386,6 +400,13 @@
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
+                            <TextRun>
+                              <Value xml:space="preserve">       </Value>
+                              <Style>
+                                <FontWeight>Normal</FontWeight>
+                                <Color>#333333</Color>
+                              </Style>
+                            </TextRun>
                             <TextRun>
                               <Value>=Fields!nombreUsuario.Value</Value>
                               <Style>
@@ -420,6 +441,13 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
+                              <Value xml:space="preserve">       </Value>
+                              <Style>
+                                <FontWeight>Normal</FontWeight>
+                                <Color>#333333</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
                               <Value>=Fields!Hora.Value</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
@@ -452,6 +480,13 @@
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
+                            <TextRun>
+                              <Value xml:space="preserve">    </Value>
+                              <Style>
+                                <FontWeight>Normal</FontWeight>
+                                <Color>#333333</Color>
+                              </Style>
+                            </TextRun>
                             <TextRun>
                               <Value>=Fields!EstadoCita.Value</Value>
                               <Style>
@@ -513,7 +548,7 @@
                           </TextRun>
                         </TextRuns>
                         <Style>
-                          <TextAlign>Right</TextAlign>
+                          <TextAlign>Center</TextAlign>
                         </Style>
                       </Paragraph>
                     </Paragraphs>
@@ -605,7 +640,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Height>1.2cm</Height>
-        <Width>19.11266cm</Width>
+        <Width>20.21905cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -618,10 +653,10 @@
       <Border>
         <Style>None</Style>
       </Border>
-      <BackgroundColor>#e9faff</BackgroundColor>
+      <BackgroundColor>White</BackgroundColor>
     </Style>
   </Body>
-  <Width>7.52467in</Width>
+  <Width>13.78317in</Width>
   <Page>
     <PageHeader>
       <Height>2.76682cm</Height>
@@ -869,7 +904,7 @@
         <Border>
           <Style>None</Style>
         </Border>
-        <BackgroundColor>White</BackgroundColor>
+        <BackgroundColor>#e5faff</BackgroundColor>
       </Style>
     </PageFooter>
     <PageHeight>29.7cm</PageHeight>

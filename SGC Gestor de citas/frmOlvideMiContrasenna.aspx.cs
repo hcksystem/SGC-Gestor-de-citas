@@ -113,7 +113,7 @@ namespace SGC_Gestor_de_citas
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("solucionessgc3@gmail.com", "Soluciones SGC Citas");
             mail.To.Add(new MailAddress(Correo));
-            mail.Subject = "Mensaje de confirmación";
+            mail.Subject = "Solicitud de cambio de contraseña";
             mail.IsBodyHtml = true;
             mail.Body = body;
             smtp.Send(mail);
