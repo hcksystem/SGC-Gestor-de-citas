@@ -26,7 +26,7 @@ namespace AccesoDatos_DAL_
         public DataTable ObtenerServicioPorID(int Identificacion)
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = new SqlCommand(String.Format("SELECT id, nombre, descripcion, precioEstimado, duracion, fotoSugerida, estado, idNegocio FROM Servicio WHERE id = {0}", Identificacion), Conexion);
+            SqlCommand cmd = new SqlCommand(String.Format("SELECT a.id, a.nombre, a.descripcion, precioEstimado, duracion, fotoSugerida, a.estado, idNegocio,b.idProducto[Producto] FROM Servicio a left join Servicio_Producto b on a.id=b.idServicio  WHERE a.id = {0}", Identificacion), Conexion);
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);

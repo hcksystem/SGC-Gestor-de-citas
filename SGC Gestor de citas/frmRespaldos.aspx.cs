@@ -54,6 +54,12 @@ namespace SGC_Gestor_de_citas
             new SqlCommand(sqlCitas, connection);
                 command.ExecuteNonQuery();
                 CargarBackups();
+                ClientScript.RegisterStartupScript(
+                   this.GetType(),
+                    "Registro",
+                    "mensajeRedirect('Respaldo','Restauración exítosa','success','#')",
+                    true
+                    );
             }
             else {
                 ClientScript.RegisterStartupScript(

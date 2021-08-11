@@ -10,7 +10,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
 
-    <div class="content" style="overflow:scroll">
+    <div class="content" style="overflow:scroll" >
     <div class="form-inline">
         <div class="form-group">
     <asp:TextBox CssClass="form-control" runat="server" ID="txtFechaDesde" TextMode="Date"></asp:TextBox>

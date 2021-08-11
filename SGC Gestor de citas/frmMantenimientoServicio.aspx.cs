@@ -60,6 +60,7 @@ namespace SGC_Gestor_de_citas
             dropProducto.DataTextField = "nombre";
             dropProducto.DataValueField = "id";
             dropProducto.DataBind();
+            dropProducto.Items.Insert(0,"Seleccione un producto");
 
             BLLNegocio blln = new BLLNegocio();
             DataTable dt1 = blln.ObtenerTodosLosNegocios();
@@ -67,6 +68,7 @@ namespace SGC_Gestor_de_citas
             dropNegocio.DataTextField = "nombre";
             dropNegocio.DataValueField = "id";
             dropNegocio.DataBind();
+            dropNegocio.Items.Insert(0, "Seleccione un negocio");
         }
         public void limpiarDatos()
         {
@@ -162,6 +164,7 @@ namespace SGC_Gestor_de_citas
             txtTiempoEstimado.Text = dt.Rows[0]["Duracion"].ToString();
             dropEstado.SelectedValue = dt.Rows[0]["estado"].ToString();
             dropNegocio.SelectedValue = dt.Rows[0]["idNegocio"].ToString();
+            dropProducto.SelectedValue = dt.Rows[0]["Producto"].ToString();
             FotoSugerida.ImageUrl= dt.Rows[0]["fotoSugerida"].ToString();
             if (FotoSugerida.ImageUrl.Length > 0)
             {

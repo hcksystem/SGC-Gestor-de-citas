@@ -121,7 +121,7 @@ namespace SGC_Gestor_de_citas
                     ClientScript.RegisterStartupScript(
                       this.GetType(),
                        "Registro",
-                       "mensajeRedirect('Producto','No puede realizar dicha accion','error','#')",
+                       "mensajeRedirect('Producto','No puede realizar dicha acción, cantidad existente en inventario','error','#')",
                        true
                        );
                 }
